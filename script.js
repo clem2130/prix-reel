@@ -38,9 +38,9 @@ async function getAveragePrice(city, provider, offerType) {
 };
 }
 
-async function getAveragePrice(city, provider) {
+async function getAveragePrice(city, provider, offerType) {
   const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price`,
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
     {
       headers: {
         "apikey": SUPABASE_ANON_KEY,
@@ -55,15 +55,18 @@ async function getAveragePrice(city, provider) {
 
   const data = await response.json();
 
-  if (data.length === 0) {
-    return 47;
+  if (!data || data.length === 0) {
+    return null;
   }
 
   const total = data.reduce((sum, item) => {
     return sum + Number(item.Monthly_price);
   }, 0);
 
-  return Math.round(total / data.length);
+  return {
+    average: Math.round(total / data.length),
+    count: data.length
+  };
 }
 
 async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
