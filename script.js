@@ -39,8 +39,7 @@ async function calculate() {
   const offerType = document.getElementById("offer").value;
 
   if (!city || !price || price <= 0) {
-    alert("Veuillez entrer votre ville et votre prix.");
-    return;
+    alert("Erreur Supabase : " + error.message);
   }
 
   try {
