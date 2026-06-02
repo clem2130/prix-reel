@@ -179,25 +179,29 @@ else {
       }
     );
 
+    if (!response.ok) {
+      throw new Error(await response.text());
+    }
+
     const data = await response.json();
 
-    if (!data || data.length === 0) return;
+    console.log("STATISTIQUES SUPABASE :", data);
+
+    if (!data || data.length === 0) {
+      alert("Aucune donnée trouvée pour les statistiques.");
+      return;
+    }
 
     const prices = data.map(item => Number(item.Monthly_price));
 
-    document.getElementById("stats-total").textContent =
-      prices.length;
-
+    document.getElementById("stats-total").textContent = prices.length;
     document.getElementById("stats-average").textContent =
-      Math.round(prices.reduce((a,b)=>a+b,0) / prices.length) + " €";
-
-    document.getElementById("stats-min").textContent =
-      Math.min(...prices) + " €";
-
-    document.getElementById("stats-max").textContent =
-      Math.max(...prices) + " €";
+      Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) + " €";
+    document.getElementById("stats-min").textContent = Math.min(...prices) + " €";
+    document.getElementById("stats-max").textContent = Math.max(...prices) + " €";
 
   } catch (error) {
+    alert("Erreur stats : " + error.message);
     console.error("Erreur statistiques :", error);
   }
 }
