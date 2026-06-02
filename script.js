@@ -78,7 +78,7 @@ async function calculate() {
     return;
   }
 
-  const average = 47;
+  const average = await getAveragePrice(city, provider);
   const diff = price - average;
   const saving = Math.max(0, diff * 12);
   const monthSaving = Math.max(0, diff);
