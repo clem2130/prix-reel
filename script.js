@@ -7,28 +7,32 @@ function goTo(id) {
   document.getElementById(id).classList.add("active");
 }
 
-async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/internet_prices`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "apikey": SUPABASE_ANON_KEY,
-      "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
-      "Prefer": "return=representation"
-    },
-    body: JSON.stringify({
-      City: city,
-      Provider: provider,
-      Monthly_price: monthlyPrice,
-      Offer_type: offerType
-    })
-  });
+async function getAveragePrice(city, provider, offerType) {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
+    {
+      headers: {
+        "apikey": SUPABASE_ANON_KEY,
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
 
   if (!response.ok) {
     throw new Error(await response.text());
   }
 
-  return await response.json();
+  const data = await response.json();
+
+  if (data.length === 0) {
+    return null;
+  }
+
+  const total = data.reduce((sum, item) => {
+    return sum + Number(item.Monthly_price);
+  }, 0);
+
+  return Math.round(total / data.length);
 }
 
 async function getAveragePrice(city, provider) {
