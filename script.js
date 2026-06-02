@@ -9,7 +9,7 @@ function goTo(id) {
 }
 
 async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/Internet_prices`, {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/internet_prices`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
