@@ -18,10 +18,10 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
       "Prefer": "return=minimal"
     },
     body: JSON.stringify({
-      city: city,
-      provider: provider,
-      monthly_price: monthlyPrice,
-      offer_type: offerType
+      City: city,
+      Provider: provider,
+      Monthly_price: monthlyPrice,
+      Offer_type: offerType
     })
   });
 
