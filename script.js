@@ -115,6 +115,20 @@ if (stats === null) {
       saving + " € / an";
     document.getElementById("saving-month").textContent =
       "Soit " + monthSaving + " € par mois";
+    const quality = document.getElementById("data-quality");
+
+if (sampleCount < 3) {
+  quality.innerHTML =
+    "🟠 Fiabilité faible (" + sampleCount + " prix enregistré)";
+}
+else if (sampleCount < 10) {
+  quality.innerHTML =
+    "🟡 Fiabilité moyenne (" + sampleCount + " prix enregistrés)";
+}
+else {
+  quality.innerHTML =
+    "🟢 Fiabilité élevée (" + sampleCount + " prix enregistrés)";
+}
 
     goTo("result");
   } catch (error) {
