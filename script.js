@@ -77,7 +77,11 @@ async function calculate() {
   try {
     await savePriceToSupabase(city, provider, price, offerType);
 
-    const average = await getAveragePrice(city, provider);
+    let average = await getAveragePrice(city, provider, offerType);
+
+    if (average === null) {
+    average = price;
+    }
     const diff = price - average;
     const saving = Math.max(0, diff * 12);
     const monthSaving = Math.max(0, diff);
