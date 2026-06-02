@@ -34,7 +34,7 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
 
 async function getAveragePrice(city, provider) {
   const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/Internet_prices?select=Monthly_price`,
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price`,
     {
       headers: {
         "apikey": SUPABASE_ANON_KEY,
