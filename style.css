@@ -29,13 +29,20 @@ body {
 
 .app {
   position: relative;
-  width: 390px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   height: 820px;
   background: #fff;
   border-radius: 34px;
   box-shadow: 0 28px 80px rgba(6, 36, 92, .22);
   overflow: hidden;
   border: 1px solid rgba(6, 36, 92, .08);
+  @media (max-width: 768px) {
+    .app {
+        max-width: 430px;
+    }
+}
 }
 
 .screen {
