@@ -2,6 +2,8 @@ const SUPABASE_URL = "https://mmkubcgomhgkcbnsukze.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
 
 function goTo(id) {
+  alert("Page demandée : " + id);
+
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
   });
@@ -9,6 +11,7 @@ function goTo(id) {
   document.getElementById(id).classList.add("active");
 
   if (id === "stats") {
+    alert("Je charge les statistiques");
     loadStatistics();
   }
 }
