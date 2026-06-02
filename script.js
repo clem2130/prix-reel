@@ -5,10 +5,13 @@ function goTo(id) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
   });
+
   document.getElementById(id).classList.add("active");
+
   if (id === "stats") {
-  loadStatistics();
-}
+    alert("Chargement des statistiques");
+    loadStatistics();
+  }
 }
 
 async function getAveragePrice(city, provider, offerType) {
