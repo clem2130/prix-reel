@@ -96,7 +96,33 @@ async function calculate() {
     console.error("Erreur chargement statistiques :", error);
   }
 }
+async function loadStats() {
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/Internet_prices?select=Monthly_price`,
+      {
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
 
+    const data = await response.json();
+
+    const total = data.length;
+    const average = total > 0
+      ? Math.round(data.reduce((sum, item) => sum + Number(item.Monthly_price), 0) / total)
+      : 0;
+
+    document.getElementById("total-prices").textContent = total;
+    document.getElementById("average-price").textContent = average + " €";
+  } catch (error) {
+    console.error("Erreur statistiques :", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadStats);
 loadStats();
 
   goTo("result");
