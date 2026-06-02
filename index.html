@@ -151,7 +151,7 @@
 
       <button class="primary blue-btn" onclick="calculate()">Comparer mon prix</button>
     </section>
-
+      
     <section class="screen" id="result">
       <div class="topbar">
         <button class="back" onclick="goTo('form')">←</button>
@@ -227,5 +227,34 @@
   </main>
 
   <script src="script.js"></script>
+  <section class="screen" id="stats">
+
+  <div class="topbar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <strong>Statistiques</strong>
+    <div></div>
+  </div>
+
+  <div class="stat-card">
+    <h3 id="stats-total">0</h3>
+    <p>Prix enregistrés</p>
+  </div>
+
+  <div class="stat-card">
+    <h3 id="stats-average">0 €</h3>
+    <p>Prix moyen</p>
+  </div>
+
+  <div class="stat-card">
+    <h3 id="stats-min">0 €</h3>
+    <p>Prix le plus bas</p>
+  </div>
+
+  <div class="stat-card">
+    <h3 id="stats-max">0 €</h3>
+    <p>Prix le plus élevé</p>
+  </div>
+
+</section>
 </body>
 </html>
