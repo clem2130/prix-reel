@@ -645,4 +645,32 @@ nav span {
   color: var(--muted);
   font-size: 13px;
 }
+  .stats-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 430px;
+  margin: 22px 0;
+}
+
+.stat-card {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+}
+
+.stat-card strong {
+  display: block;
+  color: var(--navy);
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.stat-card span {
+  color: var(--muted);
+  font-size: 13px;
+}
 }
