@@ -5,6 +5,9 @@ function goTo(id) {
     screen.classList.remove("active");
   });
   document.getElementById(id).classList.add("active");
+  if (id === "stats") {
+  loadStatistics();
+}
 }
 
 async function getAveragePrice(city, provider, offerType) {
@@ -162,4 +165,39 @@ else {
     alert("Erreur Supabase : " + error.message);
     console.error(error);
   }
+
+  async function loadStatistics() {
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price`,
+      {
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+
+    const data = await response.json();
+
+    if (!data || data.length === 0) return;
+
+    const prices = data.map(item => Number(item.Monthly_price));
+
+    document.getElementById("stats-total").textContent =
+      prices.length;
+
+    document.getElementById("stats-average").textContent =
+      Math.round(prices.reduce((a,b)=>a+b,0) / prices.length) + " €";
+
+    document.getElementById("stats-min").textContent =
+      Math.min(...prices) + " €";
+
+    document.getElementById("stats-max").textContent =
+      Math.max(...prices) + " €";
+
+  } catch (error) {
+    console.error("Erreur statistiques :", error);
+  }
+}
 }
