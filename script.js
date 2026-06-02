@@ -136,6 +136,8 @@ async function loadStatistics() {
 
     const data = await response.json();
 
+    alert("Stats reçues : " + JSON.stringify(data));
+
     if (!data || data.length === 0) return;
 
     const prices = data.map(item => Number(item.Monthly_price));
