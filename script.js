@@ -32,7 +32,10 @@ async function getAveragePrice(city, provider, offerType) {
     return sum + Number(item.Monthly_price);
   }, 0);
 
-  return Math.round(total / data.length);
+  return {
+  average: Math.round(total / data.length),
+  count: data.length
+};
 }
 
 async function getAveragePrice(city, provider) {
