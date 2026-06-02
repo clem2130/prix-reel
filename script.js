@@ -1,5 +1,5 @@
 const SUPABASE_URL = "https://mmkubcgomhgkcbnsukze.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
+const SUPABASE_ANON_KEY = "COLLE_ICI_TA_PUBLISHABLE_KEY";
 
 function goTo(id) {
   document.querySelectorAll(".screen").forEach(screen => {
@@ -9,13 +9,13 @@ function goTo(id) {
 }
 
 async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/internet_prices`, {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/Internet_prices`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "apikey": SUPABASE_ANON_KEY,
       "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
-      "Prefer": "return=minimal"
+      "Prefer": "return=representation"
     },
     body: JSON.stringify({
       City: city,
@@ -26,10 +26,10 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    console.error("Erreur Supabase :", errorText);
-    throw new Error(errorText);
+    throw new Error(await response.text());
   }
+
+  return await response.json();
 }
 
 async function getAveragePrice(city, provider) {
@@ -67,91 +67,37 @@ async function calculate() {
   const offerType = document.getElementById("offer").value;
 
   if (!city || !price || price <= 0) {
-    alert("Erreur Supabase : " + error.message);
+    alert("Veuillez entrer votre ville et votre prix mensuel.");
+    return;
   }
 
   try {
     await savePriceToSupabase(city, provider, price, offerType);
+
+    const average = await getAveragePrice(city, provider);
+    const diff = price - average;
+    const saving = Math.max(0, diff * 12);
+    const monthSaving = Math.max(0, diff);
+
+    let percent = 72;
+    if (diff <= 0) percent = 18;
+    else if (diff <= 5) percent = 42;
+    else if (diff <= 15) percent = 72;
+    else percent = 86;
+
+    document.getElementById("percent").textContent = percent + "%";
+    document.getElementById("result-price").textContent = price + " € / mois";
+    document.getElementById("result-average").textContent = average + " € / mois";
+    document.getElementById("result-diff").textContent =
+      (diff >= 0 ? "+" : "") + diff + " € / mois";
+    document.getElementById("result-saving").textContent =
+      saving + " € / an";
+    document.getElementById("saving-month").textContent =
+      "Soit " + monthSaving + " € par mois";
+
+    goTo("result");
   } catch (error) {
-    alert("Erreur lors de l'enregistrement dans Supabase.");
+    alert("Erreur Supabase : " + error.message);
     console.error(error);
-    return;
   }
-
-  const average = await getAveragePrice(city, provider);
-  const diff = price - average;
-  const saving = Math.max(0, diff * 12);
-  const monthSaving = Math.max(0, diff);
-
-  let percent = 72;
-  if (diff <= 0) percent = 18;
-  else if (diff <= 5) percent = 42;
-  else if (diff <= 15) percent = 72;
-  else percent = 86;
-
-  document.getElementById("percent").textContent = percent + "%";
-  document.getElementById("result-price").textContent = price + " € / mois";
-  document.getElementById("result-average").textContent = average + " € / mois";
-  document.getElementById("result-diff").textContent =
-    (diff >= 0 ? "+" : "") + diff + " € / mois";
-  document.getElementById("result-saving").textContent =
-    saving + " € / an";
-  document.getElementById("saving-month").textContent =
-    "Soit " + monthSaving + " € par mois";
-  async function loadStats() {
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/Internet_prices?select=Monthly_price`,
-      {
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
-        }
-      }
-    );
-
-    const data = await response.json();
-
-    const total = data.length;
-    const average =
-      total > 0
-        ? Math.round(data.reduce((sum, item) => sum + Number(item.Monthly_price), 0) / total)
-        : 0;
-
-    document.getElementById("total-prices").textContent = total;
-    document.getElementById("average-price").textContent = average + " €";
-  } catch (error) {
-    console.error("Erreur chargement statistiques :", error);
-  }
-}
-async function loadStats() {
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/Internet_prices?select=Monthly_price`,
-      {
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
-        }
-      }
-    );
-
-    const data = await response.json();
-
-    const total = data.length;
-    const average = total > 0
-      ? Math.round(data.reduce((sum, item) => sum + Number(item.Monthly_price), 0) / total)
-      : 0;
-
-    document.getElementById("total-prices").textContent = total;
-    document.getElementById("average-price").textContent = average + " €";
-  } catch (error) {
-    console.error("Erreur statistiques :", error);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", loadStats);
-loadStats();
-
-  goTo("result");
 }
