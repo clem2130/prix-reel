@@ -32,6 +32,34 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
   }
 }
 
+async function getAveragePrice(city, provider) {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/Internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}`,
+    {
+      headers: {
+        "apikey": SUPABASE_ANON_KEY,
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(await response.text());
+  }
+
+  const data = await response.json();
+
+  if (data.length === 0) {
+    return 47; // moyenne par défaut si aucune donnée
+  }
+
+  const total = data.reduce((sum, item) => {
+    return sum + Number(item.Monthly_price);
+  }, 0);
+
+  return Math.round(total / data.length);
+}
+
 async function calculate() {
   const price = Number(document.getElementById("price").value);
   const city = document.getElementById("city").value.trim();
