@@ -8,10 +8,6 @@ function goTo(id) {
   document.getElementById(id).classList.add("active");
   if (id === "stats") {
   loadStatistics();
-
-  if (id === "stats") {
-  loadStatistics();
-}
 }
 }
 
