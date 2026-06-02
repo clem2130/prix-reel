@@ -1,7 +1,5 @@
 const SUPABASE_URL = "https://mmkubcgomhgkcbnsukze.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
-console.log("VERSION 999");
-alert("VERSION 999");
 function goTo(id) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
