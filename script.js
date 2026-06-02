@@ -80,7 +80,18 @@ async function calculate() {
   try {
     await savePriceToSupabase(city, provider, price, offerType);
 
-    let average = await getAveragePrice(city, provider, offerType);
+    const stats = await getAveragePrice(city, provider, offerType);
+
+let average;
+let sampleCount;
+
+if (stats === null) {
+  average = price;
+  sampleCount = 1;
+} else {
+  average = stats.average;
+  sampleCount = stats.count;
+}
 
     if (average === null) {
     average = price;
