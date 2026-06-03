@@ -733,3 +733,27 @@ nav span {
   line-height: 1;
   white-space: nowrap;
 }
+/* LOGO PRIX REEL */
+.brand {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+.logo-shield {
+  width: 70px !important;
+  height: 70px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+}
+
+.brand h1 {
+  white-space: nowrap !important;
+  font-size: 32px !important;
+  line-height: 1 !important;
+}
+
+.brand p {
+  white-space: nowrap !important;
+}
