@@ -106,6 +106,24 @@ async function calculate() {
     }
 
     const diff = price - average;
+    let rating = "";
+let ratingColor = "";
+
+if (diff <= -10) {
+  rating = "🟢 Excellent";
+  ratingColor = "#16a34a";
+} else if (diff <= 5) {
+  rating = "🟠 Correct";
+  ratingColor = "#f59e0b";
+} else {
+  rating = "🔴 Trop cher";
+  ratingColor = "#dc2626";
+}
+
+const ratingElement = document.getElementById("price-rating");
+
+ratingElement.textContent = rating;
+ratingElement.style.color = ratingColor;
     const saving = Math.max(0, diff * 12);
     const monthSaving = Math.max(0, diff);
 
