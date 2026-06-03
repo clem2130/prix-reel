@@ -2,8 +2,6 @@ const SUPABASE_URL = "https://mmkubcgomhgkcbnsukze.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
 
 function goTo(id) {
-  alert("Page demandée : " + id);
-
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
   });
@@ -11,7 +9,6 @@ function goTo(id) {
   document.getElementById(id).classList.add("active");
 
   if (id === "stats") {
-    alert("Je charge les statistiques");
     loadStatistics();
   }
 }
@@ -30,8 +27,6 @@ async function getAveragePrice(city, provider, offerType) {
   if (!response.ok) throw new Error(await response.text());
 
   const data = await response.json();
-  console.log("Status:", response.status);
-  console.log("Cities:", cities);
 
   if (!data || data.length === 0) return null;
 
@@ -119,6 +114,7 @@ async function calculate() {
     }
 
     goTo("result");
+
   } catch (error) {
     alert("Erreur Supabase : " + error.message);
     console.error(error);
@@ -141,8 +137,6 @@ async function loadStatistics() {
 
     const data = await response.json();
 
-    alert("Stats reçues : " + JSON.stringify(data));
-
     if (!data || data.length === 0) return;
 
     const prices = data.map(item => Number(item.Monthly_price));
@@ -158,44 +152,51 @@ async function loadStatistics() {
     console.error(error);
   }
 }
+
 const cityInput = document.getElementById("citySearch");
 const citySuggestions = document.getElementById("citySuggestions");
 
 async function searchCities(query) {
+  if (!cityInput || !citySuggestions) return;
 
   if (query.length < 2) {
     citySuggestions.innerHTML = "";
     return;
   }
 
- const response = await fetch(
-  `${SUPABASE_URL}/rest/v1/belgian_cities?select=name&name=ilike.*${query}*&order=name.asc&limit=10`,
-  {
-    headers: {
-      "apikey": SUPABASE_ANON_KEY,
-      "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
-    }
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/belgian_cities?select=name&name=ilike.*${encodeURIComponent(query)}*&order=name.asc&limit=10`,
+      {
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+
+    if (!response.ok) throw new Error(await response.text());
+
+    const cities = await response.json();
+
+    citySuggestions.innerHTML = "";
+
+    cities.forEach(city => {
+      const item = document.createElement("div");
+      item.className = "city-suggestion";
+      item.textContent = city.name;
+
+      item.onclick = () => {
+        cityInput.value = city.name;
+        citySuggestions.innerHTML = "";
+      };
+
+      citySuggestions.appendChild(item);
+    });
+
+  } catch (error) {
+    console.error("Erreur recherche villes :", error);
   }
-);
-
-  const cities = await response.json();
-
-  console.log(cities);
-
-  citySuggestions.innerHTML = "";
-
-  cities.forEach(city => {
-    const item = document.createElement("div");
-    item.className = "city-suggestion";
-    item.textContent = city.name;
-
-    item.onclick = () => {
-      cityInput.value = city.name;
-      citySuggestions.innerHTML = "";
-    };
-
-    citySuggestions.appendChild(item);
-  });
 }
 
 if (cityInput && citySuggestions) {
@@ -203,5 +204,9 @@ if (cityInput && citySuggestions) {
     searchCities(cityInput.value.trim());
   });
 
-  console.log("Autocomplete ville chargé");
+  document.addEventListener("click", event => {
+    if (!event.target.closest(".city-autocomplete")) {
+      citySuggestions.innerHTML = "";
+    }
+  });
 }
