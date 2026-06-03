@@ -196,6 +196,19 @@ document.getElementById("result-offer-type").textContent =
     
 
     document.getElementById("percent").textContent = percent + "%";
+    const rankingMessage = document.getElementById("ranking-message");
+
+    if (diff < 0) {
+    rankingMessage.textContent =
+    "Vous payez moins cher que " + percent + "% des utilisateurs similaires";
+    } else if (diff > 0) {
+    rankingMessage.textContent =
+    "Vous payez plus cher que " + percent + "% des utilisateurs similaires";
+    } else {
+    rankingMessage.textContent =
+    "Votre prix est dans la moyenne des utilisateurs similaires";
+    }
+    
     document.getElementById("result-price").textContent = price + " € / mois";
     document.getElementById("result-average").textContent = average + " € / mois";
     document.getElementById("result-diff").textContent =
