@@ -15,7 +15,7 @@ function goTo(id) {
 
 async function priceAlreadyExists(city, provider, monthlyPrice, offerType) {
   const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=id&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Monthly_price=eq.${monthlyPrice}&Offer_type=eq.${encodeURIComponent(offerType)}&limit=1`,
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Monthly_price=eq.${monthlyPrice}&Offer_type=eq.${encodeURIComponent(offerType)}&limit=1`,
     {
       headers: {
         "apikey": SUPABASE_ANON_KEY,
