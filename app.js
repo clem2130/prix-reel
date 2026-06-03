@@ -187,7 +187,7 @@ async function calculate() {
       displayPercent = 100 - percent;
     }
     
-    document.getElementById("percent").textContent = displayPercent + "%";
+    
     
     const rankingMessage = document.getElementById("ranking-message");
     
