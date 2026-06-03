@@ -88,7 +88,11 @@ async function calculate() {
   }
 
   try {
-    await savePriceToSupabase(city, provider, price, offerType);
+    const alreadyExists = await priceAlreadyExists(city, provider, price, offerType);
+
+if (!alreadyExists) {
+  await savePriceToSupabase(city, provider, price, offerType);
+}
 
     const stats = await getAveragePrice(city, provider, offerType);
 
