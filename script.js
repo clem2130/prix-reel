@@ -41,6 +41,20 @@ async function getAveragePrice(city, provider, offerType) {
     }
   );
 
+  if (!response.ok) throw new Error(await response.text());
+
+  const data = await response.json();
+
+  if (!data || data.length === 0) return null;
+
+  const total = data.reduce((sum, item) => sum + Number(item.Monthly_price), 0);
+
+  return {
+    average: Math.round(total / data.length),
+    count: data.length
+  };
+}
+
   async function getRanking(city, provider, offerType, userPrice) {
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
@@ -65,20 +79,6 @@ async function getAveragePrice(city, provider, offerType) {
   ).length;
 
   return Math.round((cheaperCount / data.length) * 100);
-}
-
-  if (!response.ok) throw new Error(await response.text());
-
-  const data = await response.json();
-
-  if (!data || data.length === 0) return null;
-
-  const total = data.reduce((sum, item) => sum + Number(item.Monthly_price), 0);
-
-  return {
-    average: Math.round(total / data.length),
-    count: data.length
-  };
 }
 
 async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
