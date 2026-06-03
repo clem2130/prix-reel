@@ -8,6 +8,7 @@
 </head>
 <body>
   <main class="app">
+
     <section class="screen active" id="home">
       <div class="brand">
         <div class="shield">✓</div>
@@ -38,16 +39,16 @@
             <p>Découvrez combien vous pourriez économiser</p>
           </div>
         </div>
+
         <div class="feature">
           <div class="icon green">🔒</div>
           <div>
             <strong>100% gratuit et anonyme</strong>
-            <p>Vos données restent confidentielles</p>  
+            <p>Vos données restent confidentielles</p>
           </div>
-          
-          </div>         
         </div>
       </div>
+
       <button class="primary" onclick="goTo('category')">Commencer gratuitement</button>
       <button class="link" onclick="goTo('stats')">Voir les statistiques</button>
 
@@ -58,65 +59,112 @@
       </div>
     </section>
 
-    <section class="screen" id="result">
-  <div class="topbar">
-    <button class="back" onclick="goTo('form')">←</button>
-    <strong>Résultat</strong>
-    <button class="back">↗</button>
-  </div>
+    <section class="screen" id="category">
+      <div class="topbar">
+        <button class="back" onclick="goTo('home')">←</button>
+        <div class="progress"><span style="width:25%"></span></div>
+      </div>
 
-  <div class="result-card">
-    <h3>Voici votre résultat</h3>
-    <p>Basé sur les prix réels dans votre région</p>
+      <h2>Quel service souhaitez-vous comparer ?</h2>
+      <p class="subtitle">Nous commençons par Internet.</p>
 
-    <div class="result-details">
-      <p id="result-city"></p>
-      <p id="result-provider-name"></p>
-      <p id="result-offer-type"></p>
-    </div>
+      <button class="service active-service" onclick="goTo('form')">
+        <div class="service-icon blue">📶</div>
+        <div>
+          <strong>Internet</strong>
+          <p>Comparez votre abonnement Internet</p>
+        </div>
+        <span>›</span>
+      </button>
 
-    <p id="data-quality" class="data-quality"></p>
+      <button class="service locked">
+        <div class="service-icon">🚗</div>
+        <div>
+          <strong>Assurance auto</strong>
+          <p>🔒 Bientôt disponible</p>
+        </div>
+      </button>
 
-    <div class="gauge">
-      <div class="gauge-value" id="percent">72%</div>
-      <small>des utilisateurs paient moins cher</small>
-    </div>
+      <button class="service locked">
+        <div class="service-icon">⚡</div>
+        <div>
+          <strong>Électricité</strong>
+          <p>🔒 Bientôt disponible</p>
+        </div>
+      </button>
 
-    <div class="line">
-      <span>Vous payez</span>
-      <strong id="result-price">62 € / mois</strong>
-    </div>
+      <button class="service locked">
+        <div class="service-icon">📱</div>
+        <div>
+          <strong>Téléphone mobile</strong>
+          <p>🔒 Bientôt disponible</p>
+        </div>
+      </button>
 
-    <div class="line">
-      <span>Prix moyen dans votre région</span>
-      <strong id="result-average">47 € / mois</strong>
-    </div>
-
-    <div class="line danger">
-      <span>Différence</span>
-      <strong id="result-diff">+15 € / mois</strong>
-    </div>
-  </div>
-
-  <div class="saving-result">
-    <div>
-      <p>Économie potentielle</p>
-      <strong id="result-saving">180 € / an</strong>
-      <small id="saving-month">Soit 15 € par mois</small>
-    </div>
-    <div class="pig">🐷</div>
-  </div>
-
-  <div class="tip-card">
-    <strong>Comment économiser ?</strong>
-    <p>Découvrez des astuces et des offres pour réduire votre facture.</p>
-  </div>
-
-  <button class="primary" onclick="goTo('home')">Recommencer</button>
+      <div class="info-box">
+        <strong>D'autres catégories arrivent bientôt !</strong>
+        <p>Aidez-nous à rendre les prix plus transparents partout.</p>
+      </div>
     </section>
 
-    
-      
+    <section class="screen" id="form">
+      <div class="topbar">
+        <button class="back" onclick="goTo('category')">←</button>
+        <div class="progress"><span style="width:50%"></span></div>
+      </div>
+
+      <h2>Comparez votre abonnement Internet</h2>
+      <p class="subtitle">Remplissez les informations ci-dessous.</p>
+
+      <label>Votre fournisseur Internet</label>
+      <select id="provider">
+        <option>Proximus</option>
+        <option>Orange</option>
+        <option>Telenet</option>
+        <option>Mobile Vikings</option>
+        <option>Autre</option>
+      </select>
+
+      <label>Votre ville</label>
+      <div class="city-autocomplete">
+        <input
+          type="text"
+          id="citySearch"
+          name="city-search-autocomplete"
+          placeholder="Tapez votre ville..."
+          autocomplete="new-password"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        >
+        <div id="citySuggestions"></div>
+      </div>
+
+      <label>Votre montant mensuel</label>
+      <div class="money-input">
+        <input id="price" type="number" value="62" />
+        <span>€ / mois</span>
+      </div>
+
+      <label>Type d'abonnement</label>
+      <select id="offer">
+        <option>Internet + TV</option>
+        <option>Internet seul</option>
+        <option>Internet + Mobile</option>
+        <option>Pack complet</option>
+      </select>
+
+      <div class="privacy-box">
+        <div class="mini-shield">✓</div>
+        <div>
+          <strong>Vos données sont 100% anonymes</strong>
+          <p>Elles nous aident seulement à calculer les prix réels dans votre région.</p>
+        </div>
+      </div>
+
+      <button class="primary blue-btn" onclick="calculate()">Comparer mon prix</button>
+    </section>
+
     <section class="screen" id="result">
       <div class="topbar">
         <button class="back" onclick="goTo('form')">←</button>
@@ -127,6 +175,13 @@
       <div class="result-card">
         <h3>Voici votre résultat</h3>
         <p>Basé sur les prix réels dans votre région</p>
+
+        <div class="result-details">
+          <p id="result-city"></p>
+          <p id="result-provider-name"></p>
+          <p id="result-offer-type"></p>
+        </div>
+
         <p id="data-quality" class="data-quality"></p>
 
         <div class="gauge">
@@ -138,10 +193,12 @@
           <span>Vous payez</span>
           <strong id="result-price">62 € / mois</strong>
         </div>
+
         <div class="line">
           <span>Prix moyen dans votre région</span>
           <strong id="result-average">47 € / mois</strong>
         </div>
+
         <div class="line danger">
           <span>Différence</span>
           <strong id="result-diff">+15 € / mois</strong>
@@ -165,49 +222,43 @@
       <button class="primary" onclick="goTo('home')">Recommencer</button>
     </section>
 
-    
-<section class="screen" id="stats">
+    <section class="screen" id="stats">
+      <div class="topbar">
+        <button class="back" onclick="goTo('home')">←</button>
+        <strong>Statistiques</strong>
+        <div></div>
+      </div>
 
-  <div class="topbar">
-    <button class="back" onclick="goTo('home')">←</button>
-    <strong>Statistiques</strong>
-    <div></div>
-  </div>
+      <div class="stat-card">
+        <h3 id="stats-total">0</h3>
+        <p>Prix enregistrés</p>
+      </div>
 
-  <div class="stat-card">
-    <h3 id="stats-total">0</h3>
-    <p>Prix enregistrés</p>
-  </div>
+      <div class="stat-card">
+        <h3 id="stats-average">0 €</h3>
+        <p>Prix moyen</p>
+      </div>
 
-  <div class="stat-card">
-    <h3 id="stats-average">0 €</h3>
-    <p>Prix moyen</p>
-  </div>
+      <div class="stat-card">
+        <h3 id="stats-min">0 €</h3>
+        <p>Prix le plus bas</p>
+      </div>
 
-  <div class="stat-card">
-    <h3 id="stats-min">0 €</h3>
-    <p>Prix le plus bas</p>
-  </div>
+      <div class="stat-card">
+        <h3 id="stats-max">0 €</h3>
+        <p>Prix le plus élevé</p>
+      </div>
+    </section>
 
-  <div class="stat-card">
-    <h3 id="stats-max">0 €</h3>
-    <p>Prix le plus élevé</p>
-  </div>
-
-</section>
-
-<nav>
-  <button onclick="goTo('home')">⌂<span>Accueil</span></button>
-  <button onclick="goTo('category')">⌕<span>Comparer</span></button>
-  <button onclick="goTo('stats')">▥<span>Stats</span></button>
-  <button onclick="alert('Profil bientôt disponible')">♙<span>Profil</span></button>
-</nav>
+    <nav>
+      <button onclick="goTo('home')">⌂<span>Accueil</span></button>
+      <button onclick="goTo('category')">⌕<span>Comparer</span></button>
+      <button onclick="goTo('stats')">▥<span>Stats</span></button>
+      <button onclick="alert('Profil bientôt disponible')">♙<span>Profil</span></button>
+    </nav>
 
   </main>
 
   <script src="script.js"></script>
-
-
-
 </body>
 </html>
