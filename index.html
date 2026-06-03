@@ -58,52 +58,61 @@
       </div>
     </section>
 
-    <section class="screen" id="category">
-      <div class="topbar">
-        <button class="back" onclick="goTo('home')">←</button>
-        <div class="progress"><span style="width:25%"></span></div>
-      </div>
+    <section class="screen" id="result">
+  <div class="topbar">
+    <button class="back" onclick="goTo('form')">←</button>
+    <strong>Résultat</strong>
+    <button class="back">↗</button>
+  </div>
 
-      <h2>Quel service souhaitez-vous comparer ?</h2>
-      <p class="subtitle">Nous commençons par Internet.</p>
+  <div class="result-card">
+    <h3>Voici votre résultat</h3>
+    <p>Basé sur les prix réels dans votre région</p>
 
-      <button class="service active-service" onclick="goTo('form')">
-        <div class="service-icon blue">📶</div>
-        <div>
-          <strong>Internet</strong>
-          <p>Comparez votre abonnement Internet</p>
-        </div>
-        <span>›</span>
-      </button>
+    <div class="result-details">
+      <p id="result-city"></p>
+      <p id="result-provider-name"></p>
+      <p id="result-offer-type"></p>
+    </div>
 
-      <button class="service locked">
-        <div class="service-icon">🚗</div>
-        <div>
-          <strong>Assurance auto</strong>
-          <p>🔒 Bientôt disponible</p>
-        </div>
-      </button>
+    <p id="data-quality" class="data-quality"></p>
 
-      <button class="service locked">
-        <div class="service-icon">⚡</div>
-        <div>
-          <strong>Électricité</strong>
-          <p>🔒 Bientôt disponible</p>
-        </div>
-      </button>
+    <div class="gauge">
+      <div class="gauge-value" id="percent">72%</div>
+      <small>des utilisateurs paient moins cher</small>
+    </div>
 
-      <button class="service locked">
-        <div class="service-icon">📱</div>
-        <div>
-          <strong>Téléphone mobile</strong>
-          <p>🔒 Bientôt disponible</p>
-        </div>
-      </button>
+    <div class="line">
+      <span>Vous payez</span>
+      <strong id="result-price">62 € / mois</strong>
+    </div>
 
-      <div class="info-box">
-        <strong>D'autres catégories arrivent bientôt !</strong>
-        <p>Aidez-nous à rendre les prix plus transparents partout.</p>
-      </div>
+    <div class="line">
+      <span>Prix moyen dans votre région</span>
+      <strong id="result-average">47 € / mois</strong>
+    </div>
+
+    <div class="line danger">
+      <span>Différence</span>
+      <strong id="result-diff">+15 € / mois</strong>
+    </div>
+  </div>
+
+  <div class="saving-result">
+    <div>
+      <p>Économie potentielle</p>
+      <strong id="result-saving">180 € / an</strong>
+      <small id="saving-month">Soit 15 € par mois</small>
+    </div>
+    <div class="pig">🐷</div>
+  </div>
+
+  <div class="tip-card">
+    <strong>Comment économiser ?</strong>
+    <p>Découvrez des astuces et des offres pour réduire votre facture.</p>
+  </div>
+
+  <button class="primary" onclick="goTo('home')">Recommencer</button>
     </section>
 
     <section class="screen" id="form">
