@@ -350,7 +350,10 @@ label {
   font-size: 13.5px;
   font-weight: 700;
 }
-
+.logo-shield{
+  width:70px;
+  height:auto;
+}
 input,
 select {
   width: 100%;
