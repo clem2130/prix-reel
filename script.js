@@ -107,7 +107,8 @@ async function calculate() {
 
     const diff = price - average;
     let rating = "";
-let ratingColor = "";
+    let ratingColor = "";
+    
 
 if (diff <= -10) {
   rating = "🟢 Excellent";
@@ -118,6 +119,23 @@ if (diff <= -10) {
 } else {
   rating = "🔴 Trop cher";
   ratingColor = "#dc2626";
+}
+
+const yearlyGain = Math.abs(diff * 12);
+
+const insight = document.getElementById("price-insight");
+
+if (diff < 0) {
+  insight.textContent =
+    "💰 Vous économisez environ " + yearlyGain +
+    " € par an par rapport à la moyenne.";
+} else if (diff > 0) {
+  insight.textContent =
+    "⚠️ Vous payez environ " + yearlyGain +
+    " € par an de plus que la moyenne.";
+} else {
+  insight.textContent =
+    "✅ Votre prix est exactement dans la moyenne.";
 }
 
 const ratingElement = document.getElementById("price-rating");
