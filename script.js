@@ -131,6 +131,13 @@ async function calculate() {
       sampleCount = stats.count;
     }
 
+    const ranking = await getRanking(
+      city,
+      provider,
+      offerType,
+      price
+    );
+
     const diff = price - average;
     let rating = "";
     let ratingColor = "";
@@ -171,7 +178,7 @@ ratingElement.style.color = ratingColor;
     const saving = Math.max(0, diff * 12);
     const monthSaving = Math.max(0, diff);
 
-    let percent = 50;
+    const percent = ranking;
 
 if (diff < 0) percent = 75;
 else if (diff === 0) percent = 50;
