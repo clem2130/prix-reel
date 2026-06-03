@@ -696,3 +696,11 @@ nav span {
   color: #64748b;
   font-weight: 500;
 }
+
+#ranking-message {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e3a8a;
+}
