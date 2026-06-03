@@ -135,14 +135,12 @@ document.getElementById("result-offer-type").textContent =
 
     const quality = document.getElementById("data-quality");
 
-    if (sampleCount < 3) {
-      quality.innerHTML = "🟠 Fiabilité faible (" + sampleCount + " prix enregistré)";
-    } else if (sampleCount < 10) {
-      quality.innerHTML = "🟡 Fiabilité moyenne (" + sampleCount + " prix enregistrés)";
-    } else {
-      quality.innerHTML = "🟢 Fiabilité élevée (" + sampleCount + " prix enregistrés)";
-    }
-
+quality.innerHTML =
+  "📊 Basé sur " +
+  sampleCount +
+  (sampleCount > 1
+    ? " abonnements similaires dans votre région"
+    : " abonnement similaire dans votre région");
     goTo("result");
 
   } catch (error) {
