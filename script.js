@@ -126,7 +126,7 @@ async function calculate() {
 async function loadStatistics() {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
       {
         headers: {
           "apikey": SUPABASE_ANON_KEY,
