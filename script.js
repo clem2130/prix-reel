@@ -114,6 +114,15 @@ async function calculate() {
     else if (diff <= 5) percent = 42;
     else if (diff <= 15) percent = 72;
     else percent = 86;
+    document.getElementById("result-city").textContent =
+  "📍 Ville : " + city;
+
+document.getElementById("result-provider-name").textContent =
+  "🌐 Fournisseur : " + provider;
+
+document.getElementById("result-offer-type").textContent =
+  "📦 Offre : " + offerType;
+    
 
     document.getElementById("percent").textContent = percent + "%";
     document.getElementById("result-price").textContent = price + " € / mois";
