@@ -198,7 +198,7 @@ document.getElementById("result-offer-type").textContent =
 
     if (diff < 0) {
     rankingMessage.textContent =
-    "Vous payez moins cher que " + percent + "% des utilisateurs similaires";
+    "Vous payez moins cher que " + (100 - percent) + "% des utilisateurs similaires";;
     } else if (diff > 0) {
     rankingMessage.textContent =
     "Vous payez plus cher que " + percent + "% des utilisateurs similaires";
