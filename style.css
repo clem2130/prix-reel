@@ -10,7 +10,8 @@
   --line: #e4e9f0;
   --danger: #e11d48;
 }
-
+--primary-blue: #0B2D7A;
+--primary-green: #22C55E;
 * {
   box-sizing: border-box;
 }
