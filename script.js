@@ -166,15 +166,15 @@ async function searchCities(query) {
     return;
   }
 
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/belgian_cities?select=name&name=ilike.*${query}*&order=name.asc&limit=10`,
-    {
-      headers: {
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
-      }
+ const response = await fetch(
+  `${SUPABASE_URL}/rest/v1/belgian_cities?select=name&name=ilike.*${query}*&order=name.asc&limit=10`,
+  {
+    headers: {
+      "apikey": SUPABASE_ANON_KEY,
+      "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
     }
-  );
+  }
+);
 
   const cities = await response.json();
 
