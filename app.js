@@ -145,66 +145,61 @@ async function calculate() {
     let ratingColor = "";
     
 
-if (diff <= -10) {
-  rating = "🟢 Excellent";
-  ratingColor = "#16a34a";
-} else if (diff <= 5) {
-  rating = "🟠 Correct";
-  ratingColor = "#f59e0b";
-} else {
-  rating = "🔴 Trop cher";
-  ratingColor = "#dc2626";
-}
-
-const yearlyGain = Math.abs(diff * 12);
-
-const insight = document.getElementById("price-insight");
-
-if (diff < 0) {
-  insight.textContent =
-    "💰 Vous économisez environ " + yearlyGain +
-    " € par an par rapport à la moyenne.";
-} else if (diff > 0) {
-  insight.textContent =
-    "⚠️ Vous payez environ " + yearlyGain +
-    " € par an de plus que la moyenne.";
-} else {
-  insight.textContent =
-    "✅ Votre prix est exactement dans la moyenne.";
-}
-
-const ratingElement = document.getElementById("price-rating");
-
-ratingElement.textContent = rating;
-ratingElement.style.color = ratingColor;
-    
-const saving = diff < 0 ? Math.abs(diff * 12) : 0;
-const monthSaving = diff < 0 ? Math.abs(diff) : 0;
-
-    const percent = ranking;
-
-    document.getElementById("result-city").textContent =
-  "📍 Ville : " + city;
-
-document.getElementById("result-provider-name").textContent =
-  "🌐 Fournisseur : " + provider;
-
-document.getElementById("result-offer-type").textContent =
-  "📦 Offre : " + offerType;
-    
-
-    document.getElementById("percent").textContent = percent + "%";
-    const rankingMessage = document.getElementById("ranking-message");
-
-    if (diff < 0) {
-    rankingMessage.textContent =
-    "Vous payez moins cher que " + (100 - percent) + "% des utilisateurs similaires";;
-    } else if (diff > 0) {
-    rankingMessage.textContent =
-    "Vous payez plus cher que " + percent + "% des utilisateurs similaires";
+    if (diff <= -10) {
+      rating = "🟢 Excellent";
+      ratingColor = "#16a34a";
+    } else if (diff <= 5) {
+      rating = "🟠 Correct";
+      ratingColor = "#f59e0b";
     } else {
-    rankingMessage.textContent =
-    "Votre prix est dans la moyenne des utilisateurs similaires";
+      rating = "🔴 Trop cher";
+      ratingColor = "#dc2626";
+    }
+    
+    const yearlyGain = Math.abs(diff * 12);
+    
+    const insight = document.getElementById("price-insight");
+    
+    if (diff < 0) {
+      insight.textContent =
+        "💰 Vous économisez environ " + yearlyGain +
+        " € par an par rapport à la moyenne.";
+    } else if (diff > 0) {
+      insight.textContent =
+        "⚠️ Vous payez environ " + yearlyGain +
+        " € par an de plus que la moyenne.";
+    } else {
+      insight.textContent =
+        "✅ Votre prix est exactement dans la moyenne.";
+    }
+    
+    const ratingElement = document.getElementById("price-rating");
+    
+    ratingElement.textContent = rating;
+    ratingElement.style.color = ratingColor;
+        
+    const saving = diff < 0 ? Math.abs(diff * 12) : 0;
+    const monthSaving = diff < 0 ? Math.abs(diff) : 0;
+
+    let displayPercent = percent;
+    
+    if (diff < 0) {
+      displayPercent = 100 - percent;
+    }
+    
+    document.getElementById("percent").textContent = displayPercent + "%";
+    
+    const rankingMessage = document.getElementById("ranking-message");
+    
+    if (diff < 0) {
+      rankingMessage.textContent =
+        "Vous payez moins cher que " + displayPercent + "% des utilisateurs similaires";
+    } else if (diff > 0) {
+      rankingMessage.textContent =
+        "Vous payez plus cher que " + displayPercent + "% des utilisateurs similaires";
+    } else {
+      rankingMessage.textContent =
+        "Votre prix est dans la moyenne des utilisateurs similaires";
     }
     
     document.getElementById("result-price").textContent = price + " € / mois";
