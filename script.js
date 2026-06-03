@@ -201,3 +201,5 @@ if (cityInput && citySuggestions) {
     searchCities(cityInput.value.trim());
   });
 });
+
+console.log("Autocomplete ville chargé");
