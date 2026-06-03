@@ -115,65 +115,7 @@
   <button class="primary" onclick="goTo('home')">Recommencer</button>
     </section>
 
-    <section class="screen" id="form">
-      <div class="topbar">
-        <button class="back" onclick="goTo('category')">←</button>
-        <div class="progress"><span style="width:50%"></span></div>
-      </div>
-
-      <h2>Comparez votre abonnement Internet</h2>
-      <p class="subtitle">Remplissez les informations ci-dessous.</p>
-
-      <label>Votre fournisseur Internet</label>
-      <select id="provider">
-        <option>Proximus</option>
-        <option>Orange</option>
-        <option>Telenet</option>
-        <option>Mobile Vikings</option>
-        <option>Autre</option>
-      </select>
-
-   <label>Votre ville</label>
-
-    <div class="city-autocomplete">
-    <input
-    type="text"
-    id="citySearch"
-    name="city-search-autocomplete"
-    placeholder="Tapez votre ville..."
-    autocomplete="new-password"
-    autocorrect="off"
-    autocapitalize="off"
-    spellcheck="false"
-    >
-
-  <div id="citySuggestions"></div>
-</div>
-
-      <label>Votre montant mensuel</label>
-      <div class="money-input">
-        <input id="price" type="number" value="62" />
-        <span>€ / mois</span>
-      </div>
-
-      <label>Type d'abonnement</label>
-      <select id="offer">
-        <option>Internet + TV</option>
-        <option>Internet seul</option>
-        <option>Internet + Mobile</option>
-        <option>Pack complet</option>
-      </select>
-
-      <div class="privacy-box">
-        <div class="mini-shield">✓</div>
-        <div>
-          <strong>Vos données sont 100% anonymes</strong>
-          <p>Elles nous aident seulement à calculer les prix réels dans votre région.</p>
-        </div>
-      </div>
-
-      <button class="primary blue-btn" onclick="calculate()">Comparer mon prix</button>
-    </section>
+    
       
     <section class="screen" id="result">
       <div class="topbar">
