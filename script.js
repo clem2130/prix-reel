@@ -156,3 +156,44 @@ async function loadStatistics() {
     console.error(error);
   }
 }
+const cityInput = document.getElementById("citySearch");
+const citySuggestions = document.getElementById("citySuggestions");
+
+async function searchCities(query) {
+
+  if (query.length < 2) {
+    citySuggestions.innerHTML = "";
+    return;
+  }
+
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/belgian_cities?select=name&name=ilike.${query}%&limit=10`,
+    {
+      headers: {
+        "apikey": SUPABASE_ANON_KEY,
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
+
+  const cities = await response.json();
+
+  citySuggestions.innerHTML = "";
+
+  cities.forEach(city => {
+    const item = document.createElement("div");
+    item.className = "city-suggestion";
+    item.textContent = city.name;
+
+    item.onclick = () => {
+      cityInput.value = city.name;
+      citySuggestions.innerHTML = "";
+    };
+
+    citySuggestions.appendChild(item);
+  });
+}
+
+cityInput.addEventListener("input", () => {
+  searchCities(cityInput.value.trim());
+});
