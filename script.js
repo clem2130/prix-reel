@@ -30,6 +30,8 @@ async function getAveragePrice(city, provider, offerType) {
   if (!response.ok) throw new Error(await response.text());
 
   const data = await response.json();
+  console.log("Status:", response.status);
+  console.log("Cities:", cities);
 
   if (!data || data.length === 0) return null;
 
