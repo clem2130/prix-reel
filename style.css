@@ -674,3 +674,10 @@ nav span {
   font-size: 13px;
 }
 }
+
+.price-rating-container {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
