@@ -200,6 +200,6 @@ if (cityInput && citySuggestions) {
   cityInput.addEventListener("input", () => {
     searchCities(cityInput.value.trim());
   });
-});
 
-console.log("Autocomplete ville chargé");
+  console.log("Autocomplete ville chargé");
+}
