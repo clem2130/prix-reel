@@ -181,6 +181,7 @@ async function searchCities(query) {
   citySuggestions.innerHTML = "";
 
   cities.forEach(city => {
+    const cities = await response.json();
     const item = document.createElement("div");
     item.className = "city-suggestion";
     item.textContent = city.name;
