@@ -681,3 +681,10 @@ nav span {
   font-size: 15px;
   font-weight: 600;
 }
+#price-insight {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #475569;
+  font-weight: 500;
+}
