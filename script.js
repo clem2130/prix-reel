@@ -12,7 +12,23 @@ function goTo(id) {
     loadStatistics();
   }
 }
+async function priceAlreadyExists(city, provider, monthlyPrice, offerType) {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=id&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Monthly_price=eq.${monthlyPrice}&Offer_type=eq.${encodeURIComponent(offerType)}&limit=1`,
+    {
+      headers: {
+        "apikey": SUPABASE_ANON_KEY,
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
 
+  if (!response.ok) throw new Error(await response.text());
+
+  const data = await response.json();
+
+  return data.length > 0;
+}
 async function getAveragePrice(city, provider, offerType) {
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
