@@ -74,11 +74,11 @@ async function getAveragePrice(city, provider, offerType) {
     return 50;
   }
 
-  const cheaperCount = data.filter(
-    item => Number(item.Monthly_price) < userPrice
+  const moreExpensiveCount = data.filter(
+  item => Number(item.Monthly_price) > userPrice
   ).length;
 
-  return Math.round((cheaperCount / data.length) * 100);
+  return Math.round((moreExpensiveCount / data.length) * 100);
 }
 
 async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
