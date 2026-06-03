@@ -175,8 +175,9 @@ const ratingElement = document.getElementById("price-rating");
 
 ratingElement.textContent = rating;
 ratingElement.style.color = ratingColor;
-    const saving = Math.max(0, diff * 12);
-    const monthSaving = Math.max(0, diff);
+    
+const saving = diff < 0 ? Math.abs(diff * 12) : 0;
+const monthSaving = diff < 0 ? Math.abs(diff) : 0;
 
     const percent = ranking;
 
