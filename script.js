@@ -65,7 +65,7 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
 
 async function calculate() {
   const price = Number(document.getElementById("price").value);
-  const city = document.getElementById("city").value.trim();
+  const city = document.getElementById("citySearch").value.trim();
   const provider = document.getElementById("provider").value;
   const offerType = document.getElementById("offer").value;
 
