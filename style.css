@@ -688,3 +688,11 @@ nav span {
   color: #475569;
   font-weight: 500;
 }
+
+.trust-message {
+  margin-top: 6px;
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
