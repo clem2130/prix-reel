@@ -138,6 +138,8 @@ async function calculate() {
       price
     );
 
+    console.log("Ranking :", ranking);
+
     const diff = price - average;
     let rating = "";
     let ratingColor = "";
