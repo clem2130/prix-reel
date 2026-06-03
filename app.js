@@ -181,11 +181,14 @@ async function calculate() {
     const saving = diff < 0 ? Math.abs(diff * 12) : 0;
     const monthSaving = diff < 0 ? Math.abs(diff) : 0;
 
-    let displayPercent = percent;
-    
+    let displayPercent = ranking;
+
     if (diff < 0) {
-      displayPercent = 100 - percent;
+    displayPercent = 100 - ranking;
     }
+
+    document.getElementById("percent").textContent =
+    displayPercent + "%";
     
     
     
@@ -212,21 +215,21 @@ async function calculate() {
 
     const quality = document.getElementById("data-quality");
 
-quality.innerHTML =
-  "📊 Basé sur " +
-  sampleCount +
-  (sampleCount > 1
+    quality.innerHTML =
+    "📊 Basé sur " +
+    sampleCount +
+    (sampleCount > 1
     ? " abonnements similaires dans votre région"
     : " abonnement similaire dans votre région");
     goTo("result");
 
-  } catch (error) {
+    } catch (error) {
     alert("Erreur Supabase : " + error.message);
     console.error(error);
+    }
   }
-}
 
-async function loadStatistics() {
+  async function loadStatistics() {
   try {
     const response = await fetch(
       `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
