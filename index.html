@@ -116,7 +116,17 @@
       <p class="subtitle">Remplissez les informations ci-dessous.</p>
 
       <label>Votre ville</label>
-      <input id="city" type="text" value="Bruxelles" />
+
+      <div class="city-autocomplete">
+        <input
+          type="text"
+          id="citySearch"
+          placeholder="Tapez votre ville..."
+          autocomplete="off">
+        
+
+  <div id="citySuggestions"></div>
+</div>
 
       <label>Votre fournisseur Internet</label>
       <select id="provider">
