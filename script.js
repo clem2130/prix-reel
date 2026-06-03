@@ -196,6 +196,8 @@ async function searchCities(query) {
   });
 }
 
-cityInput.addEventListener("input", () => {
-  searchCities(cityInput.value.trim());
+if (cityInput && citySuggestions) {
+  cityInput.addEventListener("input", () => {
+    searchCities(cityInput.value.trim());
+  });
 });
