@@ -180,11 +180,6 @@ ratingElement.style.color = ratingColor;
 
     const percent = ranking;
 
-if (diff < 0) percent = 75;
-else if (diff === 0) percent = 50;
-else if (diff <= 5) percent = 42;
-else if (diff <= 15) percent = 72;
-else percent = 86;
     document.getElementById("result-city").textContent =
   "📍 Ville : " + city;
 
