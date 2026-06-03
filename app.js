@@ -219,8 +219,8 @@ async function calculate() {
     "📊 Basé sur " +
     sampleCount +
     (sampleCount > 1
-    ? " abonnements similaires dans votre région"
-    : " abonnement similaire dans votre région");
+    ? " abonnements similaires"
+    : " abonnement similaire");
     goTo("result");
 
     } catch (error) {
