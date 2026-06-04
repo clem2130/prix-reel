@@ -202,11 +202,6 @@ async function calculate() {
     document.getElementById("result-summary").textContent =
       city + " • " + provider + " • " + offerType;
 
-    document.getElementById("result-price").textContent = price + " € / mois";
-    document.getElementById("result-average").textContent = average + " € / mois";
-    document.getElementById("result-diff").textContent =
-      (diff >= 0 ? "+" : "") + diff + " € / mois";
-
     const quality = document.getElementById("data-quality");
 
     quality.innerHTML =
