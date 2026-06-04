@@ -104,14 +104,10 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
 }
 
 async function calculate() {
-const price = Number(document.getElementById("price").value);
-const city = document.getElementById("citySearch").value.trim();
-const provider = document.getElementById("provider").value;
-const offerType = document.getElementById("offer").value;
-
-document.getElementById("result-city").textContent = "📍 Ville : " + city;
-document.getElementById("result-provider-name").textContent = "🌐 Fournisseur : " + provider;
-document.getElementById("result-offer-type").textContent = "📦 Offre : " + offerType;
+  const price = Number(document.getElementById("price").value);
+  const city = document.getElementById("citySearch").value.trim();
+  const provider = document.getElementById("provider").value;
+  const offerType = document.getElementById("offer").value;
 
   if (!city || !price || price <= 0) {
     alert("Veuillez entrer votre ville et votre prix mensuel.");
@@ -135,102 +131,95 @@ document.getElementById("result-offer-type").textContent = "📦 Offre : " + off
       sampleCount = stats.count;
     }
 
-    const ranking = await getRanking(
-      city,
-      provider,
-      offerType,
-      price
-    );
-
-    console.log("Ranking :", ranking);
+    const ranking = await getRanking(city, provider, offerType, price);
 
     const diff = price - average;
+    const yearlyGap = Math.abs(diff * 12);
+    const monthlyGap = Math.abs(diff);
+
     let rating = "";
     let ratingColor = "";
-    
 
     if (diff <= -10) {
-      rating = "🟢 Excellent";
+      rating = "🟢 Excellent prix";
       ratingColor = "#16a34a";
     } else if (diff <= 5) {
-      rating = "🟠 Correct";
+      rating = "🟠 Prix correct";
       ratingColor = "#f59e0b";
     } else {
-      rating = "🔴 Trop cher";
+      rating = "🔴 Prix élevé";
       ratingColor = "#dc2626";
     }
-    
-    const yearlyGain = Math.abs(diff * 12);
-    const monthlyGap = Math.abs(diff);
-    
-    const insight = document.getElementById("price-insight");
-    
-    if (diff < 0) {
-      insight.textContent =
-        "💰 Vous payez " + monthlyGap + " € de moins par mois, soit environ " + yearlyGain + " € économisés par an.";
-    } else if (diff > 0) {
-      insight.textContent =
-        "⚠️ Vous payez " + monthlyGap + " € de plus par mois, soit environ " + yearlyGain + " € de trop par an.";
-    } else {
-      insight.textContent =
-        "✅ Votre prix est exactement dans la moyenne.";
-    }
-    
+
     const ratingElement = document.getElementById("price-rating");
-    
     ratingElement.textContent = rating;
     ratingElement.style.color = ratingColor;
-        
-    const saving = diff < 0 ? Math.abs(diff * 12) : 0;
-    const monthSaving = diff < 0 ? Math.abs(diff) : 0;
 
-    let displayPercent = ranking;
+    const insight = document.getElementById("price-insight");
 
     if (diff < 0) {
-    displayPercent = 100 - ranking;
-    }
-
-    document.getElementById("percent").textContent =
-    displayPercent + "%";
-    
-    
-    
-    const rankingMessage = document.getElementById("ranking-message");
-    
-    if (diff < 0) {
-      rankingMessage.textContent =
-        "Vous payez moins cher que " + displayPercent + "% des utilisateurs similaires";
+      insight.textContent =
+        "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
     } else if (diff > 0) {
-      rankingMessage.textContent =
-        "Vous payez plus cher que " + displayPercent + "% des utilisateurs similaires";
+      insight.textContent =
+        "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
     } else {
-      rankingMessage.textContent =
-        "Votre prix est dans la moyenne des utilisateurs similaires";
+      insight.textContent =
+        "Votre prix est exactement dans la moyenne.";
     }
-    
-    document.getElementById("result-price").textContent = price + " € / mois";
-    document.getElementById("result-average").textContent = average + " € / mois";
-    document.getElementById("result-diff").textContent =
-      (diff >= 0 ? "+" : "") + diff + " € / mois";
+
+    const saving = diff < 0 ? yearlyGap : 0;
+    const monthSaving = diff < 0 ? monthlyGap : 0;
+
     document.getElementById("result-saving").textContent = saving + " € / an";
     document.getElementById("saving-month").textContent =
       "Soit " + monthSaving + " € par mois";
 
+    let displayPercent = ranking;
+
+    if (diff < 0) {
+      displayPercent = 100 - ranking;
+    }
+
+    document.getElementById("percent").textContent = displayPercent + "%";
+
+    const rankingMessage = document.getElementById("ranking-message");
+
+    if (diff < 0) {
+      rankingMessage.textContent =
+        "Moins cher que " + displayPercent + "% des utilisateurs similaires";
+    } else if (diff > 0) {
+      rankingMessage.textContent =
+        "Plus cher que " + displayPercent + "% des utilisateurs similaires";
+    } else {
+      rankingMessage.textContent =
+        "Prix dans la moyenne des utilisateurs similaires";
+    }
+
+    document.getElementById("result-summary").textContent =
+      city + " • " + provider + " • " + offerType;
+
+    document.getElementById("result-price").textContent = price + " € / mois";
+    document.getElementById("result-average").textContent = average + " € / mois";
+    document.getElementById("result-diff").textContent =
+      (diff >= 0 ? "+" : "") + diff + " € / mois";
+
     const quality = document.getElementById("data-quality");
 
     quality.innerHTML =
-    "📊 Basé sur " +
-    sampleCount +
-    (sampleCount > 1
-    ? " abonnements similaires"
-    : " abonnement similaire");
+      "Calcul basé sur " +
+      sampleCount +
+      (sampleCount > 1
+        ? " abonnements similaires."
+        : " abonnement similaire.");
+
     goTo("result");
 
-    } catch (error) {
+  } catch (error) {
     alert("Erreur Supabase : " + error.message);
     console.error(error);
-    }
   }
+}
 
   async function loadStatistics() {
   try {
