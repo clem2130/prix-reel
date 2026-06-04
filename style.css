@@ -958,3 +958,12 @@ nav span {
   border: 2px solid red !important;
   display: block !important;
 }
+
+.deal-provider img {
+  width: 42px !important;
+  height: 42px !important;
+  display: block !important;
+  object-fit: contain !important;
+  background: white !important;
+  border-radius: 8px !important;
+}
