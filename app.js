@@ -4,20 +4,13 @@ const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
 function goTo(id) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
-    screen.scrollTop = 0;
   });
 
   const target = document.getElementById(id);
   target.classList.add("active");
 
-  window.scrollTo(0, 0);
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-    target.scrollTop = 0;
-  }, 50);
+  // Force le scroll du nouvel écran tout en haut
+  target.scrollTop = 0;
 
   if (id === "stats") {
     loadStatistics();
@@ -360,7 +353,30 @@ async function calculate() {
       recommendationCard.innerHTML = "";
     }
 
+    function scrollResultToTop() {
+      const resultScreen = document.getElementById("result");
+      const app = document.querySelector(".app");
+    
+      if (resultScreen) resultScreen.scrollTop = 0;
+      if (app) app.scrollTop = 0;
+    
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+
     goTo("result");
+
+    setTimeout(() => {
+    document.getElementById("result").scrollTop = 0;
+    }, 10);
+
+    requestAnimationFrame(() => {
+      scrollResultToTop();
+    
+      setTimeout(scrollResultToTop, 100);
+      setTimeout(scrollResultToTop, 300);
+    });
       
 
   } catch (error) {
