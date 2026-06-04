@@ -312,6 +312,7 @@ async function calculate() {
       } else {
         reliabilityBadge.textContent = "🔴 Données limitées";
         reliabilityBadge.classList.add("reliability-low");
+        }
       }
 
     const bestDeals = await getBestDeals(city);
