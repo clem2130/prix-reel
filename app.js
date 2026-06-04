@@ -55,7 +55,7 @@ async function getAveragePrice(city, provider, offerType) {
   };
 }
 
-  async function getRanking(city, provider, offerType, userPrice) {
+async function getRanking(city, provider, offerType, userPrice) {
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
     {
@@ -75,7 +75,7 @@ async function getAveragePrice(city, provider, offerType) {
   }
 
   const moreExpensiveCount = data.filter(
-  item => Number(item.Monthly_price) > userPrice
+    item => Number(item.Monthly_price) > userPrice
   ).length;
 
   return Math.round((moreExpensiveCount / data.length) * 100);
@@ -223,6 +223,18 @@ async function calculate() {
     console.error(error);
   }
 }
+
+async function loadStatistics() {
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
+      {
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
 
     if (!response.ok) throw new Error(await response.text());
 
