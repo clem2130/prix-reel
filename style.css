@@ -967,3 +967,27 @@ nav span {
   align-items: center;
   gap: 12px;
 }
+
+.reliability-badge {
+  display: inline-block;
+  margin: 8px auto 20px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.reliability-high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.reliability-medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.reliability-low {
+  background: #fee2e2;
+  color: #991b1b;
+}
