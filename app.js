@@ -4,9 +4,20 @@ const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
 function goTo(id) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
+    screen.scrollTop = 0;
   });
 
-  document.getElementById(id).classList.add("active");
+  const target = document.getElementById(id);
+  target.classList.add("active");
+
+  window.scrollTo(0, 0);
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+    target.scrollTop = 0;
+  }, 50);
 
   if (id === "stats") {
     loadStatistics();
@@ -351,8 +362,6 @@ async function calculate() {
 
     goTo("result");
       
-    const resultScreen = document.getElementById("result");
-    resultScreen.scrollTop = 0;
 
   } catch (error) {
     alert("Erreur Supabase : " + error.message);
