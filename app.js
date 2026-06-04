@@ -167,6 +167,11 @@ async function calculate() {
     return;
   }
 
+  if (price < 10 || price > 200) {
+  alert("Veuillez entrer un prix Internet réaliste.");
+  return;
+  }
+
   try {
     const alreadyExists = await priceAlreadyExists(
       city,
