@@ -160,17 +160,16 @@ async function calculate() {
     }
     
     const yearlyGain = Math.abs(diff * 12);
+    const monthlyGap = Math.abs(diff);
     
     const insight = document.getElementById("price-insight");
     
     if (diff < 0) {
       insight.textContent =
-        "💰 Vous économisez environ " + yearlyGain +
-        " € par an par rapport à la moyenne.";
+        "💰 Vous payez " + monthlyGap + " € de moins par mois, soit environ " + yearlyGain + " € économisés par an.";
     } else if (diff > 0) {
       insight.textContent =
-        "⚠️ Vous payez environ " + yearlyGain +
-        " € par an de plus que la moyenne.";
+        "⚠️ Vous payez " + monthlyGap + " € de plus par mois, soit environ " + yearlyGain + " € de trop par an.";
     } else {
       insight.textContent =
         "✅ Votre prix est exactement dans la moyenne.";
