@@ -934,3 +934,11 @@ nav span {
   color: #64748b;
   margin-top: 6px;
 }
+
+#ranking-message {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-top: 10px;
+  text-align: center;
+}
