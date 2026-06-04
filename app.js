@@ -18,8 +18,8 @@ async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Monthly_price=eq.${monthlyPrice}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}&limit=1`,
     {
       headers: {
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
       }
     }
   );
@@ -35,8 +35,8 @@ async function getAveragePrice(city, provider, offerType, speed) {
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
     {
       headers: {
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
       }
     }
   );
@@ -47,7 +47,10 @@ async function getAveragePrice(city, provider, offerType, speed) {
 
   if (!data || data.length === 0) return null;
 
-  const total = data.reduce((sum, item) => sum + Number(item.Monthly_price), 0);
+  const total = data.reduce(
+    (sum, item) => sum + Number(item.Monthly_price),
+    0
+  );
 
   return {
     average: Math.round(total / data.length),
@@ -76,10 +79,7 @@ async function getBestDeals(city) {
     const provider = item.Provider;
     const price = Number(item.Monthly_price);
 
-    if (
-      !cheapest[provider] ||
-      price < cheapest[provider]
-    ) {
+    if (!cheapest[provider] || price < cheapest[provider]) {
       cheapest[provider] = price;
     }
   });
@@ -94,8 +94,8 @@ async function getRanking(city, provider, offerType, speed, userPrice) {
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
     {
       headers: {
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
       }
     }
   );
@@ -120,9 +120,9 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType, spee
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "apikey": SUPABASE_ANON_KEY,
-      "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
-      "Prefer": "return=representation"
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      Prefer: "return=representation"
     },
     body: JSON.stringify({
       City: city,
@@ -138,13 +138,29 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType, spee
   return await response.json();
 }
 
+function getProviderLogo(provider) {
+  const logos = {
+    "Proximus": "logos/proximus.png",
+    "Orange": "logos/orange.png",
+    "Telenet": "logos/telenet.png",
+    "Mobile Vikings": "logos/mobilevikings.png",
+    "Base": "logos/base.png",
+    "Scarlet": "logos/scarlet.png",
+    "EDPnet": "logos/edpnet.png",
+    "VOO": "logos/voo.png",
+    "Yoin": "logos/yoin.png",
+    "Hey! Telecom": "logos/hey.png"
+  };
+
+  return logos[provider] || "logos/proximus.png";
+}
+
 async function calculate() {
   const price = Number(document.getElementById("price").value);
   const city = document.getElementById("citySearch").value.trim();
   const provider = document.getElementById("provider").value;
   const offerType = document.getElementById("offer").value;
   const speed = document.getElementById("speed").value;
-  
 
   if (!city || !price || price <= 0) {
     alert("Veuillez entrer votre ville et votre prix mensuel.");
@@ -152,13 +168,30 @@ async function calculate() {
   }
 
   try {
-    const alreadyExists = await priceAlreadyExists(city, provider, price, offerType, speed);
+    const alreadyExists = await priceAlreadyExists(
+      city,
+      provider,
+      price,
+      offerType,
+      speed
+    );
 
     if (!alreadyExists) {
-      await savePriceToSupabase(city, provider, price, offerType, speed);
+      await savePriceToSupabase(
+        city,
+        provider,
+        price,
+        offerType,
+        speed
+      );
     }
 
-    const stats = await getAveragePrice(city, provider, offerType, speed);
+    const stats = await getAveragePrice(
+      city,
+      provider,
+      offerType,
+      speed
+    );
 
     let average = price;
     let sampleCount = 1;
@@ -168,7 +201,13 @@ async function calculate() {
       sampleCount = stats.count;
     }
 
-    const ranking = await getRanking(city, provider, offerType, speed, price);
+    const ranking = await getRanking(
+      city,
+      provider,
+      offerType,
+      speed,
+      price
+    );
 
     const diff = price - average;
     const yearlyGap = Math.abs(diff * 12);
@@ -219,8 +258,11 @@ async function calculate() {
     }
 
     document.getElementById("percent").textContent = displayPercent + "%";
+
     const scoreDot = document.querySelector(".score-dot");
-    scoreDot.style.left = displayPercent + "%";
+    if (scoreDot) {
+      scoreDot.style.left = displayPercent + "%";
+    }
 
     const rankingMessage = document.getElementById("ranking-message");
 
@@ -240,7 +282,7 @@ async function calculate() {
     }
 
     document.getElementById("result-summary").textContent =
-      city + " • " + provider + " • " + offerType;
+      city + " • " + provider + " • " + offerType + " • " + speed;
 
     const quality = document.getElementById("data-quality");
 
@@ -252,34 +294,21 @@ async function calculate() {
         : " abonnement similaire.");
 
     const bestDeals = await getBestDeals(city);
+    const dealsContainer = document.getElementById("best-deals-list");
 
-    const dealsContainer =
-    document.getElementById("best-deals-list");
-    
-dealsContainer.innerHTML = "";
+    dealsContainer.innerHTML = "";
 
-function getProviderLogo(provider) {
-  const logos = {
-    "Proximus": "logos/proximus.png",
-    "Orange": "logos/orange.png",
-    "Telenet": "logos/telenet.png",
-    "Mobile Vikings": "logos/mobilevikings.png"
-  };
-
-  return logos[provider] || "logos/proximus.png";
-}
-
-bestDeals.forEach(([provider, price], index) => {
-  dealsContainer.innerHTML += `
-    <div class="deal-item">
-      <div class="deal-provider">
-        <img src="${getProviderLogo(provider)}" alt="${provider}">
-        <span>${index + 1}. ${provider}</span>
-      </div>
-      <div class="deal-price">${price} €</div>
-    </div>
-  `;
-});
+    bestDeals.forEach(([dealProvider, dealPrice], index) => {
+      dealsContainer.innerHTML += `
+        <div class="deal-item">
+          <div class="deal-provider">
+            <img src="${getProviderLogo(dealProvider)}" alt="${dealProvider}">
+            <span>${index + 1}. ${dealProvider}</span>
+          </div>
+          <div class="deal-price">${dealPrice} €</div>
+        </div>
+      `;
+    });
 
     const recommendationCard = document.getElementById("recommendation-card");
 
@@ -288,7 +317,7 @@ bestDeals.forEach(([provider, price], index) => {
       const bestPrice = bestDeals[0][1];
       const potentialMonthlySaving = Math.max(price - bestPrice, 0);
       const potentialYearlySaving = potentialMonthlySaving * 12;
-    
+
       recommendationCard.innerHTML = `
         <p>💡 Recommandation Prix Réel</p>
         <strong>${bestProvider} — ${bestPrice} € / mois</strong>
@@ -297,14 +326,14 @@ bestDeals.forEach(([provider, price], index) => {
     } else {
       recommendationCard.innerHTML = "";
     }
-    
-        goTo("result");
-    
-      } catch (error) {
-        alert("Erreur Supabase : " + error.message);
-        console.error(error);
-      }
-    }
+
+    goTo("result");
+
+  } catch (error) {
+    alert("Erreur Supabase : " + error.message);
+    console.error(error);
+  }
+}
 
 async function loadStatistics() {
   try {
@@ -312,8 +341,8 @@ async function loadStatistics() {
       `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
       {
         headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
         }
       }
     );
@@ -354,8 +383,8 @@ async function searchCities(query) {
       `${SUPABASE_URL}/rest/v1/belgian_cities?select=name&name=ilike.*${encodeURIComponent(query)}*&order=name.asc&limit=10`,
       {
         headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
         }
       }
     );
@@ -395,5 +424,3 @@ if (cityInput && citySuggestions) {
     }
   });
 }
-
-
