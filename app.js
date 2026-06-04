@@ -157,18 +157,15 @@ async function calculate() {
 
     const insight = document.getElementById("price-insight");
 
-    if (displayPercent >= 80) {
-      rankingMessage.textContent =
-        "🏆 Parmi les abonnements les plus avantageux";
-    } else if (displayPercent >= 60) {
-      rankingMessage.textContent =
-        "👍 Prix très compétitif";
-    } else if (displayPercent >= 40) {
-      rankingMessage.textContent =
-        "📊 Prix dans la moyenne";
+    if (diff < 0) {
+      insight.textContent =
+        "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
+    } else if (diff > 0) {
+      insight.textContent =
+        "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
     } else {
-      rankingMessage.textContent =
-        "⚠️ Des offres moins chères existent probablement";
+      insight.textContent =
+        "Votre prix est exactement dans la moyenne.";
     }
 
     const saving = diff < 0 ? yearlyGap : 0;
@@ -184,25 +181,22 @@ async function calculate() {
       displayPercent = 100 - ranking;
     }
 
-    if (displayPercent >= 80) {
-      document.getElementById("percent").textContent = "🏆";
-    } else if (displayPercent >= 60) {
-      document.getElementById("percent").textContent = "👍";
-    } else {
-      document.getElementById("percent").textContent = "📊";
-    }
+    document.getElementById("percent").textContent = displayPercent + "%";
 
     const rankingMessage = document.getElementById("ranking-message");
 
-    if (diff < 0) {
+    if (displayPercent >= 80) {
       rankingMessage.textContent =
-        "Moins cher que " + displayPercent + "% des utilisateurs similaires";
-    } else if (diff > 0) {
+        "🏆 Parmi les abonnements les plus avantageux";
+    } else if (displayPercent >= 60) {
       rankingMessage.textContent =
-        "Plus cher que " + displayPercent + "% des utilisateurs similaires";
+        "👍 Prix très compétitif";
+    } else if (displayPercent >= 40) {
+      rankingMessage.textContent =
+        "📊 Prix dans la moyenne";
     } else {
       rankingMessage.textContent =
-        "Prix dans la moyenne des utilisateurs similaires";
+        "⚠️ Des offres moins chères existent probablement";
     }
 
     document.getElementById("result-summary").textContent =
@@ -229,18 +223,6 @@ async function calculate() {
     console.error(error);
   }
 }
-
-  async function loadStatistics() {
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
-      {
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
-        }
-      }
-    );
 
     if (!response.ok) throw new Error(await response.text());
 
