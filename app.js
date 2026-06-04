@@ -175,7 +175,7 @@ async function calculate() {
       await savePriceToSupabase(city, provider, price, offerType, speed);
     }
 
-    const stats = await getAveragePrice(city, provider, offerType);
+    const stats = await getAveragePrice(city, provider, offerType, speed);
 
     let average = price;
     let sampleCount = 1;
