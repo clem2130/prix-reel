@@ -47,23 +47,6 @@ async function getAveragePrice(city, provider, offerType, speed) {
 
   if (!data || data.length === 0) return null;
 
-  const total = data.reduce(
-    (sum, item) => sum + Number(item.Monthly_price),
-    0
-  );
-
-  return {
-    average: Math.round(total / data.length),
-    count: data.length
-  };
-}
-
-  if (!response.ok) throw new Error(await response.text());
-
-  const data = await response.json();
-
-  if (!data || data.length === 0) return null;
-
   const total = data.reduce((sum, item) => sum + Number(item.Monthly_price), 0);
 
   return {
@@ -116,21 +99,6 @@ async function getRanking(city, provider, offerType, speed, userPrice) {
       }
     }
   );
-
-  if (!response.ok) throw new Error(await response.text());
-
-  const data = await response.json();
-
-  if (!data || data.length === 0) {
-    return 50;
-  }
-
-  const moreExpensiveCount = data.filter(
-    item => Number(item.Monthly_price) > userPrice
-  ).length;
-
-  return Math.round((moreExpensiveCount / data.length) * 100);
-}
 
   if (!response.ok) throw new Error(await response.text());
 
