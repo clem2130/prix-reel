@@ -1035,3 +1035,13 @@ nav span {
   position: relative;
   z-index: 2;
 }
+
+.hero {
+  padding-bottom: 180px;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-bottom: 220px;
+  }
+}
