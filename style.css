@@ -779,14 +779,6 @@ nav span {
     width: 160px;
   }
 
-  .gauge {
-    height: 110px;
-  }
-
-  .gauge-value {
-    font-size: 42px;
-  }
-
   .saving-result strong {
     font-size: 34px;
   }
@@ -851,17 +843,6 @@ nav span {
 
   .simple-rating strong {
     font-size: 24px;
-  }
-
-  .gauge {
-    height: 100px;
-    border-top-width: 12px;
-    border-left-width: 12px;
-    border-right-width: 12px;
-  }
-
-  .gauge-value {
-    font-size: 40px;
   }
 
   .line {
