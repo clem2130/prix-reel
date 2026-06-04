@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prix Réel - Prototype V2</title>
-  <link rel="stylesheet" href="style.css?v=11" />
+  <link rel="stylesheet" href="style.css?v=14" />
 </head>
 
 <body>
@@ -147,14 +147,13 @@
         <option>Pack complet</option>
       </select>
 
-     <div class="privacy-box">
+      <div class="privacy-box">
         <div class="privacy-icon">✓</div>
-      
         <div class="privacy-text">
           <h3>Vos données sont 100% anonymes</h3>
           <p>Elles nous aident seulement à calculer les prix réels dans votre région.</p>
         </div>
-    </div>
+      </div>
 
       <button class="primary blue-btn" onclick="calculate()">Comparer mon prix</button>
     </section>
@@ -166,61 +165,50 @@
         <button class="back">↗</button>
       </div>
 
-      <div class="result-card">
+      <div class="result-card result-card-simple">
         <h3>Voici votre résultat</h3>
-        <p>Basé sur des abonnements similaires</p>
 
-        <div class="result-details">
-          <p id="result-city"></p>
-          <p id="result-provider-name"></p>
-          <p id="result-offer-type"></p>
-        </div>
-
-        <div id="data-quality"></div>
-
-        <div class="trust-message">
-          🔒 Données anonymisées et vérifiées par la communauté
-        </div>
-
-        <div class="price-rating-container">
-          Niveau de prix :
-          <strong id="price-rating">🟠 Correct</strong>
+        <div class="price-rating-container simple-rating">
+          <strong id="price-rating">🟠 Prix correct</strong>
           <div id="price-insight"></div>
         </div>
 
+        <div class="saving-result simple-saving">
+          <div>
+            <p>Économie potentielle</p>
+            <strong id="result-saving">0 € / an</strong>
+            <small id="saving-month">Soit 0 € par mois</small>
+          </div>
+          <div class="pig">🐷</div>
+        </div>
+
         <div class="gauge">
-          <div class="gauge-value" id="percent">72%</div>
+          <div class="gauge-value" id="percent">0%</div>
           <p id="ranking-message">Position dans le classement des prix</p>
         </div>
 
+        <div class="result-summary" id="result-summary"></div>
+        <div class="data-quality-small" id="data-quality"></div>
+
         <div class="line">
           <span>Vous payez</span>
-          <strong id="result-price">62 € / mois</strong>
+          <strong id="result-price">0 € / mois</strong>
         </div>
 
         <div class="line">
-          <span>Prix moyen des abonnements similaires</span>
-          <strong id="result-average">47 € / mois</strong>
+          <span>Prix moyen</span>
+          <strong id="result-average">0 € / mois</strong>
         </div>
 
         <div class="line danger">
           <span>Différence</span>
-          <strong id="result-diff">+15 € / mois</strong>
+          <strong id="result-diff">0 € / mois</strong>
         </div>
-      </div>
-
-      <div class="saving-result">
-        <div>
-          <p>Économie potentielle</p>
-          <strong id="result-saving">180 € / an</strong>
-          <small id="saving-month">Soit 15 € par mois</small>
-        </div>
-        <div class="pig">🐷</div>
       </div>
 
       <div class="tip-card">
         <strong>Comment économiser ?</strong>
-        <p>Découvrez des astuces et des offres pour réduire votre facture.</p>
+        <p>Comparez régulièrement votre abonnement et surveillez les offres concurrentes.</p>
       </div>
 
       <button class="primary" onclick="goTo('home')">Recommencer</button>
@@ -263,6 +251,6 @@
 
   </main>
 
-  <script src="app.js?v=13"></script>
+  <script src="app.js?v=14"></script>
 </body>
 </html>
