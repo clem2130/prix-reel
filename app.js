@@ -219,18 +219,19 @@ async function calculate() {
 
     const rankingMessage = document.getElementById("ranking-message");
 
-    if (displayPercent >= 80) {
+    if (diff < 0) {
       rankingMessage.textContent =
-        "🏆 Parmi les abonnements les plus avantageux";
-    } else if (displayPercent >= 60) {
+        "Vous payez moins cher que " +
+        displayPercent +
+        "% des utilisateurs similaires";
+    } else if (diff > 0) {
       rankingMessage.textContent =
-        "👍 Prix très compétitif";
-    } else if (displayPercent >= 40) {
-      rankingMessage.textContent =
-        "📊 Prix dans la moyenne";
+        "Vous payez plus cher que " +
+        displayPercent +
+        "% des utilisateurs similaires";
     } else {
       rankingMessage.textContent =
-        "⚠️ Des offres moins chères existent probablement";
+        "Votre prix est dans la moyenne";
     }
 
     document.getElementById("result-summary").textContent =
