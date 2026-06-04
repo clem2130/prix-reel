@@ -157,15 +157,18 @@ async function calculate() {
 
     const insight = document.getElementById("price-insight");
 
-    if (diff < 0) {
-      insight.textContent =
-        "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
-    } else if (diff > 0) {
-      insight.textContent =
-        "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
+    if (displayPercent >= 80) {
+      rankingMessage.textContent =
+        "🏆 Parmi les abonnements les plus avantageux";
+    } else if (displayPercent >= 60) {
+      rankingMessage.textContent =
+        "👍 Prix très compétitif";
+    } else if (displayPercent >= 40) {
+      rankingMessage.textContent =
+        "📊 Prix dans la moyenne";
     } else {
-      insight.textContent =
-        "Votre prix est exactement dans la moyenne.";
+      rankingMessage.textContent =
+        "⚠️ Des offres moins chères existent probablement";
     }
 
     const saving = diff < 0 ? yearlyGap : 0;
