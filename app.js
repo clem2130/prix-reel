@@ -350,6 +350,9 @@ async function calculate() {
     }
 
     goTo("result");
+      
+    const resultScreen = document.getElementById("result");
+    resultScreen.scrollTop = 0;
 
   } catch (error) {
     alert("Erreur Supabase : " + error.message);
