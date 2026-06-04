@@ -491,21 +491,6 @@ select {
   font-size: 13px;
 }
 
-.result-details p {
-  margin: 5px 0;
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.trust-message {
-  margin-top: 6px;
-  text-align: center;
-  font-size: 13px;
-  color: #64748b;
-  font-weight: 500;
-}
-
 .price-rating-container {
   text-align: center;
   margin-top: 10px;
@@ -835,3 +820,56 @@ nav span {
   color: #64748b;
 }
 
+/* RESULTAT VERSION SIMPLIFIEE */
+
+.result-card-simple {
+  text-align: center;
+}
+
+.simple-rating {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.simple-rating strong {
+  font-size: 28px;
+  display: block;
+}
+
+#price-insight {
+  margin-top: 12px;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.simple-saving {
+  margin: 24px 0;
+}
+
+.result-summary {
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.data-quality-small {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 13px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.result-card-simple .line {
+  margin-top: 4px;
+}
+
+.result-card-simple .gauge {
+  margin-top: 24px;
+}
+
+.result-card-simple h3 {
+  margin-bottom: 20px;
+}
