@@ -362,3 +362,5 @@ if (cityInput && citySuggestions) {
     }
   });
 }
+
+bestDeals.forEach(([provider, price], index) => {
