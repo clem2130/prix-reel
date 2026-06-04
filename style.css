@@ -845,8 +845,12 @@ nav span {
   }
 
   .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 12px;
-    margin: 12px 0 28px;
+    margin: 12px auto 28px;
+    width: 100%;
   }
 
   .logo-shield {
