@@ -74,12 +74,18 @@ body {
 
 .brand {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin: 20px 0 40px;
-  width: 100%;
+  justify-content: center; /* centre horizontalement */
+  gap: 16px;
+  margin: 24px auto 32px;
+  text-align: left;
 }
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .logo-shield {
   width: 120px;
