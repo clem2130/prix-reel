@@ -559,7 +559,7 @@ select {
 }
 
 .gauge {
-  height: 120px;
+  height: 100px;
   margin: 20px 0;
   border-radius: 120px 120px 0 0;
   border-top: 14px solid var(--blue);
@@ -573,7 +573,7 @@ select {
 }
 
 .gauge-value {
-  font-size: 46px;
+  font-size: 42px;
   color: var(--green);
   font-weight: 900;
 }
