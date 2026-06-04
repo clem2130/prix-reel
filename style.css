@@ -56,6 +56,12 @@ body {
   display: block;
 }
 
+.screen.active {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 @keyframes show {
   from {
     opacity: 0;
