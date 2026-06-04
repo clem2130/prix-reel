@@ -55,6 +55,40 @@ async function getAveragePrice(city, provider, offerType) {
   };
 }
 
+async function getBestDeals(city) {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Provider,Monthly_price&City=eq.${encodeURIComponent(city)}`,
+    {
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
+
+  if (!response.ok) return [];
+
+  const data = await response.json();
+
+  const cheapest = {};
+
+  data.forEach(item => {
+    const provider = item.Provider;
+    const price = Number(item.Monthly_price);
+
+    if (
+      !cheapest[provider] ||
+      price < cheapest[provider]
+    ) {
+      cheapest[provider] = price;
+    }
+  });
+
+  return Object.entries(cheapest)
+    .sort((a, b) => a[1] - b[1])
+    .slice(0, 5);
+}
+
 async function getRanking(city, provider, offerType, userPrice) {
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
