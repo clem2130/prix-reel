@@ -951,3 +951,10 @@ nav span {
   font-weight: 700;
   color: #16a34a;
 }
+
+.deal-provider img {
+  width: 60px !important;
+  height: 60px !important;
+  border: 2px solid red !important;
+  display: block !important;
+}
