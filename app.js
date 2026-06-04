@@ -142,6 +142,8 @@ async function calculate() {
   const city = document.getElementById("citySearch").value.trim();
   const provider = document.getElementById("provider").value;
   const offerType = document.getElementById("offer").value;
+  const speed = document.getElementById("speed").value;
+  const offerType = document.getElementById("offer").value;
 
   if (!city || !price || price <= 0) {
     alert("Veuillez entrer votre ville et votre prix mensuel.");
