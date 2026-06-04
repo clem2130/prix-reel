@@ -30,7 +30,7 @@ async function priceAlreadyExists(city, provider, monthlyPrice, offerType) {
   return data.length > 0;
 }
 
-async function getAveragePrice(city, provider, offerType) {
+async function getAveragePrice(city, provider, Type) {
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
     {
@@ -108,6 +108,9 @@ async function calculate() {
   const city = document.getElementById("citySearch").value.trim();
   const provider = document.getElementById("provider").value;
   const offerType = document.getElementById("offer").value;
+  document.getElementById("result-city").textContent = "📍 Ville : " + city;
+  document.getElementById("result-provider-name").textContent = "🌐 Fournisseur : " + provider;
+  document.getElementById("result-offer-type").textContent = "📦 Offre : " + offerType;
 
   if (!city || !price || price <= 0) {
     alert("Veuillez entrer votre ville et votre prix mensuel.");
