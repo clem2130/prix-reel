@@ -30,9 +30,9 @@ async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed
   return data.length > 0;
 }
 
-async function getAveragePrice(city, provider, offerType) {
+async function getAveragePrice(city, provider, offerType, speed) {
   const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
     {
       headers: {
         "apikey": SUPABASE_ANON_KEY,
@@ -40,6 +40,23 @@ async function getAveragePrice(city, provider, offerType) {
       }
     }
   );
+
+  if (!response.ok) throw new Error(await response.text());
+
+  const data = await response.json();
+
+  if (!data || data.length === 0) return null;
+
+  const total = data.reduce(
+    (sum, item) => sum + Number(item.Monthly_price),
+    0
+  );
+
+  return {
+    average: Math.round(total / data.length),
+    count: data.length
+  };
+}
 
   if (!response.ok) throw new Error(await response.text());
 
