@@ -282,34 +282,6 @@ async function calculate() {
     } else {
       recommendationCard.innerHTML = "";
     }
-
-quality.innerHTML =
-  "Calcul basé sur " +
-  sampleCount +
-  (sampleCount > 1
-    ? " abonnements similaires."
-    : " abonnement similaire.");
-
-const recommendationCard =
-document.getElementById("recommendation-card");
-
-recommendationCard.innerHTML = `
-  <div class="recommendation-title">
-    💡 Meilleure offre détectée
-  </div>
-
-  <div class="recommendation-price">
-    Proximus — 25 € / mois
-  </div>
-
-  <div class="recommendation-saving">
-    Vous pourriez économiser jusqu'à 444 € par an
-  </div>
-
-  <button class="recommendation-btn">
-    Voir les meilleures offres
-  </button>
-`;
     
         goTo("result");
     
