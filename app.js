@@ -253,20 +253,30 @@ async function calculate() {
     const dealsContainer =
     document.getElementById("best-deals-list");
     
-    dealsContainer.innerHTML = "";
-    
-    bestDeals.forEach(([provider, price], index) => {
-      dealsContainer.innerHTML += `
-        <div class="best-deal-row">
-          <span class="best-provider">
-            ${index + 1}. ${provider}
-          </span>
-          <span class="best-price">
-            ${price} €
-          </span>
-        </div>
-      `;
-    });
+dealsContainer.innerHTML = "";
+
+function getProviderLogo(provider) {
+  const logos = {
+    "Proximus": "logos/proximus.png",
+    "Orange": "logos/orange.png",
+    "Telenet": "logos/telenet.png",
+    "Mobile Vikings": "logos/mobilevikings.png"
+  };
+
+  return logos[provider] || "logos/proximus.png";
+}
+
+bestDeals.forEach(([provider, price], index) => {
+  dealsContainer.innerHTML += `
+    <div class="deal-item">
+      <div class="deal-provider">
+        <img src="${getProviderLogo(provider)}" alt="${provider}">
+        <span>${index + 1}. ${provider}</span>
+      </div>
+      <div class="deal-price">${price} €</div>
+    </div>
+  `;
+});
 
     const recommendationCard = document.getElementById("recommendation-card");
 
