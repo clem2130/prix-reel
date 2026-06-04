@@ -245,6 +245,26 @@ async function calculate() {
         ? " abonnements similaires."
         : " abonnement similaire.");
 
+    const bestDeals = await getBestDeals(city);
+
+    const dealsContainer =
+    document.getElementById("best-deals-list");
+    
+    dealsContainer.innerHTML = "";
+    
+    bestDeals.forEach(([provider, price], index) => {
+      dealsContainer.innerHTML += `
+        <div class="best-deal-row">
+          <span class="best-provider">
+            ${index + 1}. ${provider}
+          </span>
+          <span class="best-price">
+            ${price} €
+          </span>
+        </div>
+      `;
+    });
+
     goTo("result");
 
   } catch (error) {
