@@ -104,13 +104,14 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
 }
 
 async function calculate() {
-  const price = Number(document.getElementById("price").value);
-  const city = document.getElementById("citySearch").value.trim();
-  const provider = document.getElementById("provider").value;
-  const offerType = document.getElementById("offer").value;
-  document.getElementById("result-city").textContent = "📍 Ville : " + city;
-  document.getElementById("result-provider-name").textContent = "🌐 Fournisseur : " + provider;
-  document.getElementById("result-offer-type").textContent = "📦 Offre : " + offerType;
+const price = Number(document.getElementById("price").value);
+const city = document.getElementById("citySearch").value.trim();
+const provider = document.getElementById("provider").value;
+const offerType = document.getElementById("offer").value;
+
+document.getElementById("result-city").textContent = "📍 Ville : " + city;
+document.getElementById("result-provider-name").textContent = "🌐 Fournisseur : " + provider;
+document.getElementById("result-offer-type").textContent = "📦 Offre : " + offerType;
 
   if (!city || !price || price <= 0) {
     alert("Veuillez entrer votre ville et votre prix mensuel.");
