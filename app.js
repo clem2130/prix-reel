@@ -216,6 +216,8 @@ async function calculate() {
     }
 
     document.getElementById("percent").textContent = displayPercent + "%";
+    const scoreDot = document.querySelector(".score-dot");
+    scoreDot.style.left = displayPercent + "%";
 
     const rankingMessage = document.getElementById("ranking-message");
 
