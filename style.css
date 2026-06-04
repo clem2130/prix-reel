@@ -922,3 +922,32 @@ nav span {
     margin-bottom: 35px;
   }
 }
+
+.deal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.deal-item:last-child {
+  border-bottom: none;
+}
+
+.deal-provider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.deal-provider img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.deal-price {
+  font-weight: 700;
+  color: #16a34a;
+}
