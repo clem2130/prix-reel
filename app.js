@@ -115,7 +115,7 @@ async function getRanking(city, provider, offerType, userPrice) {
   return Math.round((moreExpensiveCount / data.length) * 100);
 }
 
-async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
+async function savePriceToSupabase(city, provider, monthlyPrice, offerType, speed) {
   const response = await fetch(`${SUPABASE_URL}/rest/v1/internet_prices`, {
     method: "POST",
     headers: {
@@ -128,7 +128,8 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType) {
       City: city,
       Provider: provider,
       Monthly_price: monthlyPrice,
-      Offer_type: offerType
+      Offer_type: offerType,
+      Speed: speed
     })
   });
 
@@ -154,7 +155,7 @@ async function calculate() {
     const alreadyExists = await priceAlreadyExists(city, provider, price, offerType);
 
     if (!alreadyExists) {
-      await savePriceToSupabase(city, provider, price, offerType);
+      await savePriceToSupabase(city, provider, price, offerType, speed);
     }
 
     const stats = await getAveragePrice(city, provider, offerType);
