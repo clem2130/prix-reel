@@ -106,9 +106,9 @@ async function getBestDeals(city) {
     .slice(0, 5);
 }
 
-async function getRanking(city, provider, offerType, userPrice) {
+async function getRanking(city, provider, offerType, speed, userPrice) {
   const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
     {
       headers: {
         "apikey": SUPABASE_ANON_KEY,
@@ -116,6 +116,21 @@ async function getRanking(city, provider, offerType, userPrice) {
       }
     }
   );
+
+  if (!response.ok) throw new Error(await response.text());
+
+  const data = await response.json();
+
+  if (!data || data.length === 0) {
+    return 50;
+  }
+
+  const moreExpensiveCount = data.filter(
+    item => Number(item.Monthly_price) > userPrice
+  ).length;
+
+  return Math.round((moreExpensiveCount / data.length) * 100);
+}
 
   if (!response.ok) throw new Error(await response.text());
 
