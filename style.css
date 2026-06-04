@@ -953,17 +953,17 @@ nav span {
 }
 
 .deal-provider img {
-  width: 60px !important;
-  height: 60px !important;
-  border: 2px solid red !important;
-  display: block !important;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  margin-right: 10px;
 }
 
-.deal-provider img {
-  width: 42px !important;
-  height: 42px !important;
-  display: block !important;
-  object-fit: contain !important;
-  background: white !important;
-  border-radius: 8px !important;
+.deal-provider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
