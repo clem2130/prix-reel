@@ -152,7 +152,7 @@ async function calculate() {
   }
 
   try {
-    const alreadyExists = await priceAlreadyExists(city, provider, price, offerType);
+    const alreadyExists = await priceAlreadyExists(city, provider, price, offerType, speed);
 
     if (!alreadyExists) {
       await savePriceToSupabase(city, provider, price, offerType, speed);
