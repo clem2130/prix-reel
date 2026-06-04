@@ -181,7 +181,13 @@ async function calculate() {
       displayPercent = 100 - ranking;
     }
 
-    document.getElementById("percent").textContent = displayPercent + "%";
+    if (displayPercent >= 80) {
+      document.getElementById("percent").textContent = "🏆";
+    } else if (displayPercent >= 60) {
+      document.getElementById("percent").textContent = "👍";
+    } else {
+      document.getElementById("percent").textContent = "📊";
+    }
 
     const rankingMessage = document.getElementById("ranking-message");
 
