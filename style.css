@@ -433,10 +433,13 @@ select {
 
 .privacy-box {
   display: flex;
-  gap: 13px;
-  align-items: flex-start;
-  background: #eefaf1;
-  margin-bottom: 20px;
+  align-items: center;
+  gap: 16px;
+
+  background: #eef7f1;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 24px;
 }
 
 .mini-shield {
@@ -802,4 +805,20 @@ nav span {
     margin-left: auto;
     margin-right: auto;
   }
+}
+.privacy-icon {
+  flex-shrink: 0;
+  font-size: 28px;
+  color: #22c55e;
+}
+
+.privacy-text h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: #0f2b66;
+}
+
+.privacy-text p {
+  margin: 0;
+  color: #64748b;
 }
