@@ -210,7 +210,9 @@ h2 {
 
 .primary {
   width: 100%;
-  max-width: 430px;
+  max-width: 700px;
+  margin: 0 auto;
+  display: block;
   border: none;
   border-radius: 15px;
   padding: 16px;
@@ -233,10 +235,12 @@ h2 {
   border: none;
   color: var(--blue);
   width: 100%;
-  max-width: 430px;
+  max-width: 700px;
   padding: 16px;
   font-weight: 700;
   cursor: pointer;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* DECOR */
