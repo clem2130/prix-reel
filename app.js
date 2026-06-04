@@ -265,13 +265,30 @@ async function calculate() {
       `;
     });
 
-    goTo("result");
+    const recommendationCard = document.getElementById("recommendation-card");
 
-  } catch (error) {
-    alert("Erreur Supabase : " + error.message);
-    console.error(error);
-  }
-}
+    if (bestDeals.length > 0) {
+      const bestProvider = bestDeals[0][0];
+      const bestPrice = bestDeals[0][1];
+      const potentialMonthlySaving = Math.max(price - bestPrice, 0);
+      const potentialYearlySaving = potentialMonthlySaving * 12;
+    
+      recommendationCard.innerHTML = `
+        <p>💡 Recommandation Prix Réel</p>
+        <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+        <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
+      `;
+    } else {
+      recommendationCard.innerHTML = "";
+    }
+    
+        goTo("result");
+    
+      } catch (error) {
+        alert("Erreur Supabase : " + error.message);
+        console.error(error);
+      }
+    }
 
 async function loadStatistics() {
   try {
@@ -363,4 +380,4 @@ if (cityInput && citySuggestions) {
   });
 }
 
-bestDeals.forEach(([provider, price], index) => {
+
