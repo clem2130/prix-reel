@@ -439,9 +439,19 @@ select {
   background: #eef7f1;
   border-radius: 20px;
   padding: 20px;
-
   margin-top: 24px;
   margin-bottom: 32px;
+}
+
+.privacy-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  font-size: 32px;
+  color: #22c55e;
 }
 
 .mini-shield {
