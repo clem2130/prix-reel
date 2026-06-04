@@ -878,3 +878,36 @@ nav span {
     margin-right: auto;
   }
 }
+
+.best-deals-card {
+  margin-top: 20px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.best-deals-card h3 {
+  margin-bottom: 14px;
+  color: var(--navy);
+}
+
+.best-deal-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.best-deal-row:last-child {
+  border-bottom: none;
+}
+
+.best-provider {
+  font-weight: 700;
+}
+
+.best-price {
+  color: var(--green);
+  font-weight: 800;
+}
