@@ -297,6 +297,21 @@ async function calculate() {
       (sampleCount > 1
         ? " abonnements similaires."
         : " abonnement similaire.");
+  
+      const reliabilityBadge = document.getElementById("reliability-badge");
+  
+      reliabilityBadge.className = "reliability-badge";
+      
+      if (sampleCount >= 30) {
+        reliabilityBadge.textContent = "✓ Fiabilité élevée";
+        reliabilityBadge.classList.add("reliability-high");
+      } else if (sampleCount >= 10) {
+        reliabilityBadge.textContent = "✓ Fiabilité moyenne";
+        reliabilityBadge.classList.add("reliability-medium");
+      } else {
+        reliabilityBadge.textContent = "⚠ Données limitées";
+        reliabilityBadge.classList.add("reliability-low");
+      }
 
     const bestDeals = await getBestDeals(city);
     const dealsContainer = document.getElementById("best-deals-list");
