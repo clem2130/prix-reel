@@ -200,7 +200,7 @@ async function calculate() {
       sampleCount = stats.count;
     }
 
-    const ranking = await getRanking(city, provider, offerType, price);
+    const ranking = await getRanking(city, provider, offerType, speed, price);
 
     const diff = price - average;
     const yearlyGap = Math.abs(diff * 12);
