@@ -30,7 +30,7 @@ async function priceAlreadyExists(city, provider, monthlyPrice, offerType) {
   return data.length > 0;
 }
 
-async function getAveragePrice(city, provider, Type) {
+async function getAveragePrice(city, provider, offerType) {
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}`,
     {
