@@ -573,17 +573,14 @@ select {
 }
 
 .gauge-value {
-  font-size: 42px;
-  color: var(--green);
-  font-weight: 900;
+  font-size: 50px;
+  font-weight: 800;
+  color: #16a34a;
 }
 
 #ranking-message {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 500;
-  color: #1e3a8a;
+  color: #166534;
+  font-weight: 600;
 }
 
 .result-summary {
