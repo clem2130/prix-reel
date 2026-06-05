@@ -419,6 +419,7 @@ async function Statistics() {
 
 async function loadTrustCounter() {
   console.log("Fonction loadTrustCounter exécutée");
+
   const counter = document.getElementById("trust-counter");
 
   if (!counter) {
@@ -446,12 +447,12 @@ async function loadTrustCounter() {
     counter.textContent =
       `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
 
-} catch (error) {
-  console.error("Erreur compteur :", error);
-  alert("Erreur compteur : " + error.message);
+  } catch (error) {
+    console.error("Erreur compteur :", error);
 
-  counter.textContent =
-    "📊 Basé sur des prix réels enregistrés en Belgique";
+    counter.textContent =
+      "📊 Basé sur des prix réels enregistrés en Belgique";
+  }
 }
 
 const cityInput = document.getElementById("citySearch");
