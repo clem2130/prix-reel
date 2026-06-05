@@ -81,6 +81,10 @@ body {
   text-align: left;
 }
 
+.brand > div {
+  text-align: left;
+}
+
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -88,8 +92,8 @@ body {
 
 
 .logo-shield {
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
