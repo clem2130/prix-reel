@@ -385,7 +385,7 @@ async function calculate() {
   }
 }
 
-async function loadStatistics() {
+async function Statistics() {
   try {
     const response = await fetch(
       `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
@@ -418,6 +418,13 @@ async function loadStatistics() {
 }
 
 async function loadTrustCounter() {
+  const counter = document.getElementById("trust-counter");
+
+  if (!counter) {
+    console.error("Compteur introuvable : vérifie id='trust-counter' dans le HTML");
+    return;
+  }
+
   try {
     const response = await fetch(
       `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
@@ -433,15 +440,13 @@ async function loadTrustCounter() {
 
     const data = await response.json();
 
-    const counter = document.getElementById("trust-counter");
-
-    if (counter) {
-      counter.textContent =
-        `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
-    }
+    counter.textContent =
+      `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
 
   } catch (error) {
     console.error("Erreur compteur :", error);
+    counter.textContent =
+      "📊 Basé sur des prix réels enregistrés en Belgique";
   }
 }
 
