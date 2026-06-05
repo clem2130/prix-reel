@@ -437,6 +437,8 @@ async function loadTrustCounter() {
       }
     );
 
+    console.log("Status :", response.status);
+
     if (!response.ok) throw new Error(await response.text());
 
     const data = await response.json();
@@ -444,11 +446,12 @@ async function loadTrustCounter() {
     counter.textContent =
       `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
 
-  } catch (error) {
-    console.error("Erreur compteur :", error);
-    counter.textContent =
-      "📊 Basé sur des prix réels enregistrés en Belgique";
-  }
+} catch (error) {
+  console.error("Erreur compteur :", error);
+  alert("Erreur compteur : " + error.message);
+
+  counter.textContent =
+    "📊 Basé sur des prix réels enregistrés en Belgique";
 }
 
 const cityInput = document.getElementById("citySearch");
