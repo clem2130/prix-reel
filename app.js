@@ -518,6 +518,5 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("load", () => {
-  console.log("Compteur Prix Réel lancé");
   loadTrustCounter();
 });
