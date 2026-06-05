@@ -1095,3 +1095,11 @@ nav span {
 .cta-section {
   padding-bottom: 80px;
 }
+
+.trust-counter {
+  margin-top: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--green);
+  text-align: center;
+}
