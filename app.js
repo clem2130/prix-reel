@@ -418,6 +418,7 @@ async function Statistics() {
 }
 
 async function loadTrustCounter() {
+  console.log("Fonction loadTrustCounter exécutée");
   const counter = document.getElementById("trust-counter");
 
   if (!counter) {
@@ -509,5 +510,10 @@ if (cityInput && citySuggestions) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  loadTrustCounter();
+});
+
+window.addEventListener("load", () => {
+  console.log("Compteur Prix Réel lancé");
   loadTrustCounter();
 });
