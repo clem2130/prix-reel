@@ -503,4 +503,6 @@ if (cityInput && citySuggestions) {
   });
 }
 
-loadTrustCounter();
+document.addEventListener("DOMContentLoaded", () => {
+  loadTrustCounter();
+});
