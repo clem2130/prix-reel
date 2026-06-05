@@ -92,8 +92,8 @@ body {
 
 
 .logo-shield {
-  width: 72px;
-  height: 72px;
+  width: 78px;
+  height: 78px;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
@@ -102,7 +102,7 @@ body {
 .brand h1 {
   margin: 0;
   color: var(--navy);
-  font-size: 38px;
+  font-size: 36px;
   line-height: 1;
   white-space: nowrap;
 }
