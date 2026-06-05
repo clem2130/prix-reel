@@ -442,10 +442,7 @@ async function loadTrustCounter() {
 
     if (!response.ok) throw new Error(await response.text());
 
-    const data = await response.json();
-
-    counter.textContent =
-      `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
+    counter.textContent = "TEST OK";
 
   } catch (error) {
     console.error("Erreur compteur :", error);
