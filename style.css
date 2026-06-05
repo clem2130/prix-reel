@@ -77,7 +77,7 @@ body {
   align-items: center;
   justify-content: center; /* centre horizontalement */
   gap: 24px;
-  margin: 24px auto 32px;
+  margin: 48px auto 32px;
   text-align: left;
 }
 
