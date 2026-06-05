@@ -732,6 +732,15 @@ select {
   font-size: 13px;
 }
 
+.stats-link {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 /* NAV */
 
 nav {
@@ -1081,4 +1090,8 @@ nav span {
     height: 72px;
     bottom: 18px;
   }
+}
+
+.cta-section {
+  padding-bottom: 80px;
 }
