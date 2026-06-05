@@ -417,6 +417,34 @@ async function loadStatistics() {
   }
 }
 
+async function loadTrustCounter() {
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
+      {
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+
+    if (!response.ok) throw new Error(await response.text());
+
+    const data = await response.json();
+
+    const counter = document.getElementById("trust-counter");
+
+    if (counter) {
+      counter.textContent =
+        `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
+    }
+
+  } catch (error) {
+    console.error("Erreur compteur :", error);
+  }
+}
+
 const cityInput = document.getElementById("citySearch");
 const citySuggestions = document.getElementById("citySuggestions");
 
@@ -474,3 +502,5 @@ if (cityInput && citySuggestions) {
     }
   });
 }
+
+loadTrustCounter();
