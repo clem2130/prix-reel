@@ -76,13 +76,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center; /* centre horizontalement */
-  gap: 16px;
-  margin: 24px auto 32px;
+  gap: 24px;
+  margin: 12px auto 24px;
   text-align: left;
 }
 
 .brand > div {
-  text-align: left;
+  text-align: center;
 }
 
 .brand-text {
@@ -92,8 +92,8 @@ body {
 
 
 .logo-shield {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
