@@ -385,6 +385,23 @@ async function calculate() {
   }
 }
 
+function getReliabilityMessage(sampleCount) {
+  if (sampleCount <= 2) {
+    return "🔴 Données insuffisantes pour tirer une conclusion fiable.";
+  }
+
+  if (sampleCount <= 4) {
+    return "🟠 Tendance indicative. Plus de données amélioreront la précision.";
+  }
+
+  if (sampleCount <= 9) {
+    return "🟢 Comparaison basée sur un échantillon utile.";
+  }
+
+  return "✅ Comparaison fiable basée sur un nombre suffisant d'abonnements similaires.";
+}
+
+
 async function loadStatistics() {
   try {
     const response = await fetch(
