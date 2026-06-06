@@ -1465,3 +1465,8 @@ nav span {
   width: 95px;
   height: 95px;
 }
+
+.score-dot,
+.score-badge {
+  transition: left 1.4s ease-out;
+}
