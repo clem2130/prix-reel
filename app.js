@@ -268,6 +268,18 @@ async function calculate() {
 
     document.getElementById("percent").textContent = displayPercent + "%";
 
+    document.getElementById("duo-percent").textContent = displayPercent + "%";
+
+    const duoStatus = document.getElementById("duo-status");
+    
+    if (diff < 0) {
+      duoStatus.textContent = "moins cher";
+    } else if (diff > 0) {
+      duoStatus.textContent = "plus cher";
+    } else {
+      duoStatus.textContent = "moyenne";
+    }
+
     const scoreDot = document.querySelector(".score-dot");
     if (scoreDot) {
       scoreDot.style.left = displayPercent + "%";
