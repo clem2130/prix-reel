@@ -316,8 +316,19 @@ if (diff > 5) {
     }
 
     const scoreDot = document.querySelector(".score-dot");
+    
     if (scoreDot) {
-      scoreDot.style.left = displayPercent + "%";
+    
+      scoreDot.style.transition = "none";
+      scoreDot.style.left = "0%";
+    
+      setTimeout(() => {
+    
+        scoreDot.style.transition = "left 1.5s ease-out";
+        scoreDot.style.left = displayPercent + "%";
+    
+      }, 100);
+    
     }
 
     const rankingMessage = document.getElementById("ranking-message");
