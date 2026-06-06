@@ -275,33 +275,26 @@ async function calculate() {
 
     const rankingMessage = document.getElementById("ranking-message");
 
-    if (diff < 0) {
-      rankingMessage.textContent =
-        "Vous payez moins cher que " +
-        displayPercent +
-        "% des utilisateurs similaires";
-    } else if (diff > 0) {
-      rankingMessage.textContent =
-        "Vous payez plus cher que " +
-        displayPercent +
-        "% des utilisateurs similaires";
-    } else {
-      rankingMessage.textContent =
-        "Votre prix est dans la moyenne";
-    }
+    rankingMessage.style.display = "none";
 
     document.getElementById("result-summary").textContent =
       city + " • " + provider + " • " + offerType + " • " + speed;
 
     const quality = document.getElementById("data-quality");
 
-    quality.innerHTML =
-      "📊 Basé sur " +
-      sampleCount +
-      (sampleCount > 1
-        ? " abonnements similaires<br>"
-        : " abonnement similaire<br>") +
-      getReliabilityMessage(sampleCount);
+    quality.innerHTML = `
+      <div class="quality-clean-card">
+        <div class="quality-icon">👥</div>
+        <div class="quality-content">
+          <strong>${sampleCount} ${
+            sampleCount > 1
+              ? "abonnements similaires analysés"
+              : "abonnement similaire analysé"
+          }</strong>
+          <span class="quality-badge">${getReliabilityShortMessage(sampleCount)}</span>
+        </div>
+      </div>
+    `;
   
       const reliabilityBadge = document.getElementById("reliability-badge");
       
@@ -386,20 +379,20 @@ async function calculate() {
   }
 }
 
-function getReliabilityMessage(sampleCount) {
+function getReliabilityShortMessage(sampleCount) {
   if (sampleCount <= 2) {
-    return "🔴 Données insuffisantes pour tirer une conclusion fiable.";
+    return "🔴 Données limitées";
   }
 
   if (sampleCount <= 4) {
-    return "🟠 Tendance indicative. Plus de données amélioreront la précision.";
+    return "🟠 Tendance indicative";
   }
 
   if (sampleCount <= 9) {
-    return "🟢 Comparaison basée sur un échantillon utile.";
+    return "🟢 Comparaison utile";
   }
 
-  return "✅ Comparaison fiable basée sur un nombre suffisant d'abonnements similaires.";
+  return "✅ Comparaison fiable";
 }
 
 
