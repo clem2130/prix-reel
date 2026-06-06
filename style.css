@@ -1264,3 +1264,31 @@ nav span {
     font-size: 42px;
   }
 }
+
+@media (max-width: 460px) {
+  .result-duo-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 22px;
+  }
+
+  .duo-separator {
+    width: 100%;
+    height: 1px;
+  }
+
+  .duo-saving {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .duo-saving strong {
+    font-size: 36px;
+    white-space: nowrap;
+  }
+
+  .duo-saving span {
+    font-size: 34px;
+  }
+}
