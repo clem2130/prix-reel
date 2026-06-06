@@ -1347,3 +1347,27 @@ nav span {
   width: 100%;
   height: 100%;
 }
+
+.piggy-happy img {
+  animation: piggyBounce 1.8s ease-in-out infinite;
+}
+
+.piggy-neutral img {
+  animation: none;
+  opacity: 0.9;
+}
+
+.piggy-sad img {
+  animation: piggySad 2s ease-in-out infinite;
+  filter: grayscale(20%);
+}
+
+@keyframes piggySad {
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(2px);
+  }
+}
