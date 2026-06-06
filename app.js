@@ -296,11 +296,12 @@ async function calculate() {
     const quality = document.getElementById("data-quality");
 
     quality.innerHTML =
-      "Calcul basé sur " +
+      "📊 Basé sur " +
       sampleCount +
       (sampleCount > 1
-        ? " abonnements similaires."
-        : " abonnement similaire.");
+        ? " abonnements similaires<br>"
+        : " abonnement similaire<br>") +
+      getReliabilityMessage(sampleCount);
   
       const reliabilityBadge = document.getElementById("reliability-badge");
       
