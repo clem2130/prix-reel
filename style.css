@@ -1371,3 +1371,18 @@ nav span {
     transform: translateY(2px);
   }
 }
+
+.piggy-happy img {
+  animation: piggyBounce 1.8s ease-in-out infinite;
+}
+
+.piggy-neutral img {
+  animation: none;
+  opacity: 0.9;
+}
+
+.piggy-sad img {
+  animation: none;
+  filter: grayscale(50%);
+  opacity: 0.7;
+}
