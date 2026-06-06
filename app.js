@@ -223,34 +223,33 @@ async function calculate() {
     const piggy = document.getElementById("piggy-container");
     const pigImage = document.getElementById("piggy-image");
     
-    if (diff > 0) {
-    
-      piggy.className = "saving-icon piggy-sad";
-      pigImage.src = "piggy-sad.png";
-    
-    } else {
-    
-      const savingsPercent = Math.abs(
-        ((average - price) / average) * 100
-      );
-    
-      if (savingsPercent < 5) {
-    
-        piggy.className = "saving-icon piggy-neutral";
-        pigImage.src = "piggy-neutral.png";
-    
-      } else if (savingsPercent < 15) {
-    
-        piggy.className = "saving-icon piggy-happy";
-        pigImage.src = "piggy-happy.png";
-    
-      } else {
-    
-        piggy.className = "saving-icon piggy-superhappy";
-        pigImage.src = "piggy-superhappy.png";
-    
-      }
-    }
+if (diff > 5) {
+
+  piggy.className = "saving-icon piggy-sad";
+  pigImage.src = "piggy-sad.png";
+
+} else if (diff >= -5 && diff <= 5) {
+
+  piggy.className = "saving-icon piggy-neutral";
+  pigImage.src = "piggy-neutral.png";
+
+} else {
+
+  const savingsPercent =
+    Math.abs(((average - price) / average) * 100);
+
+  if (savingsPercent < 15) {
+
+    piggy.className = "saving-icon piggy-happy";
+    pigImage.src = "piggy-happy.png";
+
+  } else {
+
+    piggy.className = "saving-icon piggy-superhappy";
+    pigImage.src = "piggy-superhappy.png";
+
+  }
+}
 
 
 
