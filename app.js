@@ -219,6 +219,14 @@ async function calculate() {
     );
 
     const diff = price - average;
+    const piggy = document.getElementById("piggy-container");    
+    if (diff < 0) {
+      piggy.className = "saving-icon piggy-happy";
+    } else if (diff <= 2) {
+      piggy.className = "saving-icon piggy-neutral";
+    } else {
+      piggy.className = "saving-icon piggy-sad";
+    }
     const yearlyGap = Math.abs(diff * 12);
     const monthlyGap = Math.abs(diff);
 
