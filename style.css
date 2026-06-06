@@ -1296,13 +1296,13 @@ nav span {
 }
 
 .result-card-simple {
-  animation: resultFadeUp 0.45s ease-out;
+  animation: resultFadeUp 0.6s ease-out;
 }
 
 @keyframes resultFadeUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(30px);
   }
 
   to {
