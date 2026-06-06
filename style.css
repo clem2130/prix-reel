@@ -379,6 +379,7 @@ h2 {
   margin: 6px 0 0;
   font-size: 13px;
   line-height: 1.45;
+  font-weight: 500;
 }
 
 label {
@@ -711,6 +712,7 @@ select {
 
 .tip-card strong {
   color: var(--navy);
+  font-weight: 600;
 }
 
 /* STATS */
