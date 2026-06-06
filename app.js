@@ -266,8 +266,8 @@ async function calculate() {
       displayPercent = 100 - ranking;
     }
 
-    animateCounter("percent", displayPercent, 1500);
-    animateCounter("duo-percent", displayPercent, 1500);
+    animateCounter("percent", displayPercent, 1000);
+    animateCounter("duo-percent", displayPercent, 1000);
 
     const duoStatus = document.getElementById("duo-status");
     
