@@ -526,20 +526,22 @@ window.addEventListener("load", () => {
   loadTrustCounter();
 });
 
-function animateCounter(elementId, target, duration = 700) {
+function animateCounter(elementId, target, duration = 2000) {
   const element = document.getElementById(elementId);
 
-  let start = 0;
-  const increment = target / (duration / 16);
+  const startTime = performance.now();
 
-  const timer = setInterval(() => {
-    start += increment;
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
 
-    if (start >= target) {
-      start = target;
-      clearInterval(timer);
+    element.textContent =
+      Math.round(target * progress) + "%";
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
     }
+  }
 
-    element.textContent = Math.round(start) + "%";
-  }, 16);
+  requestAnimationFrame(update);
 }
