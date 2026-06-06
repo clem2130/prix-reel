@@ -1320,11 +1320,27 @@ nav span {
 .saving-icon {
   width: 64px;
   height: 64px;
-  color: #1261d8;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.saving-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: piggyBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes piggyBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-5px) scale(1.04);
+  }
 }
 
 .saving-icon svg {
