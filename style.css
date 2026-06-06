@@ -1318,18 +1318,19 @@ nav span {
 }
 
 .saving-icon {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .saving-icon img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: piggyBounce 1.8s ease-in-out infinite;
 }
 
 @keyframes piggyBounce {
