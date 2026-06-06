@@ -1445,3 +1445,23 @@ nav span {
     transform: translateX(-50%) translateY(30px) scale(0.7);
   }
 }
+
+.piggy-neutral img {
+  width: 75px;
+  height: 75px;
+}
+
+.piggy-sad img {
+  width: 75px;
+  height: 75px;
+}
+
+.piggy-happy img {
+  width: 80px;
+  height: 80px;
+}
+
+.piggy-superhappy img {
+  width: 95px;
+  height: 95px;
+}
