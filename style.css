@@ -1294,3 +1294,40 @@ nav span {
     font-size: 34px;
   }
 }
+
+.result-card-simple {
+  animation: resultFadeUp 0.45s ease-out;
+}
+
+@keyframes resultFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#result-summary {
+  color: #2f3b4f;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.saving-icon {
+  width: 48px;
+  height: 48px;
+  color: #1261d8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.saving-icon svg {
+  width: 100%;
+  height: 100%;
+}
