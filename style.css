@@ -1470,3 +1470,50 @@ nav span {
 .score-badge {
   transition: left 1.4s ease-out;
 }
+
+.piggy-confetti {
+  display: none;
+  position: absolute;
+  inset: -18px;
+  pointer-events: none;
+}
+
+.piggy-confetti i {
+  position: absolute;
+  width: 6px;
+  height: 10px;
+  border-radius: 2px;
+  opacity: 0;
+  background: #1d6be3;
+}
+
+.piggy-confetti i:nth-child(1) { left: 10%; top: 25%; background: #1d6be3; }
+.piggy-confetti i:nth-child(2) { left: 25%; top: 5%; background: #22a843; }
+.piggy-confetti i:nth-child(3) { right: 20%; top: 10%; background: #f5b301; }
+.piggy-confetti i:nth-child(4) { right: 8%; top: 35%; background: #ff4d8d; }
+.piggy-confetti i:nth-child(5) { left: 45%; top: -5%; background: #8b5cf6; }
+.piggy-confetti i:nth-child(6) { right: 35%; top: 0%; background: #ff7a00; }
+
+.piggy-superhappy .piggy-confetti {
+  display: block;
+}
+
+.piggy-superhappy .piggy-confetti i {
+  animation: piggyConfetti 2s ease-out 1;
+}
+
+@keyframes piggyConfetti {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5) rotate(0deg);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-32px) scale(1) rotate(180deg);
+  }
+}
