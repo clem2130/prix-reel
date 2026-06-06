@@ -1148,3 +1148,80 @@ nav span {
   font-size: 12px;
   font-weight: 700;
 }
+
+.result-duo-card {
+  margin: 26px 0;
+  padding: 22px;
+  border: 1px solid #dbe5f0;
+  border-radius: 18px;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: center;
+  gap: 18px;
+}
+
+.duo-part {
+  min-width: 0;
+}
+
+.duo-label {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.duo-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.duo-main span {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--navy);
+}
+
+.duo-main em {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eaf2ff;
+  color: var(--blue);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.duo-sub {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.duo-separator {
+  width: 1px;
+  height: 90px;
+  background: #dbe5f0;
+}
+
+.duo-saving {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.duo-saving strong {
+  font-size: 34px;
+  color: var(--navy);
+}
+
+.duo-saving span {
+  font-size: 42px;
+}
+
+#reliability-badge {
+  display: none;
+}
