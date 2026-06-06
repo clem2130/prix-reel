@@ -267,8 +267,7 @@ async function calculate() {
     }
 
     animateCounter("percent", displayPercent, 2500);
-
-    document.getElementById("duo-percent").textContent = displayPercent + "%";
+    animateCounter("duo-percent", displayPercent, 2500);
 
     const duoStatus = document.getElementById("duo-status");
     
