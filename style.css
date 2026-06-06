@@ -1202,9 +1202,11 @@ nav span {
 }
 
 .duo-separator {
-  width: 1px;
-  height: 90px;
-  background: #dbe5f0;
+  width: 2px;
+  height: 110px;
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+  box-shadow: 0 0 4px rgba(148, 163, 184, 0.15);
 }
 
 .duo-saving {
@@ -1224,4 +1226,16 @@ nav span {
 
 #reliability-badge {
   display: none;
+}
+
+.result-duo-card {
+  margin: 26px 0;
+  padding: 26px;
+  border: 1px solid #dbe5f0;
+  border-radius: 18px;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+  align-items: center;
+  gap: 26px;
 }
