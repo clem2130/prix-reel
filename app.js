@@ -266,7 +266,7 @@ async function calculate() {
       displayPercent = 100 - ranking;
     }
 
-    document.getElementById("percent").textContent = displayPercent + "%";
+    animateCounter("percent", displayPercent);
 
     document.getElementById("duo-percent").textContent = displayPercent + "%";
 
@@ -525,3 +525,21 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", () => {
   loadTrustCounter();
 });
+
+function animateCounter(elementId, target, duration = 700) {
+  const element = document.getElementById(elementId);
+
+  let start = 0;
+  const increment = target / (duration / 16);
+
+  const timer = setInterval(() => {
+    start += increment;
+
+    if (start >= target) {
+      start = target;
+      clearInterval(timer);
+    }
+
+    element.textContent = Math.round(start) + "%";
+  }, 16);
+}
