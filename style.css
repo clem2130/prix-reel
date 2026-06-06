@@ -1109,3 +1109,42 @@ nav span {
   color: var(--green);
   text-align: center;
 }
+
+.quality-clean-card {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border: 1px solid #dbe5f0;
+  border-radius: 14px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 6px 18px rgba(6, 36, 92, 0.06);
+}
+
+.quality-icon {
+  font-size: 26px;
+  color: #1257d8;
+  flex-shrink: 0;
+}
+
+.quality-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quality-content strong {
+  font-size: 14px;
+  color: #06245c;
+}
+
+.quality-badge {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eaf8ef;
+  color: #0f8f3a;
+  font-size: 12px;
+  font-weight: 700;
+}
