@@ -1218,6 +1218,7 @@ nav span {
 .duo-saving strong {
   font-size: 42px;
   color: var(--navy);
+  white-space: nowrap;
 }
 
 .duo-saving span {
