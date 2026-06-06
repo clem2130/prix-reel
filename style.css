@@ -1282,7 +1282,7 @@ nav span {
   .duo-saving {
     justify-content: center;
     text-align: center;
-    flex-direction: column;
+    flex-direction: row !important;
   }
 
   .duo-saving strong {
