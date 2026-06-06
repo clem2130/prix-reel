@@ -628,8 +628,9 @@ select {
 }
 
 .result-summary {
-  color: #64748b;
-  font-size: 14px;
+  color: #475569;
+  font-size: 15px;
+  font-weight: 500;
   margin-top: 22px;
 }
 
