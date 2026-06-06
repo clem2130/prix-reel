@@ -1214,12 +1214,14 @@ nav span {
 
 .duo-saving {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .duo-saving strong {
-  font-size: 42px;
+  font-size: 30px;
   color: var(--navy);
   white-space: nowrap;
 }
