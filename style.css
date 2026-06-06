@@ -1346,6 +1346,12 @@ nav span {
 .piggy-superhappy img {
   width: 110px;
   height: 110px;
+  animation: piggyBounce 1.1s ease-in-out infinite;
+}
+
+.piggy-superhappy .coin {
+  display: flex;
+  animation: coinDrop 0.9s ease-in-out infinite;
 }
 
 .saving-icon svg {
