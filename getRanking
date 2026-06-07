@@ -217,7 +217,8 @@ async function calculate() {
       speed,
       price
     );
-
+    
+    const isExcellentPrice = ranking >= 90;
     const diff = price - average;
     
     const piggy = document.getElementById("piggy-container");
