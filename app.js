@@ -325,12 +325,18 @@ if (diff > 5) {
     pigImage.src = "piggy-superhappy.png";
 
     if (isExcellentPrice) {
-      resultTitle.textContent = "Excellent prix !";
-      resultSummary.innerHTML =
-        "🏆 Félicitations, vous faites partie des abonnements les moins chers enregistrés.";
+      document.getElementById("price-rating").textContent = "🏆 Excellent prix !";
+
+      
+    document.getElementById("price-insight").textContent =
+      "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
     
-      resultSaving.textContent = "0 € / an";
-      savingMonth.textContent = "Aucune économie significative détectée pour le moment.";
+    document.getElementById("result-saving").textContent = "0 € / an";
+    
+    document.getElementById("saving-month").textContent =
+      "Aucune économie significative détectée.";
+
+      
     
       recommendationCard.innerHTML = `
         <h3>Vous payez déjà un très bon prix</h3>
