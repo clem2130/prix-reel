@@ -420,21 +420,37 @@ if (diff > 5) {
 
     const recommendationCard = document.getElementById("recommendation-card");
 
-    if (bestDeals.length > 0) {
-      const bestProvider = bestDeals[0][0];
-      const bestPrice = bestDeals[0][1];
-      const potentialMonthlySaving = Math.max(price - bestPrice, 0);
-      const potentialYearlySaving = potentialMonthlySaving * 12;
+if (isExcellentPrice) {
 
-      recommendationCard.innerHTML = `
-        <p>💡 Recommandation Prix Réel</p>
-        <strong>${bestProvider} — ${bestPrice} € / mois</strong>
-        <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
-      `;
-    } else {
-      recommendationCard.innerHTML = "";
-    }
+  recommendationCard.innerHTML = `
+    <p>🏆 Excellent prix</p>
+    <strong>Vous payez déjà parmi les moins chers.</strong>
+    <small>
+      Continuez simplement à surveiller les évolutions du marché.
+    </small>
+  `;
 
+} else if (bestDeals.length > 0) {
+
+  const bestProvider = bestDeals[0][0];
+  const bestPrice = bestDeals[0][1];
+  const potentialMonthlySaving = Math.max(price - bestPrice, 0);
+  const potentialYearlySaving = potentialMonthlySaving * 12;
+
+  recommendationCard.innerHTML = `
+    <p>💡 Recommandation Prix Réel</p>
+    <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+    <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
+  `;
+
+} else {
+
+  recommendationCard.innerHTML = "";
+
+}
+
+
+    
     function scrollResultToTop() {
       const resultScreen = document.getElementById("result");
       const app = document.querySelector(".app");
