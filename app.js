@@ -248,6 +248,9 @@ async function calculate() {
     
     const piggy = document.getElementById("piggy-container");
     const pigImage = document.getElementById("piggy-image");
+
+    const recommendationCard =
+    document.getElementById("recommendation-card");
     
 if (diff > 5) {
 
@@ -342,8 +345,8 @@ if (diff > 5) {
 
       
     
-      recommendationCard.innerHTML = `
-        <h3>Vous payez déjà un très bon prix</h3>
+      document.getElementById("recommendation-card").innerHTML = `
+        <h3>🏆 Vous payez déjà un très bon prix</h3>
         <p>Votre facture est déjà très compétitive par rapport aux prix réellement payés près de chez vous.</p>
       `;
     
@@ -428,7 +431,7 @@ if (diff > 5) {
       `;
     });
 
-    const recommendationCard = document.getElementById("recommendation-card");
+    
 
 if (isExcellentPrice) {
 
