@@ -329,12 +329,16 @@ if (diff > 5) {
 
       
     document.getElementById("price-insight").textContent =
-      "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
-    
-    document.getElementById("result-saving").textContent = "0 € / an";
-    
+      "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";    
+    document.getElementById("result-saving").textContent = "0 € / an";    
     document.getElementById("saving-month").textContent =
       "Aucune économie significative détectée.";
+
+        piggy.className = "saving-icon piggy-superhappy";
+        pigImage.src = "piggy-superhappy.png";
+      
+        launchConfetti();
+      }
 
       
     
