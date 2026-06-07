@@ -7,9 +7,9 @@ function goTo(id) {
   });
 
   const target = document.getElementById(id);
-  target.classList.add("active");
+  if (!target) return;
 
-  // Force le scroll du nouvel écran tout en haut
+  target.classList.add("active");
   target.scrollTop = 0;
 
   if (id === "stats") {
@@ -76,7 +76,6 @@ async function getBestDeals(city) {
   if (!response.ok) return [];
 
   const data = await response.json();
-
   const cheapest = {};
 
   data.forEach(item => {
@@ -172,8 +171,8 @@ async function calculate() {
   }
 
   if (price < 10 || price > 200) {
-  alert("Veuillez entrer un prix Internet réaliste.");
-  return;
+    alert("Veuillez entrer un prix Internet réaliste.");
+    return;
   }
 
   try {
@@ -217,143 +216,128 @@ async function calculate() {
       speed,
       price
     );
-    
-      const isExcellentPrice = ranking >= 90;
-  
-      if (isExcellentPrice) {
-  
-      document.getElementById("price-rating").textContent =
-        "🏆 Excellent prix";
-    
-      document.getElementById("price-rating").style.color =
-        "#16a34a";
-    
-      document.getElementById("price-insight").textContent =
-        "Vous faites partie des abonnements les moins chers enregistrés.";
-    
-      document.getElementById("result-saving").textContent =
-        "0 € / an";
-    
-      document.getElementById("saving-month").textContent =
-        "Aucune économie significative détectée.";
-    
 
-    
-      launchConfetti();
-    
-    }
-
-    
     const diff = price - average;
-    
-    const piggy = document.getElementById("piggy-container");
-    const pigImage = document.getElementById("piggy-image");
-
-    const recommendationCard =
-    document.getElementById("recommendation-card");
-    
-if (diff > 5) {
-
-  piggy.className = "saving-icon piggy-sad";
-  pigImage.src = "piggy-sad.png";
-
-} else if (diff >= -5 && diff <= 5) {
-
-  piggy.className = "saving-icon piggy-neutral";
-  pigImage.src = "piggy-neutral.png";
-
-} else {
-
-  const savingsPercent =
-    Math.abs(((average - price) / average) * 100);
-
-  if (savingsPercent < 15) {
-
-    piggy.className = "saving-icon piggy-happy";
-    pigImage.src = "piggy-happy.png";
-
-  } else {
-
-    piggy.className = "saving-icon piggy-superhappy";
-    pigImage.src = "piggy-superhappy.png";
-
-  }
-}
-
-
-
-
-    
     const yearlyGap = Math.abs(diff * 12);
     const monthlyGap = Math.abs(diff);
 
-    let rating = "";
-    let ratingColor = "";
+    const isExcellentPrice = ranking >= 90;
 
-    if (diff <= -10) {
-      rating = "🟢 Excellent prix";
-      ratingColor = "#16a34a";
-    } else if (diff <= 5) {
-      rating = "🟠 Prix correct";
-      ratingColor = "#f59e0b";
-    } else {
-      rating = "🔴 Prix élevé";
-      ratingColor = "#dc2626";
-    }
+    const piggy = document.getElementById("piggy-container");
+    const pigImage = document.getElementById("piggy-image");
 
     const ratingElement = document.getElementById("price-rating");
-    ratingElement.textContent = rating;
-    ratingElement.style.color = ratingColor;
-
     const insight = document.getElementById("price-insight");
-
-    if (diff < 0) {
-      insight.textContent =
-        "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
-    } else if (diff > 0) {
-      insight.textContent =
-        "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
-    } else {
-      insight.textContent =
-        "Votre prix est exactement dans la moyenne.";
-    }
-
-    const saving = diff < 0 ? yearlyGap : 0;
-    const monthSaving = diff < 0 ? monthlyGap : 0;
-
-    document.getElementById("result-saving").textContent = saving + " € / an";
-    document.getElementById("saving-month").textContent = "Soit " + monthSaving + " € par mois";
-
-    piggy.className = "saving-icon piggy-superhappy";
-    pigImage.src = "piggy-superhappy.png";
+    const resultSaving = document.getElementById("result-saving");
+    const savingMonth = document.getElementById("saving-month");
+    const recommendationCard = document.getElementById("recommendation-card");
+    const duoStatus = document.getElementById("duo-status");
 
     if (isExcellentPrice) {
-      document.getElementById("price-rating").textContent = "🏆 Excellent prix !";
+      ratingElement.textContent = "🏆 Excellent prix !";
+      ratingElement.style.color = "#16a34a";
 
-      
-    document.getElementById("price-insight").textContent =
-      "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";    
-    document.getElementById("result-saving").textContent = "0 € / an";    
-    document.getElementById("saving-month").textContent =
-      "Aucune économie significative détectée.";
+      insight.textContent =
+        "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
 
+      resultSaving.textContent = "0 € / an";
+      savingMonth.textContent =
+        "Aucune économie significative détectée.";
+
+      if (piggy && pigImage) {
         piggy.className = "saving-icon piggy-superhappy";
         pigImage.src = "piggy-superhappy.png";
-      
-        launchConfetti();
       }
 
-      
-    
-      document.getElementById("recommendation-card").innerHTML = `
-        <h3>🏆 Vous payez déjà un très bon prix</h3>
-        <p>Votre facture est déjà très compétitive par rapport aux prix réellement payés près de chez vous.</p>
+      if (duoStatus) {
+        duoStatus.textContent = "excellent prix";
+      }
+
+      recommendationCard.innerHTML = `
+        <p>🏆 Excellent prix</p>
+        <strong>Vous payez déjà parmi les moins chers.</strong>
+        <small>Continuez simplement à surveiller les évolutions du marché.</small>
       `;
-    
-      if (duoPercent) duoPercent.textContent = "Excellent";
-      if (duoStatus) duoStatus.textContent = "prix";
-      
-      return;
+
+      launchConfetti();
+
+    } else {
+      if (diff > 5) {
+        if (piggy && pigImage) {
+          piggy.className = "saving-icon piggy-sad";
+          pigImage.src = "piggy-sad.png";
+        }
+      } else if (diff >= -5 && diff <= 5) {
+        if (piggy && pigImage) {
+          piggy.className = "saving-icon piggy-neutral";
+          pigImage.src = "piggy-neutral.png";
+        }
+      } else {
+        const savingsPercent = Math.abs(((average - price) / average) * 100);
+
+        if (savingsPercent < 15) {
+          if (piggy && pigImage) {
+            piggy.className = "saving-icon piggy-happy";
+            pigImage.src = "piggy-happy.png";
+          }
+        } else {
+          if (piggy && pigImage) {
+            piggy.className = "saving-icon piggy-superhappy";
+            pigImage.src = "piggy-superhappy.png";
+          }
+        }
+      }
+
+      let rating = "";
+      let ratingColor = "";
+
+      if (diff <= -10) {
+        rating = "🟢 Excellent prix";
+        ratingColor = "#16a34a";
+      } else if (diff <= 5) {
+        rating = "🟠 Prix correct";
+        ratingColor = "#f59e0b";
+      } else {
+        rating = "🔴 Prix élevé";
+        ratingColor = "#dc2626";
+      }
+
+      ratingElement.textContent = rating;
+      ratingElement.style.color = ratingColor;
+
+      if (diff < 0) {
+        insight.textContent =
+          "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
+      } else if (diff > 0) {
+        insight.textContent =
+          "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
+      } else {
+        insight.textContent =
+          "Votre prix est exactement dans la moyenne.";
+      }
+
+      const saving = diff < 0 ? yearlyGap : 0;
+      const monthSaving = diff < 0 ? monthlyGap : 0;
+
+      resultSaving.textContent = saving + " € / an";
+      savingMonth.textContent = "Soit " + monthSaving + " € par mois";
+
+      const bestDeals = await getBestDeals(city);
+
+      if (bestDeals.length > 0) {
+        const bestProvider = bestDeals[0][0];
+        const bestPrice = bestDeals[0][1];
+        const potentialMonthlySaving = Math.max(price - bestPrice, 0);
+        const potentialYearlySaving = potentialMonthlySaving * 12;
+
+        recommendationCard.innerHTML = `
+          <p>💡 Recommandation Prix Réel</p>
+          <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+          <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
+        `;
+      } else {
+        recommendationCard.innerHTML = "";
+      }
     }
 
     let displayPercent = ranking;
@@ -362,38 +346,40 @@ if (diff > 5) {
       displayPercent = 100 - ranking;
     }
 
+    if (isExcellentPrice) {
+      displayPercent = 100;
+    }
+
     animateCounter("percent", displayPercent, 1000);
     animateCounter("duo-percent", displayPercent, 1000);
 
-    const duoStatus = document.getElementById("duo-status");
-    
-    if (diff < 0) {
-      duoStatus.textContent = "moins cher";
-    } else if (diff > 0) {
-      duoStatus.textContent = "plus cher";
-    } else {
-      duoStatus.textContent = "moyenne";
+    if (duoStatus && !isExcellentPrice) {
+      if (diff < 0) {
+        duoStatus.textContent = "moins cher";
+      } else if (diff > 0) {
+        duoStatus.textContent = "plus cher";
+      } else {
+        duoStatus.textContent = "moyenne";
+      }
     }
 
     const scoreDot = document.querySelector(".score-dot");
-    
+
     if (scoreDot) {
-    
       scoreDot.style.transition = "none";
       scoreDot.style.left = "0%";
-    
+
       setTimeout(() => {
-    
         scoreDot.style.transition = "left 1.5s ease-out";
         scoreDot.style.left = displayPercent + "%";
-    
       }, 100);
-    
     }
 
     const rankingMessage = document.getElementById("ranking-message");
 
-    rankingMessage.style.display = "none";
+    if (rankingMessage) {
+      rankingMessage.style.display = "none";
+    }
 
     document.getElementById("result-summary").textContent =
       city + " • " + provider + " • " + offerType + " • " + speed;
@@ -413,87 +399,54 @@ if (diff > 5) {
         </div>
       </div>
     `;
-  
-    const bestDeals = await getBestDeals(city);
-    const dealsContainer = document.getElementById("best-deals-list");
 
-    dealsContainer.innerHTML = "";
+    if (!isExcellentPrice) {
+      const bestDeals = await getBestDeals(city);
+      const dealsContainer = document.getElementById("best-deals-list");
 
-    bestDeals.forEach(([dealProvider, dealPrice], index) => {
-      dealsContainer.innerHTML += `
-        <div class="deal-item">
-          <div class="deal-provider">
-            <img src="${getProviderLogo(dealProvider)}" alt="${dealProvider}">
-            <span>${index + 1}. ${dealProvider}</span>
+      dealsContainer.innerHTML = "";
+
+      bestDeals.forEach(([dealProvider, dealPrice], index) => {
+        dealsContainer.innerHTML += `
+          <div class="deal-item">
+            <div class="deal-provider">
+              <img src="${getProviderLogo(dealProvider)}" alt="${dealProvider}">
+              <span>${index + 1}. ${dealProvider}</span>
+            </div>
+            <div class="deal-price">${dealPrice} €</div>
           </div>
-          <div class="deal-price">${dealPrice} €</div>
-        </div>
-      `;
-    });
-
-    
-
-if (isExcellentPrice) {
-
-  recommendationCard.innerHTML = `
-    <p>🏆 Excellent prix</p>
-    <strong>Vous payez déjà parmi les moins chers.</strong>
-    <small>
-      Continuez simplement à surveiller les évolutions du marché.
-    </small>
-  `;
-
-} else if (bestDeals.length > 0) {
-
-  const bestProvider = bestDeals[0][0];
-  const bestPrice = bestDeals[0][1];
-  const potentialMonthlySaving = Math.max(price - bestPrice, 0);
-  const potentialYearlySaving = potentialMonthlySaving * 12;
-
-  recommendationCard.innerHTML = `
-    <p>💡 Recommandation Prix Réel</p>
-    <strong>${bestProvider} — ${bestPrice} € / mois</strong>
-    <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
-  `;
-
-} else {
-
-  recommendationCard.innerHTML = "";
-
-}
-
-
-    
-    function scrollResultToTop() {
-      const resultScreen = document.getElementById("result");
-      const app = document.querySelector(".app");
-    
-      if (resultScreen) resultScreen.scrollTop = 0;
-      if (app) app.scrollTop = 0;
-    
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+        `;
+      });
     }
 
     goTo("result");
 
     setTimeout(() => {
-    document.getElementById("result").scrollTop = 0;
+      document.getElementById("result").scrollTop = 0;
     }, 10);
 
     requestAnimationFrame(() => {
       scrollResultToTop();
-    
       setTimeout(scrollResultToTop, 100);
       setTimeout(scrollResultToTop, 300);
     });
-      
 
   } catch (error) {
     alert("Erreur Supabase : " + error.message);
     console.error(error);
   }
+}
+
+function scrollResultToTop() {
+  const resultScreen = document.getElementById("result");
+  const app = document.querySelector(".app");
+
+  if (resultScreen) resultScreen.scrollTop = 0;
+  if (app) app.scrollTop = 0;
+
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
 
 function getReliabilityShortMessage(sampleCount) {
@@ -511,7 +464,6 @@ function getReliabilityShortMessage(sampleCount) {
 
   return "✅ Comparaison fiable";
 }
-
 
 async function loadStatistics() {
   try {
@@ -546,14 +498,9 @@ async function loadStatistics() {
 }
 
 async function loadTrustCounter() {
-  console.log("Fonction loadTrustCounter exécutée");
-
   const counter = document.getElementById("trust-counter");
 
-  if (!counter) {
-    console.error("Compteur introuvable : vérifie id='trust-counter' dans le HTML");
-    return;
-  }
+  if (!counter) return;
 
   try {
     const response = await fetch(
@@ -566,16 +513,15 @@ async function loadTrustCounter() {
       }
     );
 
-    console.log("Status :", response.status);
-
     if (!response.ok) throw new Error(await response.text());
 
     const data = await response.json();
 
     counter.textContent =
-    `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
-    } catch (error) {
-      console.error("Erreur compteur :", error);
+      `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
+
+  } catch (error) {
+    console.error("Erreur compteur :", error);
 
     counter.textContent =
       "📊 Basé sur des prix réels enregistrés en Belgique";
@@ -650,6 +596,8 @@ window.addEventListener("load", () => {
 
 function animateCounter(elementId, target, duration = 2000) {
   const element = document.getElementById(elementId);
+
+  if (!element) return;
 
   const startTime = performance.now();
 
