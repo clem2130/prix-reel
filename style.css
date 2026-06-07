@@ -1517,3 +1517,31 @@ nav span {
     transform: translateY(-32px) scale(1) rotate(180deg);
   }
 }
+
+.confetti-burst {
+  position: fixed;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  z-index: 9999;
+  animation: confettiPop 2s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes confettiPop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.6) translateY(20px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2) translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(1) translateY(-80px);
+  }
+}
