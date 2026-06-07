@@ -654,3 +654,15 @@ function animateCounter(elementId, target, duration = 2000) {
 
   requestAnimationFrame(update);
 }
+
+function launchConfetti() {
+  const confetti = document.createElement("div");
+  confetti.className = "confetti-burst";
+  confetti.textContent = "🎉 🐷 🏆 🎉 🐷 🏆";
+
+  document.body.appendChild(confetti);
+
+  setTimeout(() => {
+    confetti.remove();
+  }, 2000);
+}
