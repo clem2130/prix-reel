@@ -237,8 +237,7 @@ async function calculate() {
       document.getElementById("saving-month").textContent =
         "Aucune économie significative détectée.";
     
-      piggy.className = "saving-icon piggy-superhappy";
-      pigImage.src = "piggy-superhappy.png";
+
     
       launchConfetti();
     
@@ -322,7 +321,8 @@ if (diff > 5) {
     document.getElementById("result-saving").textContent = saving + " € / an";
     document.getElementById("saving-month").textContent = "Soit " + monthSaving + " € par mois";
 
-    
+    piggy.className = "saving-icon piggy-superhappy";
+    pigImage.src = "piggy-superhappy.png";
 
     if (isExcellentPrice) {
       resultTitle.textContent = "Excellent prix !";
