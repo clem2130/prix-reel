@@ -347,7 +347,7 @@ async function calculate() {
     }
 
     if (isExcellentPrice) {
-      displayPercent = 100;
+      displayPercent = 0;
     }
 
     animateCounter("percent", displayPercent, 1000);
