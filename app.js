@@ -218,7 +218,33 @@ async function calculate() {
       price
     );
     
-    const isExcellentPrice = ranking >= 90;
+      const isExcellentPrice = ranking >= 90;
+  
+      if (isExcellentPrice) {
+  
+      document.getElementById("price-rating").textContent =
+        "🏆 Excellent prix";
+    
+      document.getElementById("price-rating").style.color =
+        "#16a34a";
+    
+      document.getElementById("price-insight").textContent =
+        "Vous faites partie des abonnements les moins chers enregistrés.";
+    
+      document.getElementById("result-saving").textContent =
+        "0 € / an";
+    
+      document.getElementById("saving-month").textContent =
+        "Aucune économie significative détectée.";
+    
+      piggy.className = "saving-icon piggy-superhappy";
+      pigImage.src = "piggy-superhappy.png";
+    
+      launchConfetti();
+    
+    }
+
+    
     const diff = price - average;
     
     const piggy = document.getElementById("piggy-container");
@@ -296,7 +322,7 @@ if (diff > 5) {
     document.getElementById("result-saving").textContent = saving + " € / an";
     document.getElementById("saving-month").textContent = "Soit " + monthSaving + " € par mois";
 
-    const isExcellentPrice = userPrice <= averagePrice * 0.9;
+    
 
     if (isExcellentPrice) {
       resultTitle.textContent = "Excellent prix !";
