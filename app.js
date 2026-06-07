@@ -293,8 +293,28 @@ if (diff > 5) {
     const monthSaving = diff < 0 ? monthlyGap : 0;
 
     document.getElementById("result-saving").textContent = saving + " € / an";
-    document.getElementById("saving-month").textContent =
-      "Soit " + monthSaving + " € par mois";
+    document.getElementById("saving-month").textContent = "Soit " + monthSaving + " € par mois";
+
+    const isExcellentPrice = userPrice <= averagePrice * 0.9;
+
+    if (isExcellentPrice) {
+      resultTitle.textContent = "Excellent prix !";
+      resultSummary.innerHTML =
+        "🏆 Félicitations, vous faites partie des abonnements les moins chers enregistrés.";
+    
+      resultSaving.textContent = "0 € / an";
+      savingMonth.textContent = "Aucune économie significative détectée pour le moment.";
+    
+      recommendationCard.innerHTML = `
+        <h3>Vous payez déjà un très bon prix</h3>
+        <p>Votre facture est déjà très compétitive par rapport aux prix réellement payés près de chez vous.</p>
+      `;
+    
+      if (duoPercent) duoPercent.textContent = "Excellent";
+      if (duoStatus) duoStatus.textContent = "prix";
+      
+      return;
+    }
 
     let displayPercent = ranking;
 
