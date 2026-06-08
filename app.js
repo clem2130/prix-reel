@@ -64,23 +64,6 @@ async function getAveragePrice(city, provider, offerType, speed) {
   if (!response.ok) throw new Error(await response.text());
 
   const data = await response.json();
-
-  if (!data || data.length === 0) return null;
-
-  const total = data.reduce(
-    (sum, item) => sum + Number(item.Monthly_price),
-    0
-  );
-
-  return {
-    average: Math.round(total / data.length),
-    count: data.length
-  };
-}
-
-  if (!response.ok) throw new Error(await response.text());
-
-  const data = await response.json();
   if (!data || data.length === 0) return null;
 
   const total = data.reduce((sum, item) => sum + Number(item.Monthly_price), 0);
@@ -89,6 +72,36 @@ async function getAveragePrice(city, provider, offerType, speed) {
     average: Math.round(total / data.length),
     count: data.length
   };
+}
+
+async function getRanking(city, provider, offerType, speed, userPrice) {
+  let url =
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price` +
+    `&City=eq.${encodeURIComponent(city)}` +
+    `&Provider=eq.${encodeURIComponent(provider)}` +
+    `&Offer_type=eq.${encodeURIComponent(offerType)}`;
+
+  if (speed !== "unknown") {
+    url += `&Speed=eq.${encodeURIComponent(speed)}`;
+  }
+
+  const response = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+    }
+  });
+
+  if (!response.ok) throw new Error(await response.text());
+
+  const data = await response.json();
+  if (!data || data.length === 0) return 50;
+
+  const moreExpensiveCount = data.filter(
+    item => Number(item.Monthly_price) > userPrice
+  ).length;
+
+  return Math.round((moreExpensiveCount / data.length) * 100);
 }
 
 async function getBestDeals(city) {
@@ -119,50 +132,6 @@ async function getBestDeals(city) {
   return Object.entries(cheapest)
     .sort((a, b) => a[1] - b[1])
     .slice(0, 5);
-}
-
-async function getRanking(city, provider, offerType, speed, userPrice) {
-  let url =
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price` +
-    `&City=eq.${encodeURIComponent(city)}` +
-    `&Provider=eq.${encodeURIComponent(provider)}` +
-    `&Offer_type=eq.${encodeURIComponent(offerType)}`;
-
-  if (speed !== "unknown") {
-    url += `&Speed=eq.${encodeURIComponent(speed)}`;
-  }
-
-  const response = await fetch(url, {
-    headers: {
-      apikey: SUPABASE_ANON_KEY,
-      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-    }
-  });
-
-  if (!response.ok) throw new Error(await response.text());
-
-  const data = await response.json();
-
-  if (!data || data.length === 0) return 50;
-
-  const moreExpensiveCount = data.filter(
-    item => Number(item.Monthly_price) > userPrice
-  ).length;
-
-  return Math.round((moreExpensiveCount / data.length) * 100);
-}
-
-  if (!response.ok) throw new Error(await response.text());
-
-  const data = await response.json();
-
-  if (!data || data.length === 0) return 50;
-
-  const moreExpensiveCount = data.filter(
-    item => Number(item.Monthly_price) > userPrice
-  ).length;
-
-  return Math.round((moreExpensiveCount / data.length) * 100);
 }
 
 async function savePriceToSupabase(city, provider, monthlyPrice, offerType, speed, extraServices) {
@@ -260,7 +229,6 @@ async function calculate() {
     if (isExcellentPrice) {
       ratingElement.textContent = "🏆 Excellent prix !";
       ratingElement.style.color = "#16a34a";
-
       insight.textContent = "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
       resultSaving.textContent = "0 € / an";
       savingMonth.textContent = "Aucune économie significative détectée.";
@@ -281,7 +249,6 @@ async function calculate() {
       `;
 
       launchConfetti();
-
     } else {
       if (diff > 5) {
         if (piggy && pigImage) {
@@ -290,357 +257,4 @@ async function calculate() {
         }
       } else if (diff >= -5 && diff <= 5) {
         if (piggy && pigImage) {
-          piggy.className = "saving-icon piggy-neutral";
-          pigImage.src = "piggy-neutral.png";
-        }
-      } else {
-        const savingsPercent = Math.abs(((average - price) / average) * 100);
-
-        if (savingsPercent < 15) {
-          if (piggy && pigImage) {
-            piggy.className = "saving-icon piggy-happy";
-            pigImage.src = "piggy-happy.png";
-          }
-        } else {
-          if (piggy && pigImage) {
-            piggy.className = "saving-icon piggy-superhappy";
-            pigImage.src = "piggy-superhappy.png";
-          }
-        }
-      }
-
-      let rating = "";
-      let ratingColor = "";
-
-      if (diff <= -10) {
-        rating = "🟢 Excellent prix";
-        ratingColor = "#16a34a";
-      } else if (diff <= 5) {
-        rating = "🟠 Prix correct";
-        ratingColor = "#f59e0b";
-      } else {
-        rating = "🔴 Prix élevé";
-        ratingColor = "#dc2626";
-      }
-
-      ratingElement.textContent = rating;
-      ratingElement.style.color = ratingColor;
-
-      if (diff < 0) {
-        insight.textContent = "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
-      } else if (diff > 0) {
-        insight.textContent = "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
-      } else {
-        insight.textContent = "Votre prix est exactement dans la moyenne.";
-      }
-
-      const saving = diff > 0 ? yearlyGap : 0;
-      const monthSaving = diff > 0 ? monthlyGap : 0;
-
-      resultSaving.textContent = saving + " € / an";
-      savingMonth.textContent = "Soit " + monthSaving + " € par mois";
-
-      const bestDeals = await getBestDeals(city);
-
-      if (bestDeals.length > 0) {
-        const bestProvider = bestDeals[0][0];
-        const bestPrice = bestDeals[0][1];
-        const potentialMonthlySaving = Math.max(price - bestPrice, 0);
-        const potentialYearlySaving = potentialMonthlySaving * 12;
-
-        recommendationCard.innerHTML = `
-          <p>💡 Recommandation Prix Réel</p>
-          <strong>${bestProvider} — ${bestPrice} € / mois</strong>
-          <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
-        `;
-      } else {
-        recommendationCard.innerHTML = "";
-      }
-    }
-
-    let gapPercent = 0;
-
-    if (average > 0) {
-      gapPercent = Math.round((Math.abs(diff) / average) * 100);
-    }
-
-    let displayPercent = 50;
-
-    if (diff < 0) {
-      displayPercent = Math.max(0, 50 - gapPercent);
-    } else if (diff > 0) {
-      displayPercent = Math.min(100, 50 + gapPercent);
-    }
-
-    if (isExcellentPrice) {
-      displayPercent = 0;
-    }
-
-    animateCounter("percent", gapPercent, 1000);
-    animateCounter("duo-percent", gapPercent, 1000);
-
-    if (duoStatus && !isExcellentPrice) {
-      if (diff < 0) {
-        duoStatus.textContent = "moins cher";
-      } else if (diff > 0) {
-        duoStatus.textContent = "plus cher";
-      } else {
-        duoStatus.textContent = "moyenne";
-      }
-    }
-
-    const scoreDot = document.querySelector(".score-dot");
-
-    if (scoreDot) {
-      scoreDot.style.transition = "none";
-      scoreDot.style.left = "0%";
-
-      setTimeout(() => {
-        scoreDot.style.transition = "left 1.5s ease-out";
-        scoreDot.style.left = displayPercent + "%";
-      }, 100);
-    }
-
-    const rankingMessage = document.getElementById("ranking-message");
-
-    if (rankingMessage) {
-      rankingMessage.style.display = "none";
-    }
-
-    document.getElementById("result-summary").textContent =
-      city + " • " + provider + " • " + offerType + " • " + speed;
-
-    const quality = document.getElementById("data-quality");
-
-    quality.innerHTML = `
-      <div class="quality-clean-card">
-        <div class="quality-icon">👥</div>
-        <div class="quality-content">
-          <strong>${sampleCount} ${
-            sampleCount > 1
-              ? "abonnements similaires analysés"
-              : "abonnement similaire analysé"
-          }</strong>
-          <span class="quality-badge">${getReliabilityShortMessage(sampleCount)}</span>
-        </div>
-      </div>
-    `;
-
-    if (!isExcellentPrice) {
-      const bestDeals = await getBestDeals(city);
-      const dealsContainer = document.getElementById("best-deals-list");
-
-      if (dealsContainer) {
-        dealsContainer.innerHTML = "";
-
-        bestDeals.forEach(([dealProvider, dealPrice], index) => {
-          dealsContainer.innerHTML += `
-            <div class="deal-item">
-              <div class="deal-provider">
-                <img src="${getProviderLogo(dealProvider)}" alt="${dealProvider}">
-                <span>${index + 1}. ${dealProvider}</span>
-              </div>
-              <div class="deal-price">${dealPrice} €</div>
-            </div>
-          `;
-        });
-      }
-    }
-
-    goTo("result");
-
-    setTimeout(() => {
-      scrollResultToTop();
-    }, 10);
-
-    requestAnimationFrame(() => {
-      scrollResultToTop();
-      setTimeout(scrollResultToTop, 100);
-      setTimeout(scrollResultToTop, 300);
-    });
-
-  } catch (error) {
-    alert("Erreur Supabase : " + error.message);
-    console.error(error);
-  }
-}
-
-function scrollResultToTop() {
-  const resultScreen = document.getElementById("result");
-  const app = document.querySelector(".app");
-
-  if (resultScreen) resultScreen.scrollTop = 0;
-  if (app) app.scrollTop = 0;
-
-  window.scrollTo(0, 0);
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
-}
-
-function getReliabilityShortMessage(sampleCount) {
-  if (sampleCount <= 2) return "🔴 Données limitées";
-  if (sampleCount <= 4) return "🟠 Tendance indicative";
-  if (sampleCount <= 9) return "🟢 Comparaison utile";
-
-  return "✅ Comparaison fiable";
-}
-
-async function loadStatistics() {
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
-      {
-        headers: {
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-        }
-      }
-    );
-
-    if (!response.ok) throw new Error(await response.text());
-
-    const data = await response.json();
-
-    if (!data || data.length === 0) return;
-
-    const prices = data.map(item => Number(item.Monthly_price));
-
-    document.getElementById("stats-total").textContent = prices.length;
-    document.getElementById("stats-average").textContent =
-      Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) + " €";
-    document.getElementById("stats-min").textContent = Math.min(...prices) + " €";
-    document.getElementById("stats-max").textContent = Math.max(...prices) + " €";
-
-  } catch (error) {
-    alert("Erreur stats : " + error.message);
-    console.error(error);
-  }
-}
-
-async function loadTrustCounter() {
-  const counter = document.getElementById("trust-counter");
-
-  if (!counter) return;
-
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
-      {
-        headers: {
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-        }
-      }
-    );
-
-    if (!response.ok) throw new Error(await response.text());
-
-    const data = await response.json();
-
-    counter.textContent =
-      `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
-
-  } catch (error) {
-    console.error("Erreur compteur :", error);
-    counter.textContent = "📊 Basé sur des prix réels enregistrés en Belgique";
-  }
-}
-
-const cityInput = document.getElementById("citySearch");
-const citySuggestions = document.getElementById("citySuggestions");
-
-async function searchCities(query) {
-  if (!cityInput || !citySuggestions) return;
-
-  if (query.length < 2) {
-    citySuggestions.innerHTML = "";
-    return;
-  }
-
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/belgian_cities?select=name&name=ilike.*${encodeURIComponent(query)}*&order=name.asc&limit=10`,
-      {
-        headers: {
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-        }
-      }
-    );
-
-    if (!response.ok) throw new Error(await response.text());
-
-    const cities = await response.json();
-
-    citySuggestions.innerHTML = "";
-
-    cities.forEach(city => {
-      const item = document.createElement("div");
-      item.className = "city-suggestion";
-      item.textContent = city.name;
-
-      item.onclick = () => {
-        cityInput.value = city.name;
-        citySuggestions.innerHTML = "";
-      };
-
-      citySuggestions.appendChild(item);
-    });
-
-  } catch (error) {
-    console.error("Erreur recherche villes :", error);
-  }
-}
-
-if (cityInput && citySuggestions) {
-  cityInput.addEventListener("input", () => {
-    searchCities(cityInput.value.trim());
-  });
-
-  document.addEventListener("click", event => {
-    if (!event.target.closest(".city-autocomplete")) {
-      citySuggestions.innerHTML = "";
-    }
-  });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  loadTrustCounter();
-});
-
-window.addEventListener("load", () => {
-  loadTrustCounter();
-});
-
-function animateCounter(elementId, target, duration = 2000) {
-  const element = document.getElementById(elementId);
-
-  if (!element) return;
-
-  const startTime = performance.now();
-
-  function update(currentTime) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-
-    element.textContent = Math.round(target * progress) + "%";
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    }
-  }
-
-  requestAnimationFrame(update);
-}
-
-function launchConfetti() {
-  const confetti = document.createElement("div");
-  confetti.className = "confetti-burst";
-  confetti.textContent = "🎉 🐷 🏆 🎉 🐷 🏆";
-
-  document.body.appendChild(confetti);
-
-  setTimeout(() => {
-    confetti.remove();
-  }, 2000);
-}
+          piggy.className = "saving-icon piggy
