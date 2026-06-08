@@ -91,21 +91,7 @@ async function getCityInfo(cityName) {
   return data[0] || null;
 }
 
-async function getPricesByCities(cities, provider, offerType, speed) {
-  const cityList = cities.map(city => `"${city}"`).join(",");
 
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City&City=in.(${cityList})&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
-    {
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-      }
-    }
-  );
-
-  return await response.json();
-}
 
 async function getCitiesByZone(column, value) {
   const response = await fetch(
@@ -117,6 +103,29 @@ async function getCitiesByZone(column, value) {
       }
     }
   );
+  
+  async function getPricesByCities(cities, provider, offerType, speed) {
+  const cityList = cities.map(city => `"${city}"`).join(",");
+
+  let url =
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City` +
+    `&City=in.(${cityList})` +
+    `&Provider=eq.${encodeURIComponent(provider)}` +
+    `&Offer_type=eq.${encodeURIComponent(offerType)}`;
+
+  if (speed !== "unknown") {
+    url += `&Speed=eq.${encodeURIComponent(speed)}`;
+  }
+
+  const response = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+    }
+  });
+
+  return await response.json();
+  }
 
   const data = await response.json();
   return data.map(city => city.name);
@@ -170,8 +179,16 @@ async function getSimilarPricesSmart(city, provider, offerType, speed) {
   }
 
   // 4. Belgique entière
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
+  let url =
+  `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City` +
+  `&Provider=eq.${encodeURIComponent(provider)}` +
+  `&Offer_type=eq.${encodeURIComponent(offerType)}`;
+
+if (speed !== "unknown") {
+  url += `&Speed=eq.${encodeURIComponent(speed)}`;
+}
+
+const response = await fetch(url, {
     {
       headers: {
         apikey: SUPABASE_ANON_KEY,
