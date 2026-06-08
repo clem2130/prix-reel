@@ -359,8 +359,8 @@ async function calculate() {
     displayPercent = 0;
     }
 
-    animateCounter("percent", displayPercent, 1000);
-    animateCounter("duo-percent", displayPercent, 1000);
+    animateCounter("percent", gapPercent, 1000);
+    animateCounter("duo-percent", gapPercent, 1000);
 
     if (duoStatus && !isExcellentPrice) {
       if (diff < 0) {
