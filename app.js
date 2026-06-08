@@ -304,7 +304,7 @@ async function calculate() {
   }
 
   if (price < 10 || price > 200) {
-    alert("Veuillez entrer un prix Internet rÃ©aliste.");
+    alert("Veuillez entrer un prix Internet réaliste.");
     return;
   }
 
@@ -319,7 +319,7 @@ async function calculate() {
 const similarPrices = resultData.prices;
 
 if (!similarPrices || similarPrices.length === 0) {
-  alert("Nous n'avons pas encore assez de donnÃ©es pour comparer cet abonnement.");
+  alert("Nous n'avons pas encore assez de données pour comparer cet abonnement.");
   return;
 }
 
@@ -347,11 +347,11 @@ let sampleCount = similarPrices.length;
     const duoStatus = document.getElementById("duo-status");
 
     if (isExcellentPrice) {
-      ratingElement.textContent = "ðŸ† Excellent prix !";
+      ratingElement.textContent = "🏆 Excellent prix !";
       ratingElement.style.color = "#16a34a";
-      insight.textContent = "ðŸ· FÃ©licitations ! Vous faites partie des abonnements les moins chers enregistrÃ©s.";
-      resultSaving.textContent = "0 â‚¬ / an";
-      savingMonth.textContent = "Aucune Ã©conomie significative dÃ©tectÃ©e.";
+      insight.textContent = "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
+      resultSaving.textContent = "0 € / an";
+      savingMonth.textContent = "Aucune économie significative détectée.";
 
       if (piggy && pigImage) {
         piggy.className = "saving-icon piggy-superhappy";
@@ -363,10 +363,10 @@ let sampleCount = similarPrices.length;
       }
 
       recommendationCard.innerHTML = `
-        <p>ðŸ† Excellent prix</p>
-        <strong>Vous payez dÃ©jÃ  parmi les moins chers.</strong>
-        <small>Continuez simplement Ã  surveiller les Ã©volutions du marchÃ©.</small>
-      `;
+  <p>🏆 Excellent prix</p>
+  <strong>Vous payez déjà parmi les moins chers.</strong>
+  <small>Continuez simplement à surveiller les évolutions du marché.</small>
+`;
 
       launchConfetti();
     } else {
@@ -400,23 +400,23 @@ let sampleCount = similarPrices.length;
       let ratingColor = "";
 
       if (diff <= -10) {
-        rating = "ðŸŸ¢ Excellent prix";
-        ratingColor = "#16a34a";
-      } else if (diff <= 5) {
-        rating = "ðŸŸ  Prix correct";
-        ratingColor = "#f59e0b";
-      } else {
-        rating = "ðŸ”´ Prix Ã©levÃ©";
-        ratingColor = "#dc2626";
+  rating = "🟢 Excellent prix";
+  ratingColor = "#16a34a";
+} else if (diff <= 5) {
+  rating = "🟡 Prix correct";
+  ratingColor = "#f59e0b";
+} else {
+  rating = "🔴 Prix élevé";
+  ratingColor = "#dc2626";
       }
 
       ratingElement.textContent = rating;
       ratingElement.style.color = ratingColor;
 
       if (diff < 0) {
-        insight.textContent = "Vous payez " + monthlyGap + " â‚¬ de moins par mois que la moyenne.";
+        insight.textContent = "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
       } else if (diff > 0) {
-        insight.textContent = "Vous payez " + monthlyGap + " â‚¬ de plus par mois que la moyenne.";
+        insight.textContent = "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
       } else {
         insight.textContent = "Votre prix est exactement dans la moyenne.";
       }
@@ -424,8 +424,8 @@ let sampleCount = similarPrices.length;
       const saving = diff > 0 ? yearlyGap : 0;
       const monthSaving = diff > 0 ? monthlyGap : 0;
 
-      resultSaving.textContent = saving + " â‚¬ / an";
-      savingMonth.textContent = "Soit " + monthSaving + " â‚¬ par mois";
+      resultSaving.textContent = saving + " € / an";
+      savingMonth.textContent = "Soit " + monthSaving + " € par mois";
 
       const bestDeals = await getBestDeals(city);
 
@@ -436,10 +436,10 @@ let sampleCount = similarPrices.length;
         const potentialYearlySaving = potentialMonthlySaving * 12;
 
         recommendationCard.innerHTML = `
-          <p>ðŸ’¡ Recommandation Prix RÃ©el</p>
-          <strong>${bestProvider} â€” ${bestPrice} â‚¬ / mois</strong>
-          <small>Ã‰conomie potentielle : ${potentialYearlySaving} â‚¬ / an</small>
-        `;
+  <p>💡 Recommandation Prix Réel</p>
+  <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+  <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
+`;
       } else {
         recommendationCard.innerHTML = "";
       }
@@ -497,7 +497,7 @@ let sampleCount = similarPrices.length;
     const speedLabel = speed === "unknown" ? "Vitesse inconnue" : speed;
 
     document.getElementById("result-summary").textContent =
-      city + " â€¢ " + provider + " â€¢ " + offerType + " â€¢ " + speedLabel;
+  city + " • " + provider + " • " + offerType + " • " + speedLabel;
 
     const quality = document.getElementById("data-quality");
 
@@ -506,15 +506,15 @@ let sampleCount = similarPrices.length;
     if (speed === "unknown") {
       speedInfo = `
         <small style="display:block;margin-top:8px;color:#64748b;">
-          Comparaison rÃ©alisÃ©e sans tenir compte de la vitesse internet.
-        </small>
+  Comparaison réalisée sans tenir compte de la vitesse internet.
+</small>
       `;
     }
 
     let zoneLabel = "";
 
 if (resultData.level === "city") {
-  zoneLabel = `Ã  ${resultData.label}`;
+  zoneLabel = `à  ${resultData.label}`;
 } else if (resultData.level === "province") {
   zoneLabel = `dans la province de ${resultData.label}`;
 } else if (resultData.level === "region") {
@@ -525,14 +525,14 @@ if (resultData.level === "city") {
 
 quality.innerHTML = `
   <div class="quality-clean-card">
-    <div class="quality-icon">ðŸ‘¥</div>
+    <div class="quality-icon">👥</div>
 
     <div class="quality-content">
       <strong>
         ${sampleCount}
         ${sampleCount > 1
-          ? " abonnements similaires analysÃ©s "
-          : " abonnement similaire analysÃ© "}
+          ? " abonnements similaires analysés "
+          : " abonnement similaire analysé "}
         ${zoneLabel}
       </strong>
 
@@ -543,7 +543,7 @@ quality.innerHTML = `
       ${
         resultData.level !== "city"
           ? `<small style="display:block;margin-top:8px;color:#64748b;">
-              DonnÃ©es locales insuffisantes : comparaison Ã©largie automatiquement.
+              Données locales insuffisantes : comparaison élargie automatiquement.
             </small>`
           : ""
       }
@@ -567,7 +567,8 @@ quality.innerHTML = `
                 <img src="${getProviderLogo(dealProvider)}" alt="${dealProvider}">
                 <span>${index + 1}. ${dealProvider}</span>
               </div>
-              <div class="deal-price">${dealPrice} â‚¬</div>
+              <div class="deal-price">${dealPrice} €
+              </div>
             </div>
           `;
         });
@@ -604,11 +605,14 @@ function scrollResultToTop() {
 }
 
 function getReliabilityShortMessage(sampleCount) {
-  if (sampleCount <= 2) return "ðŸ”´ DonnÃ©es limitÃ©es";
-  if (sampleCount <= 4) return "ðŸŸ  Tendance indicative";
-  if (sampleCount <= 9) return "ðŸŸ¢ Comparaison utile";
+  if (sampleCount <= 2) return "🔴 Données limitées";
+  if (sampleCount <= 4) return "🟡 Tendance indicative";
+  if (sampleCount <= 9) return "🟢 Comparaison utile";
 
-  return "âœ… Comparaison fiable";
+  return "✅ Comparaison fiable";
+}
+
+  return "✅ Comparaison fiable";
 }
 
 async function loadStatistics() {
@@ -632,9 +636,9 @@ async function loadStatistics() {
 
     document.getElementById("stats-total").textContent = prices.length;
     document.getElementById("stats-average").textContent =
-      Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) + " â‚¬";
-    document.getElementById("stats-min").textContent = Math.min(...prices) + " â‚¬";
-    document.getElementById("stats-max").textContent = Math.max(...prices) + " â‚¬";
+      Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) + " €";
+    document.getElementById("stats-min").textContent = Math.min(...prices) + " €";
+    document.getElementById("stats-max").textContent = Math.max(...prices) + " €";
   } catch (error) {
     alert("Erreur stats : " + error.message);
     console.error(error);
@@ -662,10 +666,10 @@ async function loadTrustCounter() {
     const data = await response.json();
 
     counter.textContent =
-      `ðŸ“Š BasÃ© sur ${data.length} prix rÃ©els enregistrÃ©s en Belgique`;
+      `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
   } catch (error) {
     console.error("Erreur compteur :", error);
-    counter.textContent = "ðŸ“Š BasÃ© sur des prix rÃ©els enregistrÃ©s en Belgique";
+    counter.textContent = "📊 Basé sur des prix réels enregistrés en Belgique";
   }
 }
 
@@ -758,7 +762,7 @@ function animateCounter(elementId, target, duration = 2000) {
 function launchConfetti() {
   const confetti = document.createElement("div");
   confetti.className = "confetti-burst";
-  confetti.textContent = "ðŸŽ‰ ðŸ· ðŸ† ðŸŽ‰ ðŸ· ðŸ†";
+  confetti.textContent = "🎉 🎊 🐷 🏆 🎉 🎊";
 
   document.body.appendChild(confetti);
 
