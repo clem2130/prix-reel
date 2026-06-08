@@ -1,5 +1,6 @@
 const SUPABASE_URL = "https://mmkubcgomhgkcbnsukze.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
+let selectedCityData = null;
 
 function goTo(id) {
   document.querySelectorAll(".screen").forEach(screen => {
@@ -700,21 +701,23 @@ async function searchCities(query) {
     citySuggestions.innerHTML = "";
 
     cities.forEach(city => {
-      const item = document.createElement("div");
-      item.className = "city-suggestion";
-      item.textContent = city.name;
-
-      item.onclick = () => {
-        cityInput.value = city.name;
-        citySuggestions.innerHTML = "";
+    const item = document.createElement("div");
+    item.className = "city-suggestion";
+    item.textContent = `${city.name} (${city.province})`;
+  
+    item.onclick = () => {
+      selectedCityData = {
+        name: city.name,
+        province: city.province,
+        region: city.region
       };
-
-      citySuggestions.appendChild(item);
-    });
-  } catch (error) {
-    console.error("Erreur recherche villes :", error);
-  }
-}
+  
+      cityInput.value = city.name;
+      citySuggestions.innerHTML = "";
+    };
+  
+    citySuggestions.appendChild(item);
+  });
 
 if (cityInput && citySuggestions) {
   cityInput.addEventListener("input", () => {
