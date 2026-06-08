@@ -1633,7 +1633,15 @@ nav span {
 
 
 .community-message {
+  text-align: center;
+  padding: 20px 24px;
+  margin-top: 20px;
   margin-bottom: 10px;
+}
+
+.community-message p {
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .city-footer {
