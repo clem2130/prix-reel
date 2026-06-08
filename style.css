@@ -1822,3 +1822,7 @@ nav span {
   font-weight: 500;
   opacity: 0.95;
 }
+
+.footer-separator {
+  height: 40px;
+}
