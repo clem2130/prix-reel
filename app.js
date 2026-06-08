@@ -685,7 +685,7 @@ async function searchCities(query) {
 
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/belgian_cities?select=name&name=ilike.*${encodeURIComponent(query)}*&order=name.asc&limit=10`,
+      `${SUPABASE_URL}/rest/v1/belgian_cities?select=name,province,region&name=ilike.*${encodeURIComponent(query)}*&order=name.asc&limit=10`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
@@ -701,36 +701,40 @@ async function searchCities(query) {
     citySuggestions.innerHTML = "";
 
     cities.forEach(city => {
-    const item = document.createElement("div");
-    item.className = "city-suggestion";
-    item.textContent = `${city.name} (${city.province})`;
-  
-    item.onclick = () => {
-      selectedCityData = {
-        name: city.name,
-        province: city.province,
-        region: city.region
+      const item = document.createElement("div");
+      item.className = "city-suggestion";
+
+      item.textContent = city.province
+        ? `${city.name} (${city.province})`
+        : city.name;
+
+      item.onclick = () => {
+        selectedCityData = {
+          name: city.name,
+          province: city.province || null,
+          region: city.region || null
+        };
+
+        cityInput.value = city.name;
+        citySuggestions.innerHTML = "";
       };
-  
-      cityInput.value = city.name;
-      citySuggestions.innerHTML = "";
-    };
-  
-    citySuggestions.appendChild(item);
-  });
 
-if (cityInput && citySuggestions) {
-  cityInput.addEventListener("input", () => {
-    searchCities(cityInput.value.trim());
-  });
+      citySuggestions.appendChild(item);
+    });
 
-  document.addEventListener("click", event => {
-    if (!event.target.closest(".city-autocomplete")) {
-      citySuggestions.innerHTML = "";
-    }
-  });
+  } catch (error) {
+    console.error("Erreur recherche villes :", error);
+  }
 }
 
+
+
+
+
+
+
+
+    
 document.addEventListener("DOMContentLoaded", () => {
   loadTrustCounter();
 });
@@ -739,6 +743,8 @@ window.addEventListener("load", () => {
   loadTrustCounter();
 });
 
+
+    
 function animateCounter(elementId, target, duration = 2000) {
   const element = document.getElementById(elementId);
 
