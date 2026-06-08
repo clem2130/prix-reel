@@ -315,12 +315,11 @@ async function calculate() {
         insight.textContent =
           "Votre prix est exactement dans la moyenne.";
       }
-
-      const saving = diff < 0 ? yearlyGap : 0;
-      const monthSaving = diff < 0 ? monthlyGap : 0;
-
       const saving = diff > 0 ? yearlyGap : 0;
       const monthSaving = diff > 0 ? monthlyGap : 0;
+
+      resultSaving.textContent = saving + " € / an";
+      savingMonth.textContent = "Soit " + monthSaving + " € par mois";
 
       const bestDeals = await getBestDeals(city);
 
