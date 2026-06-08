@@ -1581,3 +1581,39 @@ nav span {
   line-height: 1.4;
   color: #6b7280;
 }
+
+.extra-services-row {
+  display: grid !important;
+  grid-template-columns: 18px 1fr !important;
+  column-gap: 14px !important;
+  align-items: start !important;
+  margin: 18px 0 28px !important;
+}
+
+#hasExtraServices {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  margin: 5px 0 0 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  appearance: auto !important;
+}
+
+.extra-services-row label {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.extra-services-row label strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.extra-services-row label small {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+}
