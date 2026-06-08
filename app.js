@@ -95,15 +95,24 @@ async function getCityInfo(cityName) {
 async function getPricesByCities(cities, provider, offerType, speed) {
   const cityList = cities.map(city => `"${city}"`).join(",");
 
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City&City=in.(${cityList})&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
-    {
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-      }
+  let url =
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City` +
+    `&City=in.(${cityList})` +
+    `&Provider=eq.${encodeURIComponent(provider)}` +
+    `&Offer_type=eq.${encodeURIComponent(offerType)}`;
+
+  if (speed !== "unknown") {
+    url += `&Speed=eq.${encodeURIComponent(speed)}`;
+  }
+
+  const response = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
     }
-  );
+  });
+
+  if (!response.ok) throw new Error(await response.text());
 
   return await response.json();
 }
