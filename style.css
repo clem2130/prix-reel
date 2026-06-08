@@ -1655,3 +1655,44 @@ nav span {
   vertical-align: middle;
   margin-right: 12px;
 }
+.community-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+
+  padding: 22px;
+  margin: 24px 0;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.community-shield {
+  width: 56px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.community-content {
+  flex: 1;
+}
+
+.community-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.35rem;
+  color: #06245c;
+}
+
+.community-content p {
+  margin: 0;
+  color: #5f6b7a;
+  line-height: 1.5;
+}
+
+.community-icon {
+  font-size: 42px;
+  flex-shrink: 0;
+}
