@@ -1545,3 +1545,35 @@ nav span {
     transform: translateX(-50%) scale(1) translateY(-80px);
   }
 }
+
+.extra-services-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.extra-services-row input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.extra-services-row label {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: #06245c;
+}
+
+.extra-services-row label strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.extra-services-row label small {
+  margin-top: 4px;
+  color: #6b7280;
+  line-height: 1.4;
+}
