@@ -269,13 +269,15 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType, spee
       Prefer: "return=representation"
     },
     body: JSON.stringify({
-      City: city,
-      Provider: provider,
-      Monthly_price: monthlyPrice,
-      Offer_type: offerType,
-      Speed: speed,
-      extra_services: extraServices
-    })
+    City: city,
+    Provider: provider,
+    Monthly_price: monthlyPrice,
+    Offer_type: offerType,
+    Speed: speed,
+    extra_services: extraServices,
+    province: selectedCityData?.province || null,
+    region: selectedCityData?.region || null
+  })
   });
 
   if (!response.ok) throw new Error(await response.text());
