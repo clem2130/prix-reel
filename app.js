@@ -548,7 +548,7 @@ let sampleCount = similarPrices.length;
 
     let speedInfo = "";
 
-    if (speed === "unknown") {
+    if (speed === "unknown" || resultData.ignoredSpeed) {
       speedInfo = `
         <small style="display:block;margin-top:8px;color:#64748b;">
   Comparaison réalisée sans tenir compte de la vitesse internet.
