@@ -612,8 +612,6 @@ function getReliabilityShortMessage(sampleCount) {
   return "✅ Comparaison fiable";
 }
 
-  return "✅ Comparaison fiable";
-}
 
 async function loadStatistics() {
   try {
