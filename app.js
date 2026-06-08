@@ -319,8 +319,8 @@ async function calculate() {
       const saving = diff < 0 ? yearlyGap : 0;
       const monthSaving = diff < 0 ? monthlyGap : 0;
 
-      resultSaving.textContent = saving + " € / an";
-      savingMonth.textContent = "Soit " + monthSaving + " € par mois";
+      const saving = diff > 0 ? yearlyGap : 0;
+      const monthSaving = diff > 0 ? monthlyGap : 0;
 
       const bestDeals = await getBestDeals(city);
 
@@ -340,14 +340,14 @@ async function calculate() {
       }
     }
 
-    let displayPercent = ranking;
+    let displayPercent = 0;
 
-    if (diff < 0) {
-      displayPercent = 100 - ranking;
+    if (average > 0) {
+    displayPercent = Math.round((Math.abs(diff) / average) * 100);
     }
 
-    if (isExcellentPrice) {
-      displayPercent = 0;
+    if (isExcellentPrice || diff === 0) {
+    displayPercent = 0;
     }
 
     animateCounter("percent", displayPercent, 1000);
