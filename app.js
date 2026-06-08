@@ -341,11 +341,21 @@ async function calculate() {
 
     let displayPercent = 0;
 
+    let gapPercent = 0;
+
     if (average > 0) {
-    displayPercent = Math.round((Math.abs(diff) / average) * 100);
+    gapPercent = Math.round((Math.abs(diff) / average) * 100);
     }
 
-    if (isExcellentPrice || diff === 0) {
+    let displayPercent = 50;
+
+    if (diff < 0) {
+    displayPercent = Math.max(0, 50 - gapPercent);
+    } else if (diff > 0) {
+    displayPercent = Math.min(100, 50 + gapPercent);
+    }
+
+    if (isExcellentPrice) {
     displayPercent = 0;
     }
 
