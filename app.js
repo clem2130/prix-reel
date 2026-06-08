@@ -135,50 +135,73 @@ async function getCitiesByZone(column, value) {
 async function getSimilarPricesSmart(city, provider, offerType, speed) {
   const cityInfo = await getCityInfo(city);
 
-  // 1. Commune — même type d'offre, vitesse si connue, tous fournisseurs
   let prices = await getPricesByCities([city], offerType, speed);
+
+  if (prices.length >= MIN_RESULTS) {
+    return { prices, level: "city", label: city };
+  }
+
+  if (!cityInfo) {
+    return await getBelgiumPricesFallback(offerType, speed);
+  }
+
+  const provinceCities = await getCitiesByZone("province", cityInfo.province);
+  prices = await getPricesByCities(provinceCities, offerType, speed);
+
+  if (prices.length >= MIN_RESULTS) {
+    return { prices, level: "province", label: cityInfo.province };
+  }
+
+  const regionCities = await getCitiesByZone("region", cityInfo.region);
+  prices = await getPricesByCities(regionCities, offerType, speed);
+
+  if (prices.length >= MIN_RESULTS) {
+    return { prices, level: "region", label: cityInfo.region };
+  }
+
+  let belgiumResult = await getBelgiumPricesFallback(offerType, speed);
+
+  if (belgiumResult.prices.length >= MIN_RESULTS) {
+    return belgiumResult;
+  }
+
+  prices = await getPricesByCities([city], offerType, "unknown");
 
   if (prices.length >= MIN_RESULTS) {
     return {
       prices,
       level: "city",
-      label: city
+      label: city,
+      ignoredSpeed: true
     };
   }
 
-  if (!cityInfo) {
-    return {
-      prices,
-      level: "belgium",
-      label: "Belgique"
-    };
-  }
-
-  // 2. Province
-  const provinceCities = await getCitiesByZone("province", cityInfo.province);
-  prices = await getPricesByCities(provinceCities, offerType, speed);
+  prices = await getPricesByCities(provinceCities, offerType, "unknown");
 
   if (prices.length >= MIN_RESULTS) {
     return {
       prices,
       level: "province",
-      label: cityInfo.province
+      label: cityInfo.province,
+      ignoredSpeed: true
     };
   }
 
-  // 3. Région
-  const regionCities = await getCitiesByZone("region", cityInfo.region);
-  prices = await getPricesByCities(regionCities, offerType, speed);
+  prices = await getPricesByCities(regionCities, offerType, "unknown");
 
   if (prices.length >= MIN_RESULTS) {
     return {
       prices,
       level: "region",
-      label: cityInfo.region
+      label: cityInfo.region,
+      ignoredSpeed: true
     };
   }
 
-  // 4. Belgique — même type d'offre, vitesse si connue, tous fournisseurs
+  return await getBelgiumPricesFallback(offerType, "unknown", true);
+}
+
+async function getBelgiumPricesFallback(offerType, speed, ignoredSpeed = false) {
   let url =
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type,Speed` +
     `&Offer_type=eq.${encodeURIComponent(offerType)}`;
@@ -196,12 +219,13 @@ async function getSimilarPricesSmart(city, provider, offerType, speed) {
 
   if (!response.ok) throw new Error(await response.text());
 
-  prices = await response.json();
+  const prices = await response.json();
 
   return {
     prices,
     level: "belgium",
-    label: "Belgique"
+    label: "Belgique",
+    ignoredSpeed
   };
 }
 
