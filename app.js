@@ -718,9 +718,7 @@ async function searchCities(query) {
       const item = document.createElement("div");
       item.className = "city-suggestion";
 
-      item.textContent = city.province
-        ? `${city.name} (${city.province})`
-        : city.name;
+      item.textContent = city.name;
 
       item.onclick = () => {
         selectedCityData = {
