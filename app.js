@@ -727,6 +727,11 @@ async function searchCities(query) {
         };
 
         cityInput.value = city.name;
+        selectedCityData = {
+          name: city.name,
+          province: city.province || null,
+          region: city.region || null
+        };
         citySuggestions.innerHTML = "";
       };
 
