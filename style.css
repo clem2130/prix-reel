@@ -1625,7 +1625,9 @@ nav span {
 }
 
 .city-footer img {
-  width: 100%;
+  width: 115%;
+  max-width: none;
+  margin-left: -7.5%;
   display: block;
 }
 
