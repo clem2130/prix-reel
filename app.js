@@ -260,6 +260,8 @@ async function getBestDeals(city) {
 }
 
 async function savePriceToSupabase(city, provider, monthlyPrice, offerType, speed, extraServices) {
+  const cityInfo = await getCityInfo(city);
+
   const response = await fetch(`${SUPABASE_URL}/rest/v1/internet_prices`, {
     method: "POST",
     headers: {
@@ -269,15 +271,15 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType, spee
       Prefer: "return=representation"
     },
     body: JSON.stringify({
-    City: city,
-    Provider: provider,
-    Monthly_price: monthlyPrice,
-    Offer_type: offerType,
-    Speed: speed,
-    extra_services: extraServices,
-    province: selectedCityData?.province || null,
-    region: selectedCityData?.region || null
-  })
+      City: city,
+      Provider: provider,
+      Monthly_price: monthlyPrice,
+      Offer_type: offerType,
+      Speed: speed,
+      extra_services: extraServices,
+      province: cityInfo?.province || null,
+      region: cityInfo?.region || null
+    })
   });
 
   if (!response.ok) throw new Error(await response.text());
