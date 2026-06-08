@@ -315,15 +315,20 @@ async function calculate() {
       await savePriceToSupabase(city, provider, price, offerType, speed, hasExtraServices);
     }
 
-    const stats = await getAveragePrice(city, provider, offerType, speed);
+    const resultData = await getSimilarPricesSmart(city, provider, offerType, speed);
+const similarPrices = resultData.prices;
 
-    let average = price;
-    let sampleCount = 1;
+if (!similarPrices || similarPrices.length === 0) {
+  alert("Nous n'avons pas encore assez de données pour comparer cet abonnement.");
+  return;
+}
 
-    if (stats) {
-      average = stats.average;
-      sampleCount = stats.count;
-    }
+const total = similarPrices.reduce((sum, item) => {
+  return sum + Number(item.Monthly_price);
+}, 0);
+
+let average = Math.round(total / similarPrices.length);
+let sampleCount = similarPrices.length;
 
     const ranking = await getRanking(city, provider, offerType, speed, price);
 
