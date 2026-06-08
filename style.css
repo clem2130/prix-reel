@@ -1617,3 +1617,14 @@ nav span {
   font-size: 13px;
   line-height: 1.4;
 }
+
+.city-footer {
+  width: 100%;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.city-footer img {
+  width: 100%;
+  display: block;
+}
