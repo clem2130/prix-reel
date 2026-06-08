@@ -511,20 +511,47 @@ let sampleCount = similarPrices.length;
       `;
     }
 
-    quality.innerHTML = `
-      <div class="quality-clean-card">
-        <div class="quality-icon">👥</div>
-        <div class="quality-content">
-          <strong>${sampleCount} ${
-            sampleCount > 1
-              ? "abonnements similaires analysés"
-              : "abonnement similaire analysé"
-          }</strong>
-          <span class="quality-badge">${getReliabilityShortMessage(sampleCount)}</span>
-          ${speedInfo}
-        </div>
-      </div>
-    `;
+    let zoneLabel = "";
+
+if (resultData.level === "city") {
+  zoneLabel = `à ${resultData.label}`;
+} else if (resultData.level === "province") {
+  zoneLabel = `dans la province de ${resultData.label}`;
+} else if (resultData.level === "region") {
+  zoneLabel = `en ${resultData.label}`;
+} else {
+  zoneLabel = "en Belgique";
+}
+
+quality.innerHTML = `
+  <div class="quality-clean-card">
+    <div class="quality-icon">👥</div>
+
+    <div class="quality-content">
+      <strong>
+        ${sampleCount}
+        ${sampleCount > 1
+          ? " abonnements similaires analysés "
+          : " abonnement similaire analysé "}
+        ${zoneLabel}
+      </strong>
+
+      <span class="quality-badge">
+        ${getReliabilityShortMessage(sampleCount)}
+      </span>
+
+      ${
+        resultData.level !== "city"
+          ? `<small style="display:block;margin-top:8px;color:#64748b;">
+              Données locales insuffisantes : comparaison élargie automatiquement.
+            </small>`
+          : ""
+      }
+
+      ${speedInfo}
+    </div>
+  </div>
+`;
 
     if (!isExcellentPrice) {
       const bestDeals = await getBestDeals(city);
