@@ -74,6 +74,121 @@ async function getAveragePrice(city, provider, offerType, speed) {
   };
 }
 
+const MIN_RESULTS = 3;
+
+async function getCityInfo(cityName) {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/belgian_cities?select=name,province,region&name=eq.${encodeURIComponent(cityName)}&limit=1`,
+    {
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
+
+  const data = await response.json();
+  return data[0] || null;
+}
+
+async function getPricesByCities(cities, provider, offerType, speed) {
+  const cityList = cities.map(city => `"${city}"`).join(",");
+
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City&City=in.(${cityList})&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
+    {
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
+
+  return await response.json();
+}
+
+async function getCitiesByZone(column, value) {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/belgian_cities?select=name&${column}=eq.${encodeURIComponent(value)}`,
+    {
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
+
+  const data = await response.json();
+  return data.map(city => city.name);
+}
+
+
+async function getSimilarPricesSmart(city, provider, offerType, speed) {
+  const cityInfo = await getCityInfo(city);
+
+  // 1. Commune
+  let prices = await getPricesByCities([city], provider, offerType, speed);
+
+  if (prices.length >= MIN_RESULTS) {
+    return {
+      prices,
+      level: "city",
+      label: city
+    };
+  }
+
+  if (!cityInfo) {
+    return {
+      prices,
+      level: "belgium",
+      label: "Belgique"
+    };
+  }
+
+  // 2. Province
+  const provinceCities = await getCitiesByZone("province", cityInfo.province);
+  prices = await getPricesByCities(provinceCities, provider, offerType, speed);
+
+  if (prices.length >= MIN_RESULTS) {
+    return {
+      prices,
+      level: "province",
+      label: cityInfo.province
+    };
+  }
+
+  // 3. Région
+  const regionCities = await getCitiesByZone("region", cityInfo.region);
+  prices = await getPricesByCities(regionCities, provider, offerType, speed);
+
+  if (prices.length >= MIN_RESULTS) {
+    return {
+      prices,
+      level: "region",
+      label: cityInfo.region
+    };
+  }
+
+  // 4. Belgique entière
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
+    {
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
+
+  prices = await response.json();
+
+  return {
+    prices,
+    level: "belgium",
+    label: "Belgique"
+  };
+}
+
 async function getRanking(city, provider, offerType, speed, userPrice) {
   let url =
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price` +
