@@ -92,13 +92,12 @@ async function getCityInfo(cityName) {
   return data[0] || null;
 }
 
-async function getPricesByCities(cities, provider, offerType, speed) {
+async function getPricesByCities(cities, offerType, speed) {
   const cityList = cities.map(city => `"${city}"`).join(",");
 
   let url =
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City` +
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type,Speed` +
     `&City=in.(${cityList})` +
-    `&Provider=eq.${encodeURIComponent(provider)}` +
     `&Offer_type=eq.${encodeURIComponent(offerType)}`;
 
   if (speed !== "unknown") {
@@ -136,8 +135,8 @@ async function getCitiesByZone(column, value) {
 async function getSimilarPricesSmart(city, provider, offerType, speed) {
   const cityInfo = await getCityInfo(city);
 
-  // 1. Commune
-  let prices = await getPricesByCities([city], provider, offerType, speed);
+  // 1. Commune — même type d'offre, vitesse si connue, tous fournisseurs
+  let prices = await getPricesByCities([city], offerType, speed);
 
   if (prices.length >= MIN_RESULTS) {
     return {
@@ -157,7 +156,7 @@ async function getSimilarPricesSmart(city, provider, offerType, speed) {
 
   // 2. Province
   const provinceCities = await getCitiesByZone("province", cityInfo.province);
-  prices = await getPricesByCities(provinceCities, provider, offerType, speed);
+  prices = await getPricesByCities(provinceCities, offerType, speed);
 
   if (prices.length >= MIN_RESULTS) {
     return {
@@ -167,9 +166,9 @@ async function getSimilarPricesSmart(city, provider, offerType, speed) {
     };
   }
 
-  // 3. RÃ©gion
+  // 3. Région
   const regionCities = await getCitiesByZone("region", cityInfo.region);
-  prices = await getPricesByCities(regionCities, provider, offerType, speed);
+  prices = await getPricesByCities(regionCities, offerType, speed);
 
   if (prices.length >= MIN_RESULTS) {
     return {
@@ -179,16 +178,23 @@ async function getSimilarPricesSmart(city, provider, offerType, speed) {
     };
   }
 
-  // 4. Belgique entiÃ¨re
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
-    {
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-      }
+  // 4. Belgique — même type d'offre, vitesse si connue, tous fournisseurs
+  let url =
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type,Speed` +
+    `&Offer_type=eq.${encodeURIComponent(offerType)}`;
+
+  if (speed !== "unknown") {
+    url += `&Speed=eq.${encodeURIComponent(speed)}`;
+  }
+
+  const response = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
     }
-  );
+  });
+
+  if (!response.ok) throw new Error(await response.text());
 
   prices = await response.json();
 
