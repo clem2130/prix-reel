@@ -1730,3 +1730,51 @@ nav span {
   justify-content: center;
   flex-shrink: 0;
 }
+
+.footer-banner {
+  margin-top: 20px;
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #06245c 0%,
+    #0b347d 50%,
+    #1257d8 100%
+  );
+
+  color: white;
+
+  border-radius: 24px 24px 0 0;
+
+  text-align: left;
+
+  box-shadow: 0 -4px 20px rgba(18, 87, 216, 0.15);
+}
+
+.footer-banner::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -10%;
+  width: 120%;
+  height: 60px;
+
+  background: white;
+
+  border-radius: 0 0 50% 50%;
+}
+
+.footer-banner p {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.footer-banner span {
+  display: block;
+  margin-top: 8px;
+  font-size: 1rem;
+  opacity: 0.95;
+}
