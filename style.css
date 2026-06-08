@@ -1721,3 +1721,12 @@ nav span {
   }
 
 }
+
+.community-icon {
+  color: #22a843;
+  font-size: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
