@@ -118,7 +118,7 @@ async function getRanking(city, provider, offerType, speed, userPrice) {
   return Math.round((moreExpensiveCount / data.length) * 100);
 }
 
-async function savePriceToSupabase(city, provider, monthlyPrice, offerType, speed) {
+async function savePriceToSupabase(city, provider, monthlyPrice, offerType, speed, extraServices) {
   const response = await fetch(`${SUPABASE_URL}/rest/v1/internet_prices`, {
     method: "POST",
     headers: {
@@ -132,7 +132,8 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType, spee
       Provider: provider,
       Monthly_price: monthlyPrice,
       Offer_type: offerType,
-      Speed: speed
+      Speed: speed,
+      Extra_services: extraServices
     })
   });
 
@@ -191,7 +192,8 @@ async function calculate() {
         provider,
         price,
         offerType,
-        speed
+        speed,
+        hasExtraServices
       );
     }
 
