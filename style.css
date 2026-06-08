@@ -1554,11 +1554,12 @@ nav span {
 }
 
 .extra-services-row input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
   flex-shrink: 0;
 }
+
 
 .extra-services-row label {
   display: flex;
