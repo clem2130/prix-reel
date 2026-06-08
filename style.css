@@ -1799,3 +1799,26 @@ nav span {
   color: #5f6b7a;
   font-size: 14px;
 }
+
+.footer-prixreel {
+  margin-top: -20px; /* rapproche la bande du paysage */
+  padding: 55px 20px 40px;
+  text-align: center;
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #06245c 0%,
+    #1257d8 100%
+  );
+
+  border-radius: 100% 100% 0 0 / 40px;
+  box-shadow: 0 -6px 20px rgba(18,87,216,0.15);
+}
+
+.footer-prixreel p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.95;
+}
