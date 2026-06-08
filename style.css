@@ -1628,3 +1628,12 @@ nav span {
   width: 100%;
   display: block;
 }
+
+
+.community-message {
+  margin-bottom: 10px;
+}
+
+.city-footer {
+  margin-top: 0;
+}
