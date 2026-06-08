@@ -786,8 +786,9 @@ async function searchCities(query) {
 
 if (cityInput && citySuggestions) {
   cityInput.addEventListener("input", () => {
-  searchCities(cityInput.value.trim());
-});
+    selectedCityData = null;
+    searchCities(cityInput.value.trim());
+  });
 
   document.addEventListener("click", event => {
     if (!event.target.closest(".city-autocomplete")) {
