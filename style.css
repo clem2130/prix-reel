@@ -1637,3 +1637,10 @@ nav span {
 .city-footer {
   margin-top: 0;
 }
+.community-shield {
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
