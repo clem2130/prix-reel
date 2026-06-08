@@ -48,13 +48,9 @@ async function getAveragePrice(city, provider, offerType, speed) {
   if (!response.ok) throw new Error(await response.text());
 
   const data = await response.json();
-
   if (!data || data.length === 0) return null;
 
-  const total = data.reduce(
-    (sum, item) => sum + Number(item.Monthly_price),
-    0
-  );
+  const total = data.reduce((sum, item) => sum + Number(item.Monthly_price), 0);
 
   return {
     average: Math.round(total / data.length),
@@ -107,9 +103,7 @@ async function getRanking(city, provider, offerType, speed, userPrice) {
 
   const data = await response.json();
 
-  if (!data || data.length === 0) {
-    return 50;
-  }
+  if (!data || data.length === 0) return 50;
 
   const moreExpensiveCount = data.filter(
     item => Number(item.Monthly_price) > userPrice
@@ -133,7 +127,7 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType, spee
       Monthly_price: monthlyPrice,
       Offer_type: offerType,
       Speed: speed,
-      Extra_services: extraServices
+      extra_services: extraServices
     })
   });
 
@@ -178,31 +172,13 @@ async function calculate() {
   }
 
   try {
-    const alreadyExists = await priceAlreadyExists(
-      city,
-      provider,
-      price,
-      offerType,
-      speed
-    );
+    const alreadyExists = await priceAlreadyExists(city, provider, price, offerType, speed);
 
     if (!alreadyExists) {
-      await savePriceToSupabase(
-        city,
-        provider,
-        price,
-        offerType,
-        speed,
-        hasExtraServices
-      );
+      await savePriceToSupabase(city, provider, price, offerType, speed, hasExtraServices);
     }
 
-    const stats = await getAveragePrice(
-      city,
-      provider,
-      offerType,
-      speed
-    );
+    const stats = await getAveragePrice(city, provider, offerType, speed);
 
     let average = price;
     let sampleCount = 1;
@@ -212,23 +188,15 @@ async function calculate() {
       sampleCount = stats.count;
     }
 
-    const ranking = await getRanking(
-      city,
-      provider,
-      offerType,
-      speed,
-      price
-    );
+    const ranking = await getRanking(city, provider, offerType, speed, price);
 
     const diff = price - average;
     const yearlyGap = Math.abs(diff * 12);
     const monthlyGap = Math.abs(diff);
-
     const isExcellentPrice = ranking >= 90;
 
     const piggy = document.getElementById("piggy-container");
     const pigImage = document.getElementById("piggy-image");
-
     const ratingElement = document.getElementById("price-rating");
     const insight = document.getElementById("price-insight");
     const resultSaving = document.getElementById("result-saving");
@@ -240,12 +208,9 @@ async function calculate() {
       ratingElement.textContent = "🏆 Excellent prix !";
       ratingElement.style.color = "#16a34a";
 
-      insight.textContent =
-        "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
-
+      insight.textContent = "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
       resultSaving.textContent = "0 € / an";
-      savingMonth.textContent =
-        "Aucune économie significative détectée.";
+      savingMonth.textContent = "Aucune économie significative détectée.";
 
       if (piggy && pigImage) {
         piggy.className = "saving-icon piggy-superhappy";
@@ -309,15 +274,13 @@ async function calculate() {
       ratingElement.style.color = ratingColor;
 
       if (diff < 0) {
-        insight.textContent =
-          "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
+        insight.textContent = "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
       } else if (diff > 0) {
-        insight.textContent =
-          "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
+        insight.textContent = "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
       } else {
-        insight.textContent =
-          "Votre prix est exactement dans la moyenne.";
+        insight.textContent = "Votre prix est exactement dans la moyenne.";
       }
+
       const saving = diff > 0 ? yearlyGap : 0;
       const monthSaving = diff > 0 ? monthlyGap : 0;
 
@@ -341,28 +304,24 @@ async function calculate() {
         recommendationCard.innerHTML = "";
       }
     }
-let gapPercent = 0;
 
-if (average > 0) {
-  gapPercent = Math.round((Math.abs(diff) / average) * 100);
-}
+    let gapPercent = 0;
 
-let displayPercent = 50;
+    if (average > 0) {
+      gapPercent = Math.round((Math.abs(diff) / average) * 100);
+    }
 
-if (diff < 0) {
-  displayPercent = Math.max(0, 50 - gapPercent);
-} else if (diff > 0) {
-  displayPercent = Math.min(100, 50 + gapPercent);
-}
+    let displayPercent = 50;
 
-if (isExcellentPrice) {
-  displayPercent = 0;
-}
+    if (diff < 0) {
+      displayPercent = Math.max(0, 50 - gapPercent);
+    } else if (diff > 0) {
+      displayPercent = Math.min(100, 50 + gapPercent);
+    }
 
-animateCounter("percent", gapPercent, 1000);
-animateCounter("duo-percent", gapPercent, 1000);
-
-    
+    if (isExcellentPrice) {
+      displayPercent = 0;
+    }
 
     animateCounter("percent", gapPercent, 1000);
     animateCounter("duo-percent", gapPercent, 1000);
@@ -418,25 +377,27 @@ animateCounter("duo-percent", gapPercent, 1000);
       const bestDeals = await getBestDeals(city);
       const dealsContainer = document.getElementById("best-deals-list");
 
-      dealsContainer.innerHTML = "";
+      if (dealsContainer) {
+        dealsContainer.innerHTML = "";
 
-      bestDeals.forEach(([dealProvider, dealPrice], index) => {
-        dealsContainer.innerHTML += `
-          <div class="deal-item">
-            <div class="deal-provider">
-              <img src="${getProviderLogo(dealProvider)}" alt="${dealProvider}">
-              <span>${index + 1}. ${dealProvider}</span>
+        bestDeals.forEach(([dealProvider, dealPrice], index) => {
+          dealsContainer.innerHTML += `
+            <div class="deal-item">
+              <div class="deal-provider">
+                <img src="${getProviderLogo(dealProvider)}" alt="${dealProvider}">
+                <span>${index + 1}. ${dealProvider}</span>
+              </div>
+              <div class="deal-price">${dealPrice} €</div>
             </div>
-            <div class="deal-price">${dealPrice} €</div>
-          </div>
-        `;
-      });
+          `;
+        });
+      }
     }
 
     goTo("result");
 
     setTimeout(() => {
-      document.getElementById("result").scrollTop = 0;
+      scrollResultToTop();
     }, 10);
 
     requestAnimationFrame(() => {
@@ -464,17 +425,9 @@ function scrollResultToTop() {
 }
 
 function getReliabilityShortMessage(sampleCount) {
-  if (sampleCount <= 2) {
-    return "🔴 Données limitées";
-  }
-
-  if (sampleCount <= 4) {
-    return "🟠 Tendance indicative";
-  }
-
-  if (sampleCount <= 9) {
-    return "🟢 Comparaison utile";
-  }
+  if (sampleCount <= 2) return "🔴 Données limitées";
+  if (sampleCount <= 4) return "🟠 Tendance indicative";
+  if (sampleCount <= 9) return "🟢 Comparaison utile";
 
   return "✅ Comparaison fiable";
 }
@@ -536,9 +489,7 @@ async function loadTrustCounter() {
 
   } catch (error) {
     console.error("Erreur compteur :", error);
-
-    counter.textContent =
-      "📊 Basé sur des prix réels enregistrés en Belgique";
+    counter.textContent = "📊 Basé sur des prix réels enregistrés en Belgique";
   }
 }
 
@@ -619,8 +570,7 @@ function animateCounter(elementId, target, duration = 2000) {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
 
-    element.textContent =
-      Math.round(target * progress) + "%";
+    element.textContent = Math.round(target * progress) + "%";
 
     if (progress < 1) {
       requestAnimationFrame(update);
