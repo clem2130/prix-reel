@@ -1650,8 +1650,8 @@ nav span {
 }
 
 .community-shield {
-  width: 70px;
-  height: 70px;
+  width: 48px;
+  height: auto;
   vertical-align: middle;
   margin-right: 16px;
 }
