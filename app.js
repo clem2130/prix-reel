@@ -18,15 +18,24 @@ function goTo(id) {
 }
 
 async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed) {
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Monthly_price=eq.${monthlyPrice}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}&limit=1`,
-    {
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-      }
+  let url =
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price` +
+    `&City=eq.${encodeURIComponent(city)}` +
+    `&Provider=eq.${encodeURIComponent(provider)}` +
+    `&Monthly_price=eq.${monthlyPrice}` +
+    `&Offer_type=eq.${encodeURIComponent(offerType)}` +
+    `&limit=1`;
+
+  if (speed !== "unknown") {
+    url += `&Speed=eq.${encodeURIComponent(speed)}`;
+  }
+
+  const response = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
     }
-  );
+  });
 
   if (!response.ok) throw new Error(await response.text());
 
@@ -35,15 +44,39 @@ async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed
 }
 
 async function getAveragePrice(city, provider, offerType, speed) {
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
-    {
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-      }
+  let url =
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price` +
+    `&City=eq.${encodeURIComponent(city)}` +
+    `&Provider=eq.${encodeURIComponent(provider)}` +
+    `&Offer_type=eq.${encodeURIComponent(offerType)}`;
+
+  if (speed !== "unknown") {
+    url += `&Speed=eq.${encodeURIComponent(speed)}`;
+  }
+
+  const response = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
     }
+  });
+
+  if (!response.ok) throw new Error(await response.text());
+
+  const data = await response.json();
+
+  if (!data || data.length === 0) return null;
+
+  const total = data.reduce(
+    (sum, item) => sum + Number(item.Monthly_price),
+    0
   );
+
+  return {
+    average: Math.round(total / data.length),
+    count: data.length
+  };
+}
 
   if (!response.ok) throw new Error(await response.text());
 
@@ -89,15 +122,35 @@ async function getBestDeals(city) {
 }
 
 async function getRanking(city, provider, offerType, speed, userPrice) {
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&City=eq.${encodeURIComponent(city)}&Provider=eq.${encodeURIComponent(provider)}&Offer_type=eq.${encodeURIComponent(offerType)}&Speed=eq.${encodeURIComponent(speed)}`,
-    {
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-      }
+  let url =
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price` +
+    `&City=eq.${encodeURIComponent(city)}` +
+    `&Provider=eq.${encodeURIComponent(provider)}` +
+    `&Offer_type=eq.${encodeURIComponent(offerType)}`;
+
+  if (speed !== "unknown") {
+    url += `&Speed=eq.${encodeURIComponent(speed)}`;
+  }
+
+  const response = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
     }
-  );
+  });
+
+  if (!response.ok) throw new Error(await response.text());
+
+  const data = await response.json();
+
+  if (!data || data.length === 0) return 50;
+
+  const moreExpensiveCount = data.filter(
+    item => Number(item.Monthly_price) > userPrice
+  ).length;
+
+  return Math.round((moreExpensiveCount / data.length) * 100);
+}
 
   if (!response.ok) throw new Error(await response.text());
 
