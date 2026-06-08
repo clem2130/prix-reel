@@ -338,26 +338,28 @@ async function calculate() {
         recommendationCard.innerHTML = "";
       }
     }
+let gapPercent = 0;
 
-    let displayPercent = 0;
+if (average > 0) {
+  gapPercent = Math.round((Math.abs(diff) / average) * 100);
+}
 
-    let gapPercent = 0;
+let displayPercent = 50;
 
-    if (average > 0) {
-    gapPercent = Math.round((Math.abs(diff) / average) * 100);
-    }
+if (diff < 0) {
+  displayPercent = Math.max(0, 50 - gapPercent);
+} else if (diff > 0) {
+  displayPercent = Math.min(100, 50 + gapPercent);
+}
 
-    let displayPercent = 50;
+if (isExcellentPrice) {
+  displayPercent = 0;
+}
 
-    if (diff < 0) {
-    displayPercent = Math.max(0, 50 - gapPercent);
-    } else if (diff > 0) {
-    displayPercent = Math.min(100, 50 + gapPercent);
-    }
+animateCounter("percent", gapPercent, 1000);
+animateCounter("duo-percent", gapPercent, 1000);
 
-    if (isExcellentPrice) {
-    displayPercent = 0;
-    }
+    
 
     animateCounter("percent", gapPercent, 1000);
     animateCounter("duo-percent", gapPercent, 1000);
