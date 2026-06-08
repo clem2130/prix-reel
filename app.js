@@ -647,12 +647,11 @@ async function loadStatistics() {
 
 async function loadTrustCounter() {
   const counter = document.getElementById("trust-counter");
-
   if (!counter) return;
 
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=id`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
@@ -669,7 +668,8 @@ async function loadTrustCounter() {
       `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
   } catch (error) {
     console.error("Erreur compteur :", error);
-    counter.textContent = "📊 Basé sur des prix réels enregistrés en Belgique";
+    counter.textContent =
+      "📊 Basé sur des prix réels enregistrés en Belgique";
   }
 }
 
