@@ -343,8 +343,18 @@ async function calculate() {
   const speed = document.getElementById("speed").value;
   const hasExtraServices = document.getElementById("hasExtraServices").checked;
 
-  if (!city || !price || price <= 0) {
+  if (!cityInputValue || !price || price <= 0) {
     alert("Veuillez entrer votre ville et votre prix mensuel.");
+    return;
+  }
+
+  if (/\d/.test(cityInputValue)) {
+    alert("La ville ne peut pas contenir de chiffre.");
+    return;
+  }
+
+  if (!selectedCityData || cityInputValue !== selectedCityData.name) {
+    alert("Veuillez sélectionner une ville dans la liste proposée.");
     return;
   }
 
@@ -776,8 +786,8 @@ async function searchCities(query) {
 
 if (cityInput && citySuggestions) {
   cityInput.addEventListener("input", () => {
-    searchCities(cityInput.value.trim());
-  });
+  searchCities(cityInput.value.trim());
+});
 
   document.addEventListener("click", event => {
     if (!event.target.closest(".city-autocomplete")) {
