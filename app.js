@@ -304,7 +304,7 @@ function getProviderLogo(provider) {
 
 async function calculate() {
   const price = Number(document.getElementById("price").value);
-  const city = document.getElementById("citySearch").value.trim();
+  const city = selectedCityData?.name || document.getElementById("citySearch").value.trim();
   const provider = document.getElementById("provider").value;
   const offerType = document.getElementById("offer").value;
   const speed = document.getElementById("speed").value;
