@@ -622,6 +622,12 @@ quality.innerHTML = `
     if (!isExcellentPrice) {
   const bestDeals = await getBestDeals(city, offerType, speed);
   const dealsContainer = document.getElementById("best-deals-list");
+  const bestDealsCard = document.getElementById("best-deals-card");
+
+if (bestDealsCard) {
+  bestDealsCard.style.display =
+    bestDeals.length <= 1 ? "none" : "block";
+}    
 
   if (dealsContainer) {
     dealsContainer.innerHTML = "";
@@ -645,6 +651,11 @@ quality.innerHTML = `
 }
 
 goTo("result");
+
+
+
+
+    
 
     setTimeout(() => {
       scrollResultToTop();
