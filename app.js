@@ -398,7 +398,7 @@ let sampleCount = similarPrices.length;
 
     const ranking = await getRanking(city, provider, offerType, speed, price);
 
-    const diff = price - average;
+    
     const diff = price - average;
 
 let diffPercent = 0;
