@@ -704,7 +704,7 @@ async function loadTrustCounter() {
 
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=id`,
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Id`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
