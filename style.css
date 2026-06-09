@@ -1950,7 +1950,11 @@ nav button span {
 }
 
 .info-icon img {
-  width: 34px;
-  height: 34px;
+  width: 28px !important;
+  height: 28px !important;
   object-fit: contain;
+}
+
+.info-icon {
+  overflow: hidden;
 }
