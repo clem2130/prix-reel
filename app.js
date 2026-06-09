@@ -487,6 +487,14 @@ let sampleCount = similarPrices.length;
         insight.textContent = "Votre prix est exactement dans la moyenne.";
       }
 
+      const saving = diff > 0 ? yearlyGap : 0;
+const monthSaving = diff > 0 ? monthlyGap : 0;
+
+resultSaving.textContent = saving + " € / an";
+savingMonth.textContent = "Soit " + monthSaving + " € par mois";
+
+const bestDeals = await getBestDeals(city, offerType, speed);
+
       if (bestDeals.length > 1) {
   const bestProvider = bestDeals[0].provider;
   const bestPrice = bestDeals[0].average;
