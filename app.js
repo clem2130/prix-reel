@@ -399,6 +399,32 @@ let sampleCount = similarPrices.length;
     const ranking = await getRanking(city, provider, offerType, speed, price);
 
     const diff = price - average;
+    const diff = price - average;
+
+let diffPercent = 0;
+
+if (average > 0) {
+  diffPercent = Math.round((Math.abs(diff) / average) * 100);
+}
+
+const summaryText = document.getElementById("price-summary-text");
+
+if (summaryText) {
+  if (diff > 5) {
+    summaryText.innerHTML =
+      `🔴 <strong>${diffPercent}% plus cher</strong><br><span>que la moyenne observée</span>`;
+  } else if (diff < -5) {
+    summaryText.innerHTML =
+      `🟢 <strong>${diffPercent}% moins cher</strong><br><span>que la moyenne observée</span>`;
+  } else {
+    summaryText.innerHTML =
+      `⚖️ <strong>Votre prix est dans la moyenne</strong>`;
+  }
+}
+
+const yearlyGap = Math.abs(diff * 12);
+const monthlyGap = Math.abs(diff);
+const isExcellentPrice = ranking >= 90;
     const yearlyGap = Math.abs(diff * 12);
     const monthlyGap = Math.abs(diff);
     const isExcellentPrice = ranking >= 90;
