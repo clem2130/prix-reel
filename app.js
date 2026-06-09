@@ -259,13 +259,15 @@ async function getRanking(city, provider, offerType, speed, userPrice) {
   return Math.round((moreExpensiveCount / data.length) * 100);
 }
 
+
+
 async function getBestDeals(city, offerType, speed) {
   const resultData = await getSimilarPricesSmart(city, "", offerType, speed);
   const data = resultData.prices || [];
 
   if (!data || data.length === 0) return [];
 
-  const cheapest = {};
+  const grouped = {};
 
   data.forEach(item => {
     const provider = item.Provider;
@@ -273,13 +275,28 @@ async function getBestDeals(city, offerType, speed) {
 
     if (!provider || isNaN(price)) return;
 
-    if (!cheapest[provider] || price < cheapest[provider]) {
-      cheapest[provider] = price;
+    if (!grouped[provider]) {
+      grouped[provider] = {
+        total: 0,
+        count: 0
+      };
     }
+
+    grouped[provider].total += price;
+    grouped[provider].count++;
   });
 
-  return Object.entries(cheapest)
-    .sort((a, b) => a[1] - b[1])
+  return Object.entries(grouped)
+    .map(([provider, info]) => {
+      const average = Math.round(info.total / info.count);
+
+      return {
+        provider,
+        average,
+        count: info.count
+      };
+    })
+    .sort((a, b) => a.average - b.average)
     .slice(0, 5);
 }
 
