@@ -496,8 +496,8 @@ let sampleCount = similarPrices.length;
       const bestDeals = await getBestDeals(city, offerType, speed);
 
       if (bestDeals.length > 0) {
-        const bestProvider = bestDeals[0][0];
-        const bestPrice = bestDeals[0][1];
+        const bestProvider = bestDeals[0].provider;
+        const bestPrice = bestDeals[0].average;
         const potentialMonthlySaving = Math.max(price - bestPrice, 0);
         const potentialYearlySaving = potentialMonthlySaving * 12;
 
