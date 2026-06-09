@@ -505,7 +505,7 @@ const bestDeals = await getBestDeals(city, offerType, speed);
 <p>💡 Recommandation Prix Réel</p>
 <strong>${bestProvider} — ${bestPrice} € / mois</strong>
 <p class="current-price">
-Vous payez actuellement : ${monthlyPrice} € / mois
+Vous payez actuellement : ${price} € / mois
 </p>
 <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
 <span class="best-price-badge">
