@@ -505,6 +505,9 @@ const bestDeals = await getBestDeals(city, offerType, speed);
 <p>💡 Recommandation Prix Réel</p>
 <strong>${bestProvider} — ${bestPrice} € / mois</strong>
 <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
+<p class="recommendation-confidence">
+  Basé sur ${bestDeal.count} abonnements similaires
+</p>
 `;
 } else {
   recommendationCard.innerHTML = `
