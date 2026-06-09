@@ -504,6 +504,9 @@ const bestDeals = await getBestDeals(city, offerType, speed);
   recommendationCard.innerHTML = `
 <p>💡 Recommandation Prix Réel</p>
 <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+<p class="current-price">
+Vous payez actuellement : ${monthlyPrice} € / mois
+</p>
 <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
 <span class="best-price-badge">
 🏆 Meilleur prix observé
