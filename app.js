@@ -365,7 +365,7 @@ async function calculate() {
     }
 
     const resultData = await getSimilarPricesSmart(city, provider, offerType, speed);
-const similarPrices = resultData.prices;
+    const similarPrices = resultData.prices;
 
 if (!similarPrices || similarPrices.length === 0) {
   alert("Nous n'avons pas encore assez de données pour comparer cet abonnement.");
@@ -476,7 +476,7 @@ let sampleCount = similarPrices.length;
       resultSaving.textContent = saving + " € / an";
       savingMonth.textContent = "Soit " + monthSaving + " € par mois";
 
-      const bestDeals = await getBestDeals(city);
+      const bestDeals = await getBestDeals(city, offerType, speed);
 
       if (bestDeals.length > 0) {
         const bestProvider = bestDeals[0][0];
@@ -603,8 +603,8 @@ quality.innerHTML = `
 `;
 
     if (!isExcellentPrice) {
-      const bestDeals = await getBestDeals(city);
-      const dealsContainer = document.getElementById("best-deals-list");
+    const bestDeals = await getBestDeals(city, offerType, speed);
+    const dealsContainer = document.getElementById("best-deals-list");
 
       if (dealsContainer) {
         dealsContainer.innerHTML = "";
