@@ -506,7 +506,7 @@ const bestDeals = await getBestDeals(city, offerType, speed);
 <strong>${bestProvider} — ${bestPrice} € / mois</strong>
 <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
 <p class="recommendation-confidence">
-  Basé sur ${bestDeals[0].count} abonnements similaires
+  🏆 Meilleur prix observé parmi les offres similaires
 </p>
 `;
 } else {
