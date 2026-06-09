@@ -515,6 +515,11 @@ select {
   margin-bottom: 24px;
 }
 
+
+.result-card-simple {
+  display: none;
+}
+
 .result-card h3 {
   margin: 0 0 22px;
   color: var(--navy);
