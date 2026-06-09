@@ -1942,11 +1942,15 @@ nav button span {
   }
 
   .info-icon {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    font-size: 21px;
-  }
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 50%;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 }
 
 .info-icon img {
@@ -1957,4 +1961,10 @@ nav button span {
 
 .info-icon {
   overflow: hidden;
+}
+
+.info-shield {
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: contain;
 }
