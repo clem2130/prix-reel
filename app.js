@@ -422,9 +422,7 @@ if (summaryText) {
   }
 }
 
-const yearlyGap = Math.abs(diff * 12);
-const monthlyGap = Math.abs(diff);
-const isExcellentPrice = ranking >= 90;
+
     const yearlyGap = Math.abs(diff * 12);
     const monthlyGap = Math.abs(diff);
     const isExcellentPrice = ranking >= 90;
