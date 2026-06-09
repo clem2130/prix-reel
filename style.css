@@ -1953,18 +1953,12 @@ nav button span {
 }
 }
 
-.info-icon img {
-  width: 35px !important;
-  height: 35px !important;
-  object-fit: contain;
-}
-
 .info-icon {
   overflow: hidden;
 }
 
 .info-shield {
-  width: 50px !important;
-  height: 50px !important;
+  width: 64px !important;
+  height: 64px !important;
   object-fit: contain;
 }
