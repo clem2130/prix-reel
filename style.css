@@ -1827,3 +1827,10 @@ nav span {
 .footer-separator {
   height: 40px;
 }
+
+.recommendation-confidence {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 0.85rem;
+  text-align: center;
+}
