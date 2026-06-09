@@ -630,7 +630,7 @@ quality.innerHTML = `
       }
     }
 
-    loadProviderComparison(city, offerType, speed, provider, price);
+    await loadProviderComparison(city, offerType, speed, provider, price);
     
     goTo("result");
 
@@ -867,9 +867,9 @@ async function loadProviderComparison(city, offerType, speed, currentProvider, u
       `&Offer_type=eq.${encodeURIComponent(offerType)}` +
       `&Provider=neq.${encodeURIComponent(currentProvider)}`;
 
-    if (speed) {
-      url += `&Speed=eq.${encodeURIComponent(speed)}`;
-    }
+    if (speed && speed !== "unknown") {
+  url += `&Speed=eq.${encodeURIComponent(speed)}`;
+}
 
     const response = await fetch(url, {
       headers: {
