@@ -630,7 +630,7 @@ quality.innerHTML = `
       }
     }
 
-    await loadProviderComparison(city, offerType, speed, provider, price);
+    
     
     goTo("result");
 
