@@ -1948,3 +1948,9 @@ nav button span {
     font-size: 21px;
   }
 }
+
+.info-icon img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
