@@ -1890,3 +1890,11 @@ nav span {
   color: var(--muted);
   line-height: 1.5;
 }
+
+nav button {
+  font-size: 25px;
+}
+
+nav button span {
+  font-size: 10px;
+}
