@@ -488,11 +488,15 @@ let sampleCount = similarPrices.length;
       }
 
       const saving = diff > 0 ? yearlyGap : 0;
-const monthSaving = diff > 0 ? monthlyGap : 0;
+      const monthSaving = diff > 0 ? monthlyGap : 0;
 
-resultSaving.textContent = saving + " € / an";
-savingMonth.textContent = "Soit " + monthSaving + " € par mois";
+if (resultSaving) {
+  resultSaving.textContent = saving + " € / an";
+}
 
+if (savingMonth) {
+  savingMonth.textContent = "Soit " + monthSaving + " € par mois";
+}
 const bestDeals = await getBestDeals(city, offerType, speed);
 
       if (bestDeals.length > 1) {
