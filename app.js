@@ -415,7 +415,7 @@ if (summaryText) {
       `🔴 <strong>Vous payez ${diffPercent}% plus cher que la moyenne</strong>`;
   } else if (diff < -5) {
     summaryText.innerHTML =
-      `🟢 <strong>Vous faites mieux que la moyenne de ${diffPercent}%</strong>`;
+      `🟢 <strong>Vous économisez ${diffPercent}%</strong><br><span>par rapport à la moyenne observée</span>`;
   } else {
     summaryText.innerHTML =
       `🟡 <strong>Votre prix est dans la moyenne observée</strong>`;
