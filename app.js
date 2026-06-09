@@ -259,25 +259,19 @@ async function getRanking(city, provider, offerType, speed, userPrice) {
   return Math.round((moreExpensiveCount / data.length) * 100);
 }
 
-async function getBestDeals(city) {
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Provider,Monthly_price&City=eq.${encodeURIComponent(city)}`,
-    {
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-      }
-    }
-  );
+async function getBestDeals(city, offerType, speed) {
+  const resultData = await getSimilarPricesSmart(city, "", offerType, speed);
+  const data = resultData.prices || [];
 
-  if (!response.ok) return [];
+  if (!data || data.length === 0) return [];
 
-  const data = await response.json();
   const cheapest = {};
 
   data.forEach(item => {
     const provider = item.Provider;
     const price = Number(item.Monthly_price);
+
+    if (!provider || isNaN(price)) return;
 
     if (!cheapest[provider] || price < cheapest[provider]) {
       cheapest[provider] = price;
