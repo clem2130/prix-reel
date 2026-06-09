@@ -412,13 +412,13 @@ const summaryText = document.getElementById("price-summary-text");
 if (summaryText) {
   if (diff > 5) {
     summaryText.innerHTML =
-      `🔴 <strong>${diffPercent}% plus cher</strong><br><span>que la moyenne observée</span>`;
+      `🔴 <strong>Vous payez ${diffPercent}% plus cher que la moyenne</strong>`;
   } else if (diff < -5) {
     summaryText.innerHTML =
-      `🟢 <strong>${diffPercent}% moins cher</strong><br><span>que la moyenne observée</span>`;
+      `🟢 <strong>Vous faites mieux que la moyenne de ${diffPercent}%</strong>`;
   } else {
     summaryText.innerHTML =
-      `⚖️ <strong>Votre prix est dans la moyenne</strong>`;
+      `🟡 <strong>Votre prix est dans la moyenne observée</strong>`;
   }
 }
 
