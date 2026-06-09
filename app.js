@@ -413,11 +413,22 @@ let sampleCount = similarPrices.length;
     const duoStatus = document.getElementById("duo-status");
 
     if (isExcellentPrice) {
-      ratingElement.textContent = "🏆 Excellent prix !";
-      ratingElement.style.color = "#16a34a";
-      insight.textContent = "🐷 Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
-      resultSaving.textContent = "0 € / an";
-      savingMonth.textContent = "Aucune économie significative détectée.";
+      if (ratingElement) {
+  ratingElement.textContent = "🏆 Excellent prix !";
+  ratingElement.style.color = "#16a34a";
+}
+
+if (insight) {
+  insight.textContent = "Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
+}
+
+if (resultSaving) {
+  resultSaving.textContent = "0 € / an";
+}
+
+if (savingMonth) {
+  savingMonth.textContent = "Aucune économie significative détectée.";
+}
 
       if (piggy && pigImage) {
         piggy.className = "saving-icon piggy-superhappy";
@@ -476,17 +487,24 @@ let sampleCount = similarPrices.length;
   ratingColor = "#dc2626";
       }
 
-      ratingElement.textContent = rating;
-      ratingElement.style.color = ratingColor;
+      if (ratingElement) {
+  ratingElement.textContent = rating;
+  ratingElement.style.color = ratingColor;
+}
 
-      if (diff < 0) {
-        insight.textContent = "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
-      } else if (diff > 0) {
-        insight.textContent = "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
-      } else {
-        insight.textContent = "Votre prix est exactement dans la moyenne.";
-      }
+if (insight) {
+  if (diff < 0) {
+    insight.textContent = "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
+  } else if (diff > 0) {
+    insight.textContent = "Vous payez " + monthlyGap + " € de plus par mois que la moyenne.";
+  } else {
+    insight.textContent = "Votre prix est exactement dans la moyenne.";
+  }
+}
 
+
+
+      
       const saving = diff > 0 ? yearlyGap : 0;
       const monthSaving = diff > 0 ? monthlyGap : 0;
 
