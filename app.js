@@ -626,20 +626,26 @@ quality.innerHTML = `
       if (dealsContainer) {
         dealsContainer.innerHTML = "";
 
-        bestDeals.forEach(([dealProvider, dealPrice], index) => {
-          dealsContainer.innerHTML += `
-            <div class="deal-item">
-              <div class="deal-provider">
-                <img src="${getProviderLogo(dealProvider)}" alt="${dealProvider}">
-                <span>${index + 1}. ${dealProvider}</span>
-              </div>
-              <div class="deal-price">${dealPrice} €
-              </div>
-            </div>
-          `;
-        });
+        if (dealsContainer) {
+  dealsContainer.innerHTML = "";
+
+  bestDeals.forEach((deal, index) => {
+    dealsContainer.innerHTML += `
+      <div class="deal-item">
+        <div class="deal-provider">
+          <img src="${getProviderLogo(deal.provider)}" alt="${deal.provider}">
+          <span>${index + 1}. ${deal.provider}</span>
+        </div>
+
+        <div class="deal-price">
+          ${deal.average} €
+          <small>${deal.count} prix</small>
+        </div>
+      </div>
+    `;
+  });
+}
       }
-    }
 
     
     
