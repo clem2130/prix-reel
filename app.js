@@ -505,6 +505,7 @@ let sampleCount = similarPrices.length;
 <small>Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.</small>
 `;
       }
+    }
 
     let gapPercent = 0;
 
