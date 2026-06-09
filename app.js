@@ -620,36 +620,31 @@ quality.innerHTML = `
 `;
 
     if (!isExcellentPrice) {
-    const bestDeals = await getBestDeals(city, offerType, speed);
-    const dealsContainer = document.getElementById("best-deals-list");
+  const bestDeals = await getBestDeals(city, offerType, speed);
+  const dealsContainer = document.getElementById("best-deals-list");
 
-      if (dealsContainer) {
-        dealsContainer.innerHTML = "";
+  if (dealsContainer) {
+    dealsContainer.innerHTML = "";
 
-        if (dealsContainer) {
-  dealsContainer.innerHTML = "";
+    bestDeals.forEach((deal, index) => {
+      dealsContainer.innerHTML += `
+        <div class="deal-item">
+          <div class="deal-provider">
+            <img src="${getProviderLogo(deal.provider)}" alt="${deal.provider}">
+            <span>${index + 1}. ${deal.provider}</span>
+          </div>
 
-  bestDeals.forEach((deal, index) => {
-    dealsContainer.innerHTML += `
-      <div class="deal-item">
-        <div class="deal-provider">
-          <img src="${getProviderLogo(deal.provider)}" alt="${deal.provider}">
-          <span>${index + 1}. ${deal.provider}</span>
+          <div class="deal-price">
+            ${deal.average} €
+            <small>${deal.count} prix</small>
+          </div>
         </div>
-
-        <div class="deal-price">
-          ${deal.average} €
-          <small>${deal.count} prix</small>
-        </div>
-      </div>
-    `;
-  });
+      `;
+    });
+  }
 }
-      }
 
-    
-    
-    goTo("result");
+goTo("result");
 
     setTimeout(() => {
       scrollResultToTop();
