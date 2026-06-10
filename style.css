@@ -1998,3 +1998,51 @@ nav button span {
   font-size: 18px;
 }
 
+.info-hero {
+  background: linear-gradient(135deg, #06245c, #1257d8);
+  color: white;
+  border-radius: 22px;
+  padding: 26px 24px;
+  margin-bottom: 18px;
+  text-align: center;
+  box-shadow: 0 14px 32px rgba(6, 36, 92, 0.18);
+}
+
+.info-hero h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: white;
+}
+
+.info-hero p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.trust-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.trust-row div {
+  background: #f4f8ff;
+  border: 1px solid #dbe7ff;
+  color: #06245c;
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .trust-row {
+    grid-template-columns: 1fr;
+  }
+
+  .info-hero h2 {
+    font-size: 24px;
+  }
+}
