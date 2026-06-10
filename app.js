@@ -388,7 +388,14 @@ function getProviderLogo(provider) {
   return logos[provider] || "logos/proximus.png";
 }
 
+
+// =====================================================
+// Calcul principal de comparaison Internet
+// =====================================================
+
 async function calculate() {
+  
+  // Récupération des valeurs du formulaire
   const price = Number(document.getElementById("price").value);
   const cityInputValue = document.getElementById("citySearch").value.trim();
   const city = selectedCityData?.name || cityInputValue;
@@ -397,6 +404,8 @@ async function calculate() {
   const speed = document.getElementById("speed").value;
   const hasExtraServices = document.getElementById("hasExtraServices").checked;
 
+  
+  // Vérifications de base avant d'envoyer les données
   if (!cityInputValue || !price || price <= 0) {
     alert("Veuillez entrer votre ville et votre prix mensuel.");
     return;
@@ -417,6 +426,9 @@ async function calculate() {
     return;
   }
 
+  // =====================================================
+  // Enregistrement et calcul du résultat
+  // =====================================================
   try {
     const alreadyExists = await priceAlreadyExists(city, provider, price, offerType, speed);
 
