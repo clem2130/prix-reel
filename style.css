@@ -733,8 +733,8 @@ select {
 .stat-card h3 {
   margin: 0 0 6px;
   color: var(--navy);
-  font-size: 30px;
-  font-weight: 900;
+  font-size: 54px;
+  font-weight: 800;
 }
 
 .stat-card p {
