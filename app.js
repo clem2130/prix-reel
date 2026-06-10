@@ -626,17 +626,6 @@ if (bestDeals.length > 1) {
 
     animateCounter("percent", gapPercent, 1000);
     
-/*
-    if (duoStatus && !isExcellentPrice) {
-      if (diff < 0) {
-        duoStatus.textContent = "moins cher";
-      } else if (diff > 0) {
-        duoStatus.textContent = "plus cher";
-      } else {
-        duoStatus.textContent = "moyenne";
-      }
-    }
-    */
 
     const scoreDot = document.querySelector(".score-dot");
 
