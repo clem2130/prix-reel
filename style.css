@@ -761,6 +761,30 @@ select {
   color: #64748b;
 }
 
+#price-summary-text {
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+#price-summary-text strong {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  line-height: 1.15;
+}
+
+.result-card {
+  padding-top: 44px;
+}
+
+.result-card::before {
+  content: "●";
+  display: block;
+  color: #22a843;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
 /* Barre de score */
 
 .score-bar-card {
