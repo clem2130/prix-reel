@@ -1159,14 +1159,3 @@ if (bestProviderElement && bestProvider) {
     console.error("Erreur profil :", error);
   }
 }
-
-function showProviderDetails(provider, average, count) {
-  alert(
-    `${provider}
-
-Prix moyen observé : ${average} € / mois
-Nombre de prix analysés : ${count}
-
-Ces données sont basées sur les prix réellement partagés par la communauté.`
-  );
-}
