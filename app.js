@@ -553,39 +553,39 @@ if (bestDeals.length > 1) {
   const bestProvider = bestDeals[0].provider;
   const bestPrice = bestDeals[0].average;
 
-  if (bestPrice >= price) {
-    recommendationCard.innerHTML = `
-      <p>🏆 Excellent tarif</p>
-        <strong>Vous bénéficiez déjà d'un très bon prix.</strong>      
-        <small>
-          Votre abonnement figure déjà parmi les offres les plus compétitives observées.
-        </small>
-      <div class="trust-badge">
-        ✅ Aucune offre moins chère observée parmi ${sampleCount} abonnements similaires
-      </div>
-    `;
-  } else {
-    const potentialMonthlySaving = price - bestPrice;
-    const potentialYearlySaving = potentialMonthlySaving * 12;
+const potentialMonthlySaving = price - bestPrice;
+const potentialYearlySaving = potentialMonthlySaving * 12;
 
-    recommendationCard.innerHTML = `
-      <p>💰 Économie possible</p>
-    
-      <strong>${bestProvider} — ${bestPrice} € / mois</strong>
-    
-      <p class="current-price">
-        Vous payez actuellement : ${price} € / mois
-      </p>
-    
-      <small>
-        Vous pourriez économiser jusqu'à ${potentialYearlySaving} € par an.
-      </small>
-    
-      <div class="trust-badge">
-        ✅ Offre la plus avantageuse observée parmi ${sampleCount} abonnements similaires
-      </div>
-    `;
-  }
+if (potentialMonthlySaving <= 3) {
+  recommendationCard.innerHTML = `
+    <p>🏆 Tarif très compétitif</p>
+    <strong>Votre prix est déjà très proche des meilleurs tarifs observés.</strong>
+    <small>
+      Même si certains prix similaires existent, l'écart est trop faible pour parler d'une réelle économie.
+    </small>
+    <div class="trust-badge">
+      ✅ Aucun écart significatif observé parmi ${sampleCount} abonnements similaires
+    </div>
+  `;
+} else {
+  recommendationCard.innerHTML = `
+    <p>💰 Économie possible</p>
+
+    <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+
+    <p class="current-price">
+      Vous payez actuellement : ${price} € / mois
+    </p>
+
+    <small>
+      Vous pourriez économiser jusqu'à ${potentialYearlySaving} € par an.
+    </small>
+
+    <div class="trust-badge">
+      ✅ Offre la plus avantageuse observée parmi ${sampleCount} abonnements similaires
+    </div>
+  `;
+}
 } 
     else {
       recommendationCard.innerHTML = `
