@@ -556,18 +556,27 @@ if (bestDeals.length > 1) {
 const potentialMonthlySaving = price - bestPrice;
 const potentialYearlySaving = potentialMonthlySaving * 12;
 
-if (potentialMonthlySaving <= 3) {
+// Si l'écart est trop faible, on considère que le tarif est déjà compétitif
+if (potentialMonthlySaving <= 5) {
+
   recommendationCard.innerHTML = `
     <p>🏆 Tarif très compétitif</p>
-    <strong>Votre prix est déjà très proche des meilleurs tarifs observés.</strong>
+
+    <strong>
+      Votre prix est déjà très proche des meilleurs tarifs observés.
+    </strong>
+
     <small>
-      Même si certains prix similaires existent, l'écart est trop faible pour parler d'une réelle économie.
+      L'écart observé est inférieur à 5 € par mois et n'est pas considéré comme une économie significative.
     </small>
+
     <div class="trust-badge">
       ✅ Aucun écart significatif observé parmi ${sampleCount} abonnements similaires
     </div>
   `;
+
 } else {
+
   recommendationCard.innerHTML = `
     <p>💰 Économie possible</p>
 
@@ -585,6 +594,7 @@ if (potentialMonthlySaving <= 3) {
       ✅ Offre la plus avantageuse observée parmi ${sampleCount} abonnements similaires
     </div>
   `;
+
 }
 } 
     else {
