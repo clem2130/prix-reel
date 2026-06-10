@@ -2,35 +2,49 @@ const SUPABASE_URL = "https://mmkubcgomhgkcbnsukze.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
 let selectedCityData = null;
 
+// =====================================================
+// Navigation entre les différentes pages du site
+// =====================================================
+
 function goTo(id) {
+
+  // Masque toutes les pages
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
   });
 
+  // Récupère la page demandée
   const target = document.getElementById(id);
   if (!target) return;
 
+  // Affiche la page sélectionnée
   target.classList.add("active");
 
+  // Remonte le contenu de la page en haut
   target.scrollTop = 0;
 
+  // Remonte le conteneur principal en haut
   const app = document.querySelector(".app");
   if (app) {
     app.scrollTop = 0;
   }
 
+  // Sécurité : remonte également la fenêtre du navigateur
   window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
 
+  // Charge les statistiques uniquement
+  // lorsque l'utilisateur ouvre la page Statistiques
   if (id === "stats") {
     loadStatistics();
   }
 
+  // Charge les données du profil uniquement
+  // lorsque l'utilisateur ouvre la page Profil
   if (id === "profile") {
-  loadProfile();
-}
-  
+    loadProfile();
+  }
 }
 
 async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed) {
