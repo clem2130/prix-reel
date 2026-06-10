@@ -2748,11 +2748,4 @@ nav button span {
   }
 }
 
-.provider-chart-row {
-  cursor: pointer;
-}
 
-.provider-chart-row:hover {
-  background: #f8fbff;
-  border-radius: 12px;
-}
