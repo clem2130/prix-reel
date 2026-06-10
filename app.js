@@ -564,25 +564,31 @@ if (bestDeals.length > 1) {
     const potentialYearlySaving = potentialMonthlySaving * 12;
 
     recommendationCard.innerHTML = `
-      <p>🏆 Meilleur prix observé</p>
+      <p>💰 Économie possible</p>
+    
       <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+    
       <p class="current-price">
         Vous payez actuellement : ${price} € / mois
       </p>
-      <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
-      <span class="best-price-badge">
-        ⭐ Offre la plus avantageuse
-      </span>
+    
+      <small>
+        Vous pourriez économiser jusqu'à ${potentialYearlySaving} € par an.
+      </small>
+    
+      <div class="trust-badge">
+        ✅ Offre la plus avantageuse observée parmi ${sampleCount} abonnements similaires
+      </div>
     `;
   }
 } 
-else {
-  recommendationCard.innerHTML = `
-    <p>🏆 Meilleur prix observé</p>
-    <strong>Aucune alternative fiable disponible pour le moment.</strong>
-    <small>Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.</small>
-  `;
-}
+    else {
+      recommendationCard.innerHTML = `
+        <p>ℹ️ Données insuffisantes</p>
+        <strong>Aucune alternative fiable disponible pour le moment.</strong>
+        <small>Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.</small>
+      `;
+    }
     }
 
     let gapPercent = 0;
