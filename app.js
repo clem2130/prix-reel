@@ -552,7 +552,7 @@ if (bestDeals.length > 1) {
     recommendationCard.innerHTML = `
       <p>🏆 Excellent tarif</p>
       <strong>Vous bénéficiez déjà d'un très bon prix.</strong>
-      <small>Aucune offre plus avantageuse n'a été observée actuellement.</small>
+      <small>Votre abonnement figure déjà parmi les offres les plus compétitives observées.</small>
     `;
   } else {
     const potentialMonthlySaving = price - bestPrice;
