@@ -780,7 +780,7 @@ function getReliabilityShortMessage(sampleCount) {
 async function loadStatistics() {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price&Monthly_price=not.is.null`,
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City&Monthly_price=not.is.null`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
@@ -795,6 +795,16 @@ async function loadStatistics() {
     if (!data || data.length === 0) return;
 
     const prices = data.map(item => Number(item.Monthly_price));
+    const uniqueCities = new Set(
+      data
+        .map(item => item.City)
+        .filter(city => city && city.trim() !== "")
+    );
+    
+    const statsCities = document.getElementById("stats-cities");
+    if (statsCities) {
+      statsCities.textContent = uniqueCities.size;
+    }
 
     document.getElementById("stats-total").textContent = prices.length;
     const communityCount = document.getElementById("stats-community-count");
