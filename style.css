@@ -2652,3 +2652,15 @@ nav button span {
   box-shadow: 0 14px 28px rgba(18, 87, 216, 0.35);
 }
 
+@media (min-width: 901px) {
+  #about .info-card {
+    max-width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #about .stats-note {
+    max-width: 720px;
+  }
+}
+
