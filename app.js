@@ -61,6 +61,10 @@ function goTo(id) {
   }
 }
 
+
+// =====================================================
+// Requêtes Supabase - Internet
+// =====================================================
 async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed) {
   let url =
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price` +
@@ -120,6 +124,9 @@ async function getAveragePrice(city, provider, offerType, speed) {
 
 const MIN_RESULTS = 3;
 
+// =====================================================
+// Gestion des villes et zones géographiques
+// =====================================================
 async function getCityInfo(cityName) {
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/belgian_cities?select=name,province,region&name=eq.${encodeURIComponent(cityName)}&limit=1`,
@@ -373,6 +380,10 @@ async function savePriceToSupabase(city, provider, monthlyPrice, offerType, spee
   return await response.json();
 }
 
+
+// =====================================================
+// Logos fournisseurs
+// =====================================================
 function getProviderLogo(provider) {
   const logos = {
     "Proximus": "logos/proximus.png",
@@ -760,7 +771,9 @@ function getReliabilityShortMessage(sampleCount) {
   return "✅ Comparaison fiable";
 }
 
-
+// =====================================================
+// Statistiques Internet
+// =====================================================
 async function loadStatistics() {
   try {
     const response = await fetch(
@@ -1041,6 +1054,10 @@ function launchConfetti() {
   }, 2000);
 }
 
+
+// =====================================================
+// Partage du résultat
+// =====================================================
 async function shareResult() {
   const shareText = `Je viens de comparer mon abonnement Internet sur Prix Réel.
 
@@ -1065,6 +1082,10 @@ https://prix-reel.vercel.app`;
   }
 }
 
+
+// =====================================================
+// Profil communauté
+// =====================================================
 async function loadProfile() {
   try {
     const response = await fetch(
