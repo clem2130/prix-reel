@@ -929,3 +929,7 @@ function launchConfetti() {
   }, 2000);
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  loadTrustCounter();
+});
+
