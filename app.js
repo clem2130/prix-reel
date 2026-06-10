@@ -780,30 +780,34 @@ async function loadStatistics() {
 }
 
 async function loadTrustCounter() {
-  const counter = document.getElementById("trust-counter");
-  if (!counter) return;
-
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=*&limit=1`,
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Id`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-          Prefer: "count=exact"
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
         }
       }
     );
 
     if (!response.ok) throw new Error(await response.text());
 
-    const contentRange = response.headers.get("content-range");
-    const total = contentRange ? contentRange.split("/")[1] : "0";
+    const data = await response.json();
+    const total = data.length;
 
-    counter.textContent = total;
+    const homeCounter = document.getElementById("home-trust-counter");
+    const infoCounter = document.getElementById("info-trust-counter");
+
+    if (homeCounter) {
+      homeCounter.textContent = total;
+    }
+
+    if (infoCounter) {
+      infoCounter.textContent = total;
+    }
   } catch (error) {
     console.error("Erreur compteur :", error);
-    counter.textContent = "0";
   }
 }
 
