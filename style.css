@@ -1098,18 +1098,6 @@ nav span {
   font-weight: 700;
 }
 
-.result-duo-card {
-  margin: 26px 0;
-  padding: 22px;
-  border: 1px solid #dbe5f0;
-  border-radius: 18px;
-  background: #ffffff;
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-  align-items: center;
-  gap: 18px;
-}
-
 .duo-part {
   min-width: 0;
 }
@@ -1180,17 +1168,6 @@ nav span {
   display: none;
 }
 
-.result-duo-card {
-  margin: 26px 0;
-  padding: 30px;
-  border: 1px solid #dbe5f0;
-  border-radius: 18px;
-  background: #ffffff;
-  display: grid;
-  grid-template-columns: 1fr 2px 1fr;
-  align-items: center;
-  gap: 26px;
-}
 
 .savings-value,
 #yearly-saving,
@@ -1212,13 +1189,6 @@ nav span {
     font-size: 42px;
   }
 }
-
-@media (max-width: 460px) {
-  .result-duo-card {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 22px;
-  }
 
   .duo-separator {
     width: 100%;
