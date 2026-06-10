@@ -769,6 +769,10 @@ async function loadStatistics() {
     const prices = data.map(item => Number(item.Monthly_price));
 
     document.getElementById("stats-total").textContent = prices.length;
+    const communityCount = document.getElementById("stats-community-count");
+    if (communityCount) {
+      communityCount.textContent = prices.length;
+    }
     document.getElementById("stats-average").textContent =
       Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) + " €";
     document.getElementById("stats-min").textContent = Math.min(...prices) + " €";
