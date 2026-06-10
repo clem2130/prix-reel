@@ -2020,21 +2020,21 @@ nav button span {
 }
 
 .trust-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 0 0 18px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 15px 0 25px;
 }
 
 .trust-row div {
   background: #f4f8ff;
   border: 1px solid #dbe7ff;
-  color: #06245c;
-  border-radius: 16px;
-  padding: 12px;
-  text-align: center;
+  border-radius: 30px;
+  padding: 8px 14px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
+  color: #06245c;
 }
 
 @media (max-width: 700px) {
