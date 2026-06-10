@@ -2588,3 +2588,7 @@ nav button span {
   background: #f8fbff;
   transform: translateX(4px);
 }
+
+.recommendation-card {
+  padding: 28px;
+}
