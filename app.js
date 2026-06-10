@@ -795,90 +795,105 @@ async function loadStatistics() {
     if (!data || data.length === 0) return;
 
     const prices = data.map(item => Number(item.Monthly_price));
+
     const uniqueCities = new Set(
       data
         .map(item => item.City)
         .filter(city => city && city.trim() !== "")
     );
-    
+
     const statsCities = document.getElementById("stats-cities");
     if (statsCities) {
       statsCities.textContent = uniqueCities.size;
     }
 
     document.getElementById("stats-total").textContent = prices.length;
+
     const communityCount = document.getElementById("stats-community-count");
     if (communityCount) {
       communityCount.textContent = prices.length;
     }
+
     document.getElementById("stats-average").textContent =
       Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) + " €";
-    document.getElementById("stats-min").textContent = Math.min(...prices) + " €";
-    document.getElementById("stats-max").textContent = Math.max(...prices) + " €";
+
+    document.getElementById("stats-min").textContent =
+      Math.min(...prices) + " €";
+
+    document.getElementById("stats-max").textContent =
+      Math.max(...prices) + " €";
+
+    const providerStats = {};
+
+    data.forEach(item => {
+      const provider = item.Provider;
+      const price = Number(item.Monthly_price);
+
+      if (!provider || isNaN(price)) return;
+
+      if (!providerStats[provider]) {
+        providerStats[provider] = {
+          total: 0,
+          count: 0
+        };
+      }
+
+      providerStats[provider].total += price;
+      providerStats[provider].count += 1;
+    });
+
+    const providerAverages = Object.keys(providerStats)
+      .map(provider => ({
+        provider,
+        average: Math.round(
+          providerStats[provider].total / providerStats[provider].count
+        ),
+        count: providerStats[provider].count
+      }))
+      .sort((a, b) => a.average - b.average)
+      .slice(0, 6);
+
+    const chartContainer = document.getElementById("provider-chart");
+
+    if (chartContainer) {
+      chartContainer.innerHTML = "";
+
+      if (providerAverages.length === 0) {
+        chartContainer.innerHTML = `
+          <p class="provider-empty">
+            Pas encore assez de données pour afficher les fournisseurs.
+          </p>
+        `;
+      } else {
+        const maxAverage = Math.max(
+          ...providerAverages.map(item => item.average)
+        );
+
+        providerAverages.forEach(item => {
+          const width = Math.max(15, (item.average / maxAverage) * 100);
+
+          chartContainer.innerHTML += `
+            <div class="provider-chart-row">
+              <div class="provider-chart-name">${item.provider}</div>
+
+              <div class="provider-chart-bar-wrap">
+                <div class="provider-chart-bar" style="width: ${width}%"></div>
+              </div>
+
+              <div class="provider-chart-price">
+                ${item.average} €
+                <small>${item.count} prix</small>
+              </div>
+            </div>
+          `;
+        });
+      }
+    }
+
   } catch (error) {
     alert("Erreur stats : " + error.message);
     console.error(error);
   }
-  
-const providerStats = {};
-
-data.forEach(item => {
-  const provider = item.Provider;
-  const price = Number(item.Monthly_price);
-
-  if (!provider || !price) return;
-
-  if (!providerStats[provider]) {
-    providerStats[provider] = {
-      total: 0,
-      count: 0
-    };
-  }
-
-  providerStats[provider].total += price;
-  providerStats[provider].count += 1;
-});
-
-const providerAverages = Object.keys(providerStats)
-  .map(provider => ({
-    provider,
-    average: Math.round(providerStats[provider].total / providerStats[provider].count),
-    count: providerStats[provider].count
-  }))
-  .sort((a, b) => a.average - b.average)
-  .slice(0, 6);
-
-const chartContainer = document.getElementById("provider-chart");
-
-console.log("Provider Stats:", providerStats);
-console.log("Provider Averages:", providerAverages);
-
-if (chartContainer && providerAverages.length > 0) {
-  const maxAverage = Math.max(...providerAverages.map(item => item.average));
-
-  chartContainer.innerHTML = "";
-
-  providerAverages.forEach(item => {
-    const width = Math.max(15, (item.average / maxAverage) * 100);
-
-    chartContainer.innerHTML += `
-      <div class="provider-chart-row">
-        <div class="provider-chart-name">${item.provider}</div>
-
-        <div class="provider-chart-bar-wrap">
-          <div class="provider-chart-bar" style="width: ${width}%"></div>
-        </div>
-
-        <div class="provider-chart-price">
-          ${item.average} €
-          <small>${item.count} prix</small>
-        </div>
-      </div>
-    `;
-  });
-}
-
-  
 }
 
 async function loadTrustCounter() {
