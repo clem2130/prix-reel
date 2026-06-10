@@ -2298,3 +2298,8 @@ nav button span {
 .stat-card {
   transition: all .25s ease;
 }
+
+.stats-highlight {
+  color: var(--green);
+  font-weight: 800;
+}
