@@ -11,7 +11,17 @@ function goTo(id) {
   if (!target) return;
 
   target.classList.add("active");
+
   target.scrollTop = 0;
+
+  const app = document.querySelector(".app");
+  if (app) {
+    app.scrollTop = 0;
+  }
+
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 
   if (id === "stats") {
     loadStatistics();
