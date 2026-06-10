@@ -2138,4 +2138,17 @@ nav button span {
   .city-footer img {
     filter: drop-shadow(0 -8px 24px rgba(6, 36, 92, 0.08));
   }
+
+    .features,
+  .community-card {
+    backdrop-filter: blur(10px);
+  }
+
+  .features {
+    padding: 26px 28px;
+  }
+
+  .feature {
+    margin: 18px 0;
+  }
 }
