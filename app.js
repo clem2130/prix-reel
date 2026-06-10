@@ -894,7 +894,7 @@ async function loadStatistics() {
           const width = Math.max(15, (item.average / maxAverage) * 100);
 
           chartContainer.innerHTML += `
-            <div class="provider-chart-row">
+            <div class="provider-chart-row" onclick="showProviderDetails('${item.provider}', ${item.average}, ${item.count})">
               <div class="provider-chart-name">${label}</div>
 
               <div class="provider-chart-bar-wrap">
@@ -1159,3 +1159,13 @@ if (bestProviderElement && bestProvider) {
   }
 }
 
+function showProviderDetails(provider, average, count) {
+  alert(
+    `${provider}
+
+Prix moyen observé : ${average} € / mois
+Nombre de prix analysés : ${count}
+
+Ces données sont basées sur les prix réellement partagés par la communauté.`
+  );
+}
