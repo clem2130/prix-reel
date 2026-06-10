@@ -452,7 +452,7 @@ if (summaryText) {
     const resultSaving = document.getElementById("result-saving");
     const savingMonth = document.getElementById("saving-month");
     const recommendationCard = document.getElementById("recommendation-card");
-    const duoStatus = document.getElementById("duo-status");
+    
 
     if (isExcellentPrice) {
       if (ratingElement) {
