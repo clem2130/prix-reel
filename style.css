@@ -28,7 +28,7 @@ body {
   color: var(--text);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 28px;
 }
 
@@ -50,7 +50,7 @@ body {
   padding: 56px 64px 100px;
   overflow-y: auto;
   animation: show .22s ease;
-  max-width: 1400px;
+  max-width: none;
   margin: 0 auto;
 }
 
