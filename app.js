@@ -558,7 +558,7 @@ Vous payez actuellement : ${price} € / mois
 </p>
 <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
 <span class="best-price-badge">
-🏆 Meilleur prix observé
+⭐ Offre la plus avantageuse
 </span>
 `;
 } else {
