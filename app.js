@@ -448,7 +448,6 @@ if (summaryText) {
     const piggy = document.getElementById("piggy-container");
     const pigImage = document.getElementById("piggy-image");
     const ratingElement = document.getElementById("price-rating");
-    const insight = document.getElementById("price-insight");
     const resultSaving = document.getElementById("result-saving");
     const savingMonth = document.getElementById("saving-month");
     const recommendationCard = document.getElementById("recommendation-card");
