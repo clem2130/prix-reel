@@ -2415,3 +2415,19 @@ nav button span {
   );
   box-shadow: 0 15px 35px rgba(34,168,67,.12);
 }
+
+.best-deals-card li {
+  transition: all .2s ease;
+}
+
+.best-deals-card li:hover {
+  background: #f8fbff;
+  transform: translateX(4px);
+}
+
+.score-badge {
+  font-size: 28px;
+  font-weight: 800;
+  padding: 14px 24px;
+  border-radius: 16px;
+}
