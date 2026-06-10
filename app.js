@@ -798,12 +798,10 @@ async function loadTrustCounter() {
 
     const data = await response.json();
 
-    counter.textContent =
-      `📊 Basé sur ${data.length} prix réels enregistrés en Belgique`;
+    counter.textContent = data.length;
   } catch (error) {
     console.error("Erreur compteur :", error);
-    counter.textContent =
-      "📊 Basé sur des prix réels enregistrés en Belgique";
+    counter.textContent = "0";
   }
 }
 
