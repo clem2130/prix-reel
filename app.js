@@ -879,7 +879,7 @@ async function loadStatistics() {
 
           chartContainer.innerHTML += `
             <div class="provider-chart-row">
-              <div class="provider-chart-name">${item.provider}</div>
+              <div class="provider-chart-name">${label}</div>
 
               <div class="provider-chart-bar-wrap">
                 <div class="provider-chart-bar" style="width: ${width}%"></div>
