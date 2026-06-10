@@ -625,8 +625,8 @@ if (bestDeals.length > 1) {
     }
 
     animateCounter("percent", gapPercent, 1000);
-    animateCounter("duo-percent", gapPercent, 1000);
-
+    
+/*
     if (duoStatus && !isExcellentPrice) {
       if (diff < 0) {
         duoStatus.textContent = "moins cher";
@@ -636,6 +636,7 @@ if (bestDeals.length > 1) {
         duoStatus.textContent = "moyenne";
       }
     }
+    */
 
     const scoreDot = document.querySelector(".score-dot");
 
