@@ -2406,3 +2406,12 @@ nav button span {
     height: 32px;
   }
 }
+
+.recommendation-card {
+  background: linear-gradient(
+    135deg,
+    #f5fff7,
+    #ebfff0
+  );
+  box-shadow: 0 15px 35px rgba(34,168,67,.12);
+}
