@@ -941,23 +941,6 @@ nav span {
   }
 }
 
-/* DESKTOP */
-
-@media (min-width: 901px) {
-  .logo-shield {
-    width: 170px !important;
-    height: 170px !important;
-    object-fit: contain;
-    margin-right: 0;
-  }
-
-  .brand {
-    margin-top: 10px;
-    margin-bottom: 35px;
-    justify-content: center;
-  }
-}
-
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -2055,7 +2038,7 @@ nav button span {
 
   .screen {
     max-width: none;
-    padding: 70px 120px 110px;
+    padding: 40px 120px 110px;
   }
 
   #home .features,
