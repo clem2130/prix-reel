@@ -2444,22 +2444,9 @@ nav button span {
 
 /* Résultat premium */
 
-#price-rating {
-  display: block;
-  font-size: 0 !important;
-  margin-bottom: 10px;
-}
 
-#price-rating::before {
-  content: "🟢 Excellent prix";
-  display: block;
-  font-size: 18px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #16a34a;
-  margin-bottom: 10px;
-}
+
+
 
 #price-insight {
   font-size: 28px !important;
@@ -2482,9 +2469,6 @@ nav button span {
     font-size: 22px !important;
   }
 
-  #price-rating::before {
-    font-size: 15px;
-  }
 }
 
 #price-summary-text strong {
