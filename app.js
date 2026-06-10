@@ -475,23 +475,14 @@ if (summaryText) {
 
     const piggy = document.getElementById("piggy-container");
     const pigImage = document.getElementById("piggy-image");
-    const ratingElement = document.getElementById("price-rating");
     const recommendationCard = document.getElementById("recommendation-card");
     
 
     if (isExcellentPrice) {
-      if (ratingElement) {
-  ratingElement.textContent = "🏆 Excellent prix !";
-  ratingElement.style.color = "#16a34a";
-}
 
       if (piggy && pigImage) {
         piggy.className = "saving-icon piggy-superhappy";
         pigImage.src = "piggy-superhappy.png";
-      }
-
-      if (duoStatus) {
-        duoStatus.textContent = "excellent prix";
       }
 
       recommendationCard.innerHTML = `
@@ -527,26 +518,7 @@ if (summaryText) {
           }
         }
       }
-
-      let rating = "";
-      let ratingColor = "";
-
-      if (diff <= -10) {
-  rating = "🟢 Excellent prix";
-  ratingColor = "#16a34a";
-} else if (diff <= 5) {
-  rating = "🟡 Prix correct";
-  ratingColor = "#f59e0b";
-} else {
-  rating = "🔴 Prix élevé";
-  ratingColor = "#dc2626";
-      }
-
-      if (ratingElement) {
-  ratingElement.textContent = rating;
-  ratingElement.style.color = ratingColor;
-}
-      
+   
       const saving = diff > 0 ? yearlyGap : 0;
       const monthSaving = diff > 0 ? monthlyGap : 0;
 
