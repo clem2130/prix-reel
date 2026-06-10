@@ -1583,32 +1583,6 @@ nav span {
   opacity: 0.95;
 }
 
-.footer-prixreel{
-  margin-top:30px;
-  padding:18px;
-  text-align:center;
-  color:#5f6b7a;
-  font-size:14px;
-  border-top:1px solid #e4e9f0;
-}
-
-.footer-prixreel {
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 4px solid #1257d8;
-  text-align: center;
-}
-
-.footer-prixreel p {
-  color: #5f6b7a;
-  font-size: 14px;
-}
-
-.footer-prixreel {
-  margin-top: -20px; /* rapproche la bande du paysage */
-  padding: 55px 20px 40px;
-  text-align: center;
-  color: white;
 
   background: linear-gradient(
     135deg,
@@ -1620,13 +1594,6 @@ nav span {
   box-shadow: 0 -6px 20px rgba(18,87,216,0.15);
 }
 
-.footer-prixreel p {
-  color: #f8fafc;
-  margin: 0;
-  font-size: 15px;
-  font-weight: 500;
-  opacity: 0.95;
-}
 
 .footer-separator {
   height: 40px;
