@@ -2349,3 +2349,12 @@ nav button span {
   background: white;
   box-shadow: 0 10px 25px rgba(6,36,92,0.05);
 }
+
+#stats .stat-card {
+  box-shadow: 0 12px 30px rgba(6, 36, 92, 0.08);
+}
+
+#stats .stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(6, 36, 92, 0.12);
+}
