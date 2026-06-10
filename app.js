@@ -448,7 +448,6 @@ if (summaryText) {
     const piggy = document.getElementById("piggy-container");
     const pigImage = document.getElementById("piggy-image");
     const ratingElement = document.getElementById("price-rating");
-    const savingMonth = document.getElementById("saving-month");
     const recommendationCard = document.getElementById("recommendation-card");
     
 
@@ -457,11 +456,7 @@ if (summaryText) {
   ratingElement.textContent = "🏆 Excellent prix !";
   ratingElement.style.color = "#16a34a";
 }
-/*
-if (savingMonth) {
-  savingMonth.textContent = "Aucune économie significative détectée.";
-}
-*/
+
       if (piggy && pigImage) {
         piggy.className = "saving-icon piggy-superhappy";
         pigImage.src = "piggy-superhappy.png";
@@ -526,11 +521,7 @@ if (savingMonth) {
       
       const saving = diff > 0 ? yearlyGap : 0;
       const monthSaving = diff > 0 ? monthlyGap : 0;
- /*     
-if (savingMonth) {
-  savingMonth.textContent = "Soit " + monthSaving + " € par mois";
-}
-*/
+
 const bestDeals = await getBestDeals(city, offerType, speed);
 
 if (bestDeals.length > 1) {
