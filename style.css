@@ -2344,3 +2344,8 @@ nav button span {
 #stats .stat-card:nth-child(4) {
   border-top: 5px solid #dc2626 !important;
 }
+
+.stats-note {
+  background: white;
+  box-shadow: 0 10px 25px rgba(6,36,92,0.05);
+}
