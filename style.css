@@ -2230,42 +2230,7 @@ nav button span {
   font-size: 14px;
 }
 
-.share-btn {
-  width: 100%;
-  margin-top: 12px;
-  padding: 14px;
-  border: none;
-  border-radius: 14px;
-  background: #f4f8ff;
-  color: var(--navy);
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .2s ease;
-}
 
-
-.share-btn {
-  width: 100%;
-  margin-top: 12px;
-  padding: 16px;
-  border: none;
-  border-radius: 14px;
-
-  background: linear-gradient(135deg, #1257d8, #0b347d);
-  color: white;
-
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-
-  box-shadow: 0 10px 24px rgba(18, 87, 216, 0.25);
-  transition: all 0.25s ease;
-}
-
-.share-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(18, 87, 216, 0.35);
-}
 
 @media (min-width: 901px) {
   #about .info-card {
