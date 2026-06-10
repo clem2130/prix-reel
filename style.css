@@ -2664,3 +2664,15 @@ nav button span {
   }
 }
 
+.stats-note {
+  max-width: 700px;
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+.info-card:nth-child(5),
+.info-card:nth-child(6),
+.info-card:nth-child(7) {
+  border: 1px solid #dbeafe;
+  background: #f8fbff;
+}
