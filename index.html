@@ -287,33 +287,52 @@
   </button>
 </section>
 
-    <section class="screen" id="stats">
-      <div class="topbar">
-        <button class="back" onclick="goTo('home')">←</button>
-        <strong>Statistiques</strong>
-        <div></div>
-      </div>
+<section class="screen" id="stats">
+  <div class="topbar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <strong>Statistiques</strong>
+    <div></div>
+  </div>
 
-      <div class="stat-card">
-        <h3 id="stats-total">0</h3>
-        <p>Prix enregistrés</p>
-      </div>
+  <div class="stats-hero">
+    <h2>Les prix partagés par la communauté</h2>
+    <p>Un aperçu des prix Internet réellement enregistrés sur Prix Réel.</p>
+  </div>
 
-      <div class="stat-card">
-        <h3 id="stats-average">0 €</h3>
-        <p>Prix moyen</p>
-      </div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <h3 id="stats-total">0</h3>
+      <p>Prix enregistrés</p>
+    </div>
 
-      <div class="stat-card">
-        <h3 id="stats-min">0 €</h3>
-        <p>Prix le plus bas</p>
-      </div>
+    <div class="stat-card">
+      <div class="stat-icon">💶</div>
+      <h3 id="stats-average">0 €</h3>
+      <p>Prix moyen</p>
+    </div>
 
-      <div class="stat-card">
-        <h3 id="stats-max">0 €</h3>
-        <p>Prix le plus élevé</p>
-      </div>
-    </section>
+    <div class="stat-card">
+      <div class="stat-icon">🟢</div>
+      <h3 id="stats-min">0 €</h3>
+      <p>Prix le plus bas</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🔴</div>
+      <h3 id="stats-max">0 €</h3>
+      <p>Prix le plus élevé</p>
+    </div>
+  </div>
+
+  <div class="stats-note">
+    <strong>Pourquoi ces statistiques ?</strong>
+    <p>
+      Ces données donnent une vision globale des prix Internet réellement partagés
+      par les utilisateurs en Belgique.
+    </p>
+  </div>
+</section>
 
     <nav>
       <button onclick="goTo('home')">⌂<span>Accueil</span></button>
