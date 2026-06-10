@@ -459,9 +459,15 @@ if (summaryText) {
   ratingElement.style.color = "#16a34a";
 }
 
+        
+/*
 if (resultSaving) {
   resultSaving.textContent = "0 € / an";
 }
+*/
+
+
+
 
 if (savingMonth) {
   savingMonth.textContent = "Aucune économie significative détectée.";
@@ -531,11 +537,12 @@ if (savingMonth) {
       
       const saving = diff > 0 ? yearlyGap : 0;
       const monthSaving = diff > 0 ? monthlyGap : 0;
-
+/*
 if (resultSaving) {
   resultSaving.textContent = saving + " € / an";
 }
-
+*/
+      
 if (savingMonth) {
   savingMonth.textContent = "Soit " + monthSaving + " € par mois";
 }
