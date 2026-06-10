@@ -551,7 +551,7 @@ const bestDeals = await getBestDeals(city, offerType, speed);
   const potentialYearlySaving = potentialMonthlySaving * 12;
 
   recommendationCard.innerHTML = `
-<p>💡 Recommandation Prix Réel</p>
+<p>🏆 Meilleur prix observé</p>
 <strong>${bestProvider} — ${bestPrice} € / mois</strong>
 <p class="current-price">
 Vous payez actuellement : ${price} € / mois
@@ -563,7 +563,7 @@ Vous payez actuellement : ${price} € / mois
 `;
 } else {
   recommendationCard.innerHTML = `
-<p>💡 Recommandation Prix Réel</p>
+<p>🏆 Meilleur prix observé</p>
 <strong>Aucune alternative fiable disponible pour le moment.</strong>
 <small>Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.</small>
 `;
