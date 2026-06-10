@@ -2604,3 +2604,20 @@ nav button span {
   font-weight: 600;
   font-size: 14px;
 }
+
+.share-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: #f4f8ff;
+  color: var(--navy);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.share-btn:hover {
+  background: #e8f0ff;
+}
