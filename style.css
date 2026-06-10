@@ -2653,3 +2653,11 @@ nav button span {
   transform: translateY(-2px);
   box-shadow: 0 14px 28px rgba(18, 87, 216, 0.35);
 }
+
+@media (min-width: 901px) {
+  .stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    max-width: 1300px !important;
+  }
+}
