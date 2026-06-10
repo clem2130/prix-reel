@@ -2174,12 +2174,16 @@ nav button span {
 }
 
 .stats-grid {
-  display: grid;
+  display: flex;
   justify-content: center;
-  grid-template-columns: repeat(5, 1fr);
+  flex-wrap: wrap;
   gap: 22px;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.stat-card {
+  width: 220px;
 }
 
 @media (max-width: 900px) {
@@ -2252,13 +2256,6 @@ nav button span {
     margin: 0 auto 34px;
   }
 
-#stats .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 22px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
   #stats .stat-card {
     max-width: none;
@@ -2655,10 +2652,3 @@ nav button span {
   box-shadow: 0 14px 28px rgba(18, 87, 216, 0.35);
 }
 
-@media (min-width: 901px) {
-  .stats-grid {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important;
-    max-width: 1300px !important;
-  }
-}
