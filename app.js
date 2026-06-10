@@ -714,6 +714,11 @@ if (dealsContainer) {
 
   const medals = ["🥇", "🥈", "🥉"];
 
+  const label =
+  index < 3
+    ? `${medals[index]} ${label}`
+    : item.provider;
+
   bestDeals.forEach((deal, index) => {
     const rank = index < 3 ? medals[index] : `${index + 1}.`;
 
