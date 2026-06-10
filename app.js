@@ -459,11 +459,11 @@ if (summaryText) {
   ratingElement.textContent = "🏆 Excellent prix !";
   ratingElement.style.color = "#16a34a";
 }
-
+/*
 if (insight) {
   insight.textContent = "Félicitations ! Vous faites partie des abonnements les moins chers enregistrés.";
 }
-
+*/
 if (resultSaving) {
   resultSaving.textContent = "0 € / an";
 }
@@ -533,7 +533,7 @@ if (savingMonth) {
   ratingElement.textContent = rating;
   ratingElement.style.color = ratingColor;
 }
-
+/*
 if (insight) {
   if (diff < 0) {
     insight.textContent = "Vous payez " + monthlyGap + " € de moins par mois que la moyenne.";
@@ -543,7 +543,7 @@ if (insight) {
     insight.textContent = "Votre prix est exactement dans la moyenne.";
   }
 }
-
+*/
 
 
       
