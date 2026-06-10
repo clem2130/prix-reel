@@ -2328,3 +2328,19 @@ nav button span {
 .stat-card:nth-child(4) {
   border-top: 4px solid #dc2626;
 }
+
+#stats .stat-card:nth-child(1) {
+  border-top: 5px solid #1257d8 !important;
+}
+
+#stats .stat-card:nth-child(2) {
+  border-top: 5px solid #22a843 !important;
+}
+
+#stats .stat-card:nth-child(3) {
+  border-top: 5px solid #16a34a !important;
+}
+
+#stats .stat-card:nth-child(4) {
+  border-top: 5px solid #dc2626 !important;
+}
