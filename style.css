@@ -2592,3 +2592,14 @@ nav button span {
 .recommendation-card {
   padding: 28px;
 }
+
+.trust-badge {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #eefbf3;
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 14px;
+}
