@@ -777,13 +777,6 @@ select {
   padding-top: 44px;
 }
 
-.result-card::before {
-  display: block;
-  color: #22a843;
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
 /* Barre de score */
 
 .score-bar-card {
