@@ -2431,3 +2431,48 @@ nav button span {
   padding: 14px 24px;
   border-radius: 16px;
 }
+
+/* Résultat premium */
+
+#price-rating {
+  display: block;
+  font-size: 0 !important;
+  margin-bottom: 10px;
+}
+
+#price-rating::before {
+  content: "🟢 Excellent prix";
+  display: block;
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #16a34a;
+  margin-bottom: 10px;
+}
+
+#price-insight {
+  font-size: 28px !important;
+  font-weight: 900 !important;
+  color: #1257d8 !important;
+  line-height: 1.25 !important;
+}
+
+#price-insight::after {
+  content: "par rapport aux abonnements similaires";
+  display: block;
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+@media (max-width: 460px) {
+  #price-insight {
+    font-size: 22px !important;
+  }
+
+  #price-rating::before {
+    font-size: 15px;
+  }
+}
