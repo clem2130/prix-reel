@@ -909,15 +909,6 @@ providerAverages.forEach((item, index) => {
     </div>
   `;
 });
-          document.querySelectorAll(".provider-chart-row").forEach(row => {
-          row.addEventListener("click", () => {
-            showProviderDetails(
-              row.dataset.provider,
-              row.dataset.average,
-              row.dataset.count
-            );
-          });
-        });
       }
     }
 
