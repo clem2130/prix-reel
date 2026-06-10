@@ -519,8 +519,6 @@ if (summaryText) {
         }
       }
    
-      const saving = diff > 0 ? yearlyGap : 0;
-      const monthSaving = diff > 0 ? monthlyGap : 0;
 
 const bestDeals = await getBestDeals(city, offerType, speed);
 
