@@ -687,28 +687,6 @@ select {
 
 /* STATS */
 
-.stat-card {
-  background: #eff6ff;
-  border: 1px solid #dbeafe;
-  border-radius: 18px;
-  padding: 18px;
-  text-align: center;
-  margin: 14px 0;
-  max-width: 680px;
-}
-
-.stat-card h3 {
-  margin: 0 0 6px;
-  color: var(--navy);
-  font-size: 54px;
-  font-weight: 800;
-}
-
-.stat-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-}
 
 .stats-link {
   display: inline-block;
