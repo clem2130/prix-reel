@@ -366,11 +366,57 @@
   </div>
 </section>
 
+    <section class="screen" id="profile">
+  <div class="topbar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <strong>Profil communauté</strong>
+    <div></div>
+  </div>
+
+  <div class="stats-hero">
+    <h2>Votre espace Prix Réel</h2>
+    <p>Suivez l’évolution de la communauté et les meilleurs prix observés.</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <h3 id="profile-total">0</h3>
+      <p>Prix partagés</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🏙️</div>
+      <h3 id="profile-cities">0</h3>
+      <p>Villes couvertes</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <h3 id="profile-best-price">0 €</h3>
+      <p>Meilleur prix observé</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🤝</div>
+      <h3>100%</h3>
+      <p>Anonyme</p>
+    </div>
+  </div>
+
+  <div class="stats-note">
+    <strong>Pourquoi un profil communauté ?</strong>
+    <p>
+      Plus la communauté partage de prix réels, plus les comparaisons deviennent utiles et fiables.
+    </p>
+  </div>
+</section>
+
     <nav>
       <button onclick="goTo('home')">⌂<span>Accueil</span></button>
       <button onclick="goTo('category')">⌕<span>Comparer</span></button>
       <button onclick="goTo('stats')">▥<span>Stats</span></button>
-      <button onclick="alert('Profil bientôt disponible')">♙<span>Profil</span></button>
+      <button onclick="goTo('profile')">♙<span>Profil</span></button>
       <button onclick="goTo('about')">ⓘ<span>Infos</span></button>
     </nav>
 
