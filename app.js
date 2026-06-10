@@ -712,13 +712,6 @@ if (bestDealsCard) {
 if (dealsContainer) {
   dealsContainer.innerHTML = "";
 
-    const medals = ["🥇", "🥈", "🥉"];
-    
-    const label =
-    index < 3
-    ? `${medals[index]} ${item.provider}`
-    : item.provider;
-
   bestDeals.forEach((deal, index) => {
     const rank = index < 3 ? medals[index] : `${index + 1}.`;
 
@@ -874,7 +867,13 @@ async function loadStatistics() {
           ...providerAverages.map(item => item.average)
         );
 
-        providerAverages.forEach(item => {
+        providerAverages.forEach(item, index) => {
+          const medals = ["🥇", "🥈", "🥉"];
+
+          const label = index < 3
+            ? `${medals[index]} ${item.provider}`
+            : item.provider;
+          
           const width = Math.max(15, (item.average / maxAverage) * 100);
 
           chartContainer.innerHTML += `
