@@ -1,5 +1,19 @@
+// =====================================================
+// Configuration Supabase
+// =====================================================
+
+// URL du projet Supabase utilisé par Prix Réel
 const SUPABASE_URL = "https://mmkubcgomhgkcbnsukze.supabase.co";
+
+// Clé publique Supabase utilisée pour lire/écrire les données autorisées
 const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
+
+
+// =====================================================
+// État global du formulaire
+// =====================================================
+
+// Stocke la ville sélectionnée dans l'autocomplete
 let selectedCityData = null;
 
 // =====================================================
