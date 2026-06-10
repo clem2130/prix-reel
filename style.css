@@ -2534,3 +2534,12 @@ nav button span {
 .best-deals-card {
   box-shadow: 0 12px 30px rgba(6,36,92,.08);
 }
+
+.deal-item {
+  transition: all .25s ease;
+}
+
+.deal-item:hover {
+  background: #f8fbff;
+  transform: translateX(4px);
+}
