@@ -2251,13 +2251,13 @@ nav button span {
     margin: 0 auto 34px;
   }
 
-  #stats .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+#stats .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
   #stats .stat-card {
     max-width: none;
