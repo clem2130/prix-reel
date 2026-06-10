@@ -2175,6 +2175,7 @@ nav button span {
 
 .stats-grid {
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(5, 1fr);
   gap: 22px;
   max-width: 1200px;
