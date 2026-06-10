@@ -551,8 +551,10 @@ if (bestDeals.length > 1) {
   if (bestPrice >= price) {
     recommendationCard.innerHTML = `
       <p>🏆 Excellent tarif</p>
-      <strong>Vous bénéficiez déjà d'un très bon prix.</strong>
-      <small>Votre abonnement figure déjà parmi les offres les plus compétitives observées.</small>
+        <strong>Vous bénéficiez déjà d'un très bon prix.</strong>
+      <<div class="trust-badge">
+        ✅ Aucune offre moins chère observée parmi ${sampleCount} abonnements similaires
+      </div>
     `;
   } else {
     const potentialMonthlySaving = price - bestPrice;
