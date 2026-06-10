@@ -850,6 +850,9 @@ const providerAverages = Object.keys(providerStats)
 
 const chartContainer = document.getElementById("provider-chart");
 
+console.log("Provider Stats:", providerStats);
+console.log("Provider Averages:", providerAverages);
+
 if (chartContainer && providerAverages.length > 0) {
   const maxAverage = Math.max(...providerAverages.map(item => item.average));
 
