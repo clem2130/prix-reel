@@ -2621,3 +2621,23 @@ nav button span {
 .share-btn:hover {
   background: #e8f0ff;
 }
+
+.share-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1257d8, #0b347d);
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(18, 87, 216, 0.25);
+  transition: all 0.25s ease;
+}
+
+.share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(18, 87, 216, 0.35);
+}
