@@ -894,8 +894,11 @@ async function loadStatistics() {
           const width = Math.max(15, (item.average / maxAverage) * 100);
 
           chartContainer.innerHTML += `
-            <div class="provider-chart-row" onclick="showProviderDetails('${item.provider}', ${item.average}, ${item.count})">
-              <div class="provider-chart-name">${label}</div>
+          <div class="provider-chart-row"
+             data-provider="${item.provider}"
+             data-average="${item.average}"
+             data-count="${item.count}">
+          <div class="provider-chart-name">${label}</div>
 
               <div class="provider-chart-bar-wrap">
                 <div class="provider-chart-bar" style="width: ${width}%"></div>
@@ -907,6 +910,15 @@ async function loadStatistics() {
               </div>
             </div>
           `;
+        });
+          document.querySelectorAll(".provider-chart-row").forEach(row => {
+          row.addEventListener("click", () => {
+            showProviderDetails(
+              row.dataset.provider,
+              row.dataset.average,
+              row.dataset.count
+            );
+          });
         });
       }
     }
