@@ -35,8 +35,8 @@ body {
 .app {
   position: relative;
   width: 100%;
-  max-width: 1180px;
-  min-height: 760px;
+  max-width: 1600px;
+  min-height: 900px;
   background: #fff;
   border-radius: 34px;
   box-shadow: 0 28px 80px rgba(6, 36, 92, .18);
