@@ -712,11 +712,11 @@ if (bestDealsCard) {
 if (dealsContainer) {
   dealsContainer.innerHTML = "";
 
-  const medals = ["🥇", "🥈", "🥉"];
-
-  const label =
-  index < 3
-    ? `${medals[index]} ${label}`
+    const medals = ["🥇", "🥈", "🥉"];
+    
+    const label =
+    index < 3
+    ? `${medals[index]} ${item.provider}`
     : item.provider;
 
   bestDeals.forEach((deal, index) => {
