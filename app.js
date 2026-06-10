@@ -305,6 +305,8 @@ async function getRanking(city, provider, offerType, speed, userPrice) {
 
 
 async function getBestDeals(city, offerType, speed) {
+
+  // Recherche des abonnements similaires
   const resultData = await getSimilarPricesSmart(city, "", offerType, speed);
   const data = resultData.prices || [];
 
@@ -462,6 +464,8 @@ if (average > 0) {
   diffPercent = Math.round((Math.abs(diff) / average) * 100);
 }
 
+    
+// Construction du résumé affiché à l'utilisateur
 const summaryText = document.getElementById("price-summary-text");
 
 if (summaryText) {
@@ -531,7 +535,7 @@ if (summaryText) {
         }
       }
    
-
+// Recherche des meilleures alternatives disponibles
 const bestDeals = await getBestDeals(city, offerType, speed);
 
 if (bestDeals.length > 1) {
