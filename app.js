@@ -688,22 +688,26 @@ if (bestDealsCard) {
     bestDeals.length <= 1 ? "none" : "block";
 }    
 
-  if (dealsContainer) {
-    dealsContainer.innerHTML = "";
+if (dealsContainer) {
+  dealsContainer.innerHTML = "";
 
-    bestDeals.forEach((deal, index) => {
-      dealsContainer.innerHTML += `
-        <div class="deal-item">
-          <div class="deal-provider">
-            <img src="${getProviderLogo(deal.provider)}" alt="${deal.provider}">
-            <span>${index + 1}. ${deal.provider}</span>
-          </div>
+  const medals = ["🥇", "🥈", "🥉"];
 
-          <div class="deal-price">
-            ${deal.average} €
-            <small>${deal.count} prix</small>
-          </div>
+  bestDeals.forEach((deal, index) => {
+    const rank = index < 3 ? medals[index] : `${index + 1}.`;
+
+    dealsContainer.innerHTML += `
+      <div class="deal-item">
+        <div class="deal-provider">
+          <img src="${getProviderLogo(deal.provider)}" alt="${deal.provider}">
+          <span>${rank} ${deal.provider}</span>
         </div>
+
+        <div class="deal-price">
+          ${deal.average} €
+          <small>${deal.count} prix</small>
+        </div>
+      </div>
       `;
     });
   }
