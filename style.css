@@ -1626,16 +1626,20 @@ nav span {
   margin: 10px auto 0;
 }
 
+.footer-separator {
+  height: 15px;
+}
+
 .city-footer {
   width: 100%;
-  margin-top: -20px;
+  margin-top: 10px;
   overflow: hidden;
 }
 
 .city-footer img {
-  width: 115%;
-  max-width: none;
-  margin-left: -7.5%;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   display: block;
 }
 
