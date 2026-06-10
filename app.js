@@ -785,20 +785,22 @@ async function loadTrustCounter() {
 
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=id`,
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=*&limit=1`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          Prefer: "count=exact"
         }
       }
     );
 
     if (!response.ok) throw new Error(await response.text());
 
-    const data = await response.json();
+    const contentRange = response.headers.get("content-range");
+    const total = contentRange ? contentRange.split("/")[1] : "0";
 
-    counter.textContent = data.length;
+    counter.textContent = total;
   } catch (error) {
     console.error("Erreur compteur :", error);
     counter.textContent = "0";
