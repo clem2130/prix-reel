@@ -544,30 +544,40 @@ if (savingMonth) {
 }
 const bestDeals = await getBestDeals(city, offerType, speed);
 
-      if (bestDeals.length > 1) {
+if (bestDeals.length > 1) {
   const bestProvider = bestDeals[0].provider;
   const bestPrice = bestDeals[0].average;
-  const potentialMonthlySaving = Math.max(price - bestPrice, 0);
-  const potentialYearlySaving = potentialMonthlySaving * 12;
 
+  if (bestPrice >= price) {
+    recommendationCard.innerHTML = `
+      <p>🏆 Excellent tarif</p>
+      <strong>Vous bénéficiez déjà d'un très bon prix.</strong>
+      <small>Aucune offre plus avantageuse n'a été observée actuellement.</small>
+    `;
+  } else {
+    const potentialMonthlySaving = price - bestPrice;
+    const potentialYearlySaving = potentialMonthlySaving * 12;
+
+    recommendationCard.innerHTML = `
+      <p>🏆 Meilleur prix observé</p>
+      <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+      <p class="current-price">
+        Vous payez actuellement : ${price} € / mois
+      </p>
+      <small>Économie potentielle : ${potentialYearlySaving} € / an</small>
+      <span class="best-price-badge">
+        ⭐ Offre la plus avantageuse
+      </span>
+    `;
+  }
+} 
+else {
   recommendationCard.innerHTML = `
-<p>🏆 Meilleur prix observé</p>
-<strong>${bestProvider} — ${bestPrice} € / mois</strong>
-<p class="current-price">
-Vous payez actuellement : ${price} € / mois
-</p>
-<small>Économie potentielle : ${potentialYearlySaving} € / an</small>
-<span class="best-price-badge">
-⭐ Offre la plus avantageuse
-</span>
-`;
-} else {
-  recommendationCard.innerHTML = `
-<p>🏆 Meilleur prix observé</p>
-<strong>Aucune alternative fiable disponible pour le moment.</strong>
-<small>Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.</small>
-`;
-      }
+    <p>🏆 Meilleur prix observé</p>
+    <strong>Aucune alternative fiable disponible pour le moment.</strong>
+    <small>Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.</small>
+  `;
+}
     }
 
     let gapPercent = 0;
