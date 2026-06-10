@@ -965,3 +965,26 @@ function launchConfetti() {
   }, 2000);
 }
 
+async function shareResult() {
+
+  const text =
+`J'ai comparé mon abonnement sur Prix Réel.
+
+Découvrez si vous payez le juste prix :
+https://prix-reel.vercel.app`;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Prix Réel",
+        text: text
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  } else {
+    navigator.clipboard.writeText(text);
+    alert("Lien copié dans le presse-papiers !");
+  }
+}
+
