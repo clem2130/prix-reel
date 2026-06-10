@@ -2476,3 +2476,28 @@ nav button span {
     font-size: 15px;
   }
 }
+
+#price-summary-text strong {
+  display: block;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+#price-summary-text span {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  #price-summary-text strong {
+    font-size: 22px;
+  }
+
+  #price-summary-text span {
+    font-size: 15px;
+  }
+}
