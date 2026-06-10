@@ -26,6 +26,11 @@ function goTo(id) {
   if (id === "stats") {
     loadStatistics();
   }
+
+  if (id === "profile") {
+  loadProfile();
+}
+  
 }
 
 async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed) {
@@ -1087,6 +1092,40 @@ https://prix-reel.vercel.app`;
     navigator.clipboard.writeText(shareText);
 
     alert("Lien copié dans le presse-papiers. Vous pouvez maintenant le coller où vous souhaitez.");
+  }
+}
+
+async function loadProfile() {
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City&Monthly_price=not.is.null`,
+      {
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+
+    if (!response.ok) throw new Error(await response.text());
+
+    const data = await response.json();
+    if (!data || data.length === 0) return;
+
+    const prices = data.map(item => Number(item.Monthly_price));
+
+    const uniqueCities = new Set(
+      data
+        .map(item => item.City)
+        .filter(city => city && city.trim() !== "")
+    );
+
+    document.getElementById("profile-total").textContent = data.length;
+    document.getElementById("profile-cities").textContent = uniqueCities.size;
+    document.getElementById("profile-best-price").textContent = Math.min(...prices) + " €";
+
+  } catch (error) {
+    console.error("Erreur profil :", error);
   }
 }
 
