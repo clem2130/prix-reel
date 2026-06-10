@@ -2080,3 +2080,18 @@ nav button span {
     max-width: 900px;
   }
 }
+
+@media (min-width: 901px) {
+  .logo-shield {
+    width: 95px !important;
+    height: 95px !important;
+  }
+
+  .brand h1 {
+    font-size: 52px;
+  }
+
+  .brand p {
+    font-size: 15px;
+  }
+}
