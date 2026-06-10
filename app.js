@@ -966,25 +966,22 @@ function launchConfetti() {
 }
 
 async function shareResult() {
-
-  const text =
-`J'ai comparé mon abonnement sur Prix Réel.
-
-Découvrez si vous payez le juste prix :
-https://prix-reel.vercel.app`;
-
   if (navigator.share) {
     try {
       await navigator.share({
         title: "Prix Réel",
-        text: text
+        text: `Je viens de comparer mon abonnement Internet sur Prix Réel.
+
+💰 Découvrez gratuitement si vous payez le juste prix.
+
+Comparez votre facture en 30 secondes :
+https://prix-reel.vercel.app`
       });
     } catch (err) {
-      console.log(err);
+      console.log("Partage annulé");
     }
   } else {
-    navigator.clipboard.writeText(text);
-    alert("Lien copié dans le presse-papiers !");
+    alert("Le partage n'est pas disponible sur cet appareil.");
   }
 }
 
