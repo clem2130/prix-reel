@@ -884,33 +884,31 @@ async function loadStatistics() {
           ...providerAverages.map(item => item.average)
         );
 
-        providerAverages.forEach((item, index) => {
-          const medals = ["🥇", "🥈", "🥉"];
+providerAverages.forEach((item, index) => {
+  const medals = ["🥇", "🥈", "🥉"];
 
-          const label = index < 3
-            ? `${medals[index]} ${item.provider}`
-            : item.provider;
-          
-          const width = Math.max(15, (item.average / maxAverage) * 100);
+  const label =
+    index < 3
+      ? `${medals[index]} ${item.provider}`
+      : item.provider;
 
-          chartContainer.innerHTML += `
-          <div class="provider-chart-row"
-             data-provider="${item.provider}"
-             data-average="${item.average}"
-             data-count="${item.count}">
-          <div class="provider-chart-name">${label}</div>
+  const width = Math.max(15, (item.average / maxAverage) * 100);
 
-              <div class="provider-chart-bar-wrap">
-                <div class="provider-chart-bar" style="width: ${width}%"></div>
-              </div>
+  chartContainer.innerHTML += `
+    <div class="provider-chart-row">
+      <div class="provider-chart-name">${label}</div>
 
-              <div class="provider-chart-price">
-                ${item.average} €
-                <small>${item.count} prix</small>
-              </div>
-            </div>
-          `;
-        });
+      <div class="provider-chart-bar-wrap">
+        <div class="provider-chart-bar" style="width: ${width}%"></div>
+      </div>
+
+      <div class="provider-chart-price">
+        ${item.average} €
+        <small>${item.count} prix</small>
+      </div>
+    </div>
+  `;
+});
           document.querySelectorAll(".provider-chart-row").forEach(row => {
           row.addEventListener("click", () => {
             showProviderDetails(
