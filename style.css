@@ -2618,9 +2618,6 @@ nav button span {
   transition: all .2s ease;
 }
 
-.share-btn:hover {
-  background: #e8f0ff;
-}
 
 .share-btn {
   width: 100%;
