@@ -2519,3 +2519,14 @@ nav button span {
   width: 32px;
   height: 32px;
 }
+
+.recommendation-price {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.recommendation-provider {
+  font-size: 22px;
+  font-weight: 700;
+}
