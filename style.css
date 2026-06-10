@@ -2501,3 +2501,21 @@ nav button span {
     font-size: 15px;
   }
 }
+
+.deal-provider span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.deal-provider img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.deal-item:nth-child(-n+3) .deal-provider img {
+  width: 32px;
+  height: 32px;
+}
