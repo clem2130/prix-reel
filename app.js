@@ -1098,7 +1098,7 @@ https://prix-reel.vercel.app`;
 async function loadProfile() {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City&Monthly_price=not.is.null`,
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider&Monthly_price=not.is.null`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
@@ -1122,7 +1122,37 @@ async function loadProfile() {
 
     document.getElementById("profile-total").textContent = data.length;
     document.getElementById("profile-cities").textContent = uniqueCities.size;
-    document.getElementById("profile-best-price").textContent = Math.min(...prices) + " €";
+    const providerStats = {};
+
+data.forEach(item => {
+  const provider = item.Provider;
+  const price = Number(item.Monthly_price);
+
+  if (!provider || isNaN(price)) return;
+
+  if (!providerStats[provider]) {
+    providerStats[provider] = {
+      total: 0,
+      count: 0
+    };
+  }
+
+  providerStats[provider].total += price;
+  providerStats[provider].count += 1;
+});
+
+const bestProvider = Object.keys(providerStats)
+  .map(provider => ({
+    provider,
+    average: Math.round(providerStats[provider].total / providerStats[provider].count)
+  }))
+  .sort((a, b) => a.average - b.average)[0];
+
+const bestProviderElement = document.getElementById("profile-best-provider");
+
+if (bestProviderElement && bestProvider) {
+  bestProviderElement.textContent = bestProvider.provider;
+}
 
   } catch (error) {
     console.error("Erreur profil :", error);
