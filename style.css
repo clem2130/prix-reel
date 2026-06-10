@@ -532,13 +532,6 @@ select {
   display: block;
 }
 
-#price-insight {
-  margin-top: 12px;
-  color: #334155;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 500;
-}
 
 .saving-result {
   margin: 26px 0;
@@ -2444,30 +2437,6 @@ nav button span {
 
 /* Résultat premium */
 
-
-
-
-
-#price-insight {
-  font-size: 28px !important;
-  font-weight: 900 !important;
-  color: #1257d8 !important;
-  line-height: 1.25 !important;
-}
-
-#price-insight::after {
-  content: "par rapport aux abonnements similaires";
-  display: block;
-  margin-top: 6px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #64748b;
-}
-
-@media (max-width: 460px) {
-  #price-insight {
-    font-size: 22px !important;
-  }
 
 }
 
