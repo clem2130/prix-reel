@@ -552,7 +552,7 @@ if (bestDeals.length > 1) {
     recommendationCard.innerHTML = `
       <p>🏆 Excellent tarif</p>
         <strong>Vous bénéficiez déjà d'un très bon prix.</strong>
-      <<div class="trust-badge">
+      <div class="trust-badge">
         ✅ Aucune offre moins chère observée parmi ${sampleCount} abonnements similaires
       </div>
     `;
