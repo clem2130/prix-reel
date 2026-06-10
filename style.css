@@ -2530,3 +2530,7 @@ nav button span {
   font-size: 22px;
   font-weight: 700;
 }
+
+.best-deals-card {
+  box-shadow: 0 12px 30px rgba(6,36,92,.08);
+}
