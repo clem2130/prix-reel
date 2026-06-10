@@ -778,7 +778,6 @@ select {
 }
 
 .result-card::before {
-  content: "●";
   display: block;
   color: #22a843;
   font-size: 24px;
