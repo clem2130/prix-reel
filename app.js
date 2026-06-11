@@ -1242,16 +1242,22 @@ function updateFilterSummary() {
 
   if (!summary) return;
 
-  summary.innerHTML =
-    `📊 Analyse : <strong>${
-      selectedProviderFilter === "all"
-        ? "Tous les types"
-        : selectedProviderFilter
-    }</strong> • <strong>${
-      selectedSpeedFilter === "all"
-        ? "Toutes vitesses"
-        : selectedSpeedFilter
-    }</strong>`;
+  const offerLabel =
+    selectedProviderFilter === "all"
+      ? "Tous les types"
+      : selectedProviderFilter;
+
+  const speedLabel =
+    selectedSpeedFilter === "all"
+      ? "Toutes vitesses"
+      : selectedSpeedFilter;
+
+  summary.innerHTML = `
+    📊 Classement basé sur :
+    <strong>${offerLabel}</strong>
+    <span>•</span>
+    <strong>${speedLabel}</strong>
+  `;
 }
 
 function animateProviderChartReload() {
