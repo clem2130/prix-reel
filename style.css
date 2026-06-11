@@ -1799,3 +1799,11 @@ nav button span {
   font-size: 15px;
   font-weight: 600;
 }
+
+.extra-cost-month,
+.saving-month {
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
