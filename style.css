@@ -2294,6 +2294,43 @@ nav button span {
   }
 }
 
+.provider-logo-wrap {
+  position: relative;
+  width: 42px;
+  min-width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.provider-medal {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.provider-logo {
+  max-width: 34px;
+  max-height: 34px;
+  object-fit: contain;
+  z-index: 1;
+}
+
+@media (max-width: 600px) {
+  .provider-logo-wrap {
+    width: 46px;
+    min-width: 46px;
+  }
+
+  .provider-medal {
+    top: -12px;
+    right: -6px;
+    font-size: 15px;
+  }
+}
+
 
 
 
