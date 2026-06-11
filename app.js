@@ -1253,3 +1253,22 @@ function updateFilterSummary() {
         : selectedSpeedFilter
     }</strong>`;
 }
+
+function animateProviderChartReload() {
+  const chart = document.getElementById("provider-chart");
+
+  if (chart) {
+    chart.classList.add("is-changing");
+  }
+
+  setTimeout(() => {
+    updateFilterSummary();
+    loadStatistics();
+
+    setTimeout(() => {
+      if (chart) {
+        chart.classList.remove("is-changing");
+      }
+    }, 80);
+  }, 200);
+}
