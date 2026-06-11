@@ -2174,3 +2174,80 @@ nav button span {
   height: 34px;
   object-fit: contain;
 }
+
+.provider-row,
+.provider-item {
+  display: grid;
+  grid-template-columns: 44px 1fr 72px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.provider-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.provider-name {
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.provider-price-box,
+.provider-price {
+  width: 72px;
+  min-width: 72px;
+  text-align: right;
+  padding-right: 0;
+}
+
+.provider-price {
+  display: block;
+  color: var(--green);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.provider-count {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .provider-ranking-card,
+  .stats-card {
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: hidden;
+  }
+
+  .provider-row,
+  .provider-item {
+    grid-template-columns: 40px minmax(0, 1fr) 68px;
+    gap: 8px;
+  }
+
+  .provider-price-box,
+  .provider-price {
+    width: 68px;
+    min-width: 68px;
+  }
+
+  .provider-name {
+    font-size: 15px;
+  }
+
+  .provider-price {
+    font-size: 19px;
+  }
+
+  .provider-count {
+    font-size: 12px;
+  }
+}
