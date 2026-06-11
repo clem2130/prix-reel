@@ -2460,6 +2460,44 @@ nav button span {
   }
 }
 
+@media (max-width: 600px) {
+
+  #provider-chart .provider-chart-row {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    grid-template-areas:
+      "name price"
+      "bar price" !important;
+    gap: 6px 12px !important;
+    align-items: center !important;
+    padding: 12px 0 !important;
+  }
+
+  #provider-chart .provider-chart-name {
+    grid-area: name !important;
+  }
+
+  #provider-chart .provider-chart-bar-wrap {
+    grid-area: bar !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #provider-chart .provider-chart-price {
+    grid-area: price !important;
+    width: 72px !important;
+    min-width: 72px !important;
+    text-align: right !important;
+    font-size: 17px !important;
+  }
+
+  #provider-chart .provider-chart-price small {
+    font-size: 10px !important;
+    white-space: normal !important;
+    line-height: 1.15 !important;
+  }
+}
+
 
 
 
