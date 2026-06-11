@@ -499,6 +499,26 @@ if (summaryText) {
   }
 }
 
+    
+const savingTipTitle = document.getElementById("saving-tip-title");
+const savingTipText = document.getElementById("saving-tip-text");
+
+if (savingTipTitle && savingTipText) {
+  if (diff > 5) {
+    savingTipTitle.textContent = "💰 Économies possibles";
+    savingTipText.textContent =
+      "Votre prix est supérieur à la moyenne observée. Consultez le classement des fournisseurs pour repérer une offre plus avantageuse.";
+  } else if (diff < -5) {
+    savingTipTitle.textContent = "🏆 Très bon tarif";
+    savingTipText.textContent =
+      "Votre abonnement est déjà très compétitif. Surveillez simplement les évolutions du marché de temps en temps.";
+  } else {
+    savingTipTitle.textContent = "📊 Prix dans la moyenne";
+    savingTipText.textContent =
+      "Votre prix est proche de la moyenne observée. Une comparaison occasionnelle peut vous aider à rester compétitif.";
+  }
+}
+
 
   
 const recommendationCard = document.getElementById("recommendation-card");
