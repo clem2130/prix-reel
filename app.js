@@ -491,8 +491,8 @@ if (summaryText) {
        Vous payez environ
        <strong class="extra-cost-highlight">${yearlyGap} € de plus par an</strong>
        <br>
-       <small class="extra-cost-month">≈ ${monthlyGap} € par mois</small>
-     </span>`;
+       <small class="extra-cost-month"> ≈ +${monthlyGap} € par mois</small>
+      </span>`;
   } else if (diff < -5) {
     summaryText.innerHTML =
   `<strong class="excellent-price">EXCELLENT PRIX</strong><br>
@@ -500,7 +500,7 @@ if (summaryText) {
      Vous économisez environ
      <strong class="saving-highlight">${yearlyGap} € par an</strong>
      <br>
-     <small class="saving-month">≈ ${monthlyGap} € par mois</small>
+     <small class="saving-month"> ≈ -${monthlyGap} € par mois </small>
    </span>`;
   } else {
     summaryText.innerHTML =
