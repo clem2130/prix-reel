@@ -482,15 +482,15 @@ const summaryText = document.getElementById("price-summary-text");
 if (summaryText) {
   if (diff > 5) {
     summaryText.innerHTML =
-      `🔴 <strong>PRIX ÉLEVÉ</strong><br>
+      `<strong>PRIX ÉLEVÉ</strong><br>
        <span>Vous payez ${diffPercent}% de plus que la moyenne observée</span>`;
   } else if (diff < -5) {
     summaryText.innerHTML =
-      `🟢 <strong>EXCELLENT PRIX</strong><br>
+      `<strong>EXCELLENT PRIX</strong><br>
        <span>Vous économisez ${diffPercent}% par rapport aux abonnements similaires</span>`;
   } else {
     summaryText.innerHTML =
-      `🟡 <strong>PRIX CORRECT</strong><br>
+      `<strong>PRIX CORRECT</strong><br>
        <span>Vous êtes dans la moyenne observée</span>`;
   }
 }
