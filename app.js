@@ -1222,8 +1222,7 @@ function setProviderFilter(filter, button) {
 
   button.classList.add("active");
 
-  updateFilterSummary();
-  loadStatistics();
+  animateProviderChartReload();
 }
 
 function setSpeedFilter(filter, button) {
@@ -1235,8 +1234,7 @@ function setSpeedFilter(filter, button) {
 
   button.classList.add("active");
 
-  updateFilterSummary();
-  loadStatistics();
+  animateProviderChartReload();
 }
 
 function updateFilterSummary() {
