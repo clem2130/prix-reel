@@ -918,45 +918,45 @@ async function loadStatistics() {
 
     providerAverages.forEach((item, index) => {
       const medals = ["🥇", "🥈", "🥉"];
-
-      const label =
-        index < 3
-          ? `${medals[index]} ${item.provider}`
-          : item.provider;
-
+    
+      const medal = index < 3 ? medals[index] : "";
+      
+    
       const width = Math.max(
         65,
         100 - ((item.average - minAverage) / range) * 35
       );
 
-      chartContainer.innerHTML += `
-        <div class="provider-chart-row">
-          <div class="provider-chart-name">
-            <img src="${getProviderLogo(item.provider)}" alt="${item.provider}" class="provider-chart-logo">
-            <span>${label}</span>
-          </div>
+chartContainer.innerHTML += `
+  <div class="provider-chart-row">
+    <div class="provider-chart-name">
+      <img src="${getProviderLogo(item.provider)}" alt="${item.provider}" class="provider-chart-logo">
 
-          <div class="provider-chart-bar-wrap">
-            <div class="provider-chart-bar" style="width: ${width}%"></div>
-          </div>
+      ${
+        index < 3
+          ? `<span class="provider-medal">${medals[index]}</span>`
+          : ""
+      }
 
-          <div class="provider-chart-price">
-            ${item.average} €
-            <small>
-              ${item.count === 1
-                ? "1 contribution"
-                : item.count + " contributions"}
-            </small>
-          </div>
-        </div>
-      `;
-    });
+      <span>${item.provider}</span>
+    </div>
 
-  } catch (error) {
-    alert("Erreur stats : " + error.message);
-    console.error(error);
-  }
-}
+    <div class="provider-chart-bar-wrap">
+      <div class="provider-chart-bar" style="width: ${width}%"></div>
+    </div>
+
+    <div class="provider-chart-price">
+      ${item.average} €
+      <small>
+        ${
+          item.count === 1
+            ? "1 contribution"
+            : item.count + " contributions"
+        }
+      </small>
+    </div>
+  </div>
+`;
 
 async function loadTrustCounter() {
   try {
