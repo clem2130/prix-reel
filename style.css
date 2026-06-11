@@ -2498,6 +2498,37 @@ nav button span {
   }
 }
 
+background: rgba(255,255,255,0.85);
+backdrop-filter: blur(12px);
+border: 1px solid rgba(255,255,255,0.4);
+
+box-shadow:
+0 0 25px rgba(37,99,235,0.15);
+
+background: linear-gradient(
+90deg,
+#2563eb,
+#0891b2,
+#22c55e
+);
+
+background-size: 200% 100%;
+animation: shimmer 4s linear infinite;
+
+background-image:
+radial-gradient(
+circle at 20% 20%,
+rgba(37,99,235,0.05),
+transparent 30%
+);
+
+height: 3px;
+
+background: linear-gradient(
+90deg,
+#2563eb,
+#22c55e
+);
 
 
 
