@@ -2098,3 +2098,37 @@ nav button span {
   font-size: 12px;
   color: #475569;
 }
+
+#provider-chart {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+#provider-chart .provider-chart-row {
+  display: grid !important;
+  grid-template-columns: 120px minmax(0, 1fr) 75px !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 14px 0 !important;
+}
+
+#provider-chart .provider-chart-bar-wrap {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: 10px !important;
+  overflow: hidden !important;
+}
+
+#provider-chart .provider-chart-bar {
+  height: 100% !important;
+  max-width: 100% !important;
+}
+
+#provider-chart .provider-chart-price {
+  text-align: right !important;
+  min-width: 70px !important;
+}
