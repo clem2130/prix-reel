@@ -496,85 +496,70 @@ if (summaryText) {
 }
 
 
-    const yearlyGap = Math.abs(diff * 12);
-    const monthlyGap = Math.abs(diff);
-    const isExcellentPrice = ranking >= 90;
+   const monthlyGap = Math.round(Math.abs(diff));
+const yearlyGap = monthlyGap * 12;
 
-    
-    
-    const recommendationCard = document.getElementById("recommendation-card");
-    
+const recommendationCard = document.getElementById("recommendation-card");
 
-    if (isExcellentPrice) {
-
-
-      recommendationCard.innerHTML = `
-  <p>🏆 Excellent prix</p>
-  <strong>Vous payez déjà parmi les moins chers.</strong>
-  <small>Continuez simplement à surveiller les évolutions du marché.</small>
-`;
-   
 // Recherche des meilleures alternatives disponibles
 const bestDeals = await getBestDeals(city, offerType, speed);
 
-if (bestDeals.length > 1) {
-  const bestProvider = bestDeals[0].provider;
-  const bestPrice = bestDeals[0].average;
+if (recommendationCard) {
+  if (bestDeals.length > 1) {
+    const bestProvider = bestDeals[0].provider;
+    const bestPrice = bestDeals[0].average;
 
-const potentialMonthlySaving = price - bestPrice;
-const potentialYearlySaving = potentialMonthlySaving * 12;
+    const potentialMonthlySaving = Math.round(price - bestPrice);
+    const potentialYearlySaving = potentialMonthlySaving * 12;
 
-// Si l'écart est trop faible, on considère que le tarif est déjà compétitif
-if (potentialMonthlySaving <= 5) {
-
-  recommendationCard.innerHTML = `
-    <p>🏆 Tarif très compétitif</p>
-
-    <strong>
-      Votre prix est déjà très proche des meilleurs tarifs observés.
-    </strong>
-
-    <small>
-      L'écart observé est inférieur à 5 € par mois et n'est pas considéré comme une économie significative.
-    </small>
-
-    <div class="trust-badge">
-      ✅ Aucun écart significatif observé parmi ${sampleCount} abonnements similaires
-    </div>
-  `;
-
-} else {
-
-  recommendationCard.innerHTML = `
-    <p>💰 Économie possible</p>
-
-    <strong>${bestProvider} — ${bestPrice} € / mois</strong>
-
-    <p class="current-price">
-      Vous payez actuellement : ${price} € / mois
-    </p>
-
-    <small>
-      Vous pourriez économiser jusqu'à ${potentialYearlySaving} € par an.
-    </small>
-
-    <div class="trust-badge">
-      ✅ Offre la plus avantageuse observée parmi ${sampleCount} abonnements similaires
-    </div>
-  `;
-
-}
-} 
-    else {
+    if (potentialMonthlySaving <= 5) {
       recommendationCard.innerHTML = `
-        <p>ℹ️ Données insuffisantes</p>
-        <strong>Aucune alternative fiable disponible pour le moment.</strong>
-        <small>Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.</small>
+        <p>🏆 Tarif très compétitif</p>
+
+        <strong>
+          Vous bénéficiez déjà d'un excellent tarif.
+        </strong>
+
+        <small>
+          Votre abonnement fait partie des prix les plus compétitifs observés.
+        </small>
+
+        <div class="trust-badge">
+          ✅ Aucun écart significatif observé parmi ${sampleCount} abonnements similaires
+        </div>
+      `;
+    } else {
+      recommendationCard.innerHTML = `
+        <p>💰 Économie possible</p>
+
+        <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+
+        <p class="current-price">
+          Vous payez actuellement : ${price} € / mois
+        </p>
+
+        <small>
+          Vous pourriez économiser jusqu'à ${potentialYearlySaving} € par an.
+        </small>
+
+        <div class="trust-badge">
+          ✅ Offre la plus avantageuse observée parmi ${sampleCount} abonnements similaires
+        </div>
       `;
     }
-    }
-
+  } else {
+    recommendationCard.innerHTML = `
+      <p>ℹ️ Données insuffisantes</p>
+      <strong>Aucune alternative fiable disponible pour le moment.</strong>
+      <small>
+        Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.
+      </small>
+    `;
+  }
+}
+    
     let gapPercent = 0;
+    const isExcellentPrice = ranking >= 90;
 
     if (average > 0) {
       gapPercent = Math.round((Math.abs(diff) / average) * 100);
