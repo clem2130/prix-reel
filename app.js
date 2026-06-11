@@ -879,7 +879,12 @@ data.forEach(item => {
           ),
           count: providerStats[provider].count
         }))
-        .filter(item => item.count >= 10)
+        .filter(item => {
+        const filterActive =
+          selectedProviderFilter !== "all" || selectedSpeedFilter !== "all";
+      
+        return filterActive ? item.count >= 1 : item.count >= 10;
+      })
         .sort((a, b) => a.average - b.average)
   .slice(0, 6);
 
