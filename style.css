@@ -1729,3 +1729,10 @@ nav button span {
     min-width: 70px;
   }
 }
+
+.provider-ranking-subtitle {
+  margin: 6px 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
