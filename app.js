@@ -15,6 +15,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_BYt9R3P4zWvrIZFOQ1k-yg_47Jr2_DN";
 
 // Stocke la ville sélectionnée dans l'autocomplete
 let selectedCityData = null;
+let selectedProviderFilter = "all";
 
 // =====================================================
 // Navigation entre les différentes pages du site
