@@ -703,14 +703,14 @@ if (dealsContainer) {
           <img src="${getProviderLogo(deal.provider)}" alt="${deal.provider}">
           <span>${rank} ${deal.provider}</span>
         </div>
-
+        
         <div class="deal-price">
-          ${deal.average} €
-          <small>
+          <span class="provider-price">${deal.average} €</span>
+          <small class="provider-count">
             ${deal.count === 1
-            ? "1 contribution"
-            : deal.count + " contributions"}
-        </small>
+              ? "1 contribution"
+              : deal.count + " contributions"}
+          </small>
         </div>
       </div>
       `;
