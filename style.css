@@ -2007,3 +2007,15 @@ nav button span {
   color: white;
   border-color: var(--green);
 }
+
+.provider-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.speed-filter {
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
