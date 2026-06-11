@@ -885,7 +885,10 @@ providerAverages.forEach((item, index) => {
 
   chartContainer.innerHTML += `
     <div class="provider-chart-row">
-      <div class="provider-chart-name">${label}</div>
+      <div class="provider-chart-name">
+          <img src="${getProviderLogo(item.provider)}" alt="${item.provider}" class="provider-chart-logo">
+          <span>${label}</span>
+      </div>
 
       <div class="provider-chart-bar-wrap">
         <div class="provider-chart-bar" style="width: ${width}%"></div>
