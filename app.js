@@ -869,9 +869,11 @@ async function loadStatistics() {
           </p>
         `;
       } else {
-        const maxAverage = Math.max(
-          ...providerAverages.map(item => item.average)
-        );
+        const providerPrices = providerAverages.map(item => item.average);
+
+        const minAverage = Math.min(...providerPrices);
+        const maxAverage = Math.max(...providerPrices);
+        const range = maxAverage - minAverage || 1;
 
 providerAverages.forEach((item, index) => {
   const medals = ["🥇", "🥈", "🥉"];
@@ -881,7 +883,7 @@ providerAverages.forEach((item, index) => {
       ? `${medals[index]} ${item.provider}`
       : item.provider;
 
-  const width = Math.max(15, (item.average / maxAverage) * 100);
+  const width = Math.max(65, 100 - ((item.average - minAverage) / range) * 35);
 
   chartContainer.innerHTML += `
     <div class="provider-chart-row">
