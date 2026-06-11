@@ -2331,6 +2331,35 @@ nav button span {
   }
 }
 
+.provider-chart-name span {
+  white-space: nowrap;
+}
+
+.provider-chart-logo {
+  width: 28px;
+  height: 28px;
+}
+
+.provider-chart-name {
+  position: relative;
+}
+
+.filter-summary strong {
+  display: inline;
+}
+
+.provider-chart-bar {
+  transition: width 0.8s ease;
+}
+
+.provider-chart-row {
+  transition: transform 0.25s ease;
+}
+
+.provider-chart-row:hover {
+  transform: translateY(-2px);
+}
+
 
 
 
