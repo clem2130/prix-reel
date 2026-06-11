@@ -486,12 +486,22 @@ const summaryText = document.getElementById("price-summary-text");
 if (summaryText) {
   if (diff > 5) {
     summaryText.innerHTML =
-      `<strong class="expensive-price">PRIX ÉLEVÉ</strong><br>
-       <span>  Vous payez environ ${yearlyGap} € de plus par an <br>(≈ ${monthlyGap} € par mois)</span>`;
+    `<strong class="expensive-price">PRIX ÉLEVÉ</strong><br>
+     <span>
+       Vous payez environ
+       <strong class="extra-cost-highlight">${yearlyGap} € de plus par an</strong>
+       <br>
+       <small class="extra-cost-month">≈ ${monthlyGap} € par mois</small>
+     </span>`;
   } else if (diff < -5) {
     summaryText.innerHTML =
-      `<strong class="excellent-price">EXCELLENT PRIX</strong><br>
-       <span> Vous économisez environ ${yearlyGap} € par an <br>(≈ ${monthlyGap} € par mois)</span>`;
+  `<strong class="excellent-price">EXCELLENT PRIX</strong><br>
+   <span>
+     Vous économisez environ
+     <strong class="saving-highlight">${yearlyGap} € par an</strong>
+     <br>
+     <small class="saving-month">≈ ${monthlyGap} € par mois</small>
+   </span>`;
   } else {
     summaryText.innerHTML =
       `<strong class="correct-price">PRIX CORRECT</strong><br>
