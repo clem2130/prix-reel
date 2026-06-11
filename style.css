@@ -1167,12 +1167,15 @@ select {
   color: var(--muted);
 }
 
-/* Graphique fournisseurs */
+/* =====================================================
+   Classement fournisseurs
+===================================================== */
 
 .provider-chart-card {
-  max-width: 900px;
+  width: 100%;
+  max-width: 1050px;
   margin: 34px auto 0;
-  padding: 26px;
+  padding: 32px;
   background: white;
   border: 1px solid #dbe7ff;
   border-radius: 24px;
@@ -1185,50 +1188,116 @@ select {
 }
 
 .provider-chart-card p {
-  margin: 0 0 22px;
+  margin: 0 0 18px;
   color: var(--muted);
+}
+
+.provider-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.speed-filter {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.provider-filter-btn,
+.speed-filter-btn {
+  border: 1px solid #dbeafe;
+  background: white;
+  color: var(--navy);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.provider-filter-btn.active {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+.speed-filter-btn.active {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.filter-summary {
+  width: 100%;
+  margin: 14px 0 24px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  color: #475569;
+  font-size: 13px;
+}
+
+#provider-chart {
+  width: 100%;
 }
 
 .provider-chart-row {
   display: grid;
-  grid-template-columns: 140px 1fr 90px;
+  grid-template-columns: 160px 1fr 120px;
   align-items: center;
-  gap: 14px;
-  margin: 16px 0;
+  gap: 18px;
+  margin: 18px 0;
 }
 
 .provider-chart-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   color: var(--navy);
 }
 
+.provider-chart-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 .provider-chart-bar-wrap {
+  width: 100%;
   height: 12px;
-  background: #eef3f8;
+  background: #edf2f7;
   border-radius: 999px;
   overflow: hidden;
 }
 
 .provider-chart-bar {
   height: 100%;
-  background: linear-gradient(135deg, var(--blue), var(--green));
   border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--blue),
+    var(--green)
+  );
 }
 
 .provider-chart-price {
   text-align: right;
-  font-weight: 900;
+  min-width: 120px;
+  font-size: 24px;
+  font-weight: 800;
   color: var(--green);
 }
 
 .provider-chart-price small {
-   color: #64748b;
   display: block;
-  margin-top: 2px;
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 500;
-   white-space: nowrap;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 /* =====================================================
