@@ -1985,3 +1985,25 @@ nav button span {
   color: white;
   border-color: var(--blue);
 }
+
+.speed-filter {
+  margin-top: -8px;
+  margin-bottom: 18px;
+}
+
+.speed-filter-btn {
+  border: 1px solid #dbeafe;
+  background: #ffffff;
+  color: var(--navy);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.speed-filter-btn.active {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
