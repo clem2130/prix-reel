@@ -1267,9 +1267,9 @@ function animateProviderChartReload() {
     chart.classList.add("is-changing");
   }
 
-  setTimeout(() => {
+  setTimeout(async () => {
+    await loadStatistics();
     updateFilterSummary();
-    loadStatistics();
 
     setTimeout(() => {
       if (chart) {
