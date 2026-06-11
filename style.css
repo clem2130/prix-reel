@@ -1868,3 +1868,18 @@ nav button span {
   font-weight: 800;
   letter-spacing: -0.5px;
 }
+
+.provider-chart-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.provider-chart-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
