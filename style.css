@@ -1689,10 +1689,21 @@ nav button span {
   }
 
   .provider-chart-row {
-    grid-template-columns: 1fr;
-    gap: 6px;
+    grid-template-columns: 42px minmax(0, 1fr) 70px;
+    gap: 10px;
+    align-items: center;
   }
 
+  .provider-chart-price {
+    min-width: 70px;
+    text-align: right;
+    padding-right: 4px;
+  }
+
+  .provider-chart-bar-wrap {
+    width: 100%;
+    display: block;
+  }
 }
 
 @media (max-width: 520px) {
@@ -2259,4 +2270,4 @@ nav button span {
   .provider-chart-bar {
     min-width: 0;
   }
-}
+
