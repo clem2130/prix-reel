@@ -1883,3 +1883,16 @@ nav button span {
   object-fit: contain;
   flex-shrink: 0;
 }
+
+.provider-chart-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 140px;
+}
+
+.provider-chart-logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
