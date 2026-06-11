@@ -2125,3 +2125,28 @@ nav button span {
   white-space: nowrap;
 }
 
+#provider-chart {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#provider-chart.is-changing {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.provider-chart-row {
+  animation: providerRowFade 0.35s ease both;
+}
+
+@keyframes providerRowFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
