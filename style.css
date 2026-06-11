@@ -2157,3 +2157,20 @@ nav button span {
   }
 }
 
+.filter-summary {
+  background: linear-gradient(
+    135deg,
+    #f8fafc,
+    #eef6ff
+  );
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  padding: 14px 16px;
+  font-size: 14px;
+}
+
+.provider-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
