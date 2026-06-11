@@ -1736,15 +1736,15 @@ nav button span {
 
 /* Excellent prix */
 .excellent-price {
-  color: #16a34a;
+  color: #16a34a !important;
 }
 
 /* Prix correct */
 .correct-price {
-  color: #f59e0b;
+  color: #f59e0b !important;
 }
 
 /* Prix élevé */
 .expensive-price {
-  color: #dc2626;
+  color: #dc2626 !important;
 }
