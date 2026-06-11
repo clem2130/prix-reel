@@ -1767,6 +1767,7 @@ nav button span {
 }
 
 .provider-count {
-  color: #2563eb !important;
-  font-weight: 600;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 500;
 }
