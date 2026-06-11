@@ -500,51 +500,19 @@ if (summaryText) {
     const monthlyGap = Math.abs(diff);
     const isExcellentPrice = ranking >= 90;
 
-    const piggy = document.getElementById("piggy-container");
-    const pigImage = document.getElementById("piggy-image");
+    
+    
     const recommendationCard = document.getElementById("recommendation-card");
     
 
     if (isExcellentPrice) {
 
-      if (piggy && pigImage) {
-        piggy.className = "saving-icon piggy-superhappy";
-        pigImage.src = "piggy-superhappy.png";
-      }
 
       recommendationCard.innerHTML = `
   <p>🏆 Excellent prix</p>
   <strong>Vous payez déjà parmi les moins chers.</strong>
   <small>Continuez simplement à surveiller les évolutions du marché.</small>
 `;
-
-      launchConfetti();
-    } else {
-      if (diff > 5) {
-        if (piggy && pigImage) {
-          piggy.className = "saving-icon piggy-sad";
-          pigImage.src = "piggy-sad.png";
-        }
-      } else if (diff >= -5 && diff <= 5) {
-        if (piggy && pigImage) {
-          piggy.className = "saving-icon piggy-neutral";
-          pigImage.src = "piggy-neutral.png";
-        }
-      } else {
-        const savingsPercent = Math.abs(((average - price) / average) * 100);
-
-        if (savingsPercent < 15) {
-          if (piggy && pigImage) {
-            piggy.className = "saving-icon piggy-happy";
-            pigImage.src = "piggy-happy.png";
-          }
-        } else {
-          if (piggy && pigImage) {
-            piggy.className = "saving-icon piggy-superhappy";
-            pigImage.src = "piggy-superhappy.png";
-          }
-        }
-      }
    
 // Recherche des meilleures alternatives disponibles
 const bestDeals = await getBestDeals(city, offerType, speed);
