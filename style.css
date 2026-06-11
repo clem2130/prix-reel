@@ -2360,61 +2360,6 @@ nav button span {
   transform: translateY(-2px);
 }
 
-@media (max-width: 600px) {
-  .provider-chart-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 14px 0;
-  }
-
-  .provider-chart-name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 17px;
-  }
-
-  .provider-chart-logo {
-    width: 34px;
-    height: 34px;
-    object-fit: contain;
-  }
-
-  .provider-chart-bar-wrap {
-    width: 100%;
-    height: 12px;
-    margin-left: 44px;
-  }
-
-  .provider-chart-price {
-    margin-left: 44px;
-    text-align: left;
-    font-size: 22px;
-  }
-
-  .provider-chart-price small {
-    display: block;
-    font-size: 13px;
-    margin-top: 2px;
-  }
-
-  .provider-medal {
-    position: static;
-    margin-left: auto;
-    font-size: 18px;
-  }
-
-  .provider-filter,
-  .speed-filter {
-    justify-content: center;
-  }
-
-  .filter-summary {
-    font-size: 15px;
-    padding: 16px;
-  }
-}
 
 @media (max-width: 600px) {
 
