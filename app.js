@@ -785,7 +785,7 @@ function getReliabilityShortMessage(sampleCount) {
 async function loadStatistics() {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider&Monthly_price=not.is.null`,
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type&Monthly_price=not.is.null`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
@@ -837,11 +837,19 @@ async function loadStatistics() {
     const providerStats = {};
     
 
-    data.forEach(item => {
-      const provider = item.Provider;
-      const price = Number(item.Monthly_price);
+data.forEach(item => {
+  const provider = item.Provider;
+  const price = Number(item.Monthly_price);
+  const offerType = item.Offer_type;
 
-      if (!provider || isNaN(price)) return;
+  if (!provider || isNaN(price)) return;
+
+  if (
+    selectedProviderFilter !== "all" &&
+    offerType !== selectedProviderFilter
+  ) {
+    return;
+  }
 
       if (!providerStats[provider]) {
         providerStats[provider] = {
@@ -1177,4 +1185,16 @@ if (bestProviderElement && bestProvider) {
   } catch (error) {
     console.error("Erreur profil :", error);
   }
+}
+
+function setProviderFilter(filter, button) {
+  selectedProviderFilter = filter;
+
+  document.querySelectorAll(".provider-filter-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  loadStatistics();
 }
