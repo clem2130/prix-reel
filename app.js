@@ -1140,7 +1140,7 @@ https://prix-reel.vercel.app`;
     alert("Lien copié dans le presse-papiers. Vous pouvez maintenant le coller où vous souhaitez.");
   }
 }
-
+ 
 
 // =====================================================
 // Profil communauté
