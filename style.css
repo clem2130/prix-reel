@@ -2261,4 +2261,39 @@ nav button span {
     padding-right: 4px;
   }
 
+@media (max-width: 600px) {
+  .provider-chart-row {
+    display: grid !important;
+    grid-template-columns: 90px minmax(90px, 1fr) 70px !important;
+    gap: 8px !important;
+    align-items: center !important;
+  }
+
+  .provider-chart-bar-wrap {
+    display: block !important;
+    width: 100% !important;
+    height: 12px !important;
+    min-width: 90px !important;
+    background: #edf2f7 !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+  }
+
+  .provider-chart-bar {
+    display: block !important;
+    height: 100% !important;
+    min-width: 12px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(90deg, var(--blue), var(--green)) !important;
+  }
+
+  .provider-chart-price {
+    min-width: 70px !important;
+    text-align: right !important;
+    padding-right: 0 !important;
+  }
+}
+
+
+
 
