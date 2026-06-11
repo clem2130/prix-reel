@@ -487,11 +487,11 @@ if (summaryText) {
   if (diff > 5) {
     summaryText.innerHTML =
       `<strong class="expensive-price">PRIX ÉLEVÉ</strong><br>
-       <span>Vous payez environ ${yearlyGap} € de plus par an que la moyenne observée</span>`;
+       <span>  Vous payez environ ${yearlyGap} € de plus par an <br>(≈ ${monthlyGap} € par mois)</span>`;
   } else if (diff < -5) {
     summaryText.innerHTML =
       `<strong class="excellent-price">EXCELLENT PRIX</strong><br>
-       <span>Vous économisez environ ${yearlyGap} € par an par rapport aux abonnements similaires</span>`;
+       <span> Vous économisez environ ${yearlyGap} € par an <br>(≈ ${monthlyGap} € par mois)</span>`;
   } else {
     summaryText.innerHTML =
       `<strong class="correct-price">PRIX CORRECT</strong><br>
@@ -730,7 +730,7 @@ function scrollResultToTop() {
 
 function getReliabilityShortMessage(sampleCount) {
   if (sampleCount <= 2) return "🔴 Données limitées";
-  if (sampleCount <= 4) return "🟡 Tendance indicative";
+  if (sampleCount <= 4) return `🟡 Échantillon limité (${sampleCount} abonnements)`;
   if (sampleCount <= 9) return "🟢 Comparaison utile";
 
   return "✅ Comparaison fiable";
