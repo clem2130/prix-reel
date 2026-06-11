@@ -786,7 +786,7 @@ function getReliabilityShortMessage(sampleCount) {
 async function loadStatistics() {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type&Monthly_price=not.is.null`,
+      `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type,Speed&Monthly_price=not.is.null`,
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
@@ -842,12 +842,20 @@ data.forEach(item => {
   const provider = item.Provider;
   const price = Number(item.Monthly_price);
   const offerType = item.Offer_type;
+  const speed = item.Speed;
 
   if (!provider || isNaN(price)) return;
 
   if (
     selectedProviderFilter !== "all" &&
     offerType !== selectedProviderFilter
+  ) {
+    return;
+  }
+
+    if (
+    selectedSpeedFilter !== "all" &&
+    speed !== selectedSpeedFilter
   ) {
     return;
   }
@@ -1192,6 +1200,18 @@ function setProviderFilter(filter, button) {
   selectedProviderFilter = filter;
 
   document.querySelectorAll(".provider-filter-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  loadStatistics();
+}
+
+function setSpeedFilter(filter, button) {
+  selectedSpeedFilter = filter;
+
+  document.querySelectorAll(".speed-filter-btn").forEach(btn => {
     btn.classList.remove("active");
   });
 
