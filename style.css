@@ -2251,3 +2251,20 @@ nav button span {
     font-size: 12px;
   }
 }
+
+@media (max-width: 600px) {
+  .provider-chart-row {
+    grid-template-columns: 42px minmax(0, 1fr) 70px;
+    gap: 10px;
+  }
+
+  .provider-chart-price {
+    min-width: 70px;
+    text-align: right;
+    padding-right: 4px;
+  }
+
+  .provider-chart-bar {
+    min-width: 0;
+  }
+}
