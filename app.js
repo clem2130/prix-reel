@@ -802,8 +802,8 @@ async function loadStatistics() {
 
     const prices = data.map(item => Number(item.Monthly_price));
 
-    const validPrices = prices.filter(
-    price => !isNaN(price) && price >= 10 && price <= 200
+    const validPrices = prices.filter(price =>
+      !isNaN(price) && price >= 10 && price <= 200
     );
 
     const uniqueCities = new Set(
@@ -817,48 +817,55 @@ async function loadStatistics() {
       statsCities.textContent = uniqueCities.size;
     }
 
-    document.getElementById("stats-total").textContent = prices.length;
+    const statsTotal = document.getElementById("stats-total");
+    if (statsTotal) {
+      statsTotal.textContent = prices.length;
+    }
 
     const communityCount = document.getElementById("stats-community-count");
     if (communityCount) {
       communityCount.textContent = prices.length;
     }
 
-    document.getElementById("stats-average").textContent =
-      Math.round(
-        validPrices.reduce((a, b) => a + b, 0) / validPrices.length
-      ) + " €";
-    
-    document.getElementById("stats-min").textContent =
-      Math.min(...validPrices) + " €";
-    
-    document.getElementById("stats-max").textContent =
-      Math.max(...validPrices) + " €";
+    const statsAverage = document.getElementById("stats-average");
+    if (statsAverage && validPrices.length > 0) {
+      statsAverage.textContent =
+        Math.round(validPrices.reduce((a, b) => a + b, 0) / validPrices.length) + " €";
+    }
+
+    const statsMin = document.getElementById("stats-min");
+    if (statsMin && validPrices.length > 0) {
+      statsMin.textContent = Math.min(...validPrices) + " €";
+    }
+
+    const statsMax = document.getElementById("stats-max");
+    if (statsMax && validPrices.length > 0) {
+      statsMax.textContent = Math.max(...validPrices) + " €";
+    }
 
     const providerStats = {};
-    
 
-data.forEach(item => {
-  const provider = item.Provider;
-  const price = Number(item.Monthly_price);
-  const offerType = item.Offer_type;
-  const speed = item.Speed;
+    data.forEach(item => {
+      const provider = item.Provider;
+      const price = Number(item.Monthly_price);
+      const offerType = item.Offer_type;
+      const speed = item.Speed;
 
-  if (!provider || isNaN(price)) return;
+      if (!provider || isNaN(price)) return;
 
-  if (
-    selectedProviderFilter !== "all" &&
-    offerType !== selectedProviderFilter
-  ) {
-    return;
-  }
+      if (
+        selectedProviderFilter !== "all" &&
+        offerType !== selectedProviderFilter
+      ) {
+        return;
+      }
 
-    if (
-    selectedSpeedFilter !== "all" &&
-    speed !== selectedSpeedFilter
-  ) {
-    return;
-  }
+      if (
+        selectedSpeedFilter !== "all" &&
+        speed !== selectedSpeedFilter
+      ) {
+        return;
+      }
 
       if (!providerStats[provider]) {
         providerStats[provider] = {
@@ -871,87 +878,79 @@ data.forEach(item => {
       providerStats[provider].count += 1;
     });
 
-      const providerAverages = Object.keys(providerStats)
-        .map(provider => ({
-          provider,
-          average: Math.round(
-            providerStats[provider].total / providerStats[provider].count
-          ),
-          count: providerStats[provider].count
-        }))
-        .filter(item => {
-        const filterActive =
-          selectedProviderFilter !== "all" || selectedSpeedFilter !== "all";
-      
-        return filterActive ? item.count >= 1 : item.count >= 10;
-      })
-        .sort((a, b) => a.average - b.average)
-  .slice(0, 6);
+    const filterActive =
+      selectedProviderFilter !== "all" || selectedSpeedFilter !== "all";
+
+    const providerAverages = Object.keys(providerStats)
+      .map(provider => ({
+        provider,
+        average: Math.round(
+          providerStats[provider].total / providerStats[provider].count
+        ),
+        count: providerStats[provider].count
+      }))
+      .filter(item => filterActive ? item.count >= 1 : item.count >= 10)
+      .sort((a, b) => a.average - b.average)
+      .slice(0, 6);
+
+    updateFilterSummary();
 
     const chartContainer = document.getElementById("provider-chart");
 
-    if (chartContainer) {
-      chartContainer.innerHTML = "";
+    if (!chartContainer) return;
 
-      if (providerAverages.length === 0) {
-        chartContainer.innerHTML = `
-          <p class="provider-empty">
-            Pas encore assez de données pour afficher les fournisseurs.
-          </p>
-        `;
-      } else {
-        const providerPrices = providerAverages.map(item => item.average);
+    chartContainer.innerHTML = "";
 
-        const minAverage = Math.min(...providerPrices);
-        const maxAverage = Math.max(...providerPrices);
-        const range = maxAverage - minAverage || 1;
+    if (providerAverages.length === 0) {
+      chartContainer.innerHTML = `
+        <p class="provider-empty">
+          Pas encore assez de données pour afficher les fournisseurs.
+        </p>
+      `;
+      return;
+    }
 
-        const summary = document.getElementById("filter-summary");
+    const providerPrices = providerAverages.map(item => item.average);
 
-        if (summary) {
-          summary.innerHTML =
-            `Analyse : <strong>${
-              selectedProviderFilter === "all" ? "Tous les types" : selectedProviderFilter
-            }</strong> • <strong>${
-              selectedSpeedFilter === "all" ? "Toutes vitesses" : selectedSpeedFilter
-            }</strong>`;
-        }
+    const minAverage = Math.min(...providerPrices);
+    const maxAverage = Math.max(...providerPrices);
+    const range = maxAverage - minAverage || 1;
 
+    providerAverages.forEach((item, index) => {
+      const medals = ["🥇", "🥈", "🥉"];
 
-providerAverages.forEach((item, index) => {
-  const medals = ["🥇", "🥈", "🥉"];
+      const label =
+        index < 3
+          ? `${medals[index]} ${item.provider}`
+          : item.provider;
 
-  const label =
-    index < 3
-      ? `${medals[index]} ${item.provider}`
-      : item.provider;
+      const width = Math.max(
+        65,
+        100 - ((item.average - minAverage) / range) * 35
+      );
 
-  const width = Math.max(65, 100 - ((item.average - minAverage) / range) * 35);
+      chartContainer.innerHTML += `
+        <div class="provider-chart-row">
+          <div class="provider-chart-name">
+            <img src="${getProviderLogo(item.provider)}" alt="${item.provider}" class="provider-chart-logo">
+            <span>${label}</span>
+          </div>
 
-  chartContainer.innerHTML += `
-    <div class="provider-chart-row">
-      <div class="provider-chart-name">
-          <img src="${getProviderLogo(item.provider)}" alt="${item.provider}" class="provider-chart-logo">
-          <span>${label}</span>
-      </div>
+          <div class="provider-chart-bar-wrap">
+            <div class="provider-chart-bar" style="width: ${width}%"></div>
+          </div>
 
-      <div class="provider-chart-bar-wrap">
-        <div class="provider-chart-bar" style="width: ${width}%"></div>
-      </div>
-        
           <div class="provider-chart-price">
             ${item.average} €
             <small>
               ${item.count === 1
-              ? "1 contribution"
-              : item.count + " contributions"}
-          </small>
+                ? "1 contribution"
+                : item.count + " contributions"}
+            </small>
+          </div>
         </div>
-    </div>
-  `;
-});
-      }
-    }
+      `;
+    });
 
   } catch (error) {
     alert("Erreur stats : " + error.message);
