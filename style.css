@@ -2395,6 +2395,41 @@ nav button span {
   }
 }
 
+@media (max-width: 600px) {
+
+  #provider-chart .provider-chart-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding: 18px 0 !important;
+  }
+
+  #provider-chart .provider-chart-name {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  #provider-chart .provider-chart-bar-wrap {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  #provider-chart .provider-chart-price {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+    font-size: 22px !important;
+  }
+
+  #provider-chart .provider-chart-price small {
+    display: block !important;
+    font-size: 13px !important;
+  }
+}
+
 
 
 
