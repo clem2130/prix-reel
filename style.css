@@ -2019,3 +2019,9 @@ nav button span {
   margin-top: 10px;
   margin-bottom: 24px;
 }
+
+.filter-summary {
+  margin: 6px 0 18px;
+  font-size: 12px;
+  color: #475569;
+}
