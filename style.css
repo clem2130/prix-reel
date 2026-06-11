@@ -37,7 +37,7 @@ body {
 body {
   min-height: 100vh;
   background: linear-gradient(135deg, #dce6f2, #f8fafc);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   color: var(--text);
   display: flex;
   justify-content: center;
@@ -1806,4 +1806,65 @@ nav button span {
   margin-top: 8px;
   font-size: 18px;
   font-weight: 700;
+}
+
+#price-summary-text {
+  margin-top: 10px;
+  margin-bottom: 26px;
+}
+
+#price-summary-text strong {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  line-height: 1.15;
+}
+
+#price-summary-text span {
+  color: #334155;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.saving-highlight,
+.extra-cost-highlight {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 18px;
+  border-radius: 16px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.saving-highlight {
+  background: #ecfdf5;
+  color: #15803d;
+}
+
+.extra-cost-highlight {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.saving-month,
+.extra-cost-month {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.saving-month {
+  color: #15803d;
+}
+
+.extra-cost-month {
+  color: #dc2626;
+}
+
+.score-badge {
+  border-radius: 16px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
