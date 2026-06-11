@@ -1239,24 +1239,31 @@ function setSpeedFilter(filter, button) {
 function updateFilterSummary() {
   const summary = document.getElementById("filter-summary");
 
-  if (!summary) return;
-
-  const offerLabel =
-    selectedProviderFilter === "all"
-      ? "Tous les types"
-      : selectedProviderFilter;
-
-  const speedLabel =
-    selectedSpeedFilter === "all"
-      ? "Toutes vitesses"
-      : selectedSpeedFilter;
+  if (!summary) {
+    console.log("filter-summary introuvable");
+    return;
+  }
 
   summary.innerHTML = `
     📊 Classement basé sur :
-    <strong>${offerLabel}</strong>
-    <span>•</span>
-    <strong>${speedLabel}</strong>
+    <strong>${
+      selectedProviderFilter === "all"
+        ? "Tous les types"
+        : selectedProviderFilter
+    }</strong>
+    •
+    ${
+      selectedSpeedFilter === "all"
+        ? "Toutes vitesses"
+        : selectedSpeedFilter
+    }
   `;
+
+  console.log(
+    "Résumé mis à jour :",
+    selectedProviderFilter,
+    selectedSpeedFilter
+  );
 }
 
 function animateProviderChartReload() {
