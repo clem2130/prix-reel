@@ -957,6 +957,7 @@ chartContainer.innerHTML += `
     </div>
   </div>
 `;
+});
 
 async function loadTrustCounter() {
   try {
