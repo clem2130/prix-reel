@@ -490,11 +490,12 @@ if (summaryText) {
        <span>Vous payez environ ${yearlyGap} € de plus par an que la moyenne observée</span>`;
   } else if (diff < -5) {
     summaryText.innerHTML =
-      `<strong>EXCELLENT PRIX</strong><br>
+      summaryText.innerHTML =
+      `<strong class="excellent-price">EXCELLENT PRIX</strong><br>
        <span>Vous économisez environ ${yearlyGap} € par an par rapport aux abonnements similaires</span>`;
   } else {
     summaryText.innerHTML =
-      `<strong>PRIX CORRECT</strong><br>
+      `<strong>PRIX ÉLEVÉ</strong><br>
        <span>Votre prix est proche de la moyenne observée</span>`;
   }
 }
