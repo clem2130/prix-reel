@@ -1896,3 +1896,10 @@ nav button span {
   height: 26px;
   object-fit: contain;
 }
+
+.provider-chart-logo {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  object-fit: contain;
+}
