@@ -901,6 +901,17 @@ data.forEach(item => {
         const maxAverage = Math.max(...providerPrices);
         const range = maxAverage - minAverage || 1;
 
+        const summary = document.getElementById("filter-summary");
+
+        if (summary) {
+          summary.innerHTML =
+            `Analyse : <strong>${
+              selectedProviderFilter === "all" ? "Tous les types" : selectedProviderFilter
+            }</strong> • <strong>${
+              selectedSpeedFilter === "all" ? "Toutes vitesses" : selectedSpeedFilter
+            }</strong>`;
+        }
+
 providerAverages.forEach((item, index) => {
   const medals = ["🥇", "🥈", "🥉"];
 
