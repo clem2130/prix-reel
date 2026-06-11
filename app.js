@@ -819,15 +819,18 @@ async function loadStatistics() {
     }
 
     document.getElementById("stats-average").textContent =
-      Math.round(prices.reduce((a, b) => a + b, 0) / prices.length) + " €";
-
+      Math.round(
+        validPrices.reduce((a, b) => a + b, 0) / validPrices.length
+      ) + " €";
+    
     document.getElementById("stats-min").textContent =
-      Math.min(...prices) + " €";
-
+      Math.min(...validPrices) + " €";
+    
     document.getElementById("stats-max").textContent =
-      Math.max(...prices) + " €";
+      Math.max(...validPrices) + " €";
 
     const providerStats = {};
+    
 
     data.forEach(item => {
       const provider = item.Provider;
@@ -846,16 +849,17 @@ async function loadStatistics() {
       providerStats[provider].count += 1;
     });
 
-    const providerAverages = Object.keys(providerStats)
-      .map(provider => ({
-        provider,
-        average: Math.round(
-          providerStats[provider].total / providerStats[provider].count
-        ),
-        count: providerStats[provider].count
-      }))
-      .sort((a, b) => a.average - b.average)
-      .slice(0, 6);
+      const providerAverages = Object.keys(providerStats)
+        .map(provider => ({
+          provider,
+          average: Math.round(
+            providerStats[provider].total / providerStats[provider].count
+          ),
+          count: providerStats[provider].count
+        }))
+        .filter(item => item.count >= 10)
+        .sort((a, b) => a.average - b.average)
+  .slice(0, 6);
 
     const chartContainer = document.getElementById("provider-chart");
 
@@ -1120,6 +1124,10 @@ async function loadProfile() {
     if (!data || data.length === 0) return;
 
     const prices = data.map(item => Number(item.Monthly_price));
+
+    const validPrices = prices.filter(
+    price => price >= 10 && price <= 200
+    );
 
     const uniqueCities = new Set(
       data
