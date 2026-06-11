@@ -753,9 +753,17 @@ function scrollResultToTop() {
 }
 
 function getReliabilityShortMessage(sampleCount) {
-  if (sampleCount <= 2) return "🔴 Données limitées";
-  if (sampleCount <= 4) return `🟡 Échantillon limité (${sampleCount} abonnements)`;
-  if (sampleCount <= 9) return "🟢 Comparaison utile";
+  if (sampleCount <= 2) {
+    return "🔴 Données limitées";
+  }
+
+  if (sampleCount <= 4) {
+    return `🟡 Échantillon limité (${sampleCount} abonnements analysés)`;
+  }
+
+  if (sampleCount <= 9) {
+    return "🟢 Comparaison utile";
+  }
 
   return "✅ Comparaison fiable";
 }
