@@ -486,15 +486,15 @@ const summaryText = document.getElementById("price-summary-text");
 if (summaryText) {
   if (diff > 5) {
     summaryText.innerHTML =
-      `<strong>PRIX ÉLEVÉ</strong><br>
+      `<strong class="expensive-price">PRIX ÉLEVÉ</strong><br>
        <span>Vous payez environ ${yearlyGap} € de plus par an que la moyenne observée</span>`;
   } else if (diff < -5) {
-      summaryText.innerHTML =
+    summaryText.innerHTML =
       `<strong class="excellent-price">EXCELLENT PRIX</strong><br>
        <span>Vous économisez environ ${yearlyGap} € par an par rapport aux abonnements similaires</span>`;
   } else {
     summaryText.innerHTML =
-      `<strong>PRIX CORRECT</strong><br>
+      `<strong class="correct-price">PRIX CORRECT</strong><br>
        <span>Votre prix est proche de la moyenne observée</span>`;
   }
 }
