@@ -2132,3 +2132,44 @@ nav button span {
   text-align: right !important;
   min-width: 70px !important;
 }
+
+.provider-chart-card {
+  max-width: 760px;
+  margin: 24px auto;
+  padding: 24px;
+  overflow: hidden;
+}
+
+#provider-chart {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.provider-chart-row {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) 80px;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.provider-chart-bar-wrap {
+  width: 100%;
+  min-width: 0;
+  height: 10px;
+  background: #edf2f7;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.provider-chart-bar {
+  height: 100%;
+  max-width: 100%;
+  border-radius: 999px;
+}
+
+.provider-chart-price {
+  text-align: right;
+  min-width: 75px;
+}
