@@ -1835,6 +1835,9 @@ nav button span {
 .provider-price {
   color: #16a34a;
   font-weight: 700;
+  min-width: 80px;
+  text-align: right;
+  padding-right: 8px;
 }
 
 .provider-count {
@@ -2005,6 +2008,10 @@ nav button span {
   flex-wrap: wrap;
   gap: 8px;
   margin: 14px 0 12px;
+}
+
+.provider-item {
+  padding: 12px 0;
 }
 
 .speed-filter {
