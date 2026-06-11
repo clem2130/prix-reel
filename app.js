@@ -959,6 +959,12 @@ chartContainer.innerHTML += `
 `;
 });
 
+  } catch (error) {
+    alert("Erreur stats : " + error.message);
+    console.error(error);
+  }
+}
+
 async function loadTrustCounter() {
   try {
     const response = await fetch(
