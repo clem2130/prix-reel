@@ -1748,3 +1748,15 @@ nav button span {
 .expensive-price {
   color: #dc2626 !important;
 }
+
+#price-summary-text strong.excellent-price {
+  color: #16a34a !important;
+}
+
+#price-summary-text strong.correct-price {
+  color: #f59e0b !important;
+}
+
+#price-summary-text strong.expensive-price {
+  color: #dc2626 !important;
+}
