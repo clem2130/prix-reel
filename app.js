@@ -893,11 +893,15 @@ providerAverages.forEach((item, index) => {
       <div class="provider-chart-bar-wrap">
         <div class="provider-chart-bar" style="width: ${width}%"></div>
       </div>
-
-      <div class="provider-chart-price">
-        ${item.average} €
-        <small>${item.count} prix</small>
-      </div>
+        
+          <div class="provider-chart-price">
+            ${item.average} €
+            <small>
+              ${item.count === 1
+              ? "1 contribution"
+              : item.count + " contributions"}
+          </small>
+        </div>
     </div>
   `;
 });
