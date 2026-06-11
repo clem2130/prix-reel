@@ -1961,3 +1961,27 @@ nav button span {
     width: 0;
   }
 }
+
+.provider-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 18px;
+}
+
+.provider-filter-btn {
+  border: 1px solid #dbeafe;
+  background: #ffffff;
+  color: var(--navy);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.provider-filter-btn.active {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
