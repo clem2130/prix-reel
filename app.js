@@ -912,6 +912,21 @@ data.forEach(item => {
             }</strong>`;
         }
 
+        const summary = document.getElementById("filter-summary");
+
+        if (summary) {
+          summary.innerHTML =
+            `📊 Analyse actuelle : <strong>${
+              selectedProviderFilter === "all"
+                ? "Tous les types d'offres"
+                : selectedProviderFilter
+            }</strong> • <strong>${
+              selectedSpeedFilter === "all"
+                ? "Toutes les vitesses"
+                : selectedSpeedFilter
+            }</strong>`;
+        }
+
 providerAverages.forEach((item, index) => {
   const medals = ["🥇", "🥈", "🥉"];
 
