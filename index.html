@@ -347,6 +347,14 @@
   <div class="provider-chart-card">
       <h3>🏆 Classement des fournisseurs les plus compétitifs</h3>
       <p>Basé sur les prix réellement observés par la communauté.</p>
+
+  <div class="provider-filter">
+  <button class="provider-filter-btn active" onclick="setProviderFilter('all', this)">Tous</button>
+  <button class="provider-filter-btn" onclick="setProviderFilter('Internet', this)">Internet</button>
+  <button class="provider-filter-btn" onclick="setProviderFilter('Internet + TV', this)">Internet + TV</button>
+  <button class="provider-filter-btn" onclick="setProviderFilter('Internet + Mobile', this)">Internet + Mobile</button>
+  <button class="provider-filter-btn" onclick="setProviderFilter('Pack complet', this)">Pack complet</button>
+</div>
     
       <div id="provider-chart"></div>
 </div>
