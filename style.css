@@ -1694,12 +1694,6 @@ nav button span {
     align-items: center;
   }
 
-  .provider-chart-price {
-    min-width: 70px;
-    text-align: right;
-    padding-right: 4px;
-  }
-
   .provider-chart-bar-wrap {
     width: 100%;
     display: block;
@@ -2267,7 +2261,4 @@ nav button span {
     padding-right: 4px;
   }
 
-  .provider-chart-bar {
-    min-width: 0;
-  }
 
