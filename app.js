@@ -645,7 +645,7 @@ if (potentialMonthlySaving <= 5) {
       rankingMessage.style.display = "none";
     }
 
-    const speedLabel = speed === "unknown" ? "Vitesse inconnue" : speed;
+    const speedLabel = speed === "unknown" ? "Vitesse non renseignée" : speed;
 
     document.getElementById("result-summary").textContent =
   city + " • " + provider + " • " + offerType + " • " + speedLabel;
