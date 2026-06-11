@@ -2441,6 +2441,25 @@ nav button span {
   }
 }
 
+@media (max-width: 600px) {
+
+  #provider-chart .provider-chart-row {
+    grid-template-columns: 115px 1fr 65px !important;
+    gap: 8px !important;
+  }
+
+  #provider-chart .provider-chart-price {
+    width: 65px !important;
+    min-width: 65px !important;
+    font-size: 16px !important;
+  }
+
+  #provider-chart .provider-chart-name span {
+    font-size: 14px !important;
+    white-space: nowrap !important;
+  }
+}
+
 
 
 
