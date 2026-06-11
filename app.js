@@ -486,7 +486,7 @@ const summaryText = document.getElementById("price-summary-text");
 if (summaryText) {
   if (diff > 5) {
     summaryText.innerHTML =
-    `<strong class="expensive-price">PRIX ÉLEVÉ</strong><br>
+    `<strong class="expensive-price">Tarif élevé</strong><br>
      <span>
        Vous payez environ
        <strong class="extra-cost-highlight">${yearlyGap} € de plus par an</strong>
@@ -495,7 +495,7 @@ if (summaryText) {
       </span>`;
   } else if (diff < -5) {
     summaryText.innerHTML =
-  `<strong class="excellent-price">EXCELLENT PRIX</strong><br>
+  `<strong class="excellent-price">Excellent tarif</strong><br>
    <span>
      Vous économisez environ
      <strong class="saving-highlight">${yearlyGap} € par an</strong>
@@ -504,7 +504,7 @@ if (summaryText) {
    </span>`;
   } else {
     summaryText.innerHTML =
-      `<strong class="correct-price">PRIX CORRECT</strong><br>
+      `<strong class="correct-price">Tarif correct</strong><br>
        <span>Votre prix est proche de la moyenne observée</span>`;
   }
 }
