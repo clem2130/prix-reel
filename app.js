@@ -476,6 +476,10 @@ if (average > 0) {
 }
 
     
+const monthlyGap = Math.round(Math.abs(diff));
+const yearlyGap = monthlyGap * 12;
+
+    
 // Construction du résumé affiché à l'utilisateur
 const summaryText = document.getElementById("price-summary-text");
 
@@ -496,9 +500,7 @@ if (summaryText) {
 }
 
 
-   const monthlyGap = Math.round(Math.abs(diff));
-const yearlyGap = monthlyGap * 12;
-
+  
 const recommendationCard = document.getElementById("recommendation-card");
 
 // Recherche des meilleures alternatives disponibles
