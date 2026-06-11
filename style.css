@@ -2416,6 +2416,40 @@ nav button span {
   }
 }
 
+@media (max-width: 600px) {
+
+  .provider-chart-row {
+    grid-template-columns: 32px minmax(0, 1fr) 80px;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .provider-chart-logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  .provider-chart-name {
+    font-size: 15px;
+    gap: 6px;
+  }
+
+  .provider-chart-price {
+    min-width: 80px;
+    text-align: right;
+    font-size: 16px;
+  }
+
+  .provider-chart-price small {
+    display: block;
+    font-size: 11px;
+  }
+
+  .provider-medal {
+    font-size: 14px;
+  }
+}
+
 
 
 
