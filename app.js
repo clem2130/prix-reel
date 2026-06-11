@@ -800,6 +800,10 @@ async function loadStatistics() {
 
     const prices = data.map(item => Number(item.Monthly_price));
 
+    const validPrices = prices.filter(
+    price => !isNaN(price) && price >= 10 && price <= 200
+    );
+
     const uniqueCities = new Set(
       data
         .map(item => item.City)
