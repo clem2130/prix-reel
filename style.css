@@ -1733,3 +1733,18 @@ nav button span {
   font-size: 14px;
   line-height: 1.5;
 }
+
+/* Excellent prix */
+.excellent-price {
+  color: #16a34a;
+}
+
+/* Prix correct */
+.correct-price {
+  color: #f59e0b;
+}
+
+/* Prix élevé */
+.expensive-price {
+  color: #dc2626;
+}
