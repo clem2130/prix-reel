@@ -1227,12 +1227,15 @@ function setProviderFilter(filter, button) {
 function setSpeedFilter(filter, button) {
   selectedSpeedFilter = filter;
 
+  alert("Vitesse sélectionnée : " + selectedSpeedFilter);
+
   document.querySelectorAll(".speed-filter-btn").forEach(btn => {
     btn.classList.remove("active");
   });
 
   button.classList.add("active");
 
+  updateFilterSummary();
   animateProviderChartReload();
 }
 
