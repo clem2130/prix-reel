@@ -144,16 +144,20 @@ async function getCityInfo(cityName) {
   return data[0] || null;
 }
 
-async function getPricesByCities(cities, offerType, speed) {
+async function getPricesByCities(cities, offerType, speed, extraServices = null) {
   const cityList = cities.map(city => `"${city}"`).join(",");
 
   let url =
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type,Speed` +
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type,Speed,extra_services` +
     `&City=in.(${cityList})` +
     `&Offer_type=eq.${encodeURIComponent(offerType)}`;
 
   if (speed !== "unknown") {
     url += `&Speed=eq.${encodeURIComponent(speed)}`;
+  }
+
+  if (extraServices !== null) {
+    url += `&extra_services=eq.${extraServices}`;
   }
 
   const response = await fetch(url, {
@@ -183,83 +187,156 @@ async function getCitiesByZone(column, value) {
   return data.map(city => city.name);
 }
 
-
-async function getSimilarPricesSmart(city, provider, offerType, speed) {
+async function getSimilarPricesSmart(city, provider, offerType, speed, extraServices) {
   const cityInfo = await getCityInfo(city);
 
-  let prices = await getPricesByCities([city], offerType, speed);
+  let prices = await getPricesByCities([city], offerType, speed, extraServices);
 
   if (prices.length >= MIN_RESULTS) {
     return { prices, level: "city", label: city };
   }
 
   if (!cityInfo) {
-    return await getBelgiumPricesFallback(offerType, speed);
+    return await getBelgiumPricesFallback(offerType, speed, false, extraServices);
   }
 
   const provinceCities = await getCitiesByZone("province", cityInfo.province);
-  prices = await getPricesByCities(provinceCities, offerType, speed);
+
+  prices = await getPricesByCities(provinceCities, offerType, speed, extraServices);
 
   if (prices.length >= MIN_RESULTS) {
     return { prices, level: "province", label: cityInfo.province };
   }
 
   const regionCities = await getCitiesByZone("region", cityInfo.region);
-  prices = await getPricesByCities(regionCities, offerType, speed);
+
+  prices = await getPricesByCities(regionCities, offerType, speed, extraServices);
 
   if (prices.length >= MIN_RESULTS) {
     return { prices, level: "region", label: cityInfo.region };
   }
 
-  let belgiumResult = await getBelgiumPricesFallback(offerType, speed);
+  let belgiumResult = await getBelgiumPricesFallback(
+    offerType,
+    speed,
+    false,
+    extraServices
+  );
 
   if (belgiumResult.prices.length >= MIN_RESULTS) {
     return belgiumResult;
   }
 
-  prices = await getPricesByCities([city], offerType, "unknown");
+  // Si pas assez de données avec la case assurance/service,
+  // on ignore ce critère.
+  prices = await getPricesByCities([city], offerType, speed, null);
 
   if (prices.length >= MIN_RESULTS) {
     return {
       prices,
       level: "city",
       label: city,
-      ignoredSpeed: true
+      ignoredExtraServices: true
     };
   }
 
-  prices = await getPricesByCities(provinceCities, offerType, "unknown");
+  prices = await getPricesByCities(provinceCities, offerType, speed, null);
 
   if (prices.length >= MIN_RESULTS) {
     return {
       prices,
       level: "province",
       label: cityInfo.province,
-      ignoredSpeed: true
+      ignoredExtraServices: true
     };
   }
 
-  prices = await getPricesByCities(regionCities, offerType, "unknown");
+  prices = await getPricesByCities(regionCities, offerType, speed, null);
 
   if (prices.length >= MIN_RESULTS) {
     return {
       prices,
       level: "region",
       label: cityInfo.region,
-      ignoredSpeed: true
+      ignoredExtraServices: true
     };
   }
 
-  return await getBelgiumPricesFallback(offerType, "unknown", true);
+  belgiumResult = await getBelgiumPricesFallback(
+    offerType,
+    speed,
+    false,
+    null,
+    true
+  );
+
+  if (belgiumResult.prices.length >= MIN_RESULTS) {
+    return belgiumResult;
+  }
+
+  // Dernier secours : on ignore aussi la vitesse.
+  prices = await getPricesByCities([city], offerType, "unknown", null);
+
+  if (prices.length >= MIN_RESULTS) {
+    return {
+      prices,
+      level: "city",
+      label: city,
+      ignoredSpeed: true,
+      ignoredExtraServices: true
+    };
+  }
+
+  prices = await getPricesByCities(provinceCities, offerType, "unknown", null);
+
+  if (prices.length >= MIN_RESULTS) {
+    return {
+      prices,
+      level: "province",
+      label: cityInfo.province,
+      ignoredSpeed: true,
+      ignoredExtraServices: true
+    };
+  }
+
+  prices = await getPricesByCities(regionCities, offerType, "unknown", null);
+
+  if (prices.length >= MIN_RESULTS) {
+    return {
+      prices,
+      level: "region",
+      label: cityInfo.region,
+      ignoredSpeed: true,
+      ignoredExtraServices: true
+    };
+  }
+
+  return await getBelgiumPricesFallback(
+    offerType,
+    "unknown",
+    true,
+    null,
+    true
+  );
 }
 
-async function getBelgiumPricesFallback(offerType, speed, ignoredSpeed = false) {
+async function getBelgiumPricesFallback(
+  offerType,
+  speed,
+  ignoredSpeed = false,
+  extraServices = null,
+  ignoredExtraServices = false
+) {
   let url =
-    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type,Speed` +
+    `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price,City,Provider,Offer_type,Speed,extra_services` +
     `&Offer_type=eq.${encodeURIComponent(offerType)}`;
 
   if (speed !== "unknown") {
     url += `&Speed=eq.${encodeURIComponent(speed)}`;
+  }
+
+  if (extraServices !== null) {
+    url += `&extra_services=eq.${extraServices}`;
   }
 
   const response = await fetch(url, {
@@ -277,7 +354,8 @@ async function getBelgiumPricesFallback(offerType, speed, ignoredSpeed = false) 
     prices,
     level: "belgium",
     label: "Belgique",
-    ignoredSpeed
+    ignoredSpeed,
+    ignoredExtraServices
   };
 }
 
@@ -451,7 +529,7 @@ async function calculate() {
       await savePriceToSupabase(city, provider, price, offerType, speed, hasExtraServices);
     }
 
-    const resultData = await getSimilarPricesSmart(city, provider, offerType, speed);
+    const resultData = await getSimilarPricesSmart(city, provider, offerType, speed, hasExtraServices);
     const similarPrices = resultData.prices;
 
 if (!similarPrices || similarPrices.length === 0) {
@@ -649,6 +727,16 @@ if (recommendationCard) {
       `;
     }
 
+    let extraServicesInfo = "";
+
+if (resultData.ignoredExtraServices) {
+  extraServicesInfo = `
+    <small style="display:block;margin-top:8px;color:#64748b;">
+      Données insuffisantes avec le critère assurance/service : comparaison élargie automatiquement.
+    </small>
+  `;
+}
+
     let zoneLabel = "";
 
 if (resultData.level === "city") {
@@ -687,6 +775,7 @@ quality.innerHTML = `
       }
 
       ${speedInfo}
+      ${extraServicesInfo}
     </div>
   </div>
 `;
