@@ -2530,37 +2530,30 @@ background: linear-gradient(
 #22c55e
 );
 
+
 .filter-separator {
   width: 100%;
   height: 1px;
   background: #e2e8f0;
-  margin: 22px 0 18px;
+  margin: 22px 0 16px;
 }
 
 .filter-section-title {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 12px;
   color: var(--navy);
 }
 
 .filter-section-title span {
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .filter-section-title strong {
-  display: block;
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
 }
-
-.filter-section-title small {
-  display: block;
-  margin-top: 2px;
-  font-size: 13px;
-  color: #64748b;
-}
-
 
 
