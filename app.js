@@ -67,14 +67,14 @@ function goTo(id) {
 // =====================================================
 // Requêtes Supabase - Internet
 // =====================================================
-async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed) {
+async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed, extraServices) {
   let url =
     `${SUPABASE_URL}/rest/v1/internet_prices?select=Monthly_price` +
     `&City=eq.${encodeURIComponent(city)}` +
     `&Provider=eq.${encodeURIComponent(provider)}` +
     `&Monthly_price=eq.${monthlyPrice}` +
     `&Offer_type=eq.${encodeURIComponent(offerType)}` +
-    `&limit=1`;
+    `&limit=1`+ `&extra_services=eq.${extraServices}`;
 
   if (speed !== "unknown") {
     url += `&Speed=eq.${encodeURIComponent(speed)}`;
@@ -391,10 +391,10 @@ async function getRanking(city, provider, offerType, speed, userPrice) {
 
 
 
-async function getBestDeals(city, offerType, speed) {
+async function getBestDeals(city, offerType, speed, extraServices) {
 
   // Recherche des abonnements similaires
-  const resultData = await getSimilarPricesSmart(city, "", offerType, speed);
+  const resultData = await getSimilarPricesSmart(city, "", offerType, speed, extraServices);
   const data = resultData.prices || [];
 
   if (!data || data.length === 0) return [];
@@ -523,7 +523,7 @@ async function calculate() {
   // Enregistrement et calcul du résultat
   // =====================================================
   try {
-    const alreadyExists = await priceAlreadyExists(city, provider, price, offerType, speed);
+    const alreadyExists = await priceAlreadyExists(city, provider, price, offerType, speed, hasExtraServices);
 
     if (!alreadyExists) {
       await savePriceToSupabase(city, provider, price, offerType, speed, hasExtraServices);
@@ -614,7 +614,7 @@ if (savingTipTitle && savingTipText) {
 const recommendationCard = document.getElementById("recommendation-card");
 
 // Recherche des meilleures alternatives disponibles
-const bestDeals = await getBestDeals(city, offerType, speed);
+const bestDeals = await getBestDeals(city, offerType, speed, hasExtraServices);
 
 if (recommendationCard) {
   if (bestDeals.length > 1) {
@@ -781,7 +781,7 @@ quality.innerHTML = `
 `;
 
     if (!isExcellentPrice) {
-  const bestDeals = await getBestDeals(city, offerType, speed);
+  const bestDeals = await getBestDeals(city, offerType, speed, hasExtraServices);
   const dealsContainer = document.getElementById("best-deals-list");
   const bestDealsCard = document.getElementById("best-deals-card");
 
