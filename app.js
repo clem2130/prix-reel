@@ -74,7 +74,8 @@ async function priceAlreadyExists(city, provider, monthlyPrice, offerType, speed
     `&Provider=eq.${encodeURIComponent(provider)}` +
     `&Monthly_price=eq.${monthlyPrice}` +
     `&Offer_type=eq.${encodeURIComponent(offerType)}` +
-    `&limit=1`+ `&extra_services=eq.${extraServices}`;
+    `&extra_services=eq.${extraServices}` +
+    `&limit=1`;
 
   if (speed !== "unknown") {
     url += `&Speed=eq.${encodeURIComponent(speed)}`;
