@@ -2694,6 +2694,62 @@ background: linear-gradient(
   color: rgba(255,255,255,0.6);
 }
 
+/* =====================================================
+   Page mentions légales mobile
+===================================================== */
+
+.legal-app {
+  min-height: 100vh;
+}
+
+.legal-brand {
+  margin-bottom: 28px;
+}
+
+.legal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 40px;
+}
+
+.legal-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 10px 24px rgba(6, 36, 92, 0.07);
+}
+
+.legal-card h2 {
+  color: var(--navy);
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.legal-card h3 {
+  color: var(--blue);
+  font-size: 16px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+.legal-card p,
+.legal-card li {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.legal-card ul {
+  padding-left: 20px;
+}
+
+.legal-card a {
+  color: var(--blue);
+  font-weight: 700;
+}
+
 
 
 
