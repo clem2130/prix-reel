@@ -1219,7 +1219,7 @@ async function shareResult() {
 💰 Découvrez gratuitement si vous payez le juste prix.
 
 Comparez votre facture en 30 secondes :
-https://prix-reel.vercel.app`;
+https://prixreel.be`;
 
   if (navigator.share) {
     try {
