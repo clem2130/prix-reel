@@ -2680,6 +2680,20 @@ background: linear-gradient(
   color: #cbd5e1;
 }
 
+.footer-prixreel .footer-links {
+  margin-top: 10px;
+}
+
+.footer-prixreel .footer-links a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-prixreel .footer-links span {
+  color: rgba(255,255,255,0.6);
+}
+
 
 
 
