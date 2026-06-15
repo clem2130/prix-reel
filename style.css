@@ -2750,6 +2750,12 @@ background: linear-gradient(
   font-weight: 700;
 }
 
+.legal-content {
+  padding-bottom: 90px;
+}
+.topbar .back {
+  text-decoration: none;
+}
 
 
 
