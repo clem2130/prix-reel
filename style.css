@@ -2757,5 +2757,15 @@ background: linear-gradient(
   text-decoration: none;
 }
 
+.legal-update {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+  display: block;
+}
+
 
 
