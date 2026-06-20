@@ -1387,7 +1387,7 @@ function animateProviderChartReload() {
 const translations = {
   fr: {
     heroTitle: "Découvrez combien vous pourriez économiser.",
-    heroSubtitle: "Comparez votre abonnement Internet avec les prix réellement payés en Belgique.",
+    heroSubtitle: "Comparez votre facture aux prix réellement payés près de chez vous.",
     startButton: "Comparer mon prix",
     shareButton: "Partager mon prix",
     statsButton: "Voir les statistiques",
@@ -1414,7 +1414,7 @@ const translations = {
 
   nl: {
     heroTitle: "Ontdek hoeveel u kunt besparen.",
-    heroSubtitle: "Vergelijk uw internetabonnement met de prijzen die echt in België worden betaald.",
+    heroSubtitle: "Vergelijk uw factuur met de prijzen die anderen in uw buurt werkelijk betalen.",
     startButton: "Mijn prijs vergelijken",
     shareButton: "Mijn prijs delen",
     statsButton: "Statistieken bekijken",
