@@ -2821,3 +2821,16 @@ background: linear-gradient(
   font-size: 0.95rem;
   color: #64748b;
 }
+
+.hero-highlight {
+  max-width: 650px;
+  margin: 18px auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #475569;
+  text-align: center;
+}
+
+.hero-highlight strong {
+  color: #16a34a;
+}
