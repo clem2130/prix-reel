@@ -2965,3 +2965,14 @@ background: linear-gradient(
 
   text-align: center;
 }
+
+.classic-text {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.prixreel-text {
+  color: #16a34a;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
