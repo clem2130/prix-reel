@@ -1386,7 +1386,7 @@ function animateProviderChartReload() {
 
 const translations = {
   fr: {
-    heroTitle: "Découvrez combien vous pourriez économiser.",
+    heroTitle: "Découvrez si vous payez le juste prix.",
     heroSubtitle: "Comparez votre facture aux prix réellement payés près de chez vous.",
     startButton: "Comparer mon prix",
     shareButton: "Partager mon prix",
