@@ -2921,3 +2921,25 @@ background: linear-gradient(
 .footer-links a:hover {
   text-decoration: underline;
 }
+
+.footer-prixreel {
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.footer-prixreel p {
+  text-align: center;
+  width: 100%;
+}
+
+.footer-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
