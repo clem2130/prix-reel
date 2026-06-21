@@ -2837,3 +2837,63 @@ background: linear-gradient(
 .hero-highlight strong {
   color: #16a34a;
 }
+
+.features {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 26px 30px;
+  margin: 28px auto 22px;
+  box-shadow: 0 12px 28px rgba(6, 36, 92, 0.06);
+  max-width: 620px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  text-align: left;
+}
+
+.feature:not(:last-child) {
+  border-bottom: 1px solid #eef2f7;
+}
+
+.feature .icon {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+.feature strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #002b6b;
+  margin-bottom: 4px;
+}
+
+.feature p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .features {
+    padding: 22px;
+    margin: 24px 16px 20px;
+  }
+
+  .feature {
+    gap: 14px;
+  }
+}
