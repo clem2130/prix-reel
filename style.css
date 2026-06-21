@@ -2958,3 +2958,21 @@ background: linear-gradient(
 .bottom-nav {
   z-index: 9999;
 }
+
+@media (max-width: 768px) {
+  .footer-prixreel {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 95px;
+    padding-bottom: 95px;
+  }
+
+  .footer-links {
+    margin-bottom: 20px;
+  }
+}
+
+.mobile-nav,
+.bottom-nav {
+  z-index: 9999;
+}
