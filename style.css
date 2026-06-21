@@ -2943,3 +2943,18 @@ background: linear-gradient(
   gap: 10px;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 90px;
+  }
+
+  .footer-prixreel {
+    margin-bottom: 70px;
+    padding-bottom: 70px;
+  }
+}
+
+.bottom-nav {
+  z-index: 9999;
+}
