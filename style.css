@@ -431,6 +431,35 @@ h2 {
   opacity: 0.95;
 }
 
+.footer-links {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.footer-links a,
+.footer-links span {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer-prixreel {
+    margin-bottom: 90px;
+    padding-bottom: 90px;
+  }
+}
+
 /* =====================================================
    Topbar
 ===================================================== */
@@ -2898,81 +2927,4 @@ background: linear-gradient(
   .feature {
     gap: 14px;
   }
-}
-
-.footer-links {
-  margin-top: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.footer-links a,
-.footer-links span {
-  color: #f8fafc;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-.footer-prixreel {
-  width: 100%;
-  max-width: none;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.footer-prixreel p {
-  text-align: center;
-  width: 100%;
-}
-
-.footer-links {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-}
-
-@media (max-width: 768px) {
-  body {
-    padding-bottom: 90px;
-  }
-
-  .footer-prixreel {
-    margin-bottom: 70px;
-    padding-bottom: 70px;
-  }
-}
-
-.bottom-nav {
-  z-index: 9999;
-}
-
-@media (max-width: 768px) {
-  .footer-prixreel {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 95px;
-    padding-bottom: 95px;
-  }
-
-  .footer-links {
-    margin-bottom: 20px;
-  }
-}
-
-.mobile-nav,
-.bottom-nav {
-  z-index: 9999;
 }
