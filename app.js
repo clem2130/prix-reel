@@ -1586,7 +1586,9 @@ fr: {
   statsSpeedLabel: "Vitesse",
   statsRankingBasedOn: "Classement basé sur :",
   statsAllTypes: "Tous les types",
-  statsAllSpeeds: "Toutes vitesses"
+  statsAllSpeeds: "Toutes vitesses",
+  statsHowCalculatedTitle: "🔍 Comment sont calculées ces statistiques ?",
+  statsHowCalculatedText: "Les moyennes sont recalculées automatiquement à chaque nouvelle contribution. Les classements sont basés sur les prix réellement observés auprès des consommateurs.",
   },
 
 nl: {
@@ -1741,7 +1743,9 @@ nl: {
   statsSpeedLabel: "Snelheid",
   statsRankingBasedOn: "Rangschikking gebaseerd op:",
   statsAllTypes: "Alle types",
-  statsAllSpeeds: "Alle snelheden"
+  statsAllSpeeds: "Alle snelheden",
+  statsHowCalculatedTitle: "🔍 Hoe worden deze statistieken berekend?",
+  statsHowCalculatedText: "De gemiddelden worden automatisch herberekend bij elke nieuwe bijdrage. De rangschikkingen zijn gebaseerd op de prijzen die daadwerkelijk door consumenten zijn gemeld.",
   }
 };
 
