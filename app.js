@@ -61,6 +61,7 @@ function goTo(id) {
   if (id === "profile") {
     loadProfile();
   }
+  applyTranslations();
 }
 
 
