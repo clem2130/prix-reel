@@ -845,9 +845,11 @@ if (dealsContainer) {
         <div class="deal-price">
           <span class="provider-price">${deal.average} €</span>
           <small class="provider-count">
-            ${deal.count === 1
-              ? "1 contribution"
-              : deal.count + " contributions"}
+            ${deal.count} ${
+              deal.count === 1
+                ? t.contribution
+                : t.contributions
+              }
           </small>
         </div>
       </div>
