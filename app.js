@@ -1387,7 +1387,7 @@ function updateFilterSummary() {
     return;
   }
 
-  const lang = currentLang || "fr";
+  const lang = localStorage.getItem("lang") || document.documentElement.lang || "fr";
   const t = translations[lang];
 
   const offerLabels = {
