@@ -3386,6 +3386,7 @@ background: linear-gradient(
   max-width: 1100px;
   margin: 0 auto 30px;
   padding: 5px 10px;
+  background: transparent;
 }
 
 @media (max-width: 768px) {
