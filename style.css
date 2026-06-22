@@ -3340,3 +3340,29 @@ background: linear-gradient(
     font-size: 20px;
   }
 }
+
+.hero-counter{
+    margin: 24px auto;
+    padding: 18px 24px;
+    max-width: 320px;
+
+    background:#f8fbff;
+    border:1px solid #dbeafe;
+    border-radius:24px;
+
+    text-align:center;
+}
+
+.counter-number{
+    font-size:42px;
+    font-weight:900;
+    color:#16a34a;
+    line-height:1;
+}
+
+.counter-text{
+    margin-top:4px;
+    font-size:16px;
+    font-weight:700;
+    color:#0b347d;
+}
