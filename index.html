@@ -263,25 +263,28 @@
   </label>
 </div>
 
-      <label>Type d'abonnement</label>
-      <select id="offer">
-        <option>Internet seul</option>
-        <option>Internet + TV</option>
-        <option>Internet + Mobile</option>
-        <option>Internet + TV + Mobile</option>
-        <option>Pack complet</option>
-        <option>Fibre</option>
-      </select>
-      
-      <label>Vitesse Internet</label>  
-      <select id="speed">
-        <option>100 Mbps</option>
-        <option>200 Mbps</option>
-        <option>500 Mbps</option>
-        <option>1 Gbps</option>
-        <option>Autre</option>
-        <option value="unknown">Je ne connais pas ma vitesse</option>
-      </select>
+  <label data-i18n="offerLabel">Type d'abonnement</label>
+  <select id="offer">
+    <option data-i18n="offerInternetOnly">Internet seul</option>
+    <option data-i18n="offerInternetTV">Internet + TV</option>
+    <option data-i18n="offerInternetMobile">Internet + Mobile</option>
+    <option data-i18n="offerInternetTVMobile">Internet + TV + Mobile</option>
+    <option data-i18n="offerFullPack">Pack complet</option>
+    <option data-i18n="offerFiber">Fibre</option>
+  </select>
+  
+  <label data-i18n="speedLabel">Vitesse Internet</label>
+  
+  <select id="speed">
+    <option>100 Mbps</option>
+    <option>200 Mbps</option>
+    <option>500 Mbps</option>
+    <option>1 Gbps</option>
+    <option data-i18n="optionOther">Autre</option>
+    <option value="unknown" data-i18n="unknownSpeed">
+      Je ne connais pas ma vitesse
+    </option>
+  </select>
 
       <div class="privacy-box">
         <div class="privacy-icon">✓</div>
