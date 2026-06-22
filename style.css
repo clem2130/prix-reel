@@ -340,44 +340,44 @@ linear-gradient(
 .community-card {
   display: flex;
   align-items: center;
-
+  gap: 18px;
   background: white;
-  border: 1px solid #dbe7ff;
+  border: 1px solid #e5e7eb;
   border-radius: 24px;
-
-  padding: 22px 28px;
-  margin: 18px auto 24px;
-
-  box-shadow: 0 12px 28px rgba(6, 36, 92, 0.06);
+  padding: 22px;
+  margin: 24px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .community-shield {
-  width: 24px;
-  height: 24px;
+  width: 56px;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .community-content {
   flex: 1;
-  text-align: center;
 }
 
 .community-content h3 {
   margin: 0 0 8px;
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--navy);
 }
 
 .community-content p {
   margin: 0;
-  text-align: center;
-  color: #64748b;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .community-icon {
-  width: 24px;
-  text-align: center;
   color: var(--green);
-  font-size: 24px;
+  font-size: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 /* =====================================================
@@ -3346,40 +3346,3 @@ background: linear-gradient(
   border-color: #2563eb;
 }
 
-#home .community-card {
-  position: relative !important;
-  display: block !important;
-  max-width: 980px !important;
-  margin: 18px auto 24px !important;
-  padding: 22px 80px !important;
-  text-align: center !important;
-}
-
-#home .community-content {
-  width: 100% !important;
-  text-align: center !important;
-}
-
-#home .community-content h3,
-#home .community-content p {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-#home .community-shield {
-  position: absolute !important;
-  left: 36px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 28px !important;
-  height: auto !important;
-}
-
-#home .community-icon {
-  position: absolute !important;
-  right: 36px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  font-size: 28px !important;
-}
