@@ -3279,3 +3279,21 @@ background: linear-gradient(
     font-size: 0.95rem;
   }
 }
+
+.hero-trust-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.hero-trust-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #22a652;
+}
+
+.hero-trust-text {
+    text-align: center;
+    font-size: 0.95rem;
+}
