@@ -1401,6 +1401,7 @@ fr: {
   statsButton: "Voir les statistiques",
   communityTitle: "Une communauté qui s'entraide",
   communityText: "Chaque prix partagé aide d'autres consommateurs à payer le juste prix.",
+  brandSlogan: "Le juste prix, basé sur la réalité.",
 },
 
 nl: {
@@ -1419,6 +1420,7 @@ nl: {
   statsButton: "Statistieken bekijken",
   communityTitle: "Een gemeenschap die elkaar helpt",
   communityText: "Elke gedeelde prijs helpt andere consumenten de juiste prijs te betalen.",
+  brandSlogan: "De juiste prijs, gebaseerd op de werkelijkheid.",
 }
 };
 
