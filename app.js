@@ -1721,7 +1721,7 @@ nl: {
   statsSpeedLabel: "Snelheid",
   statsAllSpeeds: "Alle snelheden",
   statsRankingBasedOn: "Rangschikking gebaseerd op:",
-  statsAllTypes: "Alle types",
+  statsAllTypes: "Alle abonnementstypes",
   statsContributions: "bijdragen",
   statsHowCalculatedTitle: "Hoe worden deze statistieken berekend?",
   statsHowCalculatedText: "De gemiddelden worden automatisch herberekend bij elke nieuwe bijdrage. De rangschikkingen zijn gebaseerd op de prijzen die daadwerkelijk door consumenten zijn gemeld.",
