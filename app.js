@@ -1817,7 +1817,6 @@ nl: {
   infoPartnersText2: "In de toekomst kunnen partnerschappen worden opgezet om de aangeboden diensten te verrijken en gebruikers meer besparingsmogelijkheden te bieden.",
   infoPartnersText3: "Onze prioriteit blijft om duidelijke en onafhankelijke vergelijkingen aan te bieden, gebaseerd op werkelijk waargenomen prijzen binnen de gemeenschap.",
   infoContactTitle: "Contact"
-},
   }
 };
 
