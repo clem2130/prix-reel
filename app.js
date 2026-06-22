@@ -1578,6 +1578,8 @@ fr: {
   speedLabel: "Internetsnelheid",
   optionOther: "Andere",
   unknownSpeed: "Ik ken mijn snelheid niet",
+  statsOfferLabel: "Offre",
+  statsSpeedLabel: "Vitesse",
   },
 
 nl: {
@@ -1728,6 +1730,8 @@ nl: {
   speedLabel: "Internetsnelheid",
   optionOther: "Andere",
   unknownSpeed: "Ik ken mijn snelheid niet",
+  statsOfferLabel: "Abonnement",
+  statsSpeedLabel: "Snelheid",
   }
 };
 
