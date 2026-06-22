@@ -891,19 +891,26 @@ function scrollResultToTop() {
 }
 
 function getReliabilityShortMessage(sampleCount) {
+
+  const t = translations[currentLanguage];
+
   if (sampleCount <= 2) {
-    return "🔴 Données limitées";
+    return "🔴 " + t.limitedData;
   }
 
   if (sampleCount <= 4) {
-    return `🟡 Échantillon limité (${sampleCount} abonnements analysés)`;
+    return `🟡 ${t.limitedSample} (${sampleCount} ${
+      sampleCount > 1
+        ? t.similarSubscriptions
+        : t.similarSubscription
+    })`;
   }
 
   if (sampleCount <= 9) {
-    return "🟢 Comparaison utile";
+    return "🟢 " + t.usefulComparison;
   }
 
-  return "✅ Comparaison fiable";
+  return "✅ " + t.reliableComparison;
 }
 
 // =====================================================
@@ -1527,6 +1534,9 @@ fr: {
   zoneProvince: "dans la province de",
   zoneRegion: "en",
   zoneBelgium: "en Belgique",
+  limitedSample: "Échantillon limité",
+  usefulComparison: "Comparaison utile",
+  reliableComparison: "Comparaison fiable",
   },
 
 nl: {
@@ -1635,6 +1645,9 @@ nl: {
   zoneProvince: "in de provincie",
   zoneRegion: "in",
   zoneBelgium: "in België",
+  limitedSample: "Beperkte steekproef",
+  usefulComparison: "Nuttige vergelijking",
+  reliableComparison: "Betrouwbare vergelijking",
   }
 };
 
