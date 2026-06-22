@@ -3105,6 +3105,18 @@ background: linear-gradient(
     transform:translateY(-4px);
 }
 
+.feature-card:nth-child(1){
+    border-top: 4px solid #22c55e;
+}
+
+.feature-card:nth-child(2){
+    border-top: 4px solid #f59e0b;
+}
+
+.feature-card:nth-child(3){
+    border-top: 4px solid #3b82f6;
+}
+
 .community-counter {
     display: inline-flex;
     align-items: center;
