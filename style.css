@@ -3414,5 +3414,9 @@ background: linear-gradient(
   margin-left: auto;
 }
 
+.site-header {
+  border: none !important;
+}
+
 
 
