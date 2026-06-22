@@ -3366,3 +3366,19 @@ background: linear-gradient(
     font-weight:700;
     color:#0b347d;
 }
+
+.hero-counter{
+    padding: 18px;
+}
+
+.hero-counter .count{
+    font-size: 34px;
+    font-weight: 900;
+    color: #16a34a;
+}
+
+.hero-counter .label{
+    font-size: 18px;
+    font-weight: 700;
+    color: #0b347d;
+}
