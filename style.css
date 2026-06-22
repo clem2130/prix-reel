@@ -1521,6 +1521,12 @@ select {
   margin-bottom: 0;
 }
 
+#about .info-card:last-child p {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--blue);
+}
+
 @media (max-width: 700px) {
   #about > div:first-child h2 {
     font-size: 28px;
