@@ -3377,22 +3377,6 @@ background: linear-gradient(
    }
 }
 
-@media (max-width: 768px) {
-  .site-header {
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-    padding: 24px 20px 10px;
-  }
-
-  .brand {
-    justify-content: center;
-  }
-
-  .language-switcher {
-    justify-content: center;
-  }
-}
 
 .site-header {
   display: flex;
@@ -3416,5 +3400,9 @@ background: linear-gradient(
   .language-switcher {
     justify-content: center;
   }
+}
+
+.site-header {
+  border: 3px solid red !important;
 }
 
