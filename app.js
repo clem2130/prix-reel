@@ -1441,6 +1441,16 @@ fr: {
   anonymousTitle: "Vos données sont 100% anonymes",
   anonymousText: "Elles nous aident seulement à calculer les prix réels dans votre région.",
   comparePriceButton: "Comparer mon prix",
+  resultTopbar: "Résultat",
+  cheaperLabel: "Moins cher",
+  moreExpensiveLabel: "Plus cher",
+  rankingMessage: "Position dans le classement des prix",
+  providerRankingTitle: "🏆 Classement des fournisseurs",
+  providerRankingSubtitle: "Prix moyens observés pour des abonnements similaires.",
+  savingTipTitle: "💡 Conseil Prix Réel",
+  savingTipText: "Les prix évoluent régulièrement. Pensez à comparer votre abonnement de temps en temps.",
+  restartComparisonButton: "Recommencer une comparaison",
+  shareResultButton: "📤 Partager mon résultat et aider la communauté",
 },
 
 nl: {
@@ -1498,6 +1508,16 @@ nl: {
   anonymousTitle: "Uw gegevens zijn 100% anoniem",
   anonymousText: "Ze helpen ons enkel om de werkelijke prijzen in uw regio te berekenen.",
   comparePriceButton: "Mijn prijs vergelijken",
+  resultTopbar: "Resultaat",
+  cheaperLabel: "Goedkoper",
+  moreExpensiveLabel: "Duurder",
+  rankingMessage: "Positie in de prijsrangschikking",
+  providerRankingTitle: "🏆 Rangschikking van providers",
+  providerRankingSubtitle: "Gemiddelde prijzen waargenomen voor vergelijkbare abonnementen.",
+  savingTipTitle: "💡 Prix Réel-tip",
+  savingTipText: "Prijzen veranderen regelmatig. Vergelijk uw abonnement af en toe opnieuw.",
+  restartComparisonButton: "Nieuwe vergelijking starten",
+  shareResultButton: "📤 Mijn resultaat delen en de gemeenschap helpen",
 }
 };
 
