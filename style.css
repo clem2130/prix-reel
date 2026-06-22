@@ -3232,3 +3232,16 @@ background: linear-gradient(
     color: #475569;
     font-weight: 600;
 }
+
+.hero-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.hero-counter-number {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
