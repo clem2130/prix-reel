@@ -1388,74 +1388,103 @@ select {
    Page informations
 ===================================================== */
 
-#about > div:first-child h2 {
-  font-size: 34px;
-  font-weight: 800;
+#about {
   text-align: center;
-  margin-bottom: 12px;
 }
 
+#about > div:first-child {
+  margin-bottom: 18px;
+}
 
-#about .subtitle {
+#about > div:first-child h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--navy);
+  text-align: center;
+  margin: 0 0 12px;
+  letter-spacing: -0.4px;
+}
+
+#about > div:first-child .subtitle {
   font-size: 16px;
   color: #64748b;
   line-height: 1.7;
+  font-weight: 500;
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 20px;
-}
-
-#about h2:first-child {
-  font-size: 32px;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.trust-row {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 15px 0 25px;
-}
-
-.trust-row div {
-  background: #f4f8ff;
-  border: 1px solid #dbe7ff;
-  border-radius: 30px;
-  padding: 8px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--navy);
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 #about .trust-row {
-  margin: 20px 0 35px;
-}
-
-.info-card {
   display: flex;
-  gap: 18px;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 22px;
-  margin: 20px 0;
-  box-shadow: 0 10px 24px rgba(6, 36, 92, 0.07);
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 24px 0 42px;
 }
 
-.info-card:nth-child(5),
-.info-card:nth-child(6),
-.info-card:nth-child(7) {
-  border: 1px solid #dbeafe;
+#about .trust-row div {
+  background: #f4f8ff;
+  border: 1px solid #dbe7ff;
+  border-radius: 999px;
+  padding: 8px 15px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  box-shadow: 0 6px 14px rgba(6, 36, 92, 0.04);
+}
+
+#about h2[data-i18n="infoHowTitle"] {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--navy);
+  text-align: center;
+  margin: 0 0 16px;
+  letter-spacing: -0.3px;
+}
+
+#about h2[data-i18n="infoHowTitle"] + .subtitle {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.8;
+  font-weight: 500;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 38px;
+}
+
+#about .info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1050px;
+  margin: 20px auto;
+  padding: 24px 26px;
+  background: #ffffff;
+  border: 1px solid #dbe7ff;
+  border-radius: 22px;
+  text-align: left;
+  box-shadow: 0 12px 30px rgba(6, 36, 92, 0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#about .info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(6, 36, 92, 0.11);
+}
+
+#about .info-card:nth-of-type(odd) {
+  background: #ffffff;
+}
+
+#about .info-card:nth-of-type(even) {
   background: #f8fbff;
 }
 
-.info-icon {
-  width: 52px;
-  height: 52px;
-  min-width: 52px;
+#about .info-icon {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
   border-radius: 50%;
   background: #eff6ff;
   color: var(--blue);
@@ -1464,23 +1493,59 @@ select {
   justify-content: center;
   font-size: 24px;
   overflow: hidden;
+  box-shadow: inset 0 0 0 1px #dbeafe;
 }
 
-.info-shield {
-  width: 70px;
-  height: 70px;
+#about .info-shield {
+  width: 72px;
+  height: 72px;
   object-fit: contain;
 }
 
-.info-card h3 {
-  margin: 0 0 8px;
+#about .info-card h3 {
+  margin: 0 0 9px;
   color: var(--navy);
+  font-size: 17px;
+  font-weight: 800;
 }
 
-.info-card p {
+#about .info-card p {
   margin: 0 0 10px;
-  color: var(--muted);
-  line-height: 1.5;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+#about .info-card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  #about > div:first-child h2 {
+    font-size: 28px;
+  }
+
+  #about h2[data-i18n="infoHowTitle"] {
+    font-size: 26px;
+  }
+
+  #about h2[data-i18n="infoHowTitle"] + .subtitle {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  #about .info-card {
+    gap: 14px;
+    padding: 20px;
+  }
+
+  #about .info-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    font-size: 21px;
+  }
 }
 
 /* =====================================================
