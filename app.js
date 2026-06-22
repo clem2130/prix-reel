@@ -1391,7 +1391,6 @@ fr: {
   heroMessageStrong: 'Prix Réel compare votre facture aux montants réellement payés par les consommateurs belges.',
   heroMessageSmall: 'Pas aux tarifs officiels affichés par les fournisseurs.',
   communityCounterText: 'consommateurs ont déjà partagé leur prix',
-
   featureRealPricesTitle: 'Prix réels',
   featureRealPricesText: 'Données réellement partagées par les consommateurs.',
   featureSavingsTitle: 'Économies',
@@ -1418,6 +1417,8 @@ fr: {
   serviceElectricityTitle: "Électricité",
   serviceMobileTitle: "Téléphone mobile",  
   comingSoon: "🔒 Bientôt disponible",
+  categoryInfoTitle: "D'autres catégories arrivent bientôt !",
+  categoryInfoText: "Aidez-nous à rendre les prix plus transparents partout.",
 },
 
 nl: {
@@ -1425,7 +1426,6 @@ nl: {
   heroMessageStrong: 'Prix Réel vergelijkt uw factuur met de bedragen die Belgische consumenten werkelijk betalen.',
   heroMessageSmall: 'Niet met de officiële tarieven die door de providers worden weergegeven.',
   communityCounterText: 'consumenten hebben hun prijs al gedeeld',
-
   featureRealPricesTitle: 'Echte prijzen',
   featureRealPricesText: 'Gegevens die werkelijk door consumenten gedeeld zijn.',
   featureSavingsTitle: 'Besparingen',
@@ -1452,6 +1452,8 @@ nl: {
   serviceElectricityTitle: "Elektriciteit",
   serviceMobileTitle: "Mobiele telefonie",  
   comingSoon: "🔒 Binnenkort beschikbaar",
+  categoryInfoTitle: "Andere categorieën komen binnenkort!",
+  categoryInfoText: "Help ons om prijzen overal transparanter te maken.",
 }
 };
 
