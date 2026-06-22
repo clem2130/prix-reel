@@ -338,45 +338,61 @@ linear-gradient(
 ===================================================== */
 
 .community-card {
-  display: grid;
-  grid-template-columns: 50px 1fr 50px;
-  align-items: center;
-  gap: 16px;
+  position: relative;
+  display: block;
 
   background: white;
   border: 1px solid #dbe7ff;
   border-radius: 24px;
 
-  padding: 20px 28px;
+  padding: 22px 90px;
   margin: 18px auto 24px;
 
   box-shadow: 0 12px 28px rgba(6, 36, 92, 0.06);
 
   max-width: 1050px;
+  text-align: center;
 }
 
 .community-shield {
+  position: absolute;
+  left: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+
   width: 28px;
   height: auto;
   object-fit: contain;
-  justify-self: center;
-  flex-shrink: 0;
 }
 
 .community-content {
   text-align: center;
 }
 
-.community-content h3,
+.community-content h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
+  text-align: center;
+}
+
 .community-content p {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.6;
   text-align: center;
 }
 
 .community-icon {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+
   color: var(--green);
-  font-size: 30px;
-  justify-self: center;
-  flex-shrink: 0;
+  font-size: 32px;
 }
 
 /* =====================================================
