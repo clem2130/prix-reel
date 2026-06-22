@@ -1410,6 +1410,14 @@ fr: {
   footerSlogan: "Le juste prix, basé sur la réalité.",
   footerLegal: "Mentions légales & Confidentialité",
   footerContact: "Contact",
+  categoryTitle: "Quel service souhaitez-vous comparer ?",
+  categorySubtitle: "Nous commençons par Internet.",  
+  serviceInternetTitle: "Internet",
+  serviceInternetText: "Comparez votre abonnement Internet",  
+  serviceCarTitle: "Assurance auto",
+  serviceElectricityTitle: "Électricité",
+  serviceMobileTitle: "Téléphone mobile",  
+  comingSoon: "🔒 Bientôt disponible",
 },
 
 nl: {
@@ -1436,6 +1444,14 @@ nl: {
   footerSlogan: "De juiste prijs, gebaseerd op de werkelijkheid.",
   footerLegal: "Juridische informatie & Privacy",
   footerContact: "Contact",
+  categoryTitle: "Welke dienst wilt u vergelijken?",
+  categorySubtitle: "We beginnen met internet.",
+  serviceInternetTitle: "Internet",
+  serviceInternetText: "Vergelijk uw internetabonnement",
+  serviceCarTitle: "Autoverzekering",
+  serviceElectricityTitle: "Elektriciteit",
+  serviceMobileTitle: "Mobiele telefonie",  
+  comingSoon: "🔒 Binnenkort beschikbaar",
 }
 };
 
