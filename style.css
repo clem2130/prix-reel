@@ -3383,7 +3383,8 @@ background: linear-gradient(
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  padding: 10px 30px;
 }
 
 @media (max-width: 768px) {
@@ -3400,6 +3401,17 @@ background: linear-gradient(
   .language-switcher {
     justify-content: center;
   }
+}
+
+@media (min-width: 901px) {
+  .logo-shield {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.language-switcher {
+  margin-left: auto;
 }
 
 .site-header {
