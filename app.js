@@ -1573,7 +1573,6 @@ fr: {
   statsRankingTitle: "Classement des fournisseurs les plus compétitifs",
   statsRankingSubtitle: "Basé sur les prix réellement observés par la communauté.",
   offerLabel: "Type abonnement",
-  offerInternetOnly: "Alleen internet",
   offerInternetTV: "Internet + TV",
   offerInternetMobile: "Internet + Mobiel",
   offerInternetTVMobile: "Internet + TV + Mobiel",
@@ -1626,8 +1625,7 @@ fr: {
   infoPartnersText3: "Notre priorité reste de fournir des comparaisons claires, indépendantes et basées sur les prix réellement observés au sein de la communauté.",
   infoContactTitle: "Contact"
 },
-  },
-
+  
 nl: {
   heroTitle: 'Ontdek hoeveel u kunt <span>besparen.</span>',
   heroMessageStrong: 'Prix Réel vergelijkt uw factuur met de bedragen die Belgische consumenten werkelijk betalen.',
