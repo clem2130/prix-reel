@@ -3418,5 +3418,12 @@ background: linear-gradient(
   border: none !important;
 }
 
+.site-header,
+header.site-header {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
 
 
