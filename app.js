@@ -564,6 +564,7 @@ const yearlyGap = monthlyGap * 12;
     
 // Construction du résumé affiché à l'utilisateur
 const summaryText = document.getElementById("price-summary-text");
+const t = translations[currentLanguage];
 
 if (summaryText) {
   if (diff > 5) {
