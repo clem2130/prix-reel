@@ -1385,21 +1385,33 @@ function animateProviderChartReload() {
 }
 
 const translations = {
-  fr: {
-    heroTitle: 'Découvrez combien vous pourriez <span>économiser.</span>',
-    heroSubtitle: 'Comparez votre facture aux prix réellement payés près de chez vous.',
-    startButton: 'Comparer mon prix',
-    shareButton: 'Partager mon prix',
-    statsButton: 'Voir les statistiques'
-  },
+fr: {
+  heroTitle: 'Découvrez combien vous pourriez <span>économiser.</span>',
+  heroMessageStrong: 'Prix Réel compare votre facture aux montants réellement payés par les consommateurs belges.',
+  heroMessageSmall: 'Pas aux tarifs officiels affichés par les fournisseurs.',
+  communityCounterText: 'consommateurs ont déjà partagé leur prix',
 
-  nl: {
-    heroTitle: 'Ontdek hoeveel u kunt <span>besparen.</span>',
-    heroSubtitle: 'Vergelijk uw factuur met de prijzen die werkelijk betaald worden in uw buurt.',
-    startButton: 'Mijn prijs vergelijken',
-    shareButton: 'Mijn prijs delen',
-    statsButton: 'Statistieken bekijken'
-  }
+  featureRealPricesTitle: 'Prix réels',
+  featureRealPricesText: 'Données réellement partagées par les consommateurs.',
+  featureSavingsTitle: 'Économies',
+  featureSavingsText: 'Découvrez si vous payez plus que les autres.',
+  featureAnonymousTitle: 'Anonyme',
+  featureAnonymousText: 'Aucun compte, aucun email, aucune donnée personnelle.'
+},
+
+nl: {
+  heroTitle: 'Ontdek hoeveel u kunt <span>besparen.</span>',
+  heroMessageStrong: 'Prix Réel vergelijkt uw factuur met de bedragen die Belgische consumenten werkelijk betalen.',
+  heroMessageSmall: 'Niet met de officiële tarieven die door de providers worden weergegeven.',
+  communityCounterText: 'consumenten hebben hun prijs al gedeeld',
+
+  featureRealPricesTitle: 'Echte prijzen',
+  featureRealPricesText: 'Gegevens die werkelijk door consumenten gedeeld zijn.',
+  featureSavingsTitle: 'Besparingen',
+  featureSavingsText: 'Ontdek of u meer betaalt dan anderen.',
+  featureAnonymousTitle: 'Anoniem',
+  featureAnonymousText: 'Geen account, geen e-mail, geen persoonlijke gegevens.'
+}
 };
 
 let currentLanguage = localStorage.getItem('language') || 'fr';
