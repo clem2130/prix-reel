@@ -1429,6 +1429,15 @@ fr: {
   perMonth: "€ / mois",
   extraLabel: "Mon prix inclut une assurance ou un service supplémentaire",
   extraDescription: "Exemple : assurance smartphone, option sécurité, service lié au pack...",
+  offerLabel: "Type d'abonnement",
+  offerInternetOnly: "Internet seul",
+  offerInternetTV: "Internet + TV",
+  offerInternetMobile: "Internet + Mobile",
+  offerInternetTVMobile: "Internet + TV + Mobile",
+  offerFullPack: "Pack complet",
+  offerFiber: "Fibre",
+  speedLabel: "Vitesse Internet",
+  unknownSpeed: "Je ne connais pas ma vitesse",
 },
 
 nl: {
@@ -1474,6 +1483,15 @@ nl: {
   perMonth: "€ / maand",
   extraLabel: "Mijn prijs bevat een verzekering of extra dienst",
   extraDescription: "Voorbeeld: smartphoneverzekering, beveiligingsoptie of extra dienst.",
+  offerLabel: "Type abonnement",
+  offerInternetOnly: "Alleen internet",
+  offerInternetTV: "Internet + TV",
+  offerInternetMobile: "Internet + Mobiel",
+  offerInternetTVMobile: "Internet + TV + Mobiel",
+  offerFullPack: "Volledig pakket",
+  offerFiber: "Glasvezel",
+  speedLabel: "Internetsnelheid",
+  unknownSpeed: "Ik ken mijn snelheid niet",
 }
 };
 
