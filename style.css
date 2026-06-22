@@ -3053,3 +3053,24 @@ background: linear-gradient(
 .feature-card:hover{
     transform:translateY(-4px);
 }
+
+.community-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #eff6ff;
+    color: #1e40af;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: 1px solid #bfdbfe;
+    margin: 18px auto;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.08);
+}
+
+.community-counter span {
+    color: #16a34a;
+    font-size: 1.05rem;
+    font-weight: 800;
+}
