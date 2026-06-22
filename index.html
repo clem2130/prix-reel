@@ -308,10 +308,10 @@
     </button>
   </section>
 
-    <section class="screen" id="result">
+<section class="screen" id="result">
   <div class="topbar">
     <button class="back" onclick="goTo('form')">←</button>
-    <strong>Résultat</strong>
+    <strong data-i18n="resultTopbar">Résultat</strong>
     <button class="back">↗</button>
   </div>
 
@@ -319,11 +319,10 @@
 
     <div class="price-summary">
       <span id="price-summary-text">
-         Votre prix est 20% plus cher que la moyenne
+        Votre prix est 20% plus cher que la moyenne
       </span>
     </div>
 
-    <!-- Barre de position du prix -->
     <div class="score-bar-card">
       <div class="score-badge" id="percent">0%</div>
 
@@ -333,47 +332,52 @@
       </div>
 
       <div class="score-labels">
-        <span>Moins cher</span>
-        <span>Plus cher</span>
+        <span data-i18n="cheaperLabel">Moins cher</span>
+        <span data-i18n="moreExpensiveLabel">Plus cher</span>
       </div>
 
-      <p id="ranking-message">Position dans le classement des prix</p>
+      <p id="ranking-message" data-i18n="rankingMessage">
+        Position dans le classement des prix
+      </p>
     </div>
 
-    <!-- Résumé de l'abonnement comparé -->
     <div class="result-summary" id="result-summary"></div>
 
-    <!-- Qualité des données utilisées -->
     <div class="data-quality-small" id="data-quality"></div>
 
-    <!-- Recommandation Prix Réel -->
     <div class="recommendation-card" id="recommendation-card"></div>
 
   </div>
 
   <div class="best-deals-card" id="best-deals-card">
-    <h3>🏆 Classement des fournisseurs</h3>
-    <p class="provider-ranking-subtitle">
+    <h3 data-i18n="providerRankingTitle">
+      🏆 Classement des fournisseurs
+    </h3>
+
+    <p class="provider-ranking-subtitle" data-i18n="providerRankingSubtitle">
       Prix moyens observés pour des abonnements similaires.
     </p>
+
     <div id="best-deals-list"></div>
   </div>
 
   <div class="tip-card" id="saving-tip-card">
-    <strong id="saving-tip-title">💡 Conseil Prix Réel</strong>
-    <p id="saving-tip-text">
+    <strong id="saving-tip-title" data-i18n="savingTipTitle">
+      💡 Conseil Prix Réel
+    </strong>
+
+    <p id="saving-tip-text" data-i18n="savingTipText">
       Les prix évoluent régulièrement. Pensez à comparer votre abonnement de temps en temps.
     </p>
   </div>
 
-  <button class="primary" onclick="goTo('home')">
+  <button class="primary" onclick="goTo('home')" data-i18n="restartComparisonButton">
     Recommencer une comparaison
   </button>
 
-      
-    <button class="share-btn" onclick="shareResult()">
-      📤 Partager mon résultat et aider la communauté
-    </button>
+  <button class="share-btn" onclick="shareResult()" data-i18n="shareResultButton">
+    📤 Partager mon résultat et aider la communauté
+  </button>
 </section>
 
 <section class="screen" id="stats">
