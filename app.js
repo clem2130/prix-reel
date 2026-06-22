@@ -565,50 +565,81 @@ const yearlyGap = monthlyGap * 12;
 // Construction du résumé affiché à l'utilisateur
 const summaryText = document.getElementById("price-summary-text");
 const t = translations[currentLanguage];
-
 if (summaryText) {
+
   if (diff > 5) {
-    summaryText.innerHTML =
-    `<strong class="expensive-price">Tarif élevé</strong><br>
-     <span>
-       Vous payez environ
-       <strong class="extra-cost-highlight">${yearlyGap} € de plus par an</strong>
-       <br>
-       <small class="extra-cost-month"> ≈ +${monthlyGap} € par mois</small>
-      </span>`;
+
+    summaryText.innerHTML = `
+      <strong class="expensive-price">${t.expensiveRate}</strong><br>
+
+      <span>
+        ${t.youPayAbout}
+
+        <strong class="extra-cost-highlight">
+          ${yearlyGap} € ${t.perYearMore}
+        </strong>
+
+        <br>
+
+        <small class="extra-cost-month">
+          ≈ +${monthlyGap} ${t.perMonth}
+        </small>
+      </span>
+    `;
+
   } else if (diff < -5) {
-    summaryText.innerHTML =
-  `<strong class="excellent-price">Excellent tarif</strong><br>
-   <span>
-     Vous économisez environ
-     <strong class="saving-highlight">${yearlyGap} € par an</strong>
-     <br>
-     <small class="saving-month"> ≈ -${monthlyGap} € par mois </small>
-   </span>`;
+
+    summaryText.innerHTML = `
+      <strong class="excellent-price">${t.excellentRate}</strong><br>
+
+      <span>
+        ${t.youSaveAbout}
+
+        <strong class="saving-highlight">
+          ${yearlyGap} € ${t.perYearSave}
+        </strong>
+
+        <br>
+
+        <small class="saving-month">
+          ≈ -${monthlyGap} ${t.perMonth}
+        </small>
+      </span>
+    `;
+
   } else {
-    summaryText.innerHTML =
-      `<strong class="correct-price">Tarif correct</strong><br>
-       <span>Votre prix est proche de la moyenne observée</span>`;
+
+    summaryText.innerHTML = `
+      <strong class="correct-price">${t.correctRate}</strong><br>
+
+      <span>
+        ${t.priceCloseAverage}
+      </span>
+    `;
+
   }
 }
-
     
 const savingTipTitle = document.getElementById("saving-tip-title");
 const savingTipText = document.getElementById("saving-tip-text");
 
 if (savingTipTitle && savingTipText) {
+
   if (diff > 5) {
-    savingTipTitle.textContent = "💰 Économies possibles";
-    savingTipText.textContent =
-      "Votre prix est supérieur à la moyenne observée. Consultez le classement des fournisseurs pour repérer une offre plus avantageuse.";
+
+    savingTipTitle.textContent = t.possibleSavingsTitle;
+    savingTipText.textContent = t.possibleSavingsText;
+
   } else if (diff < -5) {
-    savingTipTitle.textContent = "🏆 Très bon tarif";
-    savingTipText.textContent =
-      "Votre abonnement est déjà très compétitif. Surveillez simplement les évolutions du marché de temps en temps.";
+
+    savingTipTitle.textContent = t.greatDealTitle;
+    savingTipText.textContent = t.greatDealText;
+
   } else {
-    savingTipTitle.textContent = "📊 Prix dans la moyenne";
-    savingTipText.textContent =
-      "Votre prix est proche de la moyenne observée. Une comparaison occasionnelle peut vous aider à rester compétitif.";
+
+    savingTipTitle.textContent = t.averagePriceTitle;
+    savingTipText.textContent = t.averagePriceText;
+
   }
 }
 
