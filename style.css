@@ -3055,21 +3055,50 @@ background: linear-gradient(
 }
 
 .hero-features {
-    display:flex;
-    gap:16px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin:25px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 900px;
 }
 
 .feature-card {
-    width:180px;
-    background:white;
-    border-radius:16px;
-    padding:20px;
-    text-align:center;
-    box-shadow:0 6px 18px rgba(0,0,0,0.08);
-    transition:0.3s;
+    width: 240px;
+    min-height: 180px;
+
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+
+    text-align: center;
+
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+    transition: all 0.25s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+    color: var(--navy);
+    font-size: 1.05rem;
+}
+
+.feature-card p {
+    color: #64748b;
+    line-height: 1.5;
+    font-size: 0.92rem;
 }
 
 .feature-card:hover{
