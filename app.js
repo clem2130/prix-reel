@@ -1402,6 +1402,10 @@ fr: {
   communityTitle: "Une communauté qui s'entraide",
   communityText: "Chaque prix partagé aide d'autres consommateurs à payer le juste prix.",
   brandSlogan: "Le juste prix, basé sur la réalité.",
+  navHome: "Accueil",
+  navCompare: "Comparer",
+  navStats: "Stats",
+  navInfo: "Infos",
 },
 
 nl: {
@@ -1421,6 +1425,10 @@ nl: {
   communityTitle: "Een gemeenschap die elkaar helpt",
   communityText: "Elke gedeelde prijs helpt andere consumenten de juiste prijs te betalen.",
   brandSlogan: "De juiste prijs, gebaseerd op de werkelijkheid.",
+  navHome: "Start",
+  navCompare: "Vergelijken",
+  navStats: "Statistieken",
+  navInfo: "Info",
 }
 };
 
