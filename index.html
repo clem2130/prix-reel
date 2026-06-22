@@ -447,11 +447,15 @@ steden gedekt in België
 </div>
     
 <div class="provider-filter">
-  <button class="provider-filter-btn active" onclick="setProviderFilter('all', this)">Tous</button>
-  <button class="provider-filter-btn" onclick="setProviderFilter('Internet', this)">Internet</button>
-  <button class="provider-filter-btn" onclick="setProviderFilter('Internet + TV', this)">Internet + TV</button>
-  <button class="provider-filter-btn" onclick="setProviderFilter('Internet + Mobile', this)">Internet + Mobile</button>
-  <button class="provider-filter-btn" onclick="setProviderFilter('Pack complet', this)">Pack complet</button>
+  <button class="provider-filter-btn active" data-i18n="statsAll" onclick="setProviderFilter('all', this)">Tous</button>
+
+  <button class="provider-filter-btn" data-i18n="statsInternet" onclick="setProviderFilter('Internet', this)">Internet</button>
+
+  <button class="provider-filter-btn" data-i18n="statsInternetTv" onclick="setProviderFilter('Internet + TV', this)">Internet + TV</button>
+
+  <button class="provider-filter-btn" data-i18n="statsInternetMobile" onclick="setProviderFilter('Internet + Mobile', this)">Internet + Mobile</button>
+
+  <button class="provider-filter-btn" data-i18n="statsFullPack" onclick="setProviderFilter('Pack complet', this)">Pack complet</button>
 </div>
     
 <div class="filter-separator"></div>
