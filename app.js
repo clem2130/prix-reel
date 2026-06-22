@@ -1497,6 +1497,12 @@ fr: {
   greatDealText: "Votre abonnement est déjà très compétitif. Surveillez simplement les évolutions du marché de temps en temps.",
   averagePriceTitle: "📊 Prix dans la moyenne",
   averagePriceText: "Votre prix est proche de la moyenne observée. Une comparaison occasionnelle peut vous aider à rester compétitif.",
+  similarSubscriptions: "abonnement similaire analysé en Belgique",
+  similarSubscriptionsPlural: "abonnements similaires analysés en Belgique",
+  limitedData: "Données limitées",
+  insufficientData: "Données insuffisantes",
+  notEnoughProviders: "Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.",
+  noReliableAlternative: "Aucune alternative fiable disponible pour le moment.",
 },
 
 nl: {
@@ -1578,6 +1584,12 @@ nl: {
   greatDealText: "Uw abonnement is al zeer competitief. Houd gewoon af en toe de markt in de gaten.",
   averagePriceTitle: "📊 Gemiddelde prijs",
   averagePriceText: "Uw prijs ligt dicht bij het waargenomen gemiddelde. Af en toe vergelijken helpt u competitief te blijven.",
+  similarSubscriptions: "vergelijkbaar abonnement geanalyseerd in België",
+  similarSubscriptionsPlural: "vergelijkbare abonnementen geanalyseerd in België",
+  limitedData: "Beperkte gegevens",
+  insufficientData: "Onvoldoende gegevens",
+  notEnoughProviders: "Nog niet genoeg verschillende providers om een betrouwbare vergelijking te maken.",
+  noReliableAlternative: "Momenteel geen betrouwbaar alternatief beschikbaar.",
 }
 };
 
