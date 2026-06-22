@@ -338,26 +338,26 @@ linear-gradient(
 ===================================================== */
 
 .community-card {
-  display: block;
-  max-width: 980px;
-  margin: 18px auto 28px;
-  padding: 24px 32px;
+  display: flex;
+  align-items: center;
 
   background: white;
   border: 1px solid #dbe7ff;
   border-radius: 24px;
 
-  text-align: center;
+  padding: 22px 28px;
+  margin: 18px auto 24px;
+
   box-shadow: 0 12px 28px rgba(6, 36, 92, 0.06);
 }
 
-.community-shield,
-.community-icon {
-  display: none;
+.community-shield {
+  width: 24px;
+  height: 24px;
 }
 
 .community-content {
-  width: 100%;
+  flex: 1;
   text-align: center;
 }
 
@@ -365,16 +365,19 @@ linear-gradient(
   margin: 0 0 8px;
   font-size: 22px;
   font-weight: 800;
-  color: var(--navy);
 }
 
 .community-content p {
-  max-width: 700px;
-  margin: 0 auto;
-  color: #64748b;
-  font-size: 15px;
-  line-height: 1.6;
+  margin: 0;
   text-align: center;
+  color: #64748b;
+}
+
+.community-icon {
+  width: 24px;
+  text-align: center;
+  color: var(--green);
+  font-size: 24px;
 }
 
 /* =====================================================
