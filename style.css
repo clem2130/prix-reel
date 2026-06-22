@@ -254,6 +254,15 @@ h2 {
   text-align: center;
 }
 
+.hero{
+background:
+linear-gradient(
+180deg,
+#f0f7ff 0%,
+#ffffff 100%
+);
+}
+
 .features {
   background: #fff;
   border: 1px solid var(--line);
@@ -2976,3 +2985,5 @@ background: linear-gradient(
   font-weight: 800;
   font-size: 1.05rem;
 }
+
+
