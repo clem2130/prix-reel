@@ -359,13 +359,14 @@ linear-gradient(
   left: 36px;
   top: 50%;
   transform: translateY(-50%);
-
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: auto;
   object-fit: contain;
 }
 
+
 .community-content {
+  position: relative;
   width: 100%;
   text-align: center;
 }
@@ -379,10 +380,8 @@ linear-gradient(
 }
 
 .community-content p {
-  margin: 0;
-  color: #64748b;
-  font-size: 15px;
-  line-height: 1.6;
+  max-width: 620px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -391,6 +390,8 @@ linear-gradient(
   right: 36px;
   top: 50%;
   transform: translateY(-50%);
+  font-size: 32px;
+}
 
   color: var(--green);
   font-size: 32px;
