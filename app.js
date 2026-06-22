@@ -1406,6 +1406,9 @@ fr: {
   navCompare: "Comparer",
   navStats: "Stats",
   navInfo: "Infos",
+  footerSlogan: "Le juste prix, basé sur la réalité.",
+  footerLegal: "Mentions légales & Confidentialité",
+  footerContact: "Contact",
 },
 
 nl: {
@@ -1429,6 +1432,9 @@ nl: {
   navCompare: "Vergelijken",
   navStats: "Statistieken",
   navInfo: "Info",
+  footerSlogan: "De juiste prijs, gebaseerd op de werkelijkheid.",
+  footerLegal: "Juridische informatie & Privacy",
+  footerContact: "Contact",
 }
 };
 
