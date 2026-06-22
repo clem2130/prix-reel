@@ -3382,3 +3382,13 @@ background: linear-gradient(
     font-weight: 700;
     color: #0b347d;
 }
+
+.counter-number{
+    font-size: 2.4rem; /* environ 38px */
+    font-weight: 900;
+    color: #16a34a;
+}
+
+.counter-number{
+    font-size: 2.2rem; /* 35px */
+}
