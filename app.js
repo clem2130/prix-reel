@@ -1387,8 +1387,9 @@ function updateFilterSummary() {
     return;
   }
 
-  const lang = localStorage.getItem("lang") || document.documentElement.lang || "fr";
-  const t = translations[lang];
+const lang = localStorage.getItem('language') || 'fr';
+
+  const t = translations[lang] || translations.fr;
 
   const offerLabels = {
     all: t.statsAllTypes,
@@ -1749,7 +1750,10 @@ let currentLanguage = localStorage.getItem('language') || 'fr';
 function setLanguage(lang) {
   currentLanguage = lang;
   localStorage.setItem('language', lang);
+
   applyTranslations();
+
+  updateFilterSummary();
 }
 
 function applyTranslations() {
