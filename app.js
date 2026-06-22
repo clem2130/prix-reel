@@ -660,127 +660,132 @@ if (recommendationCard) {
 
     if (potentialMonthlySaving <= 5) {
       recommendationCard.innerHTML = `
-        <p>🏆 Tarif très compétitif</p>
+        <p>${t.veryCompetitiveRate}</p>
 
         <strong>
-          Vous bénéficiez déjà d'un excellent tarif.
+          ${t.alreadyExcellentRate}
         </strong>
 
         <small>
-          Votre abonnement fait partie des prix les plus compétitifs observés.
+          ${t.amongMostCompetitive}
         </small>
 
         <div class="trust-badge">
-          ✅ Aucun écart significatif observé parmi ${sampleCount} abonnements similaires
+          ${t.noSignificantGap} ${sampleCount}
+          ${sampleCount > 1 ? t.similarSubscriptions : t.similarSubscription}
         </div>
       `;
     } else {
       recommendationCard.innerHTML = `
-        <p>💰 Économie possible</p>
+        <p>${t.possibleSavingShort}</p>
 
-        <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+        <strong>${bestProvider} — ${bestPrice} ${t.perMonth}</strong>
 
         <p class="current-price">
-          Vous payez actuellement : ${price} € / mois
+          ${t.currentPriceLabel} : ${price} ${t.perMonth}
         </p>
 
         <small>
-          Vous pourriez économiser jusqu'à ${potentialYearlySaving} € par an.
+          ${t.couldSaveUpTo} ${potentialYearlySaving} € ${t.perYearSave}.
         </small>
 
         <div class="trust-badge">
-          ✅ Offre la plus avantageuse observée parmi ${sampleCount} abonnements similaires
+          ${t.bestObservedOffer} ${sampleCount}
+          ${sampleCount > 1 ? t.similarSubscriptions : t.similarSubscription}
         </div>
       `;
     }
   } else {
     recommendationCard.innerHTML = `
-      <p>ℹ️ Données insuffisantes</p>
-      <strong>Aucune alternative fiable disponible pour le moment.</strong>
+      <p>${t.insufficientDataTitle}</p>
+
+      <strong>
+        ${t.noReliableAlternative}
+      </strong>
+
       <small>
-        Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.
+        ${t.notEnoughProviders}
       </small>
     `;
   }
 }
-    
-    let gapPercent = 0;
-    const isExcellentPrice = ranking >= 90;
 
-    if (average > 0) {
-      gapPercent = Math.round((Math.abs(diff) / average) * 100);
-    }
+let gapPercent = 0;
+const isExcellentPrice = ranking >= 90;
 
-    let displayPercent = 50;
+if (average > 0) {
+  gapPercent = Math.round((Math.abs(diff) / average) * 100);
+}
 
-    if (diff < 0) {
-      displayPercent = Math.max(0, 50 - gapPercent);
-    } else if (diff > 0) {
-      displayPercent = Math.min(100, 50 + gapPercent);
-    }
+let displayPercent = 50;
 
-    if (isExcellentPrice) {
-      displayPercent = 0;
-    }
+if (diff < 0) {
+  displayPercent = Math.max(0, 50 - gapPercent);
+} else if (diff > 0) {
+  displayPercent = Math.min(100, 50 + gapPercent);
+}
 
-    animateCounter("percent", gapPercent, 1000);
-    
+if (isExcellentPrice) {
+  displayPercent = 0;
+}
 
-    const scoreDot = document.querySelector(".score-dot");
+animateCounter("percent", gapPercent, 1000);
 
-    if (scoreDot) {
-      scoreDot.style.transition = "none";
-      scoreDot.style.left = "0%";
+const scoreDot = document.querySelector(".score-dot");
 
-      setTimeout(() => {
-        scoreDot.style.transition = "left 1.5s ease-out";
-        scoreDot.style.left = displayPercent + "%";
-      }, 100);
-    }
+if (scoreDot) {
+  scoreDot.style.transition = "none";
+  scoreDot.style.left = "0%";
 
-    const rankingMessage = document.getElementById("ranking-message");
+  setTimeout(() => {
+    scoreDot.style.transition = "left 1.5s ease-out";
+    scoreDot.style.left = displayPercent + "%";
+  }, 100);
+}
 
-    if (rankingMessage) {
-      rankingMessage.style.display = "none";
-    }
+const rankingMessage = document.getElementById("ranking-message");
 
-    const speedLabel = speed === "unknown" ? "Vitesse non renseignée" : speed;
+if (rankingMessage) {
+  rankingMessage.style.display = "none";
+}
 
-    document.getElementById("result-summary").textContent =
+const speedLabel = speed === "unknown" ? t.unknownSpeedLabel : speed;
+
+document.getElementById("result-summary").textContent =
   city + " • " + provider + " • " + offerType + " • " + speedLabel;
 
-    const quality = document.getElementById("data-quality");
+const quality = document.getElementById("data-quality");
 
-    let speedInfo = "";
+let speedInfo = "";
 
-    if (speed === "unknown" || resultData.ignoredSpeed) {
-      speedInfo = `
-        <small style="display:block;margin-top:8px;color:#64748b;">
-  Comparaison réalisée sans tenir compte de la vitesse internet.
-</small>
-      `;
-    }
-
-    let extraServicesInfo = "";
-
-if (resultData.ignoredExtraServices) {
-  extraServicesInfo = `
+if (speed === "unknown" || resultData.ignoredSpeed) {
+  speedInfo = `
     <small style="display:block;margin-top:8px;color:#64748b;">
-      Données insuffisantes avec le critère assurance/service : comparaison élargie automatiquement.
+      ${t.speedIgnoredText}
     </small>
   `;
 }
 
-    let zoneLabel = "";
+let extraServicesInfo = "";
+
+if (resultData.ignoredExtraServices) {
+  extraServicesInfo = `
+    <small style="display:block;margin-top:8px;color:#64748b;">
+      ${t.extraIgnoredText}
+    </small>
+  `;
+}
+
+let zoneLabel = "";
 
 if (resultData.level === "city") {
-  zoneLabel = `à  ${resultData.label}`;
+  zoneLabel = `${t.zoneCity} ${resultData.label}`;
 } else if (resultData.level === "province") {
-  zoneLabel = `dans la province de ${resultData.label}`;
+  zoneLabel = `${t.zoneProvince} ${resultData.label}`;
 } else if (resultData.level === "region") {
-  zoneLabel = `en ${resultData.label}`;
+  zoneLabel = `${t.zoneRegion} ${resultData.label}`;
 } else {
-  zoneLabel = "en Belgique";
+  zoneLabel = t.zoneBelgium;
 }
 
 quality.innerHTML = `
@@ -790,9 +795,7 @@ quality.innerHTML = `
     <div class="quality-content">
       <strong>
         ${sampleCount}
-        ${sampleCount > 1
-          ? " abonnements similaires analysés "
-          : " abonnement similaire analysé "}
+        ${sampleCount > 1 ? t.similarSubscriptions : t.similarSubscription}
         ${zoneLabel}
       </strong>
 
@@ -803,7 +806,7 @@ quality.innerHTML = `
       ${
         resultData.level !== "city"
           ? `<small style="display:block;margin-top:8px;color:#64748b;">
-              Données locales insuffisantes : comparaison élargie automatiquement.
+              ${t.localDataInsufficient}
             </small>`
           : ""
       }
@@ -1503,7 +1506,28 @@ fr: {
   insufficientData: "Données insuffisantes",
   notEnoughProviders: "Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.",
   noReliableAlternative: "Aucune alternative fiable disponible pour le moment.",
-},
+  veryCompetitiveRate: "🏆 Tarif très compétitif",
+  alreadyExcellentRate: "Vous bénéficiez déjà d'un excellent tarif.",
+  amongMostCompetitive: "Votre abonnement fait partie des prix les plus compétitifs observés.",
+  noSignificantGap: "✅ Aucun écart significatif observé parmi",
+  possibleSavingShort: "💰 Économie possible",
+  currentPriceLabel: "Vous payez actuellement",
+  couldSaveUpTo: "Vous pourriez économiser jusqu'à",
+  bestObservedOffer: "✅ Offre la plus avantageuse observée parmi",
+  insufficientDataTitle: "ℹ️ Données insuffisantes",
+  noReliableAlternative: "Aucune alternative fiable disponible pour le moment.",
+  notEnoughProviders: "Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.",
+  similarSubscription: "abonnement similaire",
+  similarSubscriptions: "abonnements similaires",
+  unknownSpeedLabel: "Vitesse non renseignée",
+  speedIgnoredText: "Comparaison réalisée sans tenir compte de la vitesse internet.",
+  extraIgnoredText: "Données insuffisantes avec le critère assurance/service : comparaison élargie automatiquement.",
+  localDataInsufficient: "Données locales insuffisantes : comparaison élargie automatiquement.",
+  zoneCity: "à",
+  zoneProvince: "dans la province de",
+  zoneRegion: "en",
+  zoneBelgium: "en Belgique",
+  },
 
 nl: {
   heroTitle: 'Ontdek hoeveel u kunt <span>besparen.</span>',
@@ -1590,7 +1614,28 @@ nl: {
   insufficientData: "Onvoldoende gegevens",
   notEnoughProviders: "Nog niet genoeg verschillende providers om een betrouwbare vergelijking te maken.",
   noReliableAlternative: "Momenteel geen betrouwbaar alternatief beschikbaar.",
-}
+  veryCompetitiveRate: "🏆 Zeer competitief tarief",
+  alreadyExcellentRate: "U geniet al van een uitstekend tarief.",
+  amongMostCompetitive: "Uw abonnement behoort tot de meest competitieve prijzen die zijn waargenomen.",
+  noSignificantGap: "✅ Geen significant verschil waargenomen bij",
+  possibleSavingShort: "💰 Mogelijke besparing",
+  currentPriceLabel: "U betaalt momenteel",
+  couldSaveUpTo: "U kunt tot",
+  bestObservedOffer: "✅ Voordeligste waargenomen aanbod bij",
+  insufficientDataTitle: "ℹ️ Onvoldoende gegevens",
+  noReliableAlternative: "Momenteel geen betrouwbaar alternatief beschikbaar.",
+  notEnoughProviders: "Nog niet genoeg verschillende providers om een betrouwbare vergelijking te maken.",
+  similarSubscription: "vergelijkbaar abonnement",
+  similarSubscriptions: "vergelijkbare abonnementen",
+  unknownSpeedLabel: "Snelheid niet opgegeven",
+  speedIgnoredText: "Vergelijking uitgevoerd zonder rekening te houden met de internetsnelheid.",
+  extraIgnoredText: "Onvoldoende gegevens met het criterium verzekering/dienst: vergelijking automatisch uitgebreid.",
+  localDataInsufficient: "Onvoldoende lokale gegevens: vergelijking automatisch uitgebreid.",
+  zoneCity: "in",
+  zoneProvince: "in de provincie",
+  zoneRegion: "in",
+  zoneBelgium: "in België",
+  }
 };
 
 let currentLanguage = localStorage.getItem('language') || 'fr';
