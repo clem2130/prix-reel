@@ -1427,6 +1427,8 @@ fr: {
   cityPlaceholder: "Tapez votre ville...",
   optionOther: "Autre",
   perMonth: "€ / mois",
+  extraLabel: "Mon prix inclut une assurance ou un service supplémentaire",
+  extraDescription: "Exemple : assurance smartphone, option sécurité, service lié au pack...",
 },
 
 nl: {
@@ -1470,6 +1472,8 @@ nl: {
   cityPlaceholder: "Typ uw gemeente...",
   optionOther: "Andere",
   perMonth: "€ / maand",
+  extraLabel: "Mijn prijs bevat een verzekering of extra dienst",
+  extraDescription: "Voorbeeld: smartphoneverzekering, beveiligingsoptie of extra dienst.",
 }
 };
 
