@@ -286,16 +286,27 @@
     </option>
   </select>
 
-      <div class="privacy-box">
-        <div class="privacy-icon">✓</div>
-        <div class="privacy-text">
-          <h3>Vos données sont 100% anonymes</h3>
-          <p>Elles nous aident seulement à calculer les prix réels dans votre région.</p>
-        </div>
+    <div class="privacy-box">
+      <div class="privacy-icon">✓</div>
+    
+      <div class="privacy-text">
+        <h3 data-i18n="anonymousTitle">
+          Vos données sont 100% anonymes
+        </h3>
+    
+        <p data-i18n="anonymousText">
+          Elles nous aident seulement à calculer les prix réels dans votre région.
+        </p>
       </div>
-
-      <button class="primary blue-btn" onclick="calculate()">Comparer mon prix</button>
-    </section>
+    </div>
+    
+    <button
+      class="primary blue-btn"
+      onclick="calculate()"
+      data-i18n="comparePriceButton">
+      Comparer mon prix
+    </button>
+  </section>
 
     <section class="screen" id="result">
   <div class="topbar">
