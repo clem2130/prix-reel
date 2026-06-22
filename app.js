@@ -1396,7 +1396,9 @@ fr: {
   featureSavingsTitle: 'Économies',
   featureSavingsText: 'Découvrez si vous payez plus que les autres.',
   featureAnonymousTitle: 'Anonyme',
-  featureAnonymousText: 'Aucun compte, aucun email, aucune donnée personnelle.'
+  featureAnonymousText: 'Aucun compte, aucun email, aucune donnée personnelle.',
+  compareButton: "Comparer ma facture maintenant",
+  statsButton: "Voir les statistiques"
 },
 
 nl: {
@@ -1410,7 +1412,9 @@ nl: {
   featureSavingsTitle: 'Besparingen',
   featureSavingsText: 'Ontdek of u meer betaalt dan anderen.',
   featureAnonymousTitle: 'Anoniem',
-  featureAnonymousText: 'Geen account, geen e-mail, geen persoonlijke gegevens.'
+  featureAnonymousText: 'Geen account, geen e-mail, geen persoonlijke gegevens.',
+  compareButton: "Vergelijk nu mijn factuur",
+  statsButton: "Statistieken bekijken"
 }
 };
 
