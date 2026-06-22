@@ -1537,6 +1537,8 @@ fr: {
   limitedSample: "Échantillon limité",
   usefulComparison: "Comparaison utile",
   reliableComparison: "Comparaison fiable",
+  contribution: "contribution",
+  contributions: "contributions",
   },
 
 nl: {
@@ -1648,6 +1650,8 @@ nl: {
   limitedSample: "Beperkte steekproef",
   usefulComparison: "Nuttige vergelijking",
   reliableComparison: "Betrouwbare vergelijking",
+  contribution: "bijdrage",
+  contributions: "bijdragen",
   }
 };
 
