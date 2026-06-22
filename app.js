@@ -1386,80 +1386,43 @@ function animateProviderChartReload() {
 
 const translations = {
   fr: {
-    heroTitle: "Découvrez combien vous pourriez économiser.",
-    startButton: "Comparer mon prix",
-    shareButton: "Partager mon prix",
-    statsButton: "Voir les statistiques",
-
-    providerLabel: "Fournisseur",
-    cityLabel: "Ville",
-    priceLabel: "Prix mensuel",
-    offerLabel: "Type d'offre",
-    speedLabel: "Vitesse Internet",
-    extraLabel: "Mon prix inclut une assurance ou un service supplémentaire",
-
-    resultTitle: "Votre résultat",
-    excellentPrice: "Excellent prix",
-    correctPrice: "Prix correct",
-    expensivePrice: "Prix élevé",
-    potentialSaving: "Économie potentielle",
-    reliableComparison: "Comparaison fiable",
-
-    statsTitle: "Statistiques",
-    sharedPrices: "Prix réels partagés",
-    coveredCities: "Villes couvertes",
-    providersAnalyzed: "Fournisseurs analysés"
+    heroTitle: 'Découvrez combien vous pourriez <span>économiser.</span>',
+    heroSubtitle: 'Comparez votre facture aux prix réellement payés près de chez vous.',
+    startButton: 'Comparer mon prix',
+    shareButton: 'Partager mon prix',
+    statsButton: 'Voir les statistiques'
   },
 
   nl: {
-    heroTitle: "Ontdek hoeveel u kunt besparen.",
-    heroSubtitle: "Vergelijk uw factuur met de prijzen die anderen in uw buurt werkelijk betalen.",
-    startButton: "Mijn prijs vergelijken",
-    shareButton: "Mijn prijs delen",
-    statsButton: "Statistieken bekijken",
-
-    providerLabel: "Provider",
-    cityLabel: "Stad of gemeente",
-    priceLabel: "Maandelijkse prijs",
-    offerLabel: "Type abonnement",
-    speedLabel: "Internetsnelheid",
-    extraLabel: "Mijn prijs bevat een verzekering of extra dienst",
-
-    resultTitle: "Uw resultaat",
-    excellentPrice: "Uitstekende prijs",
-    correctPrice: "Correcte prijs",
-    expensivePrice: "Hoge prijs",
-    potentialSaving: "Mogelijke besparing",
-    reliableComparison: "Betrouwbare vergelijking",
-
-    statsTitle: "Statistieken",
-    sharedPrices: "Gedeelde echte prijzen",
-    coveredCities: "Gedekte steden en gemeenten",
-    providersAnalyzed: "Geanalyseerde providers"
+    heroTitle: 'Ontdek hoeveel u kunt <span>besparen.</span>',
+    heroSubtitle: 'Vergelijk uw factuur met de prijzen die werkelijk betaald worden in uw buurt.',
+    startButton: 'Mijn prijs vergelijken',
+    shareButton: 'Mijn prijs delen',
+    statsButton: 'Statistieken bekijken'
   }
 };
 
-let currentLanguage = localStorage.getItem("language") || "fr";
+let currentLanguage = localStorage.getItem('language') || 'fr';
 
 function setLanguage(lang) {
   currentLanguage = lang;
-  localStorage.setItem("language", lang);
+  localStorage.setItem('language', lang);
   applyTranslations();
 }
 
 function applyTranslations() {
   const t = translations[currentLanguage];
 
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.getAttribute("data-i18n");
+  document.querySelectorAll('[data-i18n]').forEach((element) => {
+    const key = element.getAttribute('data-i18n');
 
     if (t[key]) {
-      element.textContent = t[key];
+      element.innerHTML = t[key];
     }
   });
 
-  document.getElementById("lang-fr")?.classList.toggle("active", currentLanguage === "fr");
-  document.getElementById("lang-nl")?.classList.toggle("active", currentLanguage === "nl");
+  document.getElementById('lang-fr')?.classList.toggle('active', currentLanguage === 'fr');
+  document.getElementById('lang-nl')?.classList.toggle('active', currentLanguage === 'nl');
 }
 
-document.addEventListener("DOMContentLoaded", applyTranslations);
+document.addEventListener('DOMContentLoaded', applyTranslations);
