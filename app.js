@@ -1421,6 +1421,12 @@ fr: {
   categoryInfoText: "Aidez-nous à rendre les prix plus transparents partout.",
   formTitle: "Comparez votre abonnement Internet",
   formSubtitle: "Remplissez les informations ci-dessous.",
+  providerLabel: "Votre fournisseur Internet",
+  cityLabel: "Votre ville",
+  priceLabel: "Votre montant mensuel",
+  cityPlaceholder: "Tapez votre ville...",
+  optionOther: "Autre",
+  perMonth: "€ / mois",
 },
 
 nl: {
@@ -1458,6 +1464,12 @@ nl: {
   categoryInfoText: "Help ons om prijzen overal transparanter te maken.",
   formTitle: "Vergelijk uw internetabonnement",
   formSubtitle: "Vul onderstaande informatie in.",
+  providerLabel: "Uw internetprovider",
+  cityLabel: "Uw gemeente",
+  priceLabel: "Uw maandelijkse prijs",
+  cityPlaceholder: "Typ uw gemeente...",
+  optionOther: "Andere",
+  perMonth: "€ / maand",
 }
 };
 
@@ -1470,18 +1482,27 @@ function setLanguage(lang) {
 }
 
 function applyTranslations() {
-  const t = translations[currentLanguage];
+    const t = translations[currentLanguage];
+  
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+      const key = element.getAttribute('data-i18n');
+  
+      if (t[key]) {
+        element.innerHTML = t[key];
+      }
+    });
 
-  document.querySelectorAll('[data-i18n]').forEach((element) => {
-    const key = element.getAttribute('data-i18n');
-
+    document.getElementById('lang-fr')?.classList.toggle('active', currentLanguage === 'fr');
+    document.getElementById('lang-nl')?.classList.toggle('active', currentLanguage === 'nl');
+  
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.getAttribute("data-i18n-placeholder");
+  
     if (t[key]) {
-      element.innerHTML = t[key];
+      element.setAttribute("placeholder", t[key]);
     }
   });
-
-  document.getElementById('lang-fr')?.classList.toggle('active', currentLanguage === 'fr');
-  document.getElementById('lang-nl')?.classList.toggle('active', currentLanguage === 'nl');
+  
 }
 
 document.addEventListener('DOMContentLoaded', applyTranslations);
