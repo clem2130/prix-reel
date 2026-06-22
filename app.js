@@ -1390,28 +1390,27 @@ function updateFilterSummary() {
   const lang = currentLang || "fr";
   const t = translations[lang];
 
-  const offerText =
-    selectedProviderFilter === "all"
-      ? t.statsAllTypes
-      : t[selectedProviderFilter] || selectedProviderFilter;
+  const offerLabels = {
+    all: t.statsAllTypes,
+    Internet: t.statsInternet,
+    "Internet + TV": t.statsInternetTv,
+    "Internet + Mobile": t.statsInternetMobile,
+    "Pack complet": t.statsFullPack
+  };
 
-  const speedText =
-    selectedSpeedFilter === "all"
-      ? t.statsAllSpeeds
-      : selectedSpeedFilter;
+  const speedLabels = {
+    all: t.statsAllSpeeds,
+    "100 Mbps": "100 Mbps",
+    "500 Mbps": "500 Mbps",
+    "1 Gbps": "1 Gbps"
+  };
 
   summary.innerHTML = `
     📊 ${t.statsRankingBasedOn}
-    <strong>${offerText}</strong>
+    <strong>${offerLabels[selectedProviderFilter] || selectedProviderFilter}</strong>
     •
-    ${speedText}
+    ${speedLabels[selectedSpeedFilter] || selectedSpeedFilter}
   `;
-
-  console.log(
-    "Résumé mis à jour :",
-    selectedProviderFilter,
-    selectedSpeedFilter
-  );
 }
 
 function animateProviderChartReload() {
