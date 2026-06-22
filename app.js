@@ -1568,6 +1568,16 @@ fr: {
   statsCitiesText: "villes couvertes en Belgique",
   statsRankingTitle: "Classement des fournisseurs les plus compétitifs",
   statsRankingSubtitle: "Basé sur les prix réellement observés par la communauté.",
+  offerLabel: "Type abonnement",
+  offerInternetOnly: "Alleen internet",
+  offerInternetTV: "Internet + TV",
+  offerInternetMobile: "Internet + Mobiel",
+  offerInternetTVMobile: "Internet + TV + Mobiel",
+  offerFullPack: "Volledig pakket",
+  offerFiber: "Glasvezel",
+  speedLabel: "Internetsnelheid",
+  optionOther: "Andere",
+  unknownSpeed: "Ik ken mijn snelheid niet",
   },
 
 nl: {
@@ -1708,6 +1718,16 @@ nl: {
   statsCitiesText: "steden gedekt in België",
   statsRankingTitle: "Rangschikking van de meest competitieve providers",
   statsRankingSubtitle: "Gebaseerd op de prijzen die daadwerkelijk door de gemeenschap zijn waargenomen.",
+  offerLabel: "Type abonnement",
+  offerInternetOnly: "Alleen internet",
+  offerInternetTV: "Internet + TV",
+  offerInternetMobile: "Internet + Mobiel",
+  offerInternetTVMobile: "Internet + TV + Mobiel",
+  offerFullPack: "Volledig pakket",
+  offerFiber: "Glasvezel",
+  speedLabel: "Internetsnelheid",
+  optionOther: "Andere",
+  unknownSpeed: "Ik ken mijn snelheid niet",
   }
 };
 
