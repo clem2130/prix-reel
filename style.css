@@ -3376,3 +3376,13 @@ background: linear-gradient(
      font-weight: 500;
    }
 }
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
