@@ -211,38 +211,43 @@
 
     <h2 data-i18n="formTitle">
       Comparez votre abonnement Internet
-    </h2>
-    
+    </h2>    
     <p class="subtitle" data-i18n="formSubtitle">
       Remplissez les informations ci-dessous.
     </p>
 
-      <label>Votre fournisseur Internet</label>
-      <select id="provider">
-        <option>Proximus</option>
-        <option>Orange</option>
-        <option>Telenet</option>
-        <option>Mobile Vikings</option>
-        <option>Base</option>
-        <option>Scarlet</option>
-        <option>EDPnet</option>
-        <option>VOO</option>
-        <option>Yoin</option>
-        <option>Hey! Telecom</option>
-        <option>Autre</option>
-      </select>
+<label data-i18n="providerLabel">Votre fournisseur Internet</label>
+<select id="provider">
+  <option>Proximus</option>
+  <option>Orange</option>
+  <option>Telenet</option>
+  <option>Mobile Vikings</option>
+  <option>Base</option>
+  <option>Scarlet</option>
+  <option>EDPnet</option>
+  <option>VOO</option>
+  <option>Yoin</option>
+  <option>Hey! Telecom</option>
+  <option data-i18n="optionOther">Autre</option>
+</select>
 
-      <label>Votre ville</label>
-      <div class="city-autocomplete">
-        <input type="text" id="citySearch" placeholder="Tapez votre ville..." autocomplete="new-password">
-        <div id="citySuggestions"></div>
-      </div>
+<label data-i18n="cityLabel">Votre ville</label>
+<div class="city-autocomplete">
+  <input
+    type="text"
+    id="citySearch"
+    placeholder="Tapez votre ville..."
+    data-i18n-placeholder="cityPlaceholder"
+    autocomplete="new-password"
+  >
+  <div id="citySuggestions"></div>
+</div>
 
-      <label>Votre montant mensuel</label>
-      <div class="money-input">
-        <input id="price" type="number" value="62" />
-        <span>€ / mois</span>
-      </div>
+<label data-i18n="priceLabel">Votre montant mensuel</label>
+<div class="money-input">
+  <input id="price" type="number" value="62" />
+  <span data-i18n="perMonth">€ / mois</span>
+</div>
 
 <div class="extra-services-row">
   <input type="checkbox" id="hasExtraServices">
