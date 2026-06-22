@@ -3232,3 +3232,17 @@ background: linear-gradient(
     color: #475569;
     font-weight: 600;
 }
+
+.language-switcher button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid #d1d5db;
+}
+
+.language-switcher button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
