@@ -3415,6 +3415,14 @@ background: linear-gradient(
   margin-left: auto;
 }
 
+.site-header,
+#home .site-header,
+header.site-header {
+  background: white !important;
+  background-color: white !important;
+  background-image: none !important;
+}
+
 
 
 
