@@ -2987,7 +2987,8 @@ background: linear-gradient(
 }
 
 .difference-box{
-    max-width:600px;
+    max-width:700px;
+    width:90%;
     margin:20px auto;
     padding:20px;
     background:#f0fff4;
