@@ -3064,12 +3064,12 @@ background: linear-gradient(
 }
 
 .feature-card {
-    width: 240px;
-    min-height: 180px;
+    width: 260px;
+    min-height: 160px;
 
     background: white;
     border-radius: 18px;
-    padding: 22px;
+    padding: 24px;
 
     text-align: center;
 
