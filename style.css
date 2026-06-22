@@ -338,25 +338,23 @@ linear-gradient(
 ===================================================== */
 
 .community-card {
-  display: flex;
+  display: grid;
   align-items: center;
   gap: 20px;
-
   background: white;
   border: 1px solid #dbe7ff;
   border-radius: 24px;
-
   padding: 20px 28px;
   margin: 18px auto 24px;
-
   box-shadow: 0 12px 28px rgba(6, 36, 92, 0.06);
-
   max-width: 1050px;
+  grid-template-columns: 40px 1fr 40px;
 }
 
 .community-shield {
-  width: 42px;
-  height: 42px;
+  width: 28px;
+  height: auto;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -382,7 +380,7 @@ linear-gradient(
 
 .community-icon {
   color: var(--green);
-  font-size: 38px;
+  font-size: 30px;
   flex-shrink: 0;
 }
 
