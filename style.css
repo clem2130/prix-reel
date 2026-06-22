@@ -3384,10 +3384,8 @@ background: linear-gradient(
   align-items: center;
 
   max-width: 1100px;
-  margin: 0 auto 20px;
-  padding: 10px 20px;
-
-  background: transparent;
+  margin: 0 auto 30px;
+  padding: 5px 10px;
 }
 
 @media (max-width: 768px) {
