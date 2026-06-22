@@ -1781,7 +1781,7 @@ nl: {
   statsAllSpeeds: "Alle snelheden",
   statsHowCalculatedTitle: "🔍 Hoe worden deze statistieken berekend?",
   statsHowCalculatedText: "De gemiddelden worden automatisch herberekend bij elke nieuwe bijdrage. De rangschikkingen zijn gebaseerd op de prijzen die daadwerkelijk door consumenten zijn gemeld.",
-  infoTitle: "Informatie",
+  infoTitle: "ⓘ Informatie",
   infoSubtitle: "Transparantie, methode en missie van Prix Réel.",
   infoHowTitle: "Hoe werkt het?",
   infoHowText: "Prix Réel helpt consumenten om prijzen te vergelijken die daadwerkelijk door de gemeenschap worden betaald.",
