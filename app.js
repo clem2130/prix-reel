@@ -1563,7 +1563,9 @@ fr: {
   statsAllTypes: "Tous les types",
   statsContributions: "contributions",
   statsHowCalculatedTitle: "Comment sont calculées ces statistiques ?",
-  statsHowCalculatedText: "Les moyennes sont recalculées automatiquement à chaque nouvelle contribution. Les classements sont basés sur les prix réellement observés auprès des consommateurs."
+  statsHowCalculatedText: "Les moyennes sont recalculées automatiquement à chaque nouvelle contribution. Les classements sont basés sur les prix réellement observés auprès des consommateurs.",
+  statsCommunityText: "contributions réelles de consommateurs belges",
+  statsCitiesText: "villes couvertes en Belgique"
   },
 
 nl: {
