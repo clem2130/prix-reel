@@ -3385,6 +3385,9 @@ background: linear-gradient(
   width: 100%;
   margin-bottom: 15px;
   padding: 10px 30px;
+
+  background: yellow !important;
+  border: none !important;
 }
 
 @media (max-width: 768px) {
@@ -3414,16 +3417,6 @@ background: linear-gradient(
   margin-left: auto;
 }
 
-.site-header {
-  border: none !important;
-}
-
-.site-header,
-header.site-header {
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-}
 
 
 
