@@ -3245,3 +3245,37 @@ background: linear-gradient(
     align-items: center;
     line-height: 1;
 }
+
+.hero-trust-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  text-align: left;
+}
+
+.hero-trust-counter .trust-icon,
+.hero-trust-counter .trust-number {
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.hero-trust-counter .trust-number {
+  font-weight: 800;
+}
+
+.hero-trust-counter .trust-text {
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .hero-trust-counter {
+    padding: 14px 18px;
+    gap: 8px;
+  }
+
+  .hero-trust-counter .trust-text {
+    font-size: 0.95rem;
+  }
+}
