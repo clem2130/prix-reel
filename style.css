@@ -1505,15 +1505,15 @@ select {
 #about .info-card h3 {
   margin: 0 0 9px;
   color: var(--navy);
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 800;
 }
 
 #about .info-card p {
   margin: 0 0 10px;
   color: #475569;
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.7;
   font-weight: 500;
 }
 
