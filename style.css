@@ -3229,6 +3229,6 @@ background: linear-gradient(
 .hero-message span {
     display: block;
     margin-top: 4px;
-    color: var(--green);
+    color: #475569;
     font-weight: 600;
 }
