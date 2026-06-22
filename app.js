@@ -1379,7 +1379,6 @@ function setSpeedFilter(filter, button) {
   updateFilterSummary();
   animateProviderChartReload();
 }
-
 function updateFilterSummary() {
   const summary = document.getElementById("filter-summary");
 
@@ -1388,19 +1387,24 @@ function updateFilterSummary() {
     return;
   }
 
+  const lang = currentLang || "fr";
+  const t = translations[lang];
+
+  const offerText =
+    selectedProviderFilter === "all"
+      ? t.statsAllTypes
+      : t[selectedProviderFilter] || selectedProviderFilter;
+
+  const speedText =
+    selectedSpeedFilter === "all"
+      ? t.statsAllSpeeds
+      : selectedSpeedFilter;
+
   summary.innerHTML = `
-    📊 Classement basé sur :
-    <strong>${
-      selectedProviderFilter === "all"
-        ? "Tous les types"
-        : selectedProviderFilter
-    }</strong>
+    📊 ${t.statsRankingBasedOn}
+    <strong>${offerText}</strong>
     •
-    ${
-      selectedSpeedFilter === "all"
-        ? "Toutes vitesses"
-        : selectedSpeedFilter
-    }
+    ${speedText}
   `;
 
   console.log(
@@ -1580,6 +1584,9 @@ fr: {
   unknownSpeed: "Ik ken mijn snelheid niet",
   statsOfferLabel: "Offre",
   statsSpeedLabel: "Vitesse",
+  statsRankingBasedOn: "Classement basé sur :",
+  statsAllTypes: "Tous les types",
+  statsAllSpeeds: "Toutes vitesses"
   },
 
 nl: {
@@ -1732,6 +1739,9 @@ nl: {
   unknownSpeed: "Ik ken mijn snelheid niet",
   statsOfferLabel: "Abonnement",
   statsSpeedLabel: "Snelheid",
+  statsRankingBasedOn: "Rangschikking gebaseerd op:",
+  statsAllTypes: "Alle types",
+  statsAllSpeeds: "Alle snelheden"
   }
 };
 
