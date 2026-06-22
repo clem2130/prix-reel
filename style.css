@@ -159,15 +159,37 @@ h2 {
   max-width: 620px;
   margin: 0 auto;
   display: block;
+
   border: none;
-  border-radius: 15px;
-  padding: 16px;
+  border-radius: 16px;
+
+  padding: 18px 24px;
+
   background: linear-gradient(135deg, var(--green-2), var(--green));
+
   color: white;
   font-weight: 800;
-  font-size: 15.5px;
+  font-size: 17px;
+  letter-spacing: 0.2px;
+
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(34, 168, 67, 0.18);
+
+  box-shadow: 0 12px 28px rgba(34, 168, 67, 0.22);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+  box-shadow: 0 16px 32px rgba(34, 168, 67, 0.30);
+}
+
+.primary:active {
+  transform: translateY(0);
 }
 
 .blue-btn {
