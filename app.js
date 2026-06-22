@@ -1541,6 +1541,29 @@ fr: {
   reliableComparison: "Comparaison fiable",
   contribution: "contribution",
   contributions: "contributions",
+  statsTitle: "Les prix partagés par la communauté",
+  statsSubtitle: "Un aperçu des prix Internet réellement enregistrés sur Prix Réel.",
+  statsCommunityCount: "Basé sur {count} contributions réelles de consommateurs belges",
+  statsCitiesCovered: "{count} villes couvertes en Belgique",
+  statsTotalLabel: "Prix enregistrés",
+  statsAverageLabel: "Prix moyen",
+  statsMinLabel: "Prix le plus bas",
+  statsMaxLabel: "Prix le plus élevé",
+  statsRankingTitle: "Classement des fournisseurs les plus compétitifs",
+  statsRankingSubtitle: "Basé sur les prix réellement observés par la communauté.",
+  statsOfferLabel: "Offre",
+  statsAll: "Tous",
+  statsInternet: "Internet",
+  statsInternetTv: "Internet + TV",
+  statsInternetMobile: "Internet + Mobile",
+  statsFullPack: "Pack complet",
+  statsSpeedLabel: "Vitesse",
+  statsAllSpeeds: "Toutes vitesses",
+  statsRankingBasedOn: "Classement basé sur :",
+  statsAllTypes: "Tous les types",
+  statsContributions: "contributions",
+  statsHowCalculatedTitle: "Comment sont calculées ces statistiques ?",
+  statsHowCalculatedText: "Les moyennes sont recalculées automatiquement à chaque nouvelle contribution. Les classements sont basés sur les prix réellement observés auprès des consommateurs."
   },
 
 nl: {
@@ -1658,29 +1681,23 @@ nl: {
   statsSubtitle: "Een overzicht van de werkelijk geregistreerde internetprijzen op Prix Réel.",
   statsCommunityCount: "Gebaseerd op {count} echte bijdragen van Belgische consumenten",
   statsCitiesCovered: "{count} steden gedekt in België",
-  
   statsTotalLabel: "Geregistreerde prijzen",
   statsAverageLabel: "Gemiddelde prijs",
   statsMinLabel: "Laagste prijs",
   statsMaxLabel: "Hoogste prijs",
-  
   statsRankingTitle: "Rangschikking van de meest competitieve providers",
   statsRankingSubtitle: "Gebaseerd op de prijzen die daadwerkelijk door de gemeenschap zijn waargenomen.",
-  
   statsOfferLabel: "Abonnement",
   statsAll: "Alle",
   statsInternet: "Internet",
   statsInternetTv: "Internet + TV",
   statsInternetMobile: "Internet + Mobiel",
   statsFullPack: "Volledig pakket",
-  
   statsSpeedLabel: "Snelheid",
   statsAllSpeeds: "Alle snelheden",
-  
   statsRankingBasedOn: "Rangschikking gebaseerd op:",
   statsAllTypes: "Alle types",
   statsContributions: "bijdragen",
-  
   statsHowCalculatedTitle: "Hoe worden deze statistieken berekend?",
   statsHowCalculatedText: "De gemiddelden worden automatisch herberekend bij elke nieuwe bijdrage. De rangschikkingen zijn gebaseerd op de prijzen die daadwerkelijk door consumenten zijn gemeld."
   }
