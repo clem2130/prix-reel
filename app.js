@@ -1419,6 +1419,8 @@ fr: {
   comingSoon: "🔒 Bientôt disponible",
   categoryInfoTitle: "D'autres catégories arrivent bientôt !",
   categoryInfoText: "Aidez-nous à rendre les prix plus transparents partout.",
+  formTitle: "Comparez votre abonnement Internet",
+  formSubtitle: "Remplissez les informations ci-dessous.",
 },
 
 nl: {
@@ -1454,6 +1456,8 @@ nl: {
   comingSoon: "🔒 Binnenkort beschikbaar",
   categoryInfoTitle: "Andere categorieën komen binnenkort!",
   categoryInfoText: "Help ons om prijzen overal transparanter te maken.",
+  formTitle: "Vergelijk uw internetabonnement",
+  formSubtitle: "Vul onderstaande informatie in.",
 }
 };
 
