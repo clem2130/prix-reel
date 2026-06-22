@@ -1438,6 +1438,9 @@ fr: {
   offerFiber: "Fibre",
   speedLabel: "Vitesse Internet",
   unknownSpeed: "Je ne connais pas ma vitesse",
+  anonymousTitle: "Vos données sont 100% anonymes",
+  anonymousText: "Elles nous aident seulement à calculer les prix réels dans votre région.",
+  comparePriceButton: "Comparer mon prix",
 },
 
 nl: {
@@ -1492,6 +1495,9 @@ nl: {
   offerFiber: "Glasvezel",
   speedLabel: "Internetsnelheid",
   unknownSpeed: "Ik ken mijn snelheid niet",
+  anonymousTitle: "Uw gegevens zijn 100% anoniem",
+  anonymousText: "Ze helpen ons enkel om de werkelijke prijzen in uw regio te berekenen.",
+  comparePriceButton: "Mijn prijs vergelijken",
 }
 };
 
