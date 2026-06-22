@@ -486,12 +486,23 @@
   </div>
 </section>
 
-    <nav>
-      <button onclick="goTo('home')">⌂<span>Accueil</span></button>
-      <button onclick="goTo('category')">⌕<span>Comparer</span></button>
-      <button onclick="goTo('stats')">▥<span>Stats</span></button>
-      <button onclick="goTo('about')">ⓘ<span>Infos</span></button>
-    </nav>
+<nav>
+  <button onclick="goTo('home')">
+    ⌂<span data-i18n="navHome">Accueil</span>
+  </button>
+
+  <button onclick="goTo('category')">
+    ⌕<span data-i18n="navCompare">Comparer</span>
+  </button>
+
+  <button onclick="goTo('stats')">
+    ▥<span data-i18n="navStats">Stats</span>
+  </button>
+
+  <button onclick="goTo('about')">
+    ⓘ<span data-i18n="navInfo">Infos</span>
+  </button>
+</nav>
 
 <section id="about" class="screen">
 
