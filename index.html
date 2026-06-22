@@ -4,11 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="shield-logo.png">
-  <!--
-  <div class="language-switcher">
-  <button onclick="setLanguage('fr')" id="lang-fr">FR</button>
-  <button onclick="setLanguage('nl')" id="lang-nl">NL</button> 
-  </div>-->
+  
   
   <title>Prix Réel | Comparez les prix Internet réellement payés en Belgique</title>
   <meta name="description" content="Prix Réel est une plateforme belge indépendante basée sur les prix réellement payés par les consommateurs. Comparez votre abonnement Internet et découvrez si vous payez le juste prix.">
@@ -42,47 +38,51 @@
       </div>
     </div>
 
-  <div class="hero">
+  <button id="lang-fr" onclick="setLanguage('fr')">FR</button>
+  <button id="lang-nl" onclick="setLanguage('nl')">NL</button>
+
+<div class="hero">
+
   <h2 data-i18n="heroTitle">
     Découvrez combien vous pourriez <span>économiser.</span>
   </h2>
 
-
-<div class="hero-message">
-    <strong>
-    Prix Réel compare votre facture aux montants réellement payés par les consommateurs belges.
+  <div class="hero-message">
+    <strong data-i18n="heroMessageStrong">
+      Prix Réel compare votre facture aux montants réellement payés par les consommateurs belges.
     </strong>
     <br>
-    <span>
-    Pas aux tarifs officiels affichés par les fournisseurs.
+    <span data-i18n="heroMessageSmall">
+      Pas aux tarifs officiels affichés par les fournisseurs.
     </span>
-</div>
-
-<div class="community-counter">
-  👥 <span id="home-trust-counter">0</span> consommateurs ont déjà partagé leur prix
-</div>
-
-<div class="hero-features">
-
-  <div class="feature-card">
-    <div class="feature-icon">👥</div>
-    <h3>Prix réels</h3>
-    <p>Données réellement partagées par les consommateurs.</p>
   </div>
 
-  <div class="feature-card">
-    <div class="feature-icon">💰</div>
-    <h3>Économies</h3>
-    <p>Découvrez si vous payez plus que les autres.</p>
+  <div class="community-counter">
+    👥 <span id="home-trust-counter">0</span>
+    <span data-i18n="communityCounterText">consommateurs ont déjà partagé leur prix</span>
   </div>
 
-  <div class="feature-card">
-    <div class="feature-icon">🔒</div>
-    <h3>Anonyme</h3>
-    <p>Aucun compte, aucun email, aucune donnée personnelle.</p>
-  </div>
+  <div class="hero-features">
 
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <h3 data-i18n="featureRealPricesTitle">Prix réels</h3>
+      <p data-i18n="featureRealPricesText">Données réellement partagées par les consommateurs.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">💰</div>
+      <h3 data-i18n="featureSavingsTitle">Économies</h3>
+      <p data-i18n="featureSavingsText">Découvrez si vous payez plus que les autres.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3 data-i18n="featureAnonymousTitle">Anonyme</h3>
+      <p data-i18n="featureAnonymousText">Aucun compte, aucun email, aucune donnée personnelle.</p>
+    </div>
+
+  </div>
 
       <button class="primary" onclick="goTo('category')">Comparer ma facture maintenant</button>
       <button class="link" onclick="goTo('stats')">Voir les statistiques</button>
