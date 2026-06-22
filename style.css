@@ -273,7 +273,7 @@ h2 {
   font-size: 17px;
   font-weight: 700;
   color: var(--green);
-  text-align: center;
+  
 }
 
 .hero{
@@ -3296,4 +3296,47 @@ background: linear-gradient(
 .hero-trust-text {
     text-align: center;
     font-size: 0.95rem;
+}
+
+.hero-counter {
+  width: fit-content;
+  max-width: 100%;
+  margin: 18px auto 28px;
+  padding: 14px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+
+  color: #1e40af;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.hero-counter span {
+  color: #16a34a;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+@media (max-width: 460px) {
+  .hero-counter {
+    width: 100%;
+    padding: 14px 16px;
+    gap: 8px;
+    font-size: 15px;
+  }
+
+  .hero-counter span {
+    font-size: 20px;
+  }
 }
