@@ -3136,7 +3136,7 @@ background: linear-gradient(
     font-weight: 700;
     font-size: 0.95rem;
     border: 1px solid #bfdbfe;
-    margin: 18px auto;
+    margin: 12px auto;
     box-shadow: 0 4px 12px rgba(30, 64, 175, 0.08);
 }
 
@@ -3151,7 +3151,7 @@ background: linear-gradient(
     flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
-    margin: 30px auto;
+    margin: 20px auto;
     max-width: 900px;
 }
 
