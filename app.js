@@ -1398,7 +1398,9 @@ fr: {
   featureAnonymousTitle: 'Anonyme',
   featureAnonymousText: 'Aucun compte, aucun email, aucune donnée personnelle.',
   compareButton: "Comparer ma facture maintenant",
-  statsButton: "Voir les statistiques"
+  statsButton: "Voir les statistiques",
+  communityTitle: "Une communauté qui s'entraide",
+  communityText: "Chaque prix partagé aide d'autres consommateurs à payer le juste prix.",
 },
 
 nl: {
@@ -1414,7 +1416,9 @@ nl: {
   featureAnonymousTitle: 'Anoniem',
   featureAnonymousText: 'Geen account, geen e-mail, geen persoonlijke gegevens.',
   compareButton: "Vergelijk nu mijn factuur",
-  statsButton: "Statistieken bekijken"
+  statsButton: "Statistieken bekijken",
+  communityTitle: "Een gemeenschap die elkaar helpt",
+  communityText: "Elke gedeelde prijs helpt andere consumenten de juiste prijs te betalen.",
 }
 };
 
