@@ -3352,7 +3352,7 @@ background: linear-gradient(
     text-align: center;
     align-items: center;
     gap: 10px;
-    padding: 24px 18px;
+    padding: 18px 24px;
   }
 
   .community-icon {
@@ -3370,9 +3370,9 @@ background: linear-gradient(
     margin-bottom: 10px;
   }
 
-  .community-content p {
-    font-size: 18px;
-    line-height: 1.45;
-    margin: 0 auto;
-  }
+   .community-content p {
+     font-size: 17px;
+     color: #475569;
+     font-weight: 500;
+   }
 }
