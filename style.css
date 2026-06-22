@@ -3031,3 +3031,25 @@ background: linear-gradient(
 .positive{
     background:#ecfdf5;
 }
+
+.hero-features {
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin:25px auto;
+}
+
+.feature-card {
+    width:180px;
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-4px);
+}
