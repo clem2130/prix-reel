@@ -1565,7 +1565,9 @@ fr: {
   statsHowCalculatedTitle: "Comment sont calculées ces statistiques ?",
   statsHowCalculatedText: "Les moyennes sont recalculées automatiquement à chaque nouvelle contribution. Les classements sont basés sur les prix réellement observés auprès des consommateurs.",
   statsCommunityText: "contributions réelles de consommateurs belges",
-  statsCitiesText: "villes couvertes en Belgique"
+  statsCitiesText: "villes couvertes en Belgique",
+  statsRankingTitle: "Classement des fournisseurs les plus compétitifs",
+  statsRankingSubtitle: "Basé sur les prix réellement observés par la communauté.",
   },
 
 nl: {
@@ -1701,7 +1703,11 @@ nl: {
   statsAllTypes: "Alle types",
   statsContributions: "bijdragen",
   statsHowCalculatedTitle: "Hoe worden deze statistieken berekend?",
-  statsHowCalculatedText: "De gemiddelden worden automatisch herberekend bij elke nieuwe bijdrage. De rangschikkingen zijn gebaseerd op de prijzen die daadwerkelijk door consumenten zijn gemeld."
+  statsHowCalculatedText: "De gemiddelden worden automatisch herberekend bij elke nieuwe bijdrage. De rangschikkingen zijn gebaseerd op de prijzen die daadwerkelijk door consumenten zijn gemeld.",
+  statsCommunityText: "echte bijdragen van Belgische consumenten",
+  statsCitiesText: "steden gedekt in België",
+  statsRankingTitle: "Rangschikking van de meest competitieve providers",
+  statsRankingSubtitle: "Gebaseerd op de prijzen die daadwerkelijk door de gemeenschap zijn waargenomen.",
   }
 };
 
