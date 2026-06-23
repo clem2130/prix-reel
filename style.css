@@ -3522,8 +3522,8 @@ header.site-header {
 
   .site-header .language-switcher {
     position: absolute;
-    top: 25px;
-    right:25px;
+    top: -10px;
+    right:-120px;
     margin: 0;
   }
 
