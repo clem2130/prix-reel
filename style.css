@@ -3474,6 +3474,19 @@ header.site-header {
 }
 
 
+@media (max-width: 600px) {
+  .site-header {
+    margin-bottom: 10px !important;
+  }
+
+  .language-switcher {
+    margin-bottom: 20px !important;
+  }
+
+  .hero {
+    margin-top: 0 !important;
+  }
+}
 
 
 
