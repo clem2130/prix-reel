@@ -3481,6 +3481,7 @@ header.site-header {
 
   .language-switcher {
     margin-bottom: 20px !important;
+    margin: 20px 0;
   }
 
   .hero {
