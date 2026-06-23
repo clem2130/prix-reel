@@ -3502,6 +3502,8 @@ header.site-header {
   color: #15803d !important;
   font-size: 15px;
   font-weight: 700;
+  max-width: fit-content;
+  margin: 20px auto;
 }
 
 
