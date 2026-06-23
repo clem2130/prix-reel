@@ -3550,5 +3550,19 @@ header.site-header {
   }
 }
 
+@media (max-width: 900px) {
+  .site-header .language-switcher {
+    position: static !important;
+    margin: 18px auto 18px !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  .site-header .language-switcher button {
+    padding: 10px 16px !important;
+    font-size: 15px !important;
+  }
+}
 
 
