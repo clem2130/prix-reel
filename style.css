@@ -1934,8 +1934,9 @@ nav button span {
   }
 
   .hero h2 {
-    font-size: 29px;
-  }
+  font-size: 26px;
+  line-height: 1.15;
+}
 
   .privacy-box {
     align-items: flex-start;
