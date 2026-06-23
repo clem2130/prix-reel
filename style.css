@@ -3551,12 +3551,19 @@ header.site-header {
 }
 
 @media (max-width: 900px) {
+  .site-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    overflow: visible !important;
+  }
+
   .site-header .language-switcher {
     position: static !important;
+    transform: none !important;
     margin: 18px auto 18px !important;
     display: flex !important;
     justify-content: center !important;
-    gap: 12px !important;
+    width: 100% !important;
   }
 
   .site-header .language-switcher button {
