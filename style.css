@@ -3423,6 +3423,37 @@ header.site-header {
   background-image: none !important;
 }
 
+@media (max-width: 600px) {
+  .brand-header {
+    padding-top: 70px;
+    margin-bottom: 45px;
+  }
+
+  .brand-logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .brand-logo-row img {
+    width: 48px;
+    height: auto;
+  }
+
+  .brand-text h1,
+  .brand-title {
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .brand-slogan {
+    font-size: 16px;
+    margin-top: 8px;
+    text-align: center;
+  }
+}
 
 
 
