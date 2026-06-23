@@ -3533,5 +3533,22 @@ header.site-header {
   }
 }
 
+@media (min-width: 901px) {
+
+  .container,
+  .hero-card {
+    max-width: 1200px;
+  }
+
+  .logo-shield {
+    width: 95px;
+    height: 95px;
+  }
+
+  .hero h2 {
+    font-size: 56px;
+  }
+}
+
 
 
