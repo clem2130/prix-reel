@@ -3498,7 +3498,7 @@ header.site-header {
   border: 1px solid #bbf7d0;
   border-radius: 999px;
 
-  color: #15803d;
+  color: #15803d !important;
   font-size: 15px;
   font-weight: 700;
 }
