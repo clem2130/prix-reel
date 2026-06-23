@@ -61,6 +61,7 @@ function goTo(id) {
   if (id === "profile") {
     loadProfile();
   }
+  applyTranslations();
 }
 
 
@@ -563,50 +564,82 @@ const yearlyGap = monthlyGap * 12;
     
 // Construction du résumé affiché à l'utilisateur
 const summaryText = document.getElementById("price-summary-text");
-
+const t = translations[currentLanguage];
 if (summaryText) {
+
   if (diff > 5) {
-    summaryText.innerHTML =
-    `<strong class="expensive-price">Tarif élevé</strong><br>
-     <span>
-       Vous payez environ
-       <strong class="extra-cost-highlight">${yearlyGap} € de plus par an</strong>
-       <br>
-       <small class="extra-cost-month"> ≈ +${monthlyGap} € par mois</small>
-      </span>`;
+
+    summaryText.innerHTML = `
+      <strong class="expensive-price">${t.expensiveRate}</strong><br>
+
+      <span>
+        ${t.youPayAbout}
+
+        <strong class="extra-cost-highlight">
+          ${yearlyGap} € ${t.perYearMore}
+        </strong>
+
+        <br>
+
+        <small class="extra-cost-month">
+          ≈ +${monthlyGap} ${t.perMonth}
+        </small>
+      </span>
+    `;
+
   } else if (diff < -5) {
-    summaryText.innerHTML =
-  `<strong class="excellent-price">Excellent tarif</strong><br>
-   <span>
-     Vous économisez environ
-     <strong class="saving-highlight">${yearlyGap} € par an</strong>
-     <br>
-     <small class="saving-month"> ≈ -${monthlyGap} € par mois </small>
-   </span>`;
+
+    summaryText.innerHTML = `
+      <strong class="excellent-price">${t.excellentRate}</strong><br>
+
+      <span>
+        ${t.youSaveAbout}
+
+        <strong class="saving-highlight">
+          ${yearlyGap} € ${t.perYearSave}
+        </strong>
+
+        <br>
+
+        <small class="saving-month">
+          ≈ -${monthlyGap} ${t.perMonth}
+        </small>
+      </span>
+    `;
+
   } else {
-    summaryText.innerHTML =
-      `<strong class="correct-price">Tarif correct</strong><br>
-       <span>Votre prix est proche de la moyenne observée</span>`;
+
+    summaryText.innerHTML = `
+      <strong class="correct-price">${t.correctRate}</strong><br>
+
+      <span>
+        ${t.priceCloseAverage}
+      </span>
+    `;
+
   }
 }
-
     
 const savingTipTitle = document.getElementById("saving-tip-title");
 const savingTipText = document.getElementById("saving-tip-text");
 
 if (savingTipTitle && savingTipText) {
+
   if (diff > 5) {
-    savingTipTitle.textContent = "💰 Économies possibles";
-    savingTipText.textContent =
-      "Votre prix est supérieur à la moyenne observée. Consultez le classement des fournisseurs pour repérer une offre plus avantageuse.";
+
+    savingTipTitle.textContent = t.possibleSavingsTitle;
+    savingTipText.textContent = t.possibleSavingsText;
+
   } else if (diff < -5) {
-    savingTipTitle.textContent = "🏆 Très bon tarif";
-    savingTipText.textContent =
-      "Votre abonnement est déjà très compétitif. Surveillez simplement les évolutions du marché de temps en temps.";
+
+    savingTipTitle.textContent = t.greatDealTitle;
+    savingTipText.textContent = t.greatDealText;
+
   } else {
-    savingTipTitle.textContent = "📊 Prix dans la moyenne";
-    savingTipText.textContent =
-      "Votre prix est proche de la moyenne observée. Une comparaison occasionnelle peut vous aider à rester compétitif.";
+
+    savingTipTitle.textContent = t.averagePriceTitle;
+    savingTipText.textContent = t.averagePriceText;
+
   }
 }
 
@@ -627,127 +660,132 @@ if (recommendationCard) {
 
     if (potentialMonthlySaving <= 5) {
       recommendationCard.innerHTML = `
-        <p>🏆 Tarif très compétitif</p>
+        <p>${t.veryCompetitiveRate}</p>
 
         <strong>
-          Vous bénéficiez déjà d'un excellent tarif.
+          ${t.alreadyExcellentRate}
         </strong>
 
         <small>
-          Votre abonnement fait partie des prix les plus compétitifs observés.
+          ${t.amongMostCompetitive}
         </small>
 
         <div class="trust-badge">
-          ✅ Aucun écart significatif observé parmi ${sampleCount} abonnements similaires
+          ${t.noSignificantGap} ${sampleCount}
+          ${sampleCount > 1 ? t.similarSubscriptions : t.similarSubscription}
         </div>
       `;
     } else {
       recommendationCard.innerHTML = `
-        <p>💰 Économie possible</p>
+        <p>${t.possibleSavingShort}</p>
 
-        <strong>${bestProvider} — ${bestPrice} € / mois</strong>
+        <strong>${bestProvider} — ${bestPrice} ${t.perMonth}</strong>
 
         <p class="current-price">
-          Vous payez actuellement : ${price} € / mois
+          ${t.currentPriceLabel} : ${price} ${t.perMonth}
         </p>
 
         <small>
-          Vous pourriez économiser jusqu'à ${potentialYearlySaving} € par an.
+          ${t.couldSaveUpTo} ${potentialYearlySaving} € ${t.perYearSave}.
         </small>
 
         <div class="trust-badge">
-          ✅ Offre la plus avantageuse observée parmi ${sampleCount} abonnements similaires
+          ${t.bestObservedOffer} ${sampleCount}
+          ${sampleCount > 1 ? t.similarSubscriptions : t.similarSubscription}
         </div>
       `;
     }
   } else {
     recommendationCard.innerHTML = `
-      <p>ℹ️ Données insuffisantes</p>
-      <strong>Aucune alternative fiable disponible pour le moment.</strong>
+      <p>${t.insufficientDataTitle}</p>
+
+      <strong>
+        ${t.noReliableAlternative}
+      </strong>
+
       <small>
-        Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.
+        ${t.notEnoughProviders}
       </small>
     `;
   }
 }
-    
-    let gapPercent = 0;
-    const isExcellentPrice = ranking >= 90;
 
-    if (average > 0) {
-      gapPercent = Math.round((Math.abs(diff) / average) * 100);
-    }
+let gapPercent = 0;
+const isExcellentPrice = ranking >= 90;
 
-    let displayPercent = 50;
+if (average > 0) {
+  gapPercent = Math.round((Math.abs(diff) / average) * 100);
+}
 
-    if (diff < 0) {
-      displayPercent = Math.max(0, 50 - gapPercent);
-    } else if (diff > 0) {
-      displayPercent = Math.min(100, 50 + gapPercent);
-    }
+let displayPercent = 50;
 
-    if (isExcellentPrice) {
-      displayPercent = 0;
-    }
+if (diff < 0) {
+  displayPercent = Math.max(0, 50 - gapPercent);
+} else if (diff > 0) {
+  displayPercent = Math.min(100, 50 + gapPercent);
+}
 
-    animateCounter("percent", gapPercent, 1000);
-    
+if (isExcellentPrice) {
+  displayPercent = 0;
+}
 
-    const scoreDot = document.querySelector(".score-dot");
+animateCounter("percent", gapPercent, 1000);
 
-    if (scoreDot) {
-      scoreDot.style.transition = "none";
-      scoreDot.style.left = "0%";
+const scoreDot = document.querySelector(".score-dot");
 
-      setTimeout(() => {
-        scoreDot.style.transition = "left 1.5s ease-out";
-        scoreDot.style.left = displayPercent + "%";
-      }, 100);
-    }
+if (scoreDot) {
+  scoreDot.style.transition = "none";
+  scoreDot.style.left = "0%";
 
-    const rankingMessage = document.getElementById("ranking-message");
+  setTimeout(() => {
+    scoreDot.style.transition = "left 1.5s ease-out";
+    scoreDot.style.left = displayPercent + "%";
+  }, 100);
+}
 
-    if (rankingMessage) {
-      rankingMessage.style.display = "none";
-    }
+const rankingMessage = document.getElementById("ranking-message");
 
-    const speedLabel = speed === "unknown" ? "Vitesse non renseignée" : speed;
+if (rankingMessage) {
+  rankingMessage.style.display = "none";
+}
 
-    document.getElementById("result-summary").textContent =
+const speedLabel = speed === "unknown" ? t.unknownSpeedLabel : speed;
+
+document.getElementById("result-summary").textContent =
   city + " • " + provider + " • " + offerType + " • " + speedLabel;
 
-    const quality = document.getElementById("data-quality");
+const quality = document.getElementById("data-quality");
 
-    let speedInfo = "";
+let speedInfo = "";
 
-    if (speed === "unknown" || resultData.ignoredSpeed) {
-      speedInfo = `
-        <small style="display:block;margin-top:8px;color:#64748b;">
-  Comparaison réalisée sans tenir compte de la vitesse internet.
-</small>
-      `;
-    }
-
-    let extraServicesInfo = "";
-
-if (resultData.ignoredExtraServices) {
-  extraServicesInfo = `
+if (speed === "unknown" || resultData.ignoredSpeed) {
+  speedInfo = `
     <small style="display:block;margin-top:8px;color:#64748b;">
-      Données insuffisantes avec le critère assurance/service : comparaison élargie automatiquement.
+      ${t.speedIgnoredText}
     </small>
   `;
 }
 
-    let zoneLabel = "";
+let extraServicesInfo = "";
+
+if (resultData.ignoredExtraServices) {
+  extraServicesInfo = `
+    <small style="display:block;margin-top:8px;color:#64748b;">
+      ${t.extraIgnoredText}
+    </small>
+  `;
+}
+
+let zoneLabel = "";
 
 if (resultData.level === "city") {
-  zoneLabel = `à  ${resultData.label}`;
+  zoneLabel = `${t.zoneCity} ${resultData.label}`;
 } else if (resultData.level === "province") {
-  zoneLabel = `dans la province de ${resultData.label}`;
+  zoneLabel = `${t.zoneProvince} ${resultData.label}`;
 } else if (resultData.level === "region") {
-  zoneLabel = `en ${resultData.label}`;
+  zoneLabel = `${t.zoneRegion} ${resultData.label}`;
 } else {
-  zoneLabel = "en Belgique";
+  zoneLabel = t.zoneBelgium;
 }
 
 quality.innerHTML = `
@@ -757,9 +795,7 @@ quality.innerHTML = `
     <div class="quality-content">
       <strong>
         ${sampleCount}
-        ${sampleCount > 1
-          ? " abonnements similaires analysés "
-          : " abonnement similaire analysé "}
+        ${sampleCount > 1 ? t.similarSubscriptions : t.similarSubscription}
         ${zoneLabel}
       </strong>
 
@@ -770,7 +806,7 @@ quality.innerHTML = `
       ${
         resultData.level !== "city"
           ? `<small style="display:block;margin-top:8px;color:#64748b;">
-              Données locales insuffisantes : comparaison élargie automatiquement.
+              ${t.localDataInsufficient}
             </small>`
           : ""
       }
@@ -809,9 +845,11 @@ if (dealsContainer) {
         <div class="deal-price">
           <span class="provider-price">${deal.average} €</span>
           <small class="provider-count">
-            ${deal.count === 1
-              ? "1 contribution"
-              : deal.count + " contributions"}
+            ${deal.count} ${
+              deal.count === 1
+                ? t.contribution
+                : t.contributions
+              }
           </small>
         </div>
       </div>
@@ -855,19 +893,26 @@ function scrollResultToTop() {
 }
 
 function getReliabilityShortMessage(sampleCount) {
+
+  const t = translations[currentLanguage];
+
   if (sampleCount <= 2) {
-    return "🔴 Données limitées";
+    return "🔴 " + t.limitedData;
   }
 
   if (sampleCount <= 4) {
-    return `🟡 Échantillon limité (${sampleCount} abonnements analysés)`;
+    return `🟡 ${t.limitedSample} (${sampleCount} ${
+      sampleCount > 1
+        ? t.similarSubscriptions
+        : t.similarSubscription
+    })`;
   }
 
   if (sampleCount <= 9) {
-    return "🟢 Comparaison utile";
+    return "🟢 " + t.usefulComparison;
   }
 
-  return "✅ Comparaison fiable";
+  return "✅ " + t.reliableComparison;
 }
 
 // =====================================================
@@ -1334,7 +1379,6 @@ function setSpeedFilter(filter, button) {
   updateFilterSummary();
   animateProviderChartReload();
 }
-
 function updateFilterSummary() {
   const summary = document.getElementById("filter-summary");
 
@@ -1343,26 +1387,31 @@ function updateFilterSummary() {
     return;
   }
 
-  summary.innerHTML = `
-    📊 Classement basé sur :
-    <strong>${
-      selectedProviderFilter === "all"
-        ? "Tous les types"
-        : selectedProviderFilter
-    }</strong>
-    •
-    ${
-      selectedSpeedFilter === "all"
-        ? "Toutes vitesses"
-        : selectedSpeedFilter
-    }
-  `;
+const lang = localStorage.getItem('language') || 'fr';
 
-  console.log(
-    "Résumé mis à jour :",
-    selectedProviderFilter,
-    selectedSpeedFilter
-  );
+  const t = translations[lang] || translations.fr;
+
+  const offerLabels = {
+    all: t.statsAllTypes,
+    Internet: t.statsInternet,
+    "Internet + TV": t.statsInternetTv,
+    "Internet + Mobile": t.statsInternetMobile,
+    "Pack complet": t.statsFullPack
+  };
+
+  const speedLabels = {
+    all: t.statsAllSpeeds,
+    "100 Mbps": "100 Mbps",
+    "500 Mbps": "500 Mbps",
+    "1 Gbps": "1 Gbps"
+  };
+
+  summary.innerHTML = `
+    📊 ${t.statsRankingBasedOn}
+    <strong>${offerLabels[selectedProviderFilter] || selectedProviderFilter}</strong>
+    •
+    ${speedLabels[selectedSpeedFilter] || selectedSpeedFilter}
+  `;
 }
 
 function animateProviderChartReload() {
@@ -1385,81 +1434,485 @@ function animateProviderChartReload() {
 }
 
 const translations = {
-  fr: {
-    heroTitle: "Découvrez combien vous pourriez économiser.",
-    startButton: "Comparer mon prix",
-    shareButton: "Partager mon prix",
-    statsButton: "Voir les statistiques",
-
-    providerLabel: "Fournisseur",
-    cityLabel: "Ville",
-    priceLabel: "Prix mensuel",
-    offerLabel: "Type d'offre",
-    speedLabel: "Vitesse Internet",
-    extraLabel: "Mon prix inclut une assurance ou un service supplémentaire",
-
-    resultTitle: "Votre résultat",
-    excellentPrice: "Excellent prix",
-    correctPrice: "Prix correct",
-    expensivePrice: "Prix élevé",
-    potentialSaving: "Économie potentielle",
-    reliableComparison: "Comparaison fiable",
-
-    statsTitle: "Statistiques",
-    sharedPrices: "Prix réels partagés",
-    coveredCities: "Villes couvertes",
-    providersAnalyzed: "Fournisseurs analysés"
+fr: {
+  heroTitle: 'Découvrez combien vous pourriez <span>économiser.</span>',
+  heroMessageStrong: 'Prix Réel compare votre facture aux montants réellement payés par les consommateurs belges.',
+  heroMessageSmall: 'Pas aux tarifs officiels affichés par les fournisseurs.',
+  communityCounterText: 'consommateurs ont déjà partagé leur prix',
+  featureRealPricesTitle: 'Prix réels',
+  featureRealPricesText: 'Données réellement partagées par les consommateurs.',
+  featureSavingsTitle: 'Économies',
+  featureSavingsText: 'Découvrez si vous payez plus que les autres.',
+  featureAnonymousTitle: 'Anonyme',
+  featureAnonymousText: 'Aucun compte, aucun email, aucune donnée personnelle.',
+  compareButton: "Comparer ma facture maintenant",
+  statsButton: "Voir les statistiques",
+  communityTitle: "Une communauté qui s'entraide",
+  communityText: "Chaque prix partagé aide d'autres consommateurs à payer le juste prix.",
+  brandSlogan: "Le juste prix, basé sur la réalité.",
+  navHome: "Accueil",
+  navCompare: "Comparer",
+  navStats: "Stats",
+  navInfo: "Infos",
+  footerSlogan: "Le juste prix, basé sur la réalité.",
+  footerLegal: "Mentions légales & Confidentialité",
+  footerContact: "Contact",
+  categoryTitle: "Quel service souhaitez-vous comparer ?",
+  categorySubtitle: "Nous commençons par Internet.",  
+  serviceInternetTitle: "Internet",
+  serviceInternetText: "Comparez votre abonnement Internet",  
+  serviceCarTitle: "Assurance auto",
+  serviceElectricityTitle: "Électricité",
+  serviceMobileTitle: "Téléphone mobile",  
+  comingSoon: "🔒 Bientôt disponible",
+  categoryInfoTitle: "D'autres catégories arrivent bientôt !",
+  categoryInfoText: "Aidez-nous à rendre les prix plus transparents partout.",
+  formTitle: "Comparez votre abonnement Internet",
+  formSubtitle: "Remplissez les informations ci-dessous.",
+  providerLabel: "Votre fournisseur Internet",
+  cityLabel: "Votre ville",
+  priceLabel: "Votre montant mensuel",
+  cityPlaceholder: "Tapez votre ville...",
+  optionOther: "Autre",
+  perMonth: "€ / mois",
+  extraLabel: "Mon prix inclut une assurance ou un service supplémentaire",
+  extraDescription: "Exemple : assurance smartphone, option sécurité, service lié au pack...",
+  offerLabel: "Type d'abonnement",
+  offerInternetOnly: "Internet seul",
+  offerInternetTV: "Internet + TV",
+  offerInternetMobile: "Internet + Mobile",
+  offerInternetTVMobile: "Internet + TV + Mobile",
+  offerFullPack: "Pack complet",
+  offerFiber: "Fibre",
+  speedLabel: "Vitesse Internet",
+  unknownSpeed: "Je ne connais pas ma vitesse",
+  anonymousTitle: "Vos données sont 100% anonymes",
+  anonymousText: "Elles nous aident seulement à calculer les prix réels dans votre région.",
+  comparePriceButton: "Comparer mon prix",
+  resultTopbar: "Résultat",
+  cheaperLabel: "Moins cher",
+  moreExpensiveLabel: "Plus cher",
+  rankingMessage: "Position dans le classement des prix",
+  providerRankingTitle: "🏆 Classement des fournisseurs",
+  providerRankingSubtitle: "Prix moyens observés pour des abonnements similaires.",
+  savingTipTitle: "💡 Conseil Prix Réel",
+  savingTipText: "Les prix évoluent régulièrement. Pensez à comparer votre abonnement de temps en temps.",
+  restartComparisonButton: "Recommencer une comparaison",
+  shareResultButton: "📤 Partager mon résultat et aider la communauté",
+  expensiveRate: "Tarif élevé",
+  excellentRate: "Excellent tarif",
+  correctRate: "Tarif correct",
+  youPayAbout: "Vous payez environ",
+  youSaveAbout: "Vous économisez environ",
+  perYearMore: "de plus par an",
+  perYearSave: "par an",
+  priceCloseAverage: "Votre prix est proche de la moyenne observée",
+  possibleSavingsTitle: "💰 Économies possibles",
+  possibleSavingsText: "Votre prix est supérieur à la moyenne observée. Consultez le classement des fournisseurs pour repérer une offre plus avantageuse.",
+  greatDealTitle: "🏆 Très bon tarif",
+  greatDealText: "Votre abonnement est déjà très compétitif. Surveillez simplement les évolutions du marché de temps en temps.",
+  averagePriceTitle: "📊 Prix dans la moyenne",
+  averagePriceText: "Votre prix est proche de la moyenne observée. Une comparaison occasionnelle peut vous aider à rester compétitif.",
+  similarSubscriptions: "abonnement similaire analysé en Belgique",
+  similarSubscriptionsPlural: "abonnements similaires analysés en Belgique",
+  limitedData: "Données limitées",
+  insufficientData: "Données insuffisantes",
+  notEnoughProviders: "Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.",
+  noReliableAlternative: "Aucune alternative fiable disponible pour le moment.",
+  veryCompetitiveRate: "🏆 Tarif très compétitif",
+  alreadyExcellentRate: "Vous bénéficiez déjà d'un excellent tarif.",
+  amongMostCompetitive: "Votre abonnement fait partie des prix les plus compétitifs observés.",
+  noSignificantGap: "✅ Aucun écart significatif observé parmi",
+  possibleSavingShort: "💰 Économie possible",
+  currentPriceLabel: "Vous payez actuellement",
+  couldSaveUpTo: "Vous pourriez économiser jusqu'à",
+  bestObservedOffer: "✅ Offre la plus avantageuse observée parmi",
+  insufficientDataTitle: "ℹ️ Données insuffisantes",
+  noReliableAlternative: "Aucune alternative fiable disponible pour le moment.",
+  notEnoughProviders: "Pas encore assez de fournisseurs différents pour proposer une comparaison fiable.",
+  similarSubscription: "abonnement similaire",
+  similarSubscriptions: "abonnements similaires",
+  unknownSpeedLabel: "Vitesse non renseignée",
+  speedIgnoredText: "Comparaison réalisée sans tenir compte de la vitesse internet.",
+  extraIgnoredText: "Données insuffisantes avec le critère assurance/service : comparaison élargie automatiquement.",
+  localDataInsufficient: "Données locales insuffisantes : comparaison élargie automatiquement.",
+  zoneCity: "à",
+  zoneProvince: "dans la province de",
+  zoneRegion: "en",
+  zoneBelgium: "en Belgique",
+  limitedSample: "Échantillon limité",
+  usefulComparison: "Comparaison utile",
+  reliableComparison: "Comparaison fiable",
+  contribution: "contribution",
+  contributions: "contributions",
+  statsTitle: "Les prix partagés par la communauté",
+  statsSubtitle: "Un aperçu des prix Internet réellement enregistrés sur Prix Réel.",
+  statsCommunityCount: "Basé sur {count} contributions réelles de consommateurs belges",
+  statsCitiesCovered: "{count} villes couvertes en Belgique",
+  statsTotalLabel: "Prix enregistrés",
+  statsAverageLabel: "Prix moyen",
+  statsMinLabel: "Prix le plus bas",
+  statsMaxLabel: "Prix le plus élevé",
+  statsRankingTitle: "Classement des fournisseurs les plus compétitifs",
+  statsRankingSubtitle: "Basé sur les prix réellement observés par la communauté.",
+  statsOfferLabel: "Offre",
+  statsAll: "Tous",
+  statsInternet: "Internet",
+  statsInternetTv: "Internet + TV",
+  statsInternetMobile: "Internet + Mobile",
+  statsFullPack: "Pack complet",
+  statsSpeedLabel: "Vitesse",
+  statsAllSpeeds: "Toutes vitesses",
+  statsRankingBasedOn: "Classement basé sur :",
+  statsAllTypes: "Tous les types",
+  statsContributions: "contributions",
+  statsHowCalculatedTitle: "Comment sont calculées ces statistiques ?",
+  statsHowCalculatedText: "Les moyennes sont recalculées automatiquement à chaque nouvelle contribution. Les classements sont basés sur les prix réellement observés auprès des consommateurs.",
+  statsCommunityText: "contributions réelles de consommateurs belges",
+  statsCitiesText: "villes couvertes en Belgique",
+  statsRankingTitle: "Classement des fournisseurs les plus compétitifs",
+  statsRankingSubtitle: "Basé sur les prix réellement observés par la communauté.",
+  offerLabel: "Type abonnement",
+  offerInternetTV: "Internet + TV",
+  offerInternetMobile: "Internet + Mobiel",
+  offerInternetTVMobile: "Internet + TV + Mobiel",
+  offerFullPack: "Volledig pakket",
+  offerFiber: "Glasvezel",
+  speedLabel: "Internetsnelheid",
+  optionOther: "Andere",
+  unknownSpeed: "Ik ken mijn snelheid niet",
+  statsOfferLabel: "Offre",
+  statsSpeedLabel: "Vitesse",
+  statsRankingBasedOn: "Classement basé sur :",
+  statsAllTypes: "Tous les types",
+  statsAllSpeeds: "Toutes vitesses",
+  statsHowCalculatedTitle: "🔍 Comment sont calculées ces statistiques ?",
+  statsHowCalculatedText: "Les moyennes sont recalculées automatiquement à chaque nouvelle contribution. Les classements sont basés sur les prix réellement observés auprès des consommateurs.",
+  infoTitle: "Informations",
+  infoSubtitle: "Transparence, méthodologie et mission de Prix Réel.",
+  infoHowTitle: "Comment ça marche ?",
+  infoHowText: "Prix Réel aide les consommateurs à comparer les prix réellement payés par la communauté.",
+  infoBadgeShared: "prix partagés",
+  infoBadgeBelgium: "Données en Belgique",
+  infoBadgeAnonymous: "Contributions anonymes",
+  infoAboutTitle: "À propos de Prix Réel",
+  infoAboutText1: "Prix Réel est une plateforme collaborative qui permet aux consommateurs de comparer leur abonnement avec les prix réellement payés par d’autres utilisateurs.",
+  infoAboutText2: "Notre objectif est simple : apporter davantage de transparence sur les prix pratiqués en Belgique et aider chacun à payer le juste prix.",
+  infoShareTitle: "Partagez votre abonnement",
+  infoShareText1: "Indiquez simplement votre ville, votre fournisseur et le montant de votre abonnement.",
+  infoShareText2: "En quelques secondes, votre contribution enrichit la base de données et aide à améliorer les comparaisons pour toute la communauté.",
+  infoCompareTitle: "Prix Réel compare",
+  infoCompareText1: "Une fois votre abonnement renseigné, Prix Réel recherche automatiquement des offres similaires dans sa base de données.",
+  infoCompareText2: "L’analyse repose sur plusieurs critères afin de proposer une comparaison pertinente et représentative du marché.",
+  infoCalculationTitle: "Comment les comparaisons sont calculées ?",
+  infoCalculationText1: "Les comparaisons prennent notamment en compte le fournisseur, le type d’offre, la vitesse Internet et la localisation lorsque cela est pertinent.",
+  infoCalculationText2: "Plus la communauté participe, plus les résultats gagnent en précision.",
+  infoSituationTitle: "Découvrez votre situation",
+  infoSituationText1: "Vous savez immédiatement si votre abonnement est inférieur, proche ou supérieur aux prix observés pour des offres similaires.",
+  infoSituationText2: "Prix Réel vous permet ainsi d’identifier rapidement si vous bénéficiez d’un bon tarif ou si des économies sont possibles.",
+  infoAnonymousTitle: "Données anonymes",
+  infoAnonymousText1: "Aucun nom, numéro de téléphone ou information personnelle n’est demandé.",
+  infoAnonymousText2: "Les données enregistrées servent uniquement à améliorer les comparaisons et les statistiques affichées sur la plateforme.",
+  infoEngagementTitle: "Notre engagement",
+  infoEngagementText1: "Prix Réel ne vend pas vos données personnelles.",
+  infoEngagementText2: "Les comparaisons sont basées exclusivement sur les informations réellement partagées par la communauté afin de garantir une approche transparente et indépendante.",
+  infoCommunityTitle: "Une communauté qui s’entraide",
+  infoCommunityText1: "Chaque prix partagé aide d’autres consommateurs à mieux comprendre le marché et à identifier les offres les plus avantageuses.",
+  infoCommunityText2: "En participant, vous contribuez à rendre les prix plus transparents pour tous.",
+  infoPartnersTitle: "Partenaires",
+  infoPartnersText1: "Prix Réel est actuellement en phase de développement.",
+  infoPartnersText2: "Des partenariats pourront être mis en place à l’avenir afin d’enrichir les services proposés aux utilisateurs et de leur offrir davantage d’opportunités d’économies.",
+  infoPartnersText3: "Notre priorité reste de fournir des comparaisons claires, indépendantes et basées sur les prix réellement observés au sein de la communauté.",
+  infoContactTitle: "Contact",
+  legalTopbarTitle: "Mentions légales",
+  legalTitle: "Mentions légales",
+  legalEditorTitle: "Éditeur du site",
+  legalEditorText: "Le site Prix Réel est édité par Clément Detrez.",
+  legalContactLabel: "Contact :",
+  legalWebsiteLabel: "Site web :",
+  legalHostingTitle: "Hébergement",
+  legalHostLabel: "Hébergeur :",
+  legalSiteLabel: "Site :",
+  legalAddressLabel: "Adresse :",
+  privacyTitle: "Politique de confidentialité",
+  privacyCollectedTitle: "Données collectées",
+  privacyCollectedText: "Prix Réel ne demande aucun nom, prénom, adresse postale ou adresse email.",
+  privacyCity: "Ville sélectionnée",
+  privacyProvider: "Fournisseur",
+  privacyOffer: "Type d'offre",
+  privacySpeed: "Vitesse Internet",
+  privacyPrice: "Prix mensuel déclaré",
+  privacyUsageTitle: "Utilisation des données",
+  privacyUsageText: "Les données servent uniquement à calculer des moyennes anonymes, afficher des comparaisons et produire des statistiques globales.",
+  privacySharingTitle: "Partage des données",
+  privacySharingText: "Les données ne sont ni vendues, ni louées, ni transmises à des tiers à des fins commerciales.",
+  privacyCookiesTitle: "Cookies",
+  privacyCookiesText: "Le site peut utiliser des cookies techniques nécessaires à son fonctionnement. Aucun cookie publicitaire n'est utilisé à ce jour.",
+  privacyRightsTitle: "Vos droits",
+  privacyRightsText: "Pour toute question concernant les données :",
+  liabilityTitle: "Limitation de responsabilité",
+  liabilityText1: "Les statistiques affichées sont calculées à partir des informations fournies par les utilisateurs.",
+  liabilityText2: "Prix Réel ne peut garantir l'exactitude absolue des données publiées. Les informations sont données à titre indicatif.",
+  legalUpdated: "Dernière mise à jour : Juin 2026",
   },
-
-  nl: {
-    heroTitle: "Ontdek hoeveel u kunt besparen.",
-    heroSubtitle: "Vergelijk uw factuur met de prijzen die anderen in uw buurt werkelijk betalen.",
-    startButton: "Mijn prijs vergelijken",
-    shareButton: "Mijn prijs delen",
-    statsButton: "Statistieken bekijken",
-
-    providerLabel: "Provider",
-    cityLabel: "Stad of gemeente",
-    priceLabel: "Maandelijkse prijs",
-    offerLabel: "Type abonnement",
-    speedLabel: "Internetsnelheid",
-    extraLabel: "Mijn prijs bevat een verzekering of extra dienst",
-
-    resultTitle: "Uw resultaat",
-    excellentPrice: "Uitstekende prijs",
-    correctPrice: "Correcte prijs",
-    expensivePrice: "Hoge prijs",
-    potentialSaving: "Mogelijke besparing",
-    reliableComparison: "Betrouwbare vergelijking",
-
-    statsTitle: "Statistieken",
-    sharedPrices: "Gedeelde echte prijzen",
-    coveredCities: "Gedekte steden en gemeenten",
-    providersAnalyzed: "Geanalyseerde providers"
-  }
+  
+nl: {
+  heroTitle: 'Ontdek hoeveel u kunt <span>besparen.</span>',
+  heroMessageStrong: 'Prix Réel vergelijkt uw factuur met de bedragen die Belgische consumenten werkelijk betalen.',
+  heroMessageSmall: 'Niet met de officiële tarieven die door de providers worden weergegeven.',
+  communityCounterText: 'consumenten hebben hun prijs al gedeeld',
+  featureRealPricesTitle: 'Echte prijzen',
+  featureRealPricesText: 'Gegevens die werkelijk door consumenten gedeeld zijn.',
+  featureSavingsTitle: 'Besparingen',
+  featureSavingsText: 'Ontdek of u meer betaalt dan anderen.',
+  featureAnonymousTitle: 'Anoniem',
+  featureAnonymousText: 'Geen account, geen e-mail, geen persoonlijke gegevens.',
+  compareButton: "Vergelijk nu mijn factuur",
+  statsButton: "Statistieken bekijken",
+  communityTitle: "Een gemeenschap die elkaar helpt",
+  communityText: "Elke gedeelde prijs helpt andere consumenten de juiste prijs te betalen.",
+  brandSlogan: "De juiste prijs, gebaseerd op de werkelijkheid.",
+  navHome: "Start",
+  navCompare: "Vergelijken",
+  navStats: "Statistieken",
+  navInfo: "Info",
+  footerSlogan: "De juiste prijs, gebaseerd op de werkelijkheid.",
+  footerLegal: "Juridische informatie & Privacy",
+  footerContact: "Contact",
+  categoryTitle: "Welke dienst wilt u vergelijken?",
+  categorySubtitle: "We beginnen met internet.",
+  serviceInternetTitle: "Internet",
+  serviceInternetText: "Vergelijk uw internetabonnement",
+  serviceCarTitle: "Autoverzekering",
+  serviceElectricityTitle: "Elektriciteit",
+  serviceMobileTitle: "Mobiele telefonie",  
+  comingSoon: "🔒 Binnenkort beschikbaar",
+  categoryInfoTitle: "Andere categorieën komen binnenkort!",
+  categoryInfoText: "Help ons om prijzen overal transparanter te maken.",
+  formTitle: "Vergelijk uw internetabonnement",
+  formSubtitle: "Vul onderstaande informatie in.",
+  providerLabel: "Uw internetprovider",
+  cityLabel: "Uw gemeente",
+  priceLabel: "Uw maandelijkse prijs",
+  cityPlaceholder: "Typ uw gemeente...",
+  optionOther: "Andere",
+  perMonth: "€ / maand",
+  extraLabel: "Mijn prijs bevat een verzekering of extra dienst",
+  extraDescription: "Voorbeeld: smartphoneverzekering, beveiligingsoptie of extra dienst.",
+  offerLabel: "Type abonnement",
+  offerInternetOnly: "Alleen internet",
+  offerInternetTV: "Internet + TV",
+  offerInternetMobile: "Internet + Mobiel",
+  offerInternetTVMobile: "Internet + TV + Mobiel",
+  offerFullPack: "Volledig pakket",
+  offerFiber: "Glasvezel",
+  speedLabel: "Internetsnelheid",
+  unknownSpeed: "Ik ken mijn snelheid niet",
+  anonymousTitle: "Uw gegevens zijn 100% anoniem",
+  anonymousText: "Ze helpen ons enkel om de werkelijke prijzen in uw regio te berekenen.",
+  comparePriceButton: "Mijn prijs vergelijken",
+  resultTopbar: "Resultaat",
+  cheaperLabel: "Goedkoper",
+  moreExpensiveLabel: "Duurder",
+  rankingMessage: "Positie in de prijsrangschikking",
+  providerRankingTitle: "🏆 Rangschikking van providers",
+  providerRankingSubtitle: "Gemiddelde prijzen waargenomen voor vergelijkbare abonnementen.",
+  savingTipTitle: "💡 Prix Réel-tip",
+  savingTipText: "Prijzen veranderen regelmatig. Vergelijk uw abonnement af en toe opnieuw.",
+  restartComparisonButton: "Nieuwe vergelijking starten",
+  shareResultButton: "📤 Mijn resultaat delen en de gemeenschap helpen",
+  expensiveRate: "Duur tarief",
+  excellentRate: "Uitstekend tarief",
+  correctRate: "Correct tarief",
+  youPayAbout: "U betaalt ongeveer",
+  youSaveAbout: "U bespaart ongeveer",
+  perYearMore: "meer per jaar",
+  perYearSave: "per jaar",
+  priceCloseAverage: "Uw prijs ligt dicht bij het waargenomen gemiddelde",
+  possibleSavingsTitle: "💰 Mogelijke besparing",
+  possibleSavingsText: "Uw prijs ligt boven het waargenomen gemiddelde. Bekijk de rangschikking van providers om een voordeliger aanbod te vinden.",
+  greatDealTitle: "🏆 Zeer goed tarief",
+  greatDealText: "Uw abonnement is al zeer competitief. Houd gewoon af en toe de markt in de gaten.",
+  averagePriceTitle: "📊 Gemiddelde prijs",
+  averagePriceText: "Uw prijs ligt dicht bij het waargenomen gemiddelde. Af en toe vergelijken helpt u competitief te blijven.",
+  similarSubscriptions: "vergelijkbaar abonnement geanalyseerd in België",
+  similarSubscriptionsPlural: "vergelijkbare abonnementen geanalyseerd in België",
+  limitedData: "Beperkte gegevens",
+  insufficientData: "Onvoldoende gegevens",
+  notEnoughProviders: "Nog niet genoeg verschillende providers om een betrouwbare vergelijking te maken.",
+  noReliableAlternative: "Momenteel geen betrouwbaar alternatief beschikbaar.",
+  veryCompetitiveRate: "🏆 Zeer competitief tarief",
+  alreadyExcellentRate: "U geniet al van een uitstekend tarief.",
+  amongMostCompetitive: "Uw abonnement behoort tot de meest competitieve prijzen die zijn waargenomen.",
+  noSignificantGap: "✅ Geen significant verschil waargenomen bij",
+  possibleSavingShort: "💰 Mogelijke besparing",
+  currentPriceLabel: "U betaalt momenteel",
+  couldSaveUpTo: "U kunt tot",
+  bestObservedOffer: "✅ Voordeligste waargenomen aanbod bij",
+  insufficientDataTitle: "ℹ️ Onvoldoende gegevens",
+  noReliableAlternative: "Momenteel geen betrouwbaar alternatief beschikbaar.",
+  notEnoughProviders: "Nog niet genoeg verschillende providers om een betrouwbare vergelijking te maken.",
+  similarSubscription: "vergelijkbaar abonnement",
+  similarSubscriptions: "vergelijkbare abonnementen",
+  unknownSpeedLabel: "Snelheid niet opgegeven",
+  speedIgnoredText: "Vergelijking uitgevoerd zonder rekening te houden met de internetsnelheid.",
+  extraIgnoredText: "Onvoldoende gegevens met het criterium verzekering/dienst: vergelijking automatisch uitgebreid.",
+  localDataInsufficient: "Onvoldoende lokale gegevens: vergelijking automatisch uitgebreid.",
+  zoneCity: "in",
+  zoneProvince: "in de provincie",
+  zoneRegion: "in",
+  zoneBelgium: "in België",
+  limitedSample: "Beperkte steekproef",
+  usefulComparison: "Nuttige vergelijking",
+  reliableComparison: "Betrouwbare vergelijking",
+  contribution: "bijdrage",
+  contributions: "bijdragen",
+  statsTitle: "De prijzen gedeeld door de gemeenschap",
+  statsSubtitle: "Een overzicht van de werkelijk geregistreerde internetprijzen op Prix Réel.",
+  statsCommunityCount: "Gebaseerd op {count} echte bijdragen van Belgische consumenten",
+  statsCitiesCovered: "{count} steden gedekt in België",
+  statsTotalLabel: "Geregistreerde prijzen",
+  statsAverageLabel: "Gemiddelde prijs",
+  statsMinLabel: "Laagste prijs",
+  statsMaxLabel: "Hoogste prijs",
+  statsRankingTitle: "Rangschikking van de meest competitieve providers",
+  statsRankingSubtitle: "Gebaseerd op de prijzen die daadwerkelijk door de gemeenschap zijn waargenomen.",
+  statsOfferLabel: "Abonnement",
+  statsAll: "Alle",
+  statsInternet: "Internet",
+  statsInternetTv: "Internet + TV",
+  statsInternetMobile: "Internet + Mobiel",
+  statsFullPack: "Volledig pakket",
+  statsSpeedLabel: "Snelheid",
+  statsAllSpeeds: "Alle snelheden",
+  statsRankingBasedOn: "Rangschikking gebaseerd op:",
+  statsAllTypes: "Alle abonnementstypes",
+  statsContributions: "bijdragen",
+  statsHowCalculatedTitle: "Hoe worden deze statistieken berekend?",
+  statsHowCalculatedText: "De gemiddelden worden automatisch herberekend bij elke nieuwe bijdrage. De rangschikkingen zijn gebaseerd op de prijzen die daadwerkelijk door consumenten zijn gemeld.",
+  statsCommunityText: "echte bijdragen van Belgische consumenten",
+  statsCitiesText: "steden gedekt in België",
+  statsRankingTitle: "Rangschikking van de meest competitieve providers",
+  statsRankingSubtitle: "Gebaseerd op de prijzen die daadwerkelijk door de gemeenschap zijn waargenomen.",
+  offerLabel: "Type abonnement",
+  offerInternetOnly: "Alleen internet",
+  offerInternetTV: "Internet + TV",
+  offerInternetMobile: "Internet + Mobiel",
+  offerInternetTVMobile: "Internet + TV + Mobiel",
+  offerFullPack: "Volledig pakket",
+  offerFiber: "Glasvezel",
+  speedLabel: "Internetsnelheid",
+  optionOther: "Andere",
+  unknownSpeed: "Ik ken mijn snelheid niet",
+  statsOfferLabel: "Abonnement",
+  statsSpeedLabel: "Snelheid",
+  statsRankingBasedOn: "Rangschikking gebaseerd op:",
+  statsAllTypes: "Alle abonnementstypes",
+  statsAllSpeeds: "Alle snelheden",
+  statsHowCalculatedTitle: "🔍 Hoe worden deze statistieken berekend?",
+  statsHowCalculatedText: "De gemiddelden worden automatisch herberekend bij elke nieuwe bijdrage. De rangschikkingen zijn gebaseerd op de prijzen die daadwerkelijk door consumenten zijn gemeld.",
+  infoTitle: "ⓘ Informatie",
+  infoSubtitle: "Transparantie, methode en missie van Prix Réel.",
+  infoHowTitle: "Hoe werkt het?",
+  infoHowText: "Prix Réel helpt consumenten om prijzen te vergelijken die daadwerkelijk door de gemeenschap worden betaald.",
+  infoBadgeShared: "gedeelde prijzen",
+  infoBadgeBelgium: "Gegevens in België",
+  infoBadgeAnonymous: "Anonieme bijdragen",
+  infoAboutTitle: "Over Prix Réel",
+  infoAboutText1: "Prix Réel is een collaboratief platform waarmee consumenten hun abonnement kunnen vergelijken met de prijzen die andere gebruikers daadwerkelijk betalen.",
+  infoAboutText2: "Ons doel is eenvoudig: meer transparantie brengen in de prijzen in België en iedereen helpen om een eerlijke prijs te betalen.",
+  infoShareTitle: "Deel uw abonnement",
+  infoShareText1: "Geef eenvoudig uw stad, uw provider en het bedrag van uw abonnement op.",
+  infoShareText2: "Binnen enkele seconden verrijkt uw bijdrage de databank en helpt ze de vergelijkingen voor de hele gemeenschap te verbeteren.",
+  infoCompareTitle: "Prix Réel vergelijkt",
+  infoCompareText1: "Zodra uw abonnement is ingevuld, zoekt Prix Réel automatisch naar gelijkaardige aanbiedingen in zijn databank.",
+  infoCompareText2: "De analyse is gebaseerd op meerdere criteria om een relevante en representatieve vergelijking van de markt te bieden.",
+  infoCalculationTitle: "Hoe worden de vergelijkingen berekend?",
+  infoCalculationText1: "De vergelijkingen houden onder meer rekening met de provider, het type abonnement, de internetsnelheid en de locatie wanneer dat relevant is.",
+  infoCalculationText2: "Hoe meer de gemeenschap deelneemt, hoe nauwkeuriger de resultaten worden.",
+  infoSituationTitle: "Ontdek uw situatie",
+  infoSituationText1: "U ziet meteen of uw abonnement lager, vergelijkbaar of hoger is dan de waargenomen prijzen voor gelijkaardige aanbiedingen.",
+  infoSituationText2: "Zo helpt Prix Réel u snel te zien of u een goed tarief hebt of dat er besparingen mogelijk zijn.",
+  infoAnonymousTitle: "Anonieme gegevens",
+  infoAnonymousText1: "Er wordt geen naam, telefoonnummer of persoonlijke informatie gevraagd.",
+  infoAnonymousText2: "De geregistreerde gegevens dienen uitsluitend om de vergelijkingen en statistieken op het platform te verbeteren.",
+  infoEngagementTitle: "Onze belofte",
+  infoEngagementText1: "Prix Réel verkoopt uw persoonlijke gegevens niet.",
+  infoEngagementText2: "De vergelijkingen zijn uitsluitend gebaseerd op informatie die werkelijk door de gemeenschap is gedeeld, om een transparante en onafhankelijke aanpak te garanderen.",
+  infoCommunityTitle: "Een gemeenschap die elkaar helpt",
+  infoCommunityText1: "Elke gedeelde prijs helpt andere consumenten om de markt beter te begrijpen en de voordeligste aanbiedingen te herkennen.",
+  infoCommunityText2: "Door deel te nemen, helpt u de prijzen transparanter te maken voor iedereen.",
+  infoPartnersTitle: "Partners",
+  infoPartnersText1: "Prix Réel bevindt zich momenteel in de ontwikkelingsfase.",
+  infoPartnersText2: "In de toekomst kunnen partnerschappen worden opgezet om de aangeboden diensten te verrijken en gebruikers meer besparingsmogelijkheden te bieden.",
+  infoPartnersText3: "Onze prioriteit blijft om duidelijke en onafhankelijke vergelijkingen aan te bieden, gebaseerd op werkelijk waargenomen prijzen binnen de gemeenschap.",
+  infoContactTitle: "Contact",
+  legalTopbarTitle: "Juridische vermeldingen",
+  legalTitle: "Juridische vermeldingen",
+  legalEditorTitle: "Website-uitgever",
+  legalEditorText: "De website Prix Réel wordt beheerd door Clément Detrez.",
+  legalContactLabel: "Contact:",
+  legalWebsiteLabel: "Website:",
+  legalHostingTitle: "Hosting",
+  legalHostLabel: "Hostingprovider:",
+  legalSiteLabel: "Website:",
+  legalAddressLabel: "Adres:",
+  privacyTitle: "Privacybeleid",
+  privacyCollectedTitle: "Verzamelde gegevens",
+  privacyCollectedText: "Prix Réel vraagt geen naam, voornaam, postadres of e-mailadres.",
+  privacyCity: "Geselecteerde stad",
+  privacyProvider: "Provider",
+  privacyOffer: "Type abonnement",
+  privacySpeed: "Internetsnelheid",
+  privacyPrice: "Opgegeven maandprijs",
+  privacyUsageTitle: "Gebruik van gegevens",
+  privacyUsageText: "De gegevens worden uitsluitend gebruikt om anonieme gemiddelden te berekenen, vergelijkingen weer te geven en algemene statistieken op te stellen.",
+  privacySharingTitle: "Delen van gegevens",
+  privacySharingText: "De gegevens worden niet verkocht, verhuurd of doorgegeven aan derden voor commerciële doeleinden.",
+  privacyCookiesTitle: "Cookies",
+  privacyCookiesText: "De website kan technische cookies gebruiken die noodzakelijk zijn voor de werking ervan. Er worden momenteel geen advertentiecookies gebruikt.",
+  privacyRightsTitle: "Uw rechten",
+  privacyRightsText: "Voor vragen over uw gegevens:",
+  liabilityTitle: "Beperking van aansprakelijkheid",
+  liabilityText1: "De weergegeven statistieken zijn gebaseerd op informatie die door gebruikers is verstrekt.",
+  liabilityText2: "Prix Réel kan de absolute juistheid van de gepubliceerde gegevens niet garanderen. De informatie wordt uitsluitend ter indicatie verstrekt.",
+  legalUpdated: "Laatst bijgewerkt: juni 2026",
+    }
 };
 
-let currentLanguage = localStorage.getItem("language") || "fr";
+let currentLanguage = localStorage.getItem('language') || 'fr';
 
 function setLanguage(lang) {
   currentLanguage = lang;
-  localStorage.setItem("language", lang);
+  localStorage.setItem('language', lang);
+
   applyTranslations();
+
+  updateFilterSummary();
 }
 
 function applyTranslations() {
-  const t = translations[currentLanguage];
+    const t = translations[currentLanguage];
+  
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+      const key = element.getAttribute('data-i18n');
+  
+      if (t[key]) {
+        element.innerHTML = t[key];
+      }
+    });
 
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.getAttribute("data-i18n");
-
+    document.getElementById('lang-fr')?.classList.toggle('active', currentLanguage === 'fr');
+    document.getElementById('lang-nl')?.classList.toggle('active', currentLanguage === 'nl');
+  
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.getAttribute("data-i18n-placeholder");
+  
     if (t[key]) {
-      element.textContent = t[key];
+      element.setAttribute("placeholder", t[key]);
     }
   });
-
-  document.getElementById("lang-fr")?.classList.toggle("active", currentLanguage === "fr");
-  document.getElementById("lang-nl")?.classList.toggle("active", currentLanguage === "nl");
+  
 }
 
-document.addEventListener("DOMContentLoaded", applyTranslations);
+document.addEventListener('DOMContentLoaded', applyTranslations);

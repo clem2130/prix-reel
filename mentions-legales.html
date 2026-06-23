@@ -6,6 +6,7 @@
 
   <title>Mentions légales & Confidentialité - Prix Réel</title>
 
+  <link rel="icon" type="image/png" href="shield-logo.png">
   <link rel="stylesheet" href="style.css?v=16" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -18,101 +19,136 @@
 
       <div class="topbar">
         <a href="index.html" class="back">←</a>
-        <strong>Mentions légales</strong>
+        <strong data-i18n="legalTopbarTitle">Mentions légales</strong>
         <div></div>
+      </div>
+
+      <div class="language-switcher">
+        <button id="lang-fr" onclick="setLanguage('fr')">
+          🇫🇷 Français
+        </button>
+
+        <button id="lang-nl" onclick="setLanguage('nl')">
+          🇳🇱 Nederlands
+        </button>
       </div>
 
       <div class="legal-content">
 
         <div class="legal-card">
-          <h2>Mentions légales</h2>
 
-          <h3>Éditeur du site</h3>
-          <p>
-            Le site <strong>Prix Réel</strong> est édité par Clément Detrez.
+          <h2 data-i18n="legalTitle">Mentions légales</h2>
+
+          <h3 data-i18n="legalEditorTitle">Éditeur du site</h3>
+
+          <p data-i18n="legalEditorText">
+            Le site Prix Réel est édité par Clément Detrez.
           </p>
 
           <p>
-            Contact :
+            <span data-i18n="legalContactLabel">Contact :</span>
             <a href="mailto:contact.prixreel@gmail.com">contact.prixreel@gmail.com</a>
           </p>
 
           <p>
-            Site web : <strong>www.prixreel.be</strong>
+            <span data-i18n="legalWebsiteLabel">Site web :</span>
+            <strong>www.prixreel.be</strong>
           </p>
 
-          <h3>Hébergement</h3>
+          <h3 data-i18n="legalHostingTitle">Hébergement</h3>
 
-<p>Hébergeur : <strong>Vercel Inc.</strong></p>
-<p>Site : <strong>prixreel.be</strong></p>
-<p>Adresse : <strong>440 N Barranca Ave #4133, Covina, CA 91723, USA</strong></p>
+          <p>
+            <span data-i18n="legalHostLabel">Hébergeur :</span>
+            <strong>Vercel Inc.</strong>
+          </p>
+
+          <p>
+            <span data-i18n="legalSiteLabel">Site :</span>
+            <strong>prixreel.be</strong>
+          </p>
+
+          <p>
+            <span data-i18n="legalAddressLabel">Adresse :</span>
+            <strong>440 N Barranca Ave #4133, Covina, CA 91723, USA</strong>
+          </p>
+
         </div>
 
         <div class="legal-card">
-          <h2>Politique de confidentialité</h2>
 
-          <h3>Données collectées</h3>
-          <p>
+          <h2 data-i18n="privacyTitle">Politique de confidentialité</h2>
+
+          <h3 data-i18n="privacyCollectedTitle">Données collectées</h3>
+
+          <p data-i18n="privacyCollectedText">
             Prix Réel ne demande aucun nom, prénom, adresse postale ou adresse email.
           </p>
 
           <ul>
-            <li>Ville sélectionnée</li>
-            <li>Fournisseur</li>
-            <li>Type d'offre</li>
-            <li>Vitesse Internet</li>
-            <li>Prix mensuel déclaré</li>
+            <li data-i18n="privacyCity">Ville sélectionnée</li>
+            <li data-i18n="privacyProvider">Fournisseur</li>
+            <li data-i18n="privacyOffer">Type d'offre</li>
+            <li data-i18n="privacySpeed">Vitesse Internet</li>
+            <li data-i18n="privacyPrice">Prix mensuel déclaré</li>
           </ul>
 
-          <h3>Utilisation des données</h3>
-          <p>
+          <h3 data-i18n="privacyUsageTitle">Utilisation des données</h3>
+
+          <p data-i18n="privacyUsageText">
             Les données servent uniquement à calculer des moyennes anonymes,
             afficher des comparaisons et produire des statistiques globales.
           </p>
 
-          <h3>Partage des données</h3>
-          <p>
+          <h3 data-i18n="privacySharingTitle">Partage des données</h3>
+
+          <p data-i18n="privacySharingText">
             Les données ne sont ni vendues, ni louées, ni transmises à des tiers à des fins commerciales.
           </p>
 
-          <h3>Cookies</h3>
-          <p>
+          <h3 data-i18n="privacyCookiesTitle">Cookies</h3>
+
+          <p data-i18n="privacyCookiesText">
             Le site peut utiliser des cookies techniques nécessaires à son fonctionnement.
             Aucun cookie publicitaire n'est utilisé à ce jour.
           </p>
 
-          <h3>Vos droits</h3>
+          <h3 data-i18n="privacyRightsTitle">Vos droits</h3>
+
           <p>
-            Pour toute question concernant les données :
+            <span data-i18n="privacyRightsText">
+              Pour toute question concernant les données :
+            </span>
             <a href="mailto:contact.prixreel@gmail.com">contact.prixreel@gmail.com</a>
           </p>
+
         </div>
 
         <div class="legal-card">
-          <h2>Limitation de responsabilité</h2>
 
-          <p>
-            Les statistiques affichées sont calculées à partir des informations fournies
-            par les utilisateurs.
+          <h2 data-i18n="liabilityTitle">Limitation de responsabilité</h2>
+
+          <p data-i18n="liabilityText1">
+            Les statistiques affichées sont calculées à partir des informations fournies par les utilisateurs.
           </p>
 
-          <p>
+          <p data-i18n="liabilityText2">
             Prix Réel ne peut garantir l'exactitude absolue des données publiées.
             Les informations sont données à titre indicatif.
           </p>
 
-          <div class="legal-update">
-          Dernière mise à jour : Juin 2026
+          <div class="legal-update" data-i18n="legalUpdated">
+            Dernière mise à jour : Juin 2026
           </div>
-          
+
         </div>
 
       </div>
-      
 
     </section>
 
   </main>
+
+  <script src="./app.js?v=16"></script>
 
 </body>
 </html>

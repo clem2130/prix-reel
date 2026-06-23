@@ -4,16 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="shield-logo.png">
-  <!--
-  <div class="language-switcher">
-  <button onclick="setLanguage('fr')" id="lang-fr">FR</button>
-  <button onclick="setLanguage('nl')" id="lang-nl">NL</button> 
-  </div>-->
+  
   
   <title>Prix Réel | Comparez les prix Internet réellement payés en Belgique</title>
   <meta name="description" content="Prix Réel est une plateforme belge indépendante basée sur les prix réellement payés par les consommateurs. Comparez votre abonnement Internet et découvrez si vous payez le juste prix.">
   <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="style.css?v=16" />
+  <link rel="stylesheet" href="style.css?v=25" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
   <meta name="google-site-verification" content="8KkwB-e2dJpltFRa9STLV8NX990c75Moo5jhTXVJp_Q" />
@@ -33,64 +29,87 @@
   <main class="app">
 
     <section class="screen active" id="home">
-    <div class="brand">
-      <img src="shield-logo.png" alt="Prix Réel" class="logo-shield">
-    
-      <div class="brand-text">
-        <h1>PRIX <span>RÉEL</span></h1>
-        <p>Le juste prix, basé sur la réalité.</p>
-      </div>
-    </div>
+      
+<header class="site-header">
 
-  <div class="hero">
+  <div class="brand">
+    <img src="shield-logo.png" alt="Prix Réel" class="logo-shield">
+
+    <div class="brand-text">
+      <h1>PRIX <span>RÉEL</span></h1>
+      <p data-i18n="brandSlogan">
+        Le juste prix, basé sur la réalité.
+      </p>
+    </div>
+  </div>
+
+  <div class="language-switcher">
+    <button id="lang-fr" onclick="setLanguage('fr')">
+      🇫🇷 Français
+    </button>
+
+    <button id="lang-nl" onclick="setLanguage('nl')">
+      🇳🇱 Nederlands
+    </button>
+  </div>
+
+</header>
+
+<div class="hero">
+
   <h2 data-i18n="heroTitle">
     Découvrez combien vous pourriez <span>économiser.</span>
   </h2>
 
-
-<div class="hero-message">
-    <strong>
-    Prix Réel compare votre facture aux montants réellement payés par les consommateurs belges.
+  <div class="hero-message">
+    <strong data-i18n="heroMessageStrong">
+      Prix Réel compare votre facture aux montants réellement payés par les consommateurs belges.
     </strong>
     <br>
-    <span>
-    Pas aux tarifs officiels affichés par les fournisseurs.
+    <span data-i18n="heroMessageSmall">
+      Pas aux tarifs officiels affichés par les fournisseurs.
     </span>
-</div>
-
-<div class="hero-counter">
-    <div class="counter-number">40</div>
-    <div class="counter-text">prix déjà partagés</div>
-</div>
-    
-<div class="hero-features">
-
-  <div class="feature-card">
-    <div class="feature-icon">👥</div>
-    <h3>Prix réels</h3>
-    <p>Données réellement partagées par les consommateurs.</p>
   </div>
 
-  <div class="feature-card">
-    <div class="feature-icon">💰</div>
-    <h3>Économies</h3>
-    <p>Découvrez si vous payez plus que les autres.</p>
+  <div class="community-counter">
+    👥 <span id="home-trust-counter">0</span>
+    <span data-i18n="communityCounterText">consommateurs ont déjà partagé leur prix</span>
   </div>
 
-  <div class="feature-card">
-    <div class="feature-icon">🔒</div>
-    <h3>Anonyme</h3>
-    <p>Aucun compte, aucun email, aucune donnée personnelle.</p>
+  <div class="hero-features">
+
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <h3 data-i18n="featureRealPricesTitle">Prix réels</h3>
+      <p data-i18n="featureRealPricesText">Données réellement partagées par les consommateurs.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">💰</div>
+      <h3 data-i18n="featureSavingsTitle">Économies</h3>
+      <p data-i18n="featureSavingsText">Découvrez si vous payez plus que les autres.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3 data-i18n="featureAnonymousTitle">Anonyme</h3>
+      <p data-i18n="featureAnonymousText">Aucun compte, aucun email, aucune donnée personnelle.</p>
+    </div>
+
   </div>
 
-</div>
-
-      <button class="primary" onclick="goTo('category')">Comparer ma facture maintenant</button>
-      <button class="link" onclick="goTo('stats')">Voir les statistiques</button>
+<button class="primary" onclick="goTo('category')" data-i18n="compareButton">
+  Comparer ma facture maintenant
+</button>
+  
+<button class="link" onclick="goTo('stats')" data-i18n="statsButton">
+  Voir les statistiques
+</button>
 
 <div class="community-card">
-
-  <img src="shield-logo.png" class="community-shield">
+  <div class="community-icon">
+    <i class="fa-solid fa-people-group"></i>
+  </div>
 
   <div class="community-content">
     <h3>Une communauté qui s'entraide</h3>
@@ -98,13 +117,7 @@
       Chaque prix partagé aide d'autres consommateurs
       à payer le juste prix.
     </p>
-    
   </div>
-
-  <div class="community-icon">
-  <i class="fa-solid fa-people-group"></i>
-  </div>
-
 </div>
 
 <div class="footer-separator"></div>
@@ -114,16 +127,21 @@
 </div>
 
 <footer class="footer-prixreel">
-  <p>© 2026 Prix Réel • Le juste prix, basé sur la réalité.</p>
+  <p>
+    © 2026 Prix Réel •
+    <span data-i18n="footerSlogan">
+      Le juste prix, basé sur la réalité.
+    </span>
+  </p>
 
   <div class="footer-links">
-    <a href="mentions-legales.html">
+    <a href="mentions-legales.html" data-i18n="footerLegal">
       Mentions légales & Confidentialité
     </a>
 
     <span>•</span>
 
-    <a href="mailto:contact.prixreel@gmail.com">
+    <a href="mailto:contact.prixreel@gmail.com" data-i18n="footerContact">
       Contact
     </a>
   </div>
@@ -131,52 +149,56 @@
       
     </section>
 
-    <section class="screen" id="category">
-      <div class="topbar">
-        <button class="back" onclick="goTo('home')">←</button>
-        <div class="progress"><span style="width:25%"></span></div>
-      </div>
+<section class="screen" id="category">
+  <div class="topbar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <div class="progress"><span style="width:25%"></span></div>
+  </div>
 
-      <h2>Quel service souhaitez-vous comparer ?</h2>
-      <p class="subtitle">Nous commençons par Internet.</p>
+  <h2 data-i18n="categoryTitle">Quel service souhaitez-vous comparer ?</h2>
+  <p class="subtitle" data-i18n="categorySubtitle">Nous commençons par Internet.</p>
 
-      <button class="service active-service" onclick="goTo('form')">
-        <div class="service-icon blue">📶</div>
-        <div>
-          <strong>Internet</strong>
-          <p>Comparez votre abonnement Internet</p>
-        </div>
-        <span>›</span>
-      </button>
+  <button class="service active-service" onclick="goTo('form')">
+    <div class="service-icon blue">📶</div>
+    <div>
+      <strong data-i18n="serviceInternetTitle">Internet</strong>
+      <p data-i18n="serviceInternetText">Comparez votre abonnement Internet</p>
+    </div>
+    <span>›</span>
+  </button>
 
-      <button class="service locked">
-        <div class="service-icon">🚗</div>
-        <div>
-          <strong>Assurance auto</strong>
-          <p>🔒 Bientôt disponible</p>
-        </div>
-      </button>
+  <button class="service locked">
+    <div class="service-icon">🚗</div>
+    <div>
+      <strong data-i18n="serviceCarTitle">Assurance auto</strong>
+      <p data-i18n="comingSoon">🔒 Bientôt disponible</p>
+    </div>
+  </button>
 
-      <button class="service locked">
-        <div class="service-icon">⚡</div>
-        <div>
-          <strong>Électricité</strong>
-          <p>🔒 Bientôt disponible</p>
-        </div>
-      </button>
+  <button class="service locked">
+    <div class="service-icon">⚡</div>
+    <div>
+      <strong data-i18n="serviceElectricityTitle">Électricité</strong>
+      <p data-i18n="comingSoon">🔒 Bientôt disponible</p>
+    </div>
+  </button>
 
-      <button class="service locked">
-        <div class="service-icon">📱</div>
-        <div>
-          <strong>Téléphone mobile</strong>
-          <p>🔒 Bientôt disponible</p>
-        </div>
-      </button>
-
-      <div class="info-box">
-        <strong>D'autres catégories arrivent bientôt !</strong>
-        <p>Aidez-nous à rendre les prix plus transparents partout.</p>
-      </div>
+  <button class="service locked">
+    <div class="service-icon">📱</div>
+    <div>
+      <strong data-i18n="serviceMobileTitle">Téléphone mobile</strong>
+      <p data-i18n="comingSoon">🔒 Bientôt disponible</p>
+    </div>
+  </button>
+  
+  <div class="info-box">
+    <strong data-i18n="categoryInfoTitle">
+      D'autres catégories arrivent bientôt !
+    </strong>
+    <p data-i18n="categoryInfoText">
+      Aidez-nous à rendre les prix plus transparents partout.
+    </p>
+  </div>
     </section>
 
     <section class="screen" id="form">
@@ -185,82 +207,109 @@
         <div class="progress"><span style="width:50%"></span></div>
       </div>
 
-      <h2>Comparez votre abonnement Internet</h2>
-      <p class="subtitle">Remplissez les informations ci-dessous.</p>
+    <h2 data-i18n="formTitle">
+      Comparez votre abonnement Internet
+    </h2>    
+    <p class="subtitle" data-i18n="formSubtitle">
+      Remplissez les informations ci-dessous.
+    </p>
 
-      <label>Votre fournisseur Internet</label>
-      <select id="provider">
-        <option>Proximus</option>
-        <option>Orange</option>
-        <option>Telenet</option>
-        <option>Mobile Vikings</option>
-        <option>Base</option>
-        <option>Scarlet</option>
-        <option>EDPnet</option>
-        <option>VOO</option>
-        <option>Yoin</option>
-        <option>Hey! Telecom</option>
-        <option>Autre</option>
-      </select>
+<label data-i18n="providerLabel">Votre fournisseur Internet</label>
+<select id="provider">
+  <option>Proximus</option>
+  <option>Orange</option>
+  <option>Telenet</option>
+  <option>Mobile Vikings</option>
+  <option>Base</option>
+  <option>Scarlet</option>
+  <option>EDPnet</option>
+  <option>VOO</option>
+  <option>Yoin</option>
+  <option>Hey! Telecom</option>
+  <option data-i18n="optionOther">Autre</option>
+</select>
 
-      <label>Votre ville</label>
-      <div class="city-autocomplete">
-        <input type="text" id="citySearch" placeholder="Tapez votre ville..." autocomplete="new-password">
-        <div id="citySuggestions"></div>
-      </div>
+<label data-i18n="cityLabel">Votre ville</label>
+<div class="city-autocomplete">
+  <input
+    type="text"
+    id="citySearch"
+    placeholder="Tapez votre ville..."
+    data-i18n-placeholder="cityPlaceholder"
+    autocomplete="new-password"
+  >
+  <div id="citySuggestions"></div>
+</div>
 
-      <label>Votre montant mensuel</label>
-      <div class="money-input">
-        <input id="price" type="number" value="62" />
-        <span>€ / mois</span>
-      </div>
+<label data-i18n="priceLabel">Votre montant mensuel</label>
+<div class="money-input">
+  <input id="price" type="number" value="62" />
+  <span data-i18n="perMonth">€ / mois</span>
+</div>
 
 <div class="extra-services-row">
   <input type="checkbox" id="hasExtraServices">
 
   <label for="hasExtraServices">
-    <strong>Mon prix inclut une assurance ou un service supplémentaire</strong>
-    <small>
+    <strong data-i18n="extraLabel">
+      Mon prix inclut une assurance ou un service supplémentaire
+    </strong>
+
+    <small data-i18n="extraDescription">
       Exemple : assurance smartphone, option sécurité, service lié au pack...
     </small>
   </label>
 </div>
 
-      <label>Type d'abonnement</label>
-      <select id="offer">
-        <option>Internet seul</option>
-        <option>Internet + TV</option>
-        <option>Internet + Mobile</option>
-        <option>Internet + TV + Mobile</option>
-        <option>Pack complet</option>
-        <option>Fibre</option>
-      </select>
-      
-      <label>Vitesse Internet</label>  
-      <select id="speed">
-        <option>100 Mbps</option>
-        <option>200 Mbps</option>
-        <option>500 Mbps</option>
-        <option>1 Gbps</option>
-        <option>Autre</option>
-        <option value="unknown">Je ne connais pas ma vitesse</option>
-      </select>
+  <label data-i18n="offerLabel">Type d'abonnement</label>
+  <select id="offer">
+    <option data-i18n="offerInternetOnly">Internet seul</option>
+    <option data-i18n="offerInternetTV">Internet + TV</option>
+    <option data-i18n="offerInternetMobile">Internet + Mobile</option>
+    <option data-i18n="offerInternetTVMobile">Internet + TV + Mobile</option>
+    <option data-i18n="offerFullPack">Pack complet</option>
+    <option data-i18n="offerFiber">Fibre</option>
+  </select>
+  
+  <label data-i18n="speedLabel">Vitesse Internet</label>
+  
+  <select id="speed">
+    <option>100 Mbps</option>
+    <option>200 Mbps</option>
+    <option>500 Mbps</option>
+    <option>1 Gbps</option>
+    <option data-i18n="optionOther">Autre</option>
+    <option value="unknown" data-i18n="unknownSpeed">
+      Je ne connais pas ma vitesse
+    </option>
+  </select>
 
-      <div class="privacy-box">
-        <div class="privacy-icon">✓</div>
-        <div class="privacy-text">
-          <h3>Vos données sont 100% anonymes</h3>
-          <p>Elles nous aident seulement à calculer les prix réels dans votre région.</p>
-        </div>
+    <div class="privacy-box">
+      <div class="privacy-icon">✓</div>
+    
+      <div class="privacy-text">
+        <h3 data-i18n="anonymousTitle">
+          Vos données sont 100% anonymes
+        </h3>
+    
+        <p data-i18n="anonymousText">
+          Elles nous aident seulement à calculer les prix réels dans votre région.
+        </p>
       </div>
+    </div>
+    
+    <button
+      class="primary blue-btn"
+      onclick="calculate()"
+      data-i18n="comparePriceButton">
+      Comparer mon prix
+    </button>
+  </section>
 
-      <button class="primary blue-btn" onclick="calculate()">Comparer mon prix</button>
-    </section>
-
-    <section class="screen" id="result">
+<section class="screen" id="result">
   <div class="topbar">
     <button class="back" onclick="goTo('form')">←</button>
-    <strong>Résultat</strong>
+    <strong data-i18n="resultTopbar">Résultat</strong>
     <button class="back">↗</button>
   </div>
 
@@ -268,11 +317,10 @@
 
     <div class="price-summary">
       <span id="price-summary-text">
-         Votre prix est 20% plus cher que la moyenne
+        Votre prix est 20% plus cher que la moyenne
       </span>
     </div>
 
-    <!-- Barre de position du prix -->
     <div class="score-bar-card">
       <div class="score-badge" id="percent">0%</div>
 
@@ -282,47 +330,52 @@
       </div>
 
       <div class="score-labels">
-        <span>Moins cher</span>
-        <span>Plus cher</span>
+        <span data-i18n="cheaperLabel">Moins cher</span>
+        <span data-i18n="moreExpensiveLabel">Plus cher</span>
       </div>
 
-      <p id="ranking-message">Position dans le classement des prix</p>
+      <p id="ranking-message" data-i18n="rankingMessage">
+        Position dans le classement des prix
+      </p>
     </div>
 
-    <!-- Résumé de l'abonnement comparé -->
     <div class="result-summary" id="result-summary"></div>
 
-    <!-- Qualité des données utilisées -->
     <div class="data-quality-small" id="data-quality"></div>
 
-    <!-- Recommandation Prix Réel -->
     <div class="recommendation-card" id="recommendation-card"></div>
 
   </div>
 
   <div class="best-deals-card" id="best-deals-card">
-    <h3>🏆 Classement des fournisseurs</h3>
-    <p class="provider-ranking-subtitle">
+    <h3 data-i18n="providerRankingTitle">
+      🏆 Classement des fournisseurs
+    </h3>
+
+    <p class="provider-ranking-subtitle" data-i18n="providerRankingSubtitle">
       Prix moyens observés pour des abonnements similaires.
     </p>
+
     <div id="best-deals-list"></div>
   </div>
 
   <div class="tip-card" id="saving-tip-card">
-    <strong id="saving-tip-title">💡 Conseil Prix Réel</strong>
-    <p id="saving-tip-text">
+    <strong id="saving-tip-title" data-i18n="savingTipTitle">
+      💡 Conseil Prix Réel
+    </strong>
+
+    <p id="saving-tip-text" data-i18n="savingTipText">
       Les prix évoluent régulièrement. Pensez à comparer votre abonnement de temps en temps.
     </p>
   </div>
 
-  <button class="primary" onclick="goTo('home')">
+  <button class="primary" onclick="goTo('home')" data-i18n="restartComparisonButton">
     Recommencer une comparaison
   </button>
 
-      
-    <button class="share-btn" onclick="shareResult()">
-      📤 Partager mon résultat et aider la communauté
-    </button>
+  <button class="share-btn" onclick="shareResult()" data-i18n="shareResultButton">
+    📤 Partager mon résultat et aider la communauté
+  </button>
 </section>
 
 <section class="screen" id="stats">
@@ -331,78 +384,91 @@
     <strong>Statistiques</strong>
     <div></div>
   </div>
+<div class="stats-hero">
 
-  <div class="stats-hero">
-    <h2>Les prix partagés par la communauté</h2>
-  
-    <p>
-      Un aperçu des prix Internet réellement enregistrés sur Prix Réel.
-    </p>
-  
-   <p class="stats-community">
-  📊 Basé sur
-  <span id="stats-community-count" class="stats-highlight">0</span>
-  contributions réelles de consommateurs belges
-</p>
+  <h2 data-i18n="statsTitle">
+    Les prix partagés par la communauté
+  </h2>
 
-<p class="stats-community">
-  🏙️
-  <span id="stats-cities" class="stats-highlight">0</span>
-  villes couvertes en Belgique
-</p>
+  <p data-i18n="statsSubtitle">
+    Un aperçu des prix Internet réellement enregistrés sur Prix Réel.
+  </p>
+
+  <p class="stats-community">
+    📊
+    <span id="stats-community-count">47</span>
+    <span data-i18n="statsCommunityText">
+      contributions réelles de consommateurs belges
+    </span>
+  </p>
+
+  <p class="stats-community">
+    🏙️
+    <span id="stats-cities">26</span>
+    <span data-i18n="statsCitiesText">
+      villes couvertes en Belgique
+    </span>
+  </p>
+
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-icon">📊</div>
+    <h3 id="stats-total">0</h3>
+    <p data-i18n="statsTotalLabel">Prix enregistrés</p>
   </div>
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-icon">📊</div>
-      <h3 id="stats-total">0</h3>
-      <p>Prix enregistrés</p>
-    </div>
-
-    
-
-    <div class="stat-card">
-      <div class="stat-icon">💶</div>
-      <h3 id="stats-average">0 €</h3>
-      <p>Prix moyen</p>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon">🟢</div>
-      <h3 id="stats-min">0 €</h3>
-      <p>Prix le plus bas</p>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon">🔴</div>
-      <h3 id="stats-max">0 €</h3>
-      <p>Prix le plus élevé</p>
-    </div>
-
+  <div class="stat-card">
+    <div class="stat-icon">💶</div>
+    <h3 id="stats-average">0 €</h3>
+    <p data-i18n="statsAverageLabel">Prix moyen</p>
   </div>
 
-  <div class="provider-chart-card">
-      <h3>🏆 Classement des fournisseurs les plus compétitifs</h3>
-      <p>Basé sur les prix réellement observés par la communauté.</p>
+  <div class="stat-card">
+    <div class="stat-icon">🟢</div>
+    <h3 id="stats-min">0 €</h3>
+    <p data-i18n="statsMinLabel">Prix le plus bas</p>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon">🔴</div>
+    <h3 id="stats-max">0 €</h3>
+    <p data-i18n="statsMaxLabel">Prix le plus élevé</p>
+  </div>
+</div>
+
+<div class="provider-chart-card">
+  <h3 data-i18n="statsRankingTitle">
+    🏆 Classement des fournisseurs les plus compétitifs
+  </h3>
+
+  <p data-i18n="statsRankingSubtitle">
+    Basé sur les prix réellement observés par la communauté.
+  </p>
     
 <div class="filter-section-title">
   <span>📦</span>
-  <strong>Offre</strong>
+  <strong data-i18n="statsOfferLabel">Offre</strong>
 </div>
     
 <div class="provider-filter">
-  <button class="provider-filter-btn active" onclick="setProviderFilter('all', this)">Tous</button>
-  <button class="provider-filter-btn" onclick="setProviderFilter('Internet', this)">Internet</button>
-  <button class="provider-filter-btn" onclick="setProviderFilter('Internet + TV', this)">Internet + TV</button>
-  <button class="provider-filter-btn" onclick="setProviderFilter('Internet + Mobile', this)">Internet + Mobile</button>
-  <button class="provider-filter-btn" onclick="setProviderFilter('Pack complet', this)">Pack complet</button>
+  <button class="provider-filter-btn active" data-i18n="statsAll" onclick="setProviderFilter('all', this)">Tous</button>
+
+  <button class="provider-filter-btn" data-i18n="statsInternet" onclick="setProviderFilter('Internet', this)">Internet</button>
+
+  <button class="provider-filter-btn" data-i18n="statsInternetTv" onclick="setProviderFilter('Internet + TV', this)">Internet + TV</button>
+
+  <button class="provider-filter-btn" data-i18n="statsInternetMobile" onclick="setProviderFilter('Internet + Mobile', this)">Internet + Mobile</button>
+
+  <button class="provider-filter-btn" data-i18n="statsFullPack" onclick="setProviderFilter('Pack complet', this)">Pack complet</button>
 </div>
     
 <div class="filter-separator"></div>
 
 <div class="filter-section-title">
   <span>🚀</span>
-  <strong>Vitesse</strong>
+  <strong data-i18n="statsSpeedLabel">Vitesse</strong>
 </div>
     
 <div class="provider-filter speed-filter">
@@ -421,8 +487,11 @@
 
   
 <div class="stats-note">
-  <strong>🔍 Comment sont calculées ces statistiques ?</strong>
-  <p>
+  <strong data-i18n="statsHowCalculatedTitle">
+    🔍 Comment sont calculées ces statistiques ?
+  </strong>
+
+  <p data-i18n="statsHowCalculatedText">
     Les moyennes sont recalculées automatiquement à chaque nouvelle contribution.
     Les classements sont basés sur les prix réellement observés auprès des consommateurs.
   </p>
@@ -478,170 +547,215 @@
   </div>
 </section>
 
-    <nav>
-      <button onclick="goTo('home')">⌂<span>Accueil</span></button>
-      <button onclick="goTo('category')">⌕<span>Comparer</span></button>
-      <button onclick="goTo('stats')">▥<span>Stats</span></button>
-      <button onclick="goTo('about')">ⓘ<span>Infos</span></button>
-    </nav>
-
-<section id="about" class="screen">
+    <section id="about" class="screen">
 
   <div>
-    <h2>ⓘ Informations</h2>
-    <p class="subtitle">
+    <h2 data-i18n="infoTitle">ⓘ Informations</h2>
+    <p class="subtitle" data-i18n="infoSubtitle">
       Transparence, méthodologie et mission de Prix Réel.
     </p>
   </div>
 
   <div class="trust-row">
-    <div>📊 <span id="info-trust-counter">0</span> prix partagés</div>
-    <div>🏙️ Données en Belgique</div>
-    <div>🔒 Contributions anonymes</div>
+    <div>
+      📊 <span id="info-trust-counter">0</span>
+      <span data-i18n="infoBadgeShared">prix partagés</span>
+    </div>
+
+    <div>
+      🏙️ <span data-i18n="infoBadgeBelgium">Données en Belgique</span>
+    </div>
+
+    <div>
+      🔒 <span data-i18n="infoBadgeAnonymous">Contributions anonymes</span>
+    </div>
   </div>
 
-  <h2>Comment ça marche ?</h2>
+  <h2 data-i18n="infoHowTitle">Comment ça marche ?</h2>
 
-<p class="subtitle">
-  Prix Réel aide les consommateurs à comparer les prix réellement payés par la communauté.
-</p>
+  <p class="subtitle" data-i18n="infoHowText">
+    Prix Réel aide les consommateurs à comparer les prix réellement payés par la communauté.
+  </p>
 
-<div class="info-card">
-  <div class="info-icon">
-    <img src="shield-logo.png" class="info-shield" alt="Prix Réel">
-  </div>
-  <div>
-    <h3>À propos de Prix Réel</h3>
-    <p>
-      Prix Réel est une plateforme collaborative qui permet aux consommateurs de comparer leur abonnement avec les prix réellement payés par d'autres utilisateurs.
-    </p>
-    <p>
-      Notre objectif est simple : apporter davantage de transparence sur les prix pratiqués en Belgique et aider chacun à payer le juste prix.
-    </p>
-  </div>
-</div>
+  <div class="info-card">
+    <div class="info-icon">
+      <img src="shield-logo.png" class="info-shield" alt="Prix Réel">
+    </div>
+    <div>
+      <h3 data-i18n="infoAboutTitle">À propos de Prix Réel</h3>
 
-<div class="info-card">
-  <div class="info-icon">📤</div>
-  <div>
-    <h3>Partagez votre abonnement</h3>
-    <p>
-      Indiquez simplement votre ville, votre fournisseur et le montant de votre abonnement.
-    </p>
-    <p>
-      En quelques secondes, votre contribution enrichit la base de données et aide à améliorer les comparaisons pour toute la communauté.
-    </p>
-  </div>
-</div>
+      <p data-i18n="infoAboutText1">
+        Prix Réel est une plateforme collaborative qui permet aux consommateurs de comparer leur abonnement avec les prix réellement payés par d'autres utilisateurs.
+      </p>
 
-<div class="info-card">
-  <div class="info-icon">🔍</div>
-  <div>
-    <h3>Prix Réel compare</h3>
-    <p>
-      Une fois votre abonnement renseigné, Prix Réel recherche automatiquement des offres similaires dans sa base de données.
-    </p>
-    <p>
-      L'analyse repose sur plusieurs critères afin de proposer une comparaison pertinente et représentative du marché.
-    </p>
+      <p data-i18n="infoAboutText2">
+        Notre objectif est simple : apporter davantage de transparence sur les prix pratiqués en Belgique et aider chacun à payer le juste prix.
+      </p>
+    </div>
   </div>
-</div>
 
-<div class="info-card">
-  <div class="info-icon">📊</div>
-  <div>
-    <h3>Comment les comparaisons sont calculées ?</h3>
-    <p>
-      Les comparaisons prennent notamment en compte le fournisseur, le type d'offre, la vitesse Internet et la localisation lorsque cela est pertinent.
-    </p>
-    <p>
-      Plus la communauté participe, plus les résultats gagnent en précision.
-    </p>
-  </div>
-</div>
+  <div class="info-card">
+    <div class="info-icon">📤</div>
+    <div>
+      <h3 data-i18n="infoShareTitle">Partagez votre abonnement</h3>
 
-<div class="info-card">
-  <div class="info-icon">💰</div>
-  <div>
-    <h3>Découvrez votre situation</h3>
-    <p>
-      Vous savez immédiatement si votre abonnement est inférieur, proche ou supérieur aux prix observés pour des offres similaires.
-    </p>
-    <p>
-      Prix Réel vous permet ainsi d'identifier rapidement si vous bénéficiez d'un bon tarif ou si des économies sont possibles.
-    </p>
-  </div>
-</div>
+      <p data-i18n="infoShareText1">
+        Indiquez simplement votre ville, votre fournisseur et le montant de votre abonnement.
+      </p>
 
-<div class="info-card">
-  <div class="info-icon">🔒</div>
-  <div>
-    <h3>Données anonymes</h3>
-    <p>
-      Aucun nom, numéro de téléphone ou information personnelle n'est demandé.
-    </p>
-    <p>
-      Les données enregistrées servent uniquement à améliorer les comparaisons et les statistiques affichées sur la plateforme.
-    </p>
+      <p data-i18n="infoShareText2">
+        En quelques secondes, votre contribution enrichit la base de données et aide à améliorer les comparaisons pour toute la communauté.
+      </p>
+    </div>
   </div>
-</div>
 
-<div class="info-card">
-  <div class="info-icon">🛡️</div>
-  <div>
-    <h3>Notre engagement</h3>
-    <p>
-      Prix Réel ne vend pas vos données personnelles.
-    </p>
-    <p>
-      Les comparaisons sont basées exclusivement sur les informations réellement partagées par la communauté afin de garantir une approche transparente et indépendante.
-    </p>
-  </div>
-</div>
+  <div class="info-card">
+    <div class="info-icon">🔍</div>
+    <div>
+      <h3 data-i18n="infoCompareTitle">Prix Réel compare</h3>
 
-<div class="info-card">
-  <div class="info-icon">🧩</div>
-  <div>
-    <h3>Une communauté qui s’entraide</h3>
-    <p>
-      Chaque prix partagé aide d'autres consommateurs à mieux comprendre le marché et à identifier les offres les plus avantageuses.
-    </p>
-    <p>
-      En participant, vous contribuez à rendre les prix plus transparents pour tous.
-    </p>
-  </div>
-</div>
+      <p data-i18n="infoCompareText1">
+        Une fois votre abonnement renseigné, Prix Réel recherche automatiquement des offres similaires dans sa base de données.
+      </p>
 
-<div class="info-card">
-  <div class="info-icon">🤝</div>
-  <div>
-    <h3>Partenaires</h3>
-    <p>
-      Prix Réel est actuellement en phase de développement.
-    </p>
-    <p>
-      Des partenariats pourront être mis en place à l'avenir afin d'enrichir les services proposés aux utilisateurs et de leur offrir davantage d'opportunités d'économies.
-    </p>
-    <p>
-      Notre priorité reste de fournir des comparaisons claires, indépendantes et basées sur les prix réellement observés au sein de la communauté.
-    </p>
+      <p data-i18n="infoCompareText2">
+        L'analyse repose sur plusieurs critères afin de proposer une comparaison pertinente et représentative du marché.
+      </p>
+    </div>
   </div>
-</div>
 
-<div class="info-card">
-  <div class="info-icon">📧</div>
-  <div>
-    <h3>Contact</h3>
-    <p>contact.prixreel@gmail.com</p>
+  <div class="info-card">
+    <div class="info-icon">📊</div>
+    <div>
+      <h3 data-i18n="infoCalculationTitle">
+        Comment les comparaisons sont calculées ?
+      </h3>
+
+      <p data-i18n="infoCalculationText1">
+        Les comparaisons prennent notamment en compte le fournisseur, le type d'offre, la vitesse Internet et la localisation lorsque cela est pertinent.
+      </p>
+
+      <p data-i18n="infoCalculationText2">
+        Plus la communauté participe, plus les résultats gagnent en précision.
+      </p>
+    </div>
   </div>
-</div>
+
+  <div class="info-card">
+    <div class="info-icon">💰</div>
+    <div>
+      <h3 data-i18n="infoSituationTitle">Découvrez votre situation</h3>
+
+      <p data-i18n="infoSituationText1">
+        Vous savez immédiatement si votre abonnement est inférieur, proche ou supérieur aux prix observés pour des offres similaires.
+      </p>
+
+      <p data-i18n="infoSituationText2">
+        Prix Réel vous permet ainsi d'identifier rapidement si vous bénéficiez d'un bon tarif ou si des économies sont possibles.
+      </p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-icon">🔒</div>
+    <div>
+      <h3 data-i18n="infoAnonymousTitle">Données anonymes</h3>
+
+      <p data-i18n="infoAnonymousText1">
+        Aucun nom, numéro de téléphone ou information personnelle n'est demandé.
+      </p>
+
+      <p data-i18n="infoAnonymousText2">
+        Les données enregistrées servent uniquement à améliorer les comparaisons et les statistiques affichées sur la plateforme.
+      </p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-icon">🛡️</div>
+    <div>
+      <h3 data-i18n="infoEngagementTitle">Notre engagement</h3>
+
+      <p data-i18n="infoEngagementText1">
+        Prix Réel ne vend pas vos données personnelles.
+      </p>
+
+      <p data-i18n="infoEngagementText2">
+        Les comparaisons sont basées exclusivement sur les informations réellement partagées par la communauté afin de garantir une approche transparente et indépendante.
+      </p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-icon">🧩</div>
+    <div>
+      <h3 data-i18n="infoCommunityTitle">
+        Une communauté qui s’entraide
+      </h3>
+
+      <p data-i18n="infoCommunityText1">
+        Chaque prix partagé aide d'autres consommateurs à mieux comprendre le marché et à identifier les offres les plus avantageuses.
+      </p>
+
+      <p data-i18n="infoCommunityText2">
+        En participant, vous contribuez à rendre les prix plus transparents pour tous.
+      </p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-icon">🤝</div>
+    <div>
+      <h3 data-i18n="infoPartnersTitle">Partenaires</h3>
+
+      <p data-i18n="infoPartnersText1">
+        Prix Réel est actuellement en phase de développement.
+      </p>
+
+      <p data-i18n="infoPartnersText2">
+        Des partenariats pourront être mis en place à l'avenir afin d'enrichir les services proposés aux utilisateurs et de leur offrir davantage d'opportunités d'économies.
+      </p>
+
+      <p data-i18n="infoPartnersText3">
+        Notre priorité reste de fournir des comparaisons claires, indépendantes et basées sur les prix réellement observés au sein de la communauté.
+      </p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-icon">📧</div>
+    <div>
+      <h3 data-i18n="infoContactTitle">Contact</h3>
+      <p>contact.prixreel@gmail.com</p>
+    </div>
+  </div>
 
 </section>
+
+<nav>
+  <button onclick="goTo('home')">
+    ⌂<span data-i18n="navHome">Accueil</span>
+  </button>
+
+  <button onclick="goTo('category')">
+    ⌕<span data-i18n="navCompare">Comparer</span>
+  </button>
+
+  <button onclick="goTo('stats')">
+    ▥<span data-i18n="navStats">Stats</span>
+  </button>
+
+  <button onclick="goTo('about')">
+    ⓘ<span data-i18n="navInfo">Infos</span>
+  </button>
+</nav>
+
+
 
 </main>
 
 
-<script src="./app.js?v=16"></script>
+<script src="./app.js?v=25"></script>
   
 </body>
 </html>
