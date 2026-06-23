@@ -3572,4 +3572,10 @@ header.site-header {
   }
 }
 
+@media (max-width: 900px) {
+  .site-header .language-switcher {
+    display: none !important;
+  }
+}
+
 
