@@ -1654,6 +1654,7 @@ fr: {
   liabilityText1: "Les statistiques affichées sont calculées à partir des informations fournies par les utilisateurs.",
   liabilityText2: "Prix Réel ne peut garantir l'exactitude absolue des données publiées. Les informations sont données à titre indicatif.",
   legalUpdated: "Dernière mise à jour : Juin 2026",
+  heroTrust: "✓ Gratuit • ✓ Anonyme • ✓ Sans inscription",
   },
   
 nl: {
@@ -1877,6 +1878,7 @@ nl: {
   liabilityText1: "De weergegeven statistieken zijn gebaseerd op informatie die door gebruikers is verstrekt.",
   liabilityText2: "Prix Réel kan de absolute juistheid van de gepubliceerde gegevens niet garanderen. De informatie wordt uitsluitend ter indicatie verstrekt.",
   legalUpdated: "Laatst bijgewerkt: juni 2026",
+  heroTrust: "✓ Gratis • ✓ Anoniem • ✓ Zonder registratie",
     }
 };
 
