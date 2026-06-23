@@ -3426,8 +3426,8 @@ header.site-header {
 
 @media (max-width: 600px) {
   .brand-header {
-    padding-top: 70px;
-    margin-bottom: 45px;
+    padding-top: 35px;
+    margin-bottom: 20px;
   }
 
   .brand-logo-row {
